@@ -14,32 +14,24 @@ remote or onsite. If you're hiring for a programme that has to work in a regulat
 multi-stakeholder environment, that's the work I do.
 
 I'm also happy to talk if you're not hiring. Some of the best conversations I've had
-started with someone asking how we got a government platform through approval.
+started with someone asking how we got a government platform through approval in a month.
 
 **Actions**
 - Primary: `Download resume` (PDF)
 - Secondary: `Email me` — rishabh.jain@outlook.in
 - Tertiary: LinkedIn
 
-**Response expectation**
-I read everything and reply within a couple of days.
-`[VERIFY]` — only include this if it's true. An unanswered promise on a contact page is
-worse than no promise.
-
 ## Social links
 
-Keep: LinkedIn, GitHub, dev.to
-Reconsider: Facebook, Instagram, Twitter/X, Telegram
+**LinkedIn only.** Per your instruction, GitHub, dev.to, Facebook, Instagram, X, and
+Telegram all come off.
 
-`[DISCLOSE?]` — the current site links seven social accounts including Facebook and
-Instagram. For a page whose primary audience is hiring managers, personal social
-accounts add nothing and expand the surface a stranger can examine. Recommend keeping
-the three professional ones. Tell me if you want the others back.
+One note worth making, and then I'll leave it: **GitHub is the one I'd reconsider.** The
+site argues that your technical depth is real, and a public profile is the cheapest
+possible corroboration of that — particularly for the product and technical-programme
+roles on your target list. It's your call and I've followed the instruction, but if the
+account has anything current on it, it's earning its place in a way Instagram never was.
 
 ## Footer
 
 © Rishabh Jain. Built and maintained by me.
-
-`[YOURS]` — the current footer reads "Designed with ♥ by Rishabh Jain." Given that
-building your own site is itself evidence for the technical claim, I'd rather state it
-plainly than decoratively. Happy to keep the heart if you like it.

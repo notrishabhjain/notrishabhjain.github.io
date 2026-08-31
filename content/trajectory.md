@@ -4,24 +4,29 @@ The argument this section makes on its own: the technical fluency isn't a claim,
 biography. Six years of building, then five of leading — in that order. Nobody can
 retrofit that sequence.
 
-Displayed years-only (see `site.md` for the reasoning). Month precision lives in the
-resume PDF.
+Displayed years-only (see `site.md`). Month precision lives in the resume.
 
 ---
 
-**2026 – Present · BDO India** — Project Manager, Digital Transformation
+**2026 – Present · BDO India** — Manager, Digital Transformation
 Embedded with the National e-Governance Division (MeitY) as delivery and design lead
-across three concurrent ministry platforms. Proposal and costing through UX, build
+across three concurrent ministry platforms — Green Hydrogen Certification (MNRE), the
+8th Central Pay Commission memorandum review system, and the Textile Unified Portal
+(Ministry of Textiles). Two live in 2026. Proposal and costing through UX, build
 oversight, UAT, and stakeholder sign-off.
 
-**2024 – 2026 · Infosys** — Project Manager
-Multi-vendor transformation and delivery stabilisation across a $2M+ annual portfolio.
-Took a distressed 30+ person team from four-day incident resolution to under twelve hours.
+**2024 – 2026 · Infosys** — Project Manager · Client: GE Vernova (US)
+Took transition of a loss-making, heavily over-staffed application portfolio and turned
+the account net positive. Right-sized the team by roughly half, automated and
+standardised operations, reporting, budgeting and client communications, and cut incident
+resolution from four days to under twelve hours. ~$500K additional business won over the
+following year, across a $2M+ annual delivery portfolio.
 
 **2022 – 2024 · EY** — Senior Consultant
-National digital government programmes, including a citizen platform serving 40M+ users.
-BPR, requirement analysis, PMO governance, and security compliance across 90+ ministry
-websites. Worked directly with Secretaries and Additional Secretaries.
+National digital government programmes, including the CRCS Portal serving 40M+ users and
+later extended to deliver Sahara refunds. BPR, requirement analysis, PMO governance, and
+security compliance across 90+ ministry websites. Worked directly with Secretaries and
+Additional Secretaries.
 
 **2021 – 2022 · UST Global** — Software Engineering Lead
 Product vision and roadmap for a blockchain credentialing platform adopted across 2,500+
@@ -40,9 +45,9 @@ Clients across the US, UK, and Japan.
 
 ## Notes
 
-- The trajectory reads best bottom-up: engineer → lead → consultant → manager. On the
-  page I'll present it newest-first (which is what a recruiter expects) but design the
-  visual so the arc is legible in either direction.
-- `[VERIFY]` — your formal job title at BDO. I've used "Project Manager, Digital
-  Transformation" from the resume. If the official designation differs, it should be
-  exact here; this is the one entry a background check will compare against.
+- **The Textile Unified Portal stays here**, named in the BDO entry, even though its case
+  study is removed. That keeps "three concurrent platforms" honest without a thin page
+  propping it up. A reader who counts three finds three.
+- The trajectory reads best bottom-up: engineer → lead → consultant → manager. I'll
+  present it newest-first, which is what a recruiter expects, but design the visual so
+  the arc is legible in either direction.

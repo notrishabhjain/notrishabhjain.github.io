@@ -7,7 +7,7 @@ role: Delivery & UX Lead
 period: 2026
 stack: [MERN, React, TypeScript, Headless WordPress, NIC MeghRaj]
 compliance: [WCAG 2.1 AA, GIGW, UX4G]
-outcome: Taken to UAT with a full test framework; Phase 2 roadmap approved at CEO level
+outcome: Live since July 2026 — inaugurated by the Minister, with national media coverage
 featured: true
 ---
 
@@ -26,7 +26,7 @@ changed. Nobody had specified how that worked.
 
 ## What I owned
 
-I led this from requirement elicitation through to UAT, which on a government platform
+I led this from requirement elicitation through to launch, which on a government platform
 means owning several things that usually sit with different people:
 
 - **The design.** Figma specifications built to WCAG 2.1 AA, GIGW, and UX4G from the
@@ -37,21 +37,21 @@ means owning several things that usually sit with different people:
   chain — the design decision the rest of the platform's credibility rests on.
 - **The test framework.** 12 use case documents and a 39-case test workbook across 8
   functional modules, with test plans and defect governance, so UAT was a process rather
-  than a negotiation. `[DISCLOSE?]` — case counts are specific. Safe in my view, but
-  your call.
+  than a negotiation.
 - **The roadmap.** I presented Phase 2 to CEO-level stakeholders: blockchain-based
   certificate anchoring, AI-assisted review, analytics, and a partner API ecosystem.
 
 ## Outcome
 
-The portal reached UAT with a complete, documented test framework, and the Phase 2
-roadmap was approved at CEO level.
-
-`[VERIFY]` — has GHCI gone live since? A live production date is a materially stronger
-close than "reached UAT," and it's the first thing an interviewer will ask.
+**Live since July 2026**, inaugurated by the Minister at a public function and covered
+in national media. Stakeholders are registering and processing certifications on it
+today, and the AI-enabled features from the Phase 2 roadmap are in development.
 
 ## What I'd point to
 
 The versioning spec. Anyone can run a UAT cycle. Recognising that a certification
 platform has an unsolved data-integrity problem at its centre — before it becomes an
 incident — is the part of this job I'm actually paid for.
+
+A launch is a good day. A certificate that still resolves correctly in 2031 is the
+thing I was actually building for.

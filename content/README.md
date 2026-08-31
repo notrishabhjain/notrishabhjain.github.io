@@ -17,6 +17,7 @@ Read the files in this order. They map to the order a visitor reads the page.
 8. `reach.md` — domains, ministries, geographies
 9. `credentials.md` — certifications and education
 10. `contact.md` — the ask
+11. `resume.md` — source for the downloadable ATS-friendly resume (`files/Rishabh_Jain_Resume.docx`)
 
 ## Marks you will see in the text
 

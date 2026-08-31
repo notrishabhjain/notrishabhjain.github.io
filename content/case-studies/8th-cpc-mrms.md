@@ -3,10 +3,10 @@ title: Memorandum Review Management System
 short: 8th Central Pay Commission MRMS
 client: 8th Central Pay Commission
 via: BDO India · National e-Governance Division, MeitY
-role: Project Manager
+role: Manager
 period: 2026
-stack: [MERN, Parichay SSO, NIC MeghRaj 2.0]
-outcome: Two-phase technical and commercial proposal authored through to procurement approval
+stack: [MERN, Parichay SSO, NIC MeghRaj 2.0, third-party integrations]
+outcome: Proposal to production in a month — live, on MeghRaj, with expedited approvals
 featured: true
 ---
 
@@ -19,39 +19,40 @@ large, the scrutiny is high, and the process was running on spreadsheets.
 
 ## The problem
 
-A spreadsheet has no concept of a review stage. It can't tell you which memoranda are
-sitting with a Processing Officer, which are awaiting a ministry response, or how long
-either has taken — and with representations from across the central government, "we
-think it's roughly on track" is not an acceptable answer.
+A spreadsheet has no concept of a review stage. It can't tell you which memoranda sit
+with a Processing Officer, which await a ministry response, or how long either has
+taken — and with representations arriving from across the central government, "we think
+it's roughly on track" is not an acceptable answer.
+
+Then there was the timeline. A pay commission does not wait for a portal.
 
 ## What I owned
 
 - **The proposal.** I authored the two-phase technical and commercial proposal — MERN
   architecture, Parichay SSO integration, NIC MeghRaj 2.0 hosting, and a Phase 2 AI
-  services roadmap — with infrastructure costing built against live NICSI rate cards so
-  it could clear procurement without a second pass.
-- **The data model.** I took a legacy Excel dataset and turned it into a structured
-  model with dashboard KPIs and a configurable report builder.
-  `[DISCLOSE?]` — the resume says "500+ records" and a "24-field data model." Field
-  counts describe the internal structure of a live government system. Recommend
-  publishing this as "a legacy spreadsheet dataset" and "a structured data model,"
-  keeping the numbers for interviews. Flag if you disagree.
+  services roadmap — with infrastructure costed against live NICSI rate cards so it
+  could clear procurement without a second pass. It was accepted.
 - **The workflow.** A multi-stage examination and referral process spanning Processing
-  Officer, Reviewing Officer, and ministry response loops — designed so that at any
-  moment you can answer where a memorandum is and who is holding it.
+  Officer, Reviewing Officer, and ministry response loops, designed so that at any moment
+  you can answer where a memorandum is and who is holding it. Built from a legacy
+  spreadsheet dataset into a structured data model with dashboard KPIs and a configurable
+  report builder.
+- **The delivery.** Coordinating development, multiple vendors, and DevOps to provision
+  infrastructure, integrate third-party services, test, and deploy — while running the
+  MeghRaj hosting approvals on an expedited track in parallel rather than in sequence.
 
 ## Outcome
 
-The proposal covered both the technical architecture and the commercials, costed
-against the rate cards procurement actually uses, and went forward for approval.
+**Built and live in a month**, deployed on NIC MeghRaj with third-party integrations in
+place and hosting approvals expedited to match the build.
 
-`[VERIFY]` — was the proposal approved, and did the build start? "Authored a proposal"
-and "won the work and delivered it" are very different sentences to a hiring manager.
-Give me whichever is true and I'll write it accurately.
+`[VERIFY]` — is the month measured from proposal acceptance to go-live, or from
+development start? I've written it as approval to production. Say which and I'll fix it;
+it's the number an interviewer will drill into, so it needs to be exactly right.
 
 ## What I'd point to
 
-This is the clearest example of the range the site is arguing for. The same person
-wrote the infrastructure costing, designed the officer workflow, and specified the
-SSO integration. On most programmes that's three people and two handoffs, and the
-handoffs are where the requirement quietly changes.
+Government infrastructure approvals are usually the long pole — the reason a six-week
+build takes six months. Running the MeghRaj provisioning track in parallel with
+development, rather than waiting for it, is the whole reason this shipped in a month.
+That's not a technical achievement. It's knowing which queue to join early.
