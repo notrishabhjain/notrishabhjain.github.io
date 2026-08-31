@@ -1,67 +1,64 @@
 # Open items
 
-The site is built and everything you signed off is live in it. Four things are still
-genuinely open.
-
 ---
 
-## 1. The Scrum Master certification — needs a decision
+## Still needing your decision
 
-You told me the certification is not currently active. Listing it under a plain
-"Certifications" heading implies it is, so **it is currently withheld from the published
-site and from the generated resume.**
-
-This is a one-line change either way. In `src/data/site.ts`:
+**1. The Scrum Master certification.** Not currently active, so it is withheld from the
+site and the resume rather than listed as though it were current. One line in
+`src/data/site.ts`:
 
 ```ts
-export const showLapsedScrumMaster = false;   // ← flip to true to publish it
+export const showLapsedScrumMaster = false;   // ← flip to publish
 ```
 
-Your options, in the order I'd rank them:
+Renew it, give me the year earned so it can be listed as history, or leave it off.
 
-1. **Renew it.** You're targeting roles where it's a real screening filter, and you have
-   long since done the work that earns the renewal credits. Then it's simply true, and
-   this stops being a question.
-2. **List it with the year earned** — "Certified Scrum Master, Scrum Alliance (2021)".
-   Standard practice; a date signals history rather than currency. Tell me the year and
-   I'll set it.
-3. **Leave it off**, and let eleven years of Agile delivery speak. Cleanest, but you lose
-   a keyword that applicant tracking systems screen on.
+**2. The GE Vernova team narrative.** The case study treats "reduced burnout" and
+"trimmed the team" as compatible — over-staffing with unclear ownership causes burnout,
+right-sizing plus a RACI cures it. Confirm that sequence or tell me to cut the burnout
+framing.
 
-I picked the conservative default because publishing is the direction that's hard to take
-back. Say the word and it goes in.
-
-## 2. The GE Vernova team narrative
-
-Your master resume said the turnaround "materially reduced burnout and attrition." Your
-note said you trimmed the team. The published case study treats these as compatible —
-over-staffing with unclear ownership causes burnout; right-sizing plus a clear RACI cures
-it — because that's the most likely truth and it reads well.
-
-It's also the claim an interviewer will push hardest on. Confirm the sequence, or tell me
-to cut the burnout framing. The case study is strong without it.
-
-## 3. Small verifications
+**3. Three fact checks.**
 
 | # | Question | Where |
 |---|---|---|
 | V1 | Year the CSM was earned | `src/data/site.ts` |
-| V2 | 8th CPC: is "a month" from proposal acceptance to go-live, or from development start? | `content/case-studies/8th-cpc-mrms.md` |
-| V3 | CRCS: were you on the programme during the Sahara refund extension, or is that your platform being reused later? Both are worth saying — they are different claims | `content/case-studies/crcs-portal.md` |
+| V2 | "30 days" — from proposal acceptance or from development start? It is now a headline number in three places, so it needs to be exact | `content/case-studies/8th-cpc-mrms.md` |
+| V3 | Were you on CRCS during the Sahara refund extension, or is that your platform being reused later? | `content/case-studies/crcs-portal.md` |
 
-## 4. Resume length
+**4. The three diagrams.** Newly drawn from your descriptions, at a deliberately abstract
+level — no real screens, data, or internal structure. Check each one says something true:
 
-The generated PDF runs to four pages. That's defensible for eleven years and a
-master-style document, but two to three pages converts better for most applications. If
-you want it shorter, tell me which roles to compress — my instinct is to cut BDO from ten
-bullets to six and EY from seven to five, keeping every number.
+- `Fig. 01` sequencing of approvals against the build (8th CPC, also on the homepage)
+- `Fig. 02` certificate versioning and supersession (GHCI)
+- `Fig. 03` estate ownership before and after (GE Vernova)
 
 ---
 
-## Deferred by you, easy to pick up later
+## Applied in the rebuild
 
-- **Custom domain** (skipped). The origin is set in one place — the `SITE` constant in
-  `astro.config.mjs`. Adding a domain is that line plus a `public/CNAME` file.
-- **Photograph** (skipped). The page carries itself typographically. Easy to add.
-- **GitHub link** (you asked for LinkedIn only). Noted once and then dropped: it's the
-  cheapest corroboration of the technical claim the site makes. Your call.
+- **Product demoted.** Removed from the hero and contact entirely. It now appears once,
+  as your actual role title on the Skillchain case study, plus one lowercase mention in
+  the engagement about specification work.
+- **"What I actually do" replaced.** The 44-keyword grid is gone. Four engagements —
+  the briefs you actually get handed — each with proof and a link to the case that
+  evidences it. Keywords survive only as a compact toolkit table on the About page and
+  in the resume, where they serve ATS matching.
+- **"Where I've done it" split into three.** Organisations (with what you did at each),
+  sectors, and toolkit are now distinct treatments rather than four identical columns.
+  Scale numbers moved to the work index, where they belong.
+- **"How I work" grounded.** Each conviction now carries the moment it came from.
+- **Work cards fixed.** Ragged two-column cards replaced by aligned rows, each leading
+  with its headline metric and carrying its own call to action.
+- **Value made visible.** Every case study now opens with a "what changed" results band
+  and carries a "the calls I made" section — the decisions and their reasoning.
+- **Multi-page.** `/`, `/work`, `/work/<slug>`, `/about`, `/resume`. Old
+  `/case-studies/<slug>` URLs redirect to `/work/<slug>`.
+- **Resume is now three pages**, down from four.
+
+## Deferred by you
+
+- Custom domain — one line in `astro.config.mjs` plus a `public/CNAME` file.
+- Photograph.
+- GitHub link.

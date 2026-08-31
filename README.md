@@ -41,14 +41,8 @@ applicant tracking systems, which parse Word more reliably than PDF.
 The workflow in `.github/workflows/deploy.yml` builds on every push to `master` and
 publishes `dist/`. It only takes effect once Pages is switched over:
 
-**Settings → Pages → Source → GitHub Actions**
+Pages is set to **GitHub Actions** as its source, so every push to `master` rebuilds and
+publishes the site. Nothing is served from the repository root any more.
 
-Until that switch is flipped, Pages keeps serving the old static files from the repository
-root, so the live site is unaffected by this project.
-
-### After the switch
-
-The legacy site — `index.html`, `css/`, `js/`, and the unused images under
-`images/slider/` and `images/thumbnails/` — is dead weight once Pages builds from
-Actions. It is deliberately left in place so the live site cannot break before the
-switch. Delete it in a follow-up commit afterwards.
+If Pages is ever switched back to "Deploy from a branch", the site will 404 — the old
+static files that used to serve from the root have been removed.

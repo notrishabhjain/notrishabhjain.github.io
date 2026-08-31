@@ -1,12 +1,12 @@
 /**
- * Every word on the site that isn't a case study lives here.
- * Case studies are Markdown in /content/case-studies.
+ * All site copy that isn't a case study. Case studies are Markdown in
+ * /content/case-studies.
  */
 
 export const person = {
   name: 'Rishabh Jain',
   role: 'Program & Portfolio Manager',
-  secondary: 'Digital Transformation · Government & Enterprise Delivery',
+  tag: 'Digital transformation · Government & enterprise delivery',
   location: 'New Delhi, India',
   email: 'rishabh.jain@outlook.in',
   linkedin: 'https://www.linkedin.com/in/notrishabhjain/',
@@ -17,88 +17,101 @@ export const person = {
 export const meta = {
   title: 'Rishabh Jain — Program & Portfolio Manager',
   description:
-    'Program and portfolio manager with 11 years delivering digital transformation for ' +
-    'Government of India ministries and global enterprise clients. National platforms ' +
-    'from proposal to production.',
+    'Program and portfolio manager, 11 years. I take Government of India platforms ' +
+    'through procurement, approval and into production — and turn around enterprise ' +
+    'delivery that has stopped working.',
 } as const;
 
+export const nav = [
+  { label: 'Work', href: '/work/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Resume', href: '/resume/' },
+] as const;
+
+/* ------------------------------------------------------------------ hero -- */
+
 export const hero = {
-  headline: 'I close the gap between what a programme is supposed to achieve and what actually ships.',
+  headline: 'I get government platforms built, approved, and live.',
   standfirst:
-    'Eleven years running digital transformation for Government of India ministries and ' +
-    'global enterprise clients — TCS, UST, EY, Infosys, and now BDO India, embedded with ' +
-    "MeitY's National e-Governance Division. I have a tech lead who owns the code. I'm the " +
-    'manager who can read it, and most programmes fail in exactly that gap — between the ' +
-    'room where the decision is made and the room where it gets built.',
-  availability:
-    'Open to Program, Portfolio and Product roles — India or international, remote or onsite.',
+    'Eleven years in delivery — six of them writing code, five running programmes. ' +
+    'I work where policy meets procurement meets engineering: the place where most ' +
+    'public-sector platforms stall for a year, and where I have shipped three in the ' +
+    'last twelve months.',
+  status: 'Open to Program & Portfolio Management roles — India or international, remote or onsite',
 } as const;
 
 export const proof = [
-  { value: '11 years', label: 'in delivery, engineering to programme leadership' },
-  { value: '40M+', label: "citizens on platforms I've delivered" },
-  { value: '30 days', label: 'from approval to production on a national platform' },
-  { value: 'Net positive', label: 'a loss-making $2M account, turned around' },
+  { value: '30', unit: 'days', label: 'Approved proposal to live production, on NIC MeghRaj', src: '8th Central Pay Commission' },
+  { value: '40M+', unit: '', label: 'Citizens served by a platform I helped deliver', src: 'CRCS Portal, Ministry of Cooperation' },
+  { value: '4d → 12h', unit: '', label: 'Incident resolution, after rebuilding the delivery estate', src: 'GE Vernova, via Infosys' },
+  { value: '11', unit: 'years', label: 'Engineer, to lead, to consultant, to manager — in that order', src: 'TCS · UST · EY · Infosys · BDO' },
 ] as const;
 
-export const thesis = [
+/* ----------------------------------------------------------- engagements -- */
+/**
+ * What someone actually hires him to do. This replaced a list of 44 keywords,
+ * which described a skill inventory rather than a service.
+ */
+export const engagements = [
   {
-    title: 'I run the delivery, not just the report',
+    title: 'Ship a platform through government',
     body:
-      'Governance is only worth something if it changes what the team does on Monday. I set ' +
-      'up PMOs, RACI matrices, risk registers and escalation paths — and then use them to make ' +
-      'decisions, not to describe decisions that were made somewhere else.',
-    evidenceLabel: 'Evidence',
-    evidence:
-      'I took over a loss-making GE Vernova application portfolio at Infosys with a team ' +
-      'roughly twice the size the work needed. I right-sized it, gave what remained ' +
-      'unambiguous ownership, automated the operational and reporting layer, and cut mean ' +
-      'time to resolution from four days to under twelve hours. The account went from cash ' +
-      'outflow to net positive, and won ~$500K in additional business over the following year.',
+      'Concept note to production inside Government of India machinery — requirement ' +
+      'elicitation, technical and commercial proposal, NICSI-costed infrastructure, ' +
+      'Parichay SSO, MeghRaj hosting, GIGW and WCAG conformance, UAT governance, launch. ' +
+      'The engineering is rarely the long pole. The approvals are, and I run them in ' +
+      'parallel with the build rather than after it.',
+    proof: 'Delivered the 8th Central Pay Commission review system from accepted proposal to live production in <b>30 days</b>. Took the Green Hydrogen certification portal to a <b>ministerial launch</b>.',
+    href: '/work/8th-cpc-mrms/',
+    linkLabel: 'See how the 30 days worked',
   },
   {
-    title: 'Nothing has to be translated for me',
+    title: 'Turn around delivery that has stopped working',
     body:
-      'I spent my first six years writing code — Hyperledger Fabric networks for BFSI clients, ' +
-      'MERN applications, mainframe automation. I have a tech lead who owns the codebase now, ' +
-      "and I've stayed close enough to it to read the architecture, question an estimate, " +
-      "understand the answer, and write a specification an engineer doesn't have to interpret.",
-    evidenceLabel: 'Evidence',
-    evidence:
-      'I authored the developer specification for certificate versioning on the Green Hydrogen ' +
-      'certification platform — how an issued certificate is amended, superseded and audited ' +
-      "without breaking its traceability chain. That isn't a requirement a project manager " +
-      'writes. It is a design decision, and it needed someone who understood both the ' +
-      'compliance obligation and the data model.',
+      'Late, over-staffed, losing money, or all three. I take the transition, find where ' +
+      'ownership went ambiguous, right-size the team to the work, automate the operational ' +
+      'floor, and put a reporting cadence in front of the client so nobody learns about a ' +
+      'problem from their own users.',
+    proof: 'Took a loss-making US enterprise account to <b>net positive</b>, won <b>~$500K</b> of new business the following year, and cut incident resolution from four days to <b>under 12 hours</b>.',
+    href: '/work/infosys-stabilisation/',
+    linkLabel: 'See the turnaround',
   },
   {
-    title: 'I know how government actually approves things',
+    title: 'Build the delivery system itself',
     body:
-      "Most public-sector programmes don't fail in the build. They fail in the approval — the " +
-      "note that wasn't structured for the person signing it, the costing that didn't match the " +
-      'rate card, the accessibility standard nobody read until the audit.',
-    evidenceLabel: 'Evidence',
-    evidence:
-      "The 8th Central Pay Commission's memorandum review system went from approved proposal to " +
-      'live production in a month, deployed on NIC MeghRaj — because the hosting approvals ran ' +
-      "in parallel with the build instead of after it. I've authored RFPs, DPRs and proposals " +
-      'through to Secretary-level approval, costed against live NICSI rate cards, and built to ' +
-      'GIGW, UX4G, WCAG 2.1 AA and CERT-In from the design stage rather than retrofitting after ' +
-      'a failed audit.',
+      'PMO from nothing: RACI across vendors and client, risk and issue registers, ' +
+      'escalation paths that actually route, milestone dashboards, and reporting pitched ' +
+      'at the level of the person reading it — up to Secretary and Additional Secretary.',
+    proof: 'Ran PMO governance across multiple ministry programmes at EY, and security compliance across <b>90+</b> Government of India websites.',
+    href: '/work/crcs-portal/',
+    linkLabel: 'See it at national scale',
+  },
+  {
+    title: 'Specify what actually gets built',
+    body:
+      'The part most programme managers hand off. I write the developer specification, ' +
+      'design the workflow, and own the data model — because the gap between what a ' +
+      'ministry needs and what the system does is exactly where requirements go quietly ' +
+      'wrong. This is also where my product work sits: roadmap, discovery, and adoption.',
+    proof: 'Authored the certificate versioning specification underpinning green hydrogen certification, and defined the product vision for a credentialing platform adopted by <b>2,500+</b> employees.',
+    href: '/work/skillchain/',
+    linkLabel: 'See the product work',
   },
 ] as const;
+
+/* ------------------------------------------------------------ trajectory -- */
 
 export const trajectory = [
   {
     years: '2026 — Present',
     org: 'BDO India',
     title: 'Manager, Digital Transformation',
-    note: 'Client: National e-Governance Division (MeitY)',
+    note: 'Client: National e-Governance Division, MeitY',
     body:
-      'Delivery and design lead across three concurrent Government of India platforms — Green ' +
-      'Hydrogen Certification (MNRE), the 8th Central Pay Commission memorandum review system, ' +
-      'and the Textile Unified Portal (Ministry of Textiles). Two live in 2026. Proposal and ' +
-      'costing through UX, build oversight, UAT and stakeholder sign-off.',
+      'Delivery and design lead across three concurrent Government of India platforms — ' +
+      'Green Hydrogen Certification (MNRE), the 8th Central Pay Commission review system, ' +
+      'and the Textile Unified Portal. Two live in 2026. Proposal and costing through UX, ' +
+      'build oversight, UAT and stakeholder sign-off.',
   },
   {
     years: '2024 — 2026',
@@ -106,31 +119,30 @@ export const trajectory = [
     title: 'Project Manager',
     note: 'Client: GE Vernova (United States)',
     body:
-      'Took transition of a loss-making, heavily over-staffed application portfolio and turned ' +
-      'the account net positive. Right-sized the team by roughly half, automated and standardised ' +
-      'operations, reporting, budgeting and client communications, and cut incident resolution ' +
-      'from four days to under twelve hours. ~$500K additional business won over the following ' +
-      'year, across a $2M+ annual delivery portfolio.',
+      'Took transition of a loss-making, heavily over-staffed application portfolio and ' +
+      'turned the account net positive. Right-sized the team, automated and standardised ' +
+      'operations, reporting and budgeting, and cut incident resolution from four days to ' +
+      'under twelve hours across a $2M+ annual portfolio.',
   },
   {
     years: '2022 — 2024',
     org: 'EY',
     title: 'Senior Consultant',
-    note: null,
+    note: 'Government of India programmes',
     body:
-      'National digital government programmes, including the CRCS Portal serving 40M+ users and ' +
-      'later extended to deliver Sahara refunds. BPR, requirement analysis, PMO governance, and ' +
-      'security compliance across 90+ ministry websites. Worked directly with Secretaries and ' +
-      'Additional Secretaries.',
+      'National digital government platforms, including the CRCS Portal serving 40M+ users ' +
+      'and later extended to deliver Sahara refunds. Business process re-engineering, ' +
+      'requirement analysis, PMO governance, and security compliance across 90+ ministry ' +
+      'websites. Worked directly with Secretaries and Additional Secretaries.',
   },
   {
     years: '2021 — 2022',
     org: 'UST Global',
     title: 'Software Engineering Lead',
-    note: null,
+    note: 'Skillchain — internal product',
     body:
-      'Product vision and roadmap for a blockchain credentialing platform adopted across 2,500+ ' +
-      'employees.',
+      'Defined product vision and roadmap for a blockchain credentialing platform, and ran ' +
+      'the research cycles that got 2,500+ employees to actually use it.',
   },
   {
     years: '2020 — 2021',
@@ -138,164 +150,132 @@ export const trajectory = [
     title: 'Software Development Engineer',
     note: null,
     body:
-      'Architecture for secure document workflow and transaction systems; API-level requirement ' +
-      'analysis and performance work.',
+      'Architecture for secure document workflow and transaction systems; API-level ' +
+      'requirement analysis and performance work.',
   },
   {
     years: '2015 — 2020',
     org: 'Tata Consultancy Services',
     title: 'IT Analyst',
-    note: null,
+    note: 'BFSI clients across the US, UK and Japan',
     body:
-      'Multi-node Hyperledger Fabric networks for BFSI clients. Mainframe reporting automation ' +
-      'saving 20+ hours weekly. Dispute resolution workflow optimisation, defects down 40%. ' +
-      'Clients across the US, UK and Japan.',
+      'Built multi-node Hyperledger Fabric networks, automated Unisys Mainframe reporting ' +
+      'to save 20+ hours weekly, and cut reported defects on dispute resolution workflows ' +
+      'by 40%.',
   },
 ] as const;
 
-export const capabilities = [
-  {
-    group: 'Delivery & governance',
-    items: [
-      'Programme governance', 'PMO setup', 'RACI definition', 'Risk registers',
-      'Milestone dashboards', 'Delivery stabilisation', 'Escalation frameworks',
-      'Agile / Scrum', 'Waterfall', 'Hybrid delivery', 'Secretary-level reporting',
-    ],
-  },
-  {
-    group: 'Commercial',
-    items: [
-      'SOW and contract management', 'RFP, RFQ and DPR authoring', 'Technical proposal writing',
-      'Infrastructure cost estimation (NICSI, AWS)', 'Portfolio budgeting',
-      'Vendor performance monitoring', 'P&L turnaround', 'Resource optimisation',
-    ],
-  },
-  {
-    group: 'Stakeholder & client',
-    items: [
-      'Government stakeholder management', 'Secretary and Additional Secretary level',
-      'Multi-vendor oversight', 'Scope and expectation negotiation', 'UAT sign-off governance',
-      'CIO and application owner relationships',
-    ],
-  },
-  {
-    group: 'Technology',
-    items: [
-      'MERN stack', 'React and TypeScript', 'REST API design', 'System architecture',
-      'Hyperledger Fabric', 'Cloud modernisation (AWS, NIC MeghRaj)', 'CI/CD',
-      'Applied AI and LLM integration',
-    ],
-  },
-  {
-    group: 'Design & compliance',
-    items: [
-      'UX and UI leadership', 'Figma design systems', 'WCAG 2.1 AA', 'GIGW', 'UX4G',
-      'CERT-In security compliance', 'Accessibility audit',
-    ],
-  },
-  {
-    group: 'Tools',
-    items: ['Jira', 'Confluence', 'Figma', 'MS Project', 'GitHub'],
-  },
-] as const;
-
-export const convictionsIntro = "Six things I've come to believe, mostly by getting them wrong first.";
-
+/* ----------------------------------------------------------- convictions -- */
+/**
+ * Each conviction carries the moment it came from. An aphorism on its own is a
+ * LinkedIn post; the moment is what makes it his.
+ */
 export const convictions = [
   {
     title: 'Programmes die in the approval, not the build',
     body:
       "The engineering is rarely what's late. What's late is the note that wasn't structured " +
       "for the person signing it, the costing that didn't match the rate card, the " +
-      "clarification that sat in an inbox for three weeks. I've learned to treat the approval " +
-      'path as part of the system design — to ask early who signs this, what they need to see, ' +
-      'and what will make them say no — because a plan that ignores that path is a plan for a ' +
-      "different organisation than the one you're in.",
+      'clarification that sat in an inbox for three weeks. So I treat the approval path as ' +
+      'part of the system design: who signs this, what do they need to see, what makes them ' +
+      'say no.',
+    moment:
+      'On the 8th CPC platform I ran the MeghRaj hosting approvals in parallel with ' +
+      'development instead of waiting for them. That single sequencing decision is the ' +
+      'whole reason it shipped in a month.',
   },
   {
-    title: 'Nobody should have to relay my instructions to the engineers',
+    title: 'Nobody should have to translate for me',
     body:
-      "A project manager who can't evaluate an estimate can only escalate or accept. Both are " +
-      'expensive. I keep my hands close enough to the work to read the code, question the ' +
-      "architecture, and write a specification an engineer doesn't have to translate. It isn't " +
-      'about doing their job — it\'s that the translation layer between "what the ministry ' +
-      'needs" and "what the system does" is exactly where requirements go quietly wrong, and ' +
-      "I'd rather stand in it than manage across it.",
+      "A manager who can't evaluate an estimate can only escalate or accept it. Both are " +
+      'expensive. I have a tech lead who owns the codebase, and I stay close enough to it to ' +
+      'read the architecture, question a number, and understand the answer.',
+    moment:
+      'I wrote the certificate versioning specification for green hydrogen myself — how an ' +
+      'issued certificate is amended and superseded without breaking its audit chain. That ' +
+      'is a design decision, not a requirement, and handing it off would have lost it.',
   },
   {
-    title: 'Burnout is a delivery risk, not an HR problem',
+    title: 'An over-staffed team is a confused team',
     body:
-      "The most effective thing I did on a distressed portfolio wasn't technical. It was making " +
-      "it unambiguous who owned what. Ambiguity in a multi-vendor team doesn't produce healthy " +
-      'debate; it produces people working weekends on things that were never theirs, and then ' +
-      'leaving. Every person who leaves takes context with them, and the next incident is worse. ' +
-      'I read attrition and overtime the way I read a burndown chart.',
+      'Extra headcount looks like safety and behaves like the opposite. With no clear ' +
+      'ownership, people duplicate each other, collide on the same incident, and work ' +
+      'weekends on things that were never theirs. I read attrition and overtime the way I ' +
+      'read a burndown chart.',
+    moment:
+      'At GE Vernova I brought a team down to roughly half its size and delivery got faster, ' +
+      'not slower. What we removed was not capacity. It was ambiguity.',
   },
   {
-    title: 'The user of a government platform cannot go elsewhere',
+    title: 'A citizen cannot switch to a competitor',
     body:
-      'This is the one I hold most strongly. A citizen applying for a certificate has no ' +
-      "competitor to switch to, can't tweet their way to a fix, and often can't afford the day " +
-      'it costs them to try again. That asymmetry should raise the standard, not lower it — ' +
-      'which is why I treat accessibility and WCAG conformance as requirements written at ' +
-      'design time, not as an audit to survive at the end. Building to GIGW and WCAG 2.1 AA ' +
-      'from the first Figma frame costs almost nothing. Retrofitting it costs a release.',
+      'Someone applying for a certificate has no alternative service, no way to escalate ' +
+      "publicly, and often can't afford the day it costs them to try again. That asymmetry " +
+      'should raise the standard rather than lower it.',
+    moment:
+      'So accessibility is written at design time on my programmes. Building to GIGW and ' +
+      'WCAG 2.1 AA from the first Figma frame costs almost nothing. Retrofitting it after a ' +
+      'failed audit costs a release.',
   },
   {
     title: "If it isn't written down, it wasn't decided",
     body:
-      "Most disputes I've mediated weren't disagreements. They were two people who each " +
-      'remembered a different version of a conversation nobody recorded. As-Is and To-Be ' +
-      'documents, decision logs, specifications, a RACI that people actually read — these are ' +
-      'not bureaucracy. They are the difference between a team that argues about the past and a ' +
-      'team that argues about the work.',
+      "Most disputes I've mediated weren't disagreements. They were two people remembering " +
+      'different versions of a conversation nobody recorded. Decision logs and As-Is/To-Be ' +
+      'documents are not bureaucracy — they are the difference between a team that argues ' +
+      'about the past and one that argues about the work.',
+    moment:
+      'Documenting As-Is and To-Be per application team was the least glamorous thing I did ' +
+      'on the GE Vernova estate, and the thing that made the handoffs stop costing days.',
   },
   {
     title: 'AI belongs in the delivery workflow, not the demo',
     body:
-      "The interesting use of AI on my programmes hasn't been a feature on a roadmap. It's been " +
-      'the documentation standards and design-to-specification workflows I built for my own ' +
-      'team — the ordinary, repetitive work of a delivery function, done faster and more ' +
-      'consistently. I am sceptical of AI as a headline on a government portal and genuinely ' +
-      'convinced by it as a tool in the hands of the people building one.',
+      'I am sceptical of AI as a headline feature on a government portal, and genuinely ' +
+      'convinced by it as a tool in the hands of the people building one. The interesting ' +
+      'gains have been in the ordinary, repetitive work of a delivery function.',
+    moment:
+      'I built documentation standards and a Figma-to-specification workflow that the team ' +
+      'adopted. Unglamorous, and the reason I trust it.',
   },
 ] as const;
 
-export const reach = [
-  {
-    group: 'Sectors',
-    items: [
-      'Public sector and e-governance', 'Banking and financial services', 'Life sciences',
-      'Renewable energy', 'Power and industrial technology', 'Textiles', 'Cooperatives',
-      'Immigration and border systems', 'IT services and consulting',
-    ],
-  },
-  {
-    group: 'Ministries and national bodies',
-    items: [
-      'Ministry of New & Renewable Energy', 'Ministry of Textiles', 'Ministry of Cooperation',
-      'Ministry of Electronics & IT (NeGD)', '8th Central Pay Commission', 'Bureau of Immigration',
-    ],
-  },
-  {
-    group: 'Clients and geographies',
-    items: [
-      'GE Vernova (US)', 'Enterprise clients across the US, UK and Japan',
-      'Government of India ministries', 'All delivered from India',
-    ],
-  },
-  {
-    group: 'Scale',
-    items: ['Teams of 30+', '$2M+ annual delivery portfolios', 'Platforms serving 40M+ citizens'],
-  },
+/* ----------------------------------------------------------------- reach -- */
+/** Split apart: who he has delivered for, what sectors, and at what scale. */
+
+export const organisations = [
+  { name: 'Ministry of New & Renewable Energy', meta: 'Green hydrogen certification · Delivery & UX lead' },
+  { name: '8th Central Pay Commission', meta: 'Memorandum review system · Manager' },
+  { name: 'Ministry of Textiles', meta: 'Textile Unified Portal · Manager' },
+  { name: 'Ministry of Cooperation', meta: 'CRCS Portal, 40M+ users · Senior consultant' },
+  { name: 'Ministry of Electronics & IT', meta: 'National e-Governance Division · Embedded delivery' },
+  { name: 'Bureau of Immigration', meta: 'IVFRT · Requirement analysis' },
+  { name: 'GE Vernova', meta: 'United States · Application portfolio turnaround' },
+  { name: 'BFSI clients, US / UK / Japan', meta: 'Hyperledger Fabric networks · TCS' },
 ] as const;
+
+export const sectors = [
+  'Public sector & e-governance', 'Renewable energy', 'Power & industrial technology',
+  'Banking & financial services', 'Life sciences', 'Textiles', 'Cooperatives',
+  'Immigration & border systems',
+] as const;
+
+export const scale = [
+  { k: 'Largest user base', v: '40M+ citizens' },
+  { k: 'Annual portfolio', v: '$2M+' },
+  { k: 'Largest team', v: '30+ across vendors' },
+  { k: 'Concurrent platforms', v: '3 national' },
+  { k: 'Compliance estate', v: '90+ ministry sites' },
+  { k: 'Fastest to production', v: '30 days' },
+] as const;
+
+/* ----------------------------------------------------------- credentials -- */
 
 /**
- * The Certified Scrum Master credential is not currently active (confirmed by
- * Rishabh). Listing a lapsed certification under a plain "Certifications"
- * heading implies currency, so it is withheld from the published page until he
- * decides how to handle it: renew, list it with the year earned, or drop it.
- * Flip this to true — or add a `year` — the moment that is resolved.
+ * The Certified Scrum Master credential is not currently active. Listing it
+ * under a plain "Certifications" heading implies currency, so it is withheld
+ * until Rishabh decides: renew, list with the year earned, or drop. Flip to
+ * true once that is resolved.
  */
 export const showLapsedScrumMaster = false;
 
@@ -304,33 +284,32 @@ export const credentials = {
     ...(showLapsedScrumMaster ? ['Certified Scrum Master — Scrum Alliance'] : []),
     'Google Project Management Professional Certificate',
   ],
-  education: [
-    'PGDM — IMT CDL, Ghaziabad · 2023',
-    'B.Tech — UPTU, Lucknow · 2015',
-  ],
+  education: ['PGDM — IMT CDL, Ghaziabad · 2023', 'B.Tech — UPTU, Lucknow · 2015'],
   earlier: [
     { label: 'Blockchain Specialization — Coursera', href: 'https://www.coursera.org/account/accomplishments/specialization/HR8BKULWS4AY' },
     { label: 'Blockchain for Business — edX', href: 'https://credentials.edx.org/credentials/a453008a053641878575f09e5e436ec4/' },
     { label: 'Blockchain Architecture & Use Cases — NPTEL', href: 'https://nptel.ac.in/courses/106105184/' },
-    { label: 'Blockchain learning path — LinkedIn', href: 'https://www.linkedin.com/learning/paths/advance-your-skills-in-the-blockchain?u=2154233' },
   ],
 } as const;
+
+/* --------------------------------------------------------------- toolkit -- */
+/** Kept deliberately small and factual — the engagements carry the argument. */
+export const toolkit = [
+  { k: 'Delivery', v: 'Agile/Scrum · Waterfall · hybrid · PMO · RACI · risk registers' },
+  { k: 'Commercial', v: 'RFP / RFQ / DPR · technical proposals · NICSI & AWS costing · SOW' },
+  { k: 'Build', v: 'MERN · React & TypeScript · REST · Hyperledger Fabric · CI/CD' },
+  { k: 'Platform', v: 'NIC MeghRaj · Parichay SSO · AWS' },
+  { k: 'Compliance', v: 'WCAG 2.1 AA · GIGW · UX4G · CERT-In' },
+  { k: 'Tools', v: 'Jira · Confluence · Figma · MS Project · GitHub' },
+] as const;
 
 export const contact = {
   heading: "Let's talk.",
   body: [
-    'I am open to Program, Portfolio and Product Management roles — India or international, ' +
-      "remote or onsite. If you're hiring for a programme that has to work in a regulated, " +
-      "multi-stakeholder environment, that's the work I do.",
+    'I am open to Program and Portfolio Management roles — India or international, remote ' +
+      "or onsite. If you are hiring for a programme that has to work inside regulation, " +
+      'procurement and multiple stakeholders, that is the work I do.',
     "I'm also happy to talk if you're not hiring. Some of the best conversations I've had " +
-      'started with someone asking how we got a government platform through approval in a month.',
+      'started with someone asking how we got a government platform approved in a month.',
   ],
 } as const;
-
-export const nav = [
-  { label: 'Why me', href: '#thesis' },
-  { label: 'Work', href: '#work' },
-  { label: 'Track record', href: '#trajectory' },
-  { label: 'How I work', href: '#how-i-work' },
-  { label: 'Contact', href: '#contact' },
-] as const;

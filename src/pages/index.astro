@@ -1,17 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import {
-  person, meta, hero, proof, thesis, trajectory, capabilities,
-  convictions, convictionsIntro, reach, credentials, contact,
-} from '../data/site';
+import WorkRow from '../components/WorkRow.astro';
+import ParallelApproval from '../components/diagrams/ParallelApproval.astro';
+import { person, meta, hero, proof, engagements, contact } from '../data/site';
 
-const cases = (await getCollection('caseStudies')).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+const cases = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
+const featured = cases.slice(0, 3);
 
-// Lets an AI screening tool summarise him using his framing rather than one
-// invented from scraped fragments.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -23,241 +19,134 @@ const jsonLd = {
   sameAs: [person.linkedin],
   address: { '@type': 'PostalAddress', addressLocality: 'New Delhi', addressCountry: 'IN' },
   worksFor: { '@type': 'Organization', name: 'BDO India' },
-  alumniOf: [
-    { '@type': 'Organization', name: 'Infosys' },
-    { '@type': 'Organization', name: 'EY' },
-    { '@type': 'Organization', name: 'UST Global' },
-    { '@type': 'Organization', name: 'Tata Consultancy Services' },
-    { '@type': 'EducationalOrganization', name: 'IMT CDL, Ghaziabad' },
-  ],
+  alumniOf: ['Infosys', 'EY', 'UST Global', 'Tata Consultancy Services'].map((n) => ({
+    '@type': 'Organization', name: n,
+  })),
   knowsAbout: [
-    'Programme management', 'Portfolio management', 'Digital transformation',
-    'Government of India e-governance', 'Agile and Scrum delivery',
-    'RFP and DPR authoring', 'MERN stack', 'Hyperledger Fabric',
-    'WCAG 2.1 AA and GIGW compliance',
+    'Programme management', 'Portfolio management', 'Government of India e-governance',
+    'Public procurement and RFP authoring', 'Delivery turnaround', 'Agile and Scrum',
+    'MERN stack', 'WCAG 2.1 AA and GIGW compliance',
   ],
 };
 ---
 
 <Base jsonLd={jsonLd}>
-  <!-- ------------------------------------------------------------- hero -- -->
+  <!-- ==================================================== hero -->
   <section class="wrap hero">
     <div class="hero__grid">
       <div>
-        <p class="hero__eyebrow">{person.role} · {person.location}</p>
+        <div class="hero__meta">
+          <span class="label">{person.role}</span>
+          <span class="label" style="color: var(--faint)">/</span>
+          <span class="label">{person.location}</span>
+        </div>
         <h1 class="hero__headline">{hero.headline}</h1>
       </div>
 
-      <div class="hero__aside">
+      <div>
         <p class="hero__standfirst">{hero.standfirst}</p>
-
-        <p class="hero__availability">
-          <span class="hero__dot" aria-hidden="true"></span>
-          {hero.availability}
-        </p>
-
         <div class="hero__actions">
-          <a class="btn btn--primary" href={person.resumePdf}>Download resume</a>
-          <a class="btn btn--ghost" href="#contact">Get in touch</a>
-          <a class="btn btn--ghost" href={person.linkedin}>LinkedIn</a>
+          <a class="btn btn--primary" href="/work/">See the work <span class="arrow">&rarr;</span></a>
+          <a class="btn btn--ghost" href={person.resumePdf}>Resume</a>
         </div>
+        <p style="margin-top: var(--s4)">
+          <span class="status"><span class="status__dot" aria-hidden="true"></span>{hero.status}</span>
+        </p>
       </div>
     </div>
 
     <dl class="proof">
-      {proof.map((item) => (
+      {proof.map((p) => (
         <div class="proof__item">
-          <dt class="proof__value">{item.value}</dt>
-          <dd class="proof__label" style="margin:0">{item.label}</dd>
+          <dt class="proof__value">{p.value}{p.unit && <span class="proof__unit"> {p.unit}</span>}</dt>
+          <dd class="proof__label">
+            {p.label}
+            <span class="proof__src">{p.src}</span>
+          </dd>
         </div>
       ))}
     </dl>
   </section>
 
-  <!-- ----------------------------------------------------------- thesis -- -->
-  <section class="section" id="thesis">
+  <!-- ==================================================== engagements -->
+  <section class="section" id="engagements">
     <div class="wrap">
-      <p class="eyebrow">Why me</p>
-      <h2 class="section-title">Three things I'd want you to check.</h2>
-      <p class="section-lede">
-        Each of these is a claim with evidence attached, because a claim on its own is
-        just an adjective.
-      </p>
+      <div class="section-head">
+        <div>
+          <p class="label" style="margin-bottom: var(--s2)">What I'm hired to do</p>
+          <h2 class="section-title">Four problems I get handed.</h2>
+        </div>
+        <p class="section-lede">
+          Not a skills inventory. These are the briefs that land on my desk, and the evidence
+          that I have closed them before.
+        </p>
+      </div>
 
-      <div class="pillars" style="margin-top: var(--s5)">
-        {thesis.map((pillar, i) => (
-          <article class="pillar">
-            <span class="pillar__n">{String(i + 1).padStart(2, '0')}</span>
-            <h3 class="pillar__title">{pillar.title}</h3>
-            <p class="pillar__body">{pillar.body}</p>
-            <div class="pillar__evidence">
-              <strong>{pillar.evidenceLabel}</strong>
-              <p>{pillar.evidence}</p>
-            </div>
+      <div class="engagements">
+        {engagements.map((e, i) => (
+          <article class="engagement">
+            <span class="engagement__n">[{String(i + 1).padStart(2, '0')}]</span>
+            <h3 class="engagement__title">{e.title}</h3>
+            <p class="engagement__body">{e.body}</p>
+            <p class="engagement__proof" set:html={e.proof} />
+            <a class="engagement__link" href={e.href}>{e.linkLabel} <span class="arrow">&rarr;</span></a>
           </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ------------------------------------------------------------- work -- -->
+  <!-- ==================================================== the moat, drawn -->
+  <section class="section section--alt" id="method">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="label" style="margin-bottom: var(--s2)">The part that is hard to copy</p>
+          <h2 class="section-title">Anyone can run the build. The approvals are the job.</h2>
+        </div>
+        <p class="section-lede">
+          Public-sector platforms rarely stall on engineering. They stall in a queue nobody
+          scheduled. Knowing which queue to join, and when, is most of what I bring.
+        </p>
+      </div>
+      <ParallelApproval />
+    </div>
+  </section>
+
+  <!-- ==================================================== selected work -->
   <section class="section" id="work">
     <div class="wrap">
-      <p class="eyebrow">Selected work</p>
-      <h2 class="section-title">The proof.</h2>
-      <p class="section-lede">
-        National platforms, an account turnaround, and a product nobody was obliged to
-        use. Each one written up with what the problem actually was.
-      </p>
-
-      <div class="cases" style="margin-top: var(--s5)">
-        {cases.map((c) => (
-          <a class="case" href={`/case-studies/${c.id}/`}>
-            <p class="case__meta">
-              <span class="case__status">{c.data.status}</span>
-              <span class="case__sep">·</span>
-              <span>{c.data.client}</span>
-              <span class="case__sep">·</span>
-              <span>{c.data.period}</span>
-            </p>
-            <h3 class="case__title">{c.data.short}</h3>
-            <p class="case__outcome">{c.data.outcome}</p>
-            <span class="case__foot">Read the case study <span class="arrow">&rarr;</span></span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------- trajectory -- -->
-  <section class="section" id="trajectory">
-    <div class="wrap">
-      <p class="eyebrow">Track record</p>
-      <h2 class="section-title">Six years building, then five leading.</h2>
-      <p class="section-lede">
-        In that order. It's the reason I can sit in a steering committee and a
-        architecture review on the same afternoon.
-      </p>
-
-      <div class="timeline" style="margin-top: var(--s5)">
-        {trajectory.map((role) => (
-          <article class="role">
-            <p class="role__years">{role.years}</p>
-            <div>
-              <h3 class="role__title">
-                {role.title} <span class="role__org">· {role.org}</span>
-              </h3>
-              {role.note && <p class="role__note">{role.note}</p>}
-              <p class="role__body">{role.body}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ----------------------------------------------------- capabilities -- -->
-  <section class="section" id="capabilities">
-    <div class="wrap">
-      <p class="eyebrow">Capabilities</p>
-      <h2 class="section-title">What I actually do.</h2>
-      <p class="section-lede">
-        No percentages. A self-assigned score is unverifiable, and for a manager it
-        volunteers a weakness nobody asked about.
-      </p>
-
-      <div class="groups" style="margin-top: var(--s5)">
-        {capabilities.map((group) => (
-          <div>
-            <h3 class="group__title">{group.group}</h3>
-            <ul class="group__list">
-              {group.items.map((item) => <li>{item}</li>)}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------- how i work -- -->
-  <section class="section" id="how-i-work">
-    <div class="wrap">
-      <p class="eyebrow">How I work</p>
-      <h2 class="section-title">{convictionsIntro}</h2>
-
-      <div class="convictions" style="margin-top: var(--s5)">
-        {convictions.map((c) => (
-          <article class="conviction">
-            <h3 class="conviction__title">{c.title}</h3>
-            <p class="conviction__body">{c.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------------ reach -- -->
-  <section class="section" id="reach">
-    <div class="wrap">
-      <p class="eyebrow">Reach</p>
-      <h2 class="section-title">Where I've done it.</h2>
-
-      <div class="groups" style="margin-top: var(--s5)">
-        {reach.map((group) => (
-          <div>
-            <h3 class="group__title">{group.group}</h3>
-            <ul class="group__list">
-              {group.items.map((item) => <li>{item}</li>)}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------ credentials -- -->
-  <section class="section" id="credentials">
-    <div class="wrap">
-      <p class="eyebrow">Credentials</p>
-      <h2 class="section-title">Qualifications.</h2>
-
-      <div class="groups" style="margin-top: var(--s5)">
+      <div class="section-head">
         <div>
-          <h3 class="group__title">Certifications</h3>
-          <ul class="group__list">
-            {credentials.certifications.map((c) => <li>{c}</li>)}
-          </ul>
+          <p class="label" style="margin-bottom: var(--s2)">Selected work</p>
+          <h2 class="section-title">What I have shipped.</h2>
         </div>
-        <div>
-          <h3 class="group__title">Education</h3>
-          <ul class="group__list">
-            {credentials.education.map((e) => <li>{e}</li>)}
-          </ul>
-        </div>
-        <div>
-          <h3 class="group__title">Earlier technical certifications</h3>
-          <ul class="group__list">
-            {credentials.earlier.map((e) => (
-              <li><a href={e.href} rel="noopener">{e.label}</a></li>
-            ))}
-          </ul>
-        </div>
+        <p class="section-lede">
+          Each one written up with the problem, the calls I made, and what changed as a
+          result.
+        </p>
       </div>
+
+      <div class="work-list">
+        {featured.map((entry) => <WorkRow entry={entry} />)}
+      </div>
+
+      <p style="margin-top: var(--s4)">
+        <a class="btn btn--ghost" href="/work/">All {cases.length} projects <span class="arrow">&rarr;</span></a>
+      </p>
     </div>
   </section>
 
-  <!-- ---------------------------------------------------------- contact -- -->
-  <section class="section" id="contact">
+  <!-- ==================================================== contact -->
+  <section class="section section--alt" id="contact">
     <div class="wrap">
-      <p class="eyebrow">Contact</p>
+      <p class="label" style="margin-bottom: var(--s2)">Contact</p>
       <h2 class="contact__heading">{contact.heading}</h2>
-      <div class="contact__body">
-        {contact.body.map((para) => <p>{para}</p>)}
-      </div>
+      <div class="contact__body">{contact.body.map((p) => <p>{p}</p>)}</div>
       <div class="contact__actions">
         <a class="btn btn--primary" href={`mailto:${person.email}`}>Email me</a>
-        <a class="btn btn--ghost" href={person.resumePdf}>Download resume</a>
         <a class="btn btn--ghost" href={person.linkedin}>LinkedIn</a>
+        <a class="btn btn--ghost" href="/about/">More about how I work <span class="arrow">&rarr;</span></a>
       </div>
     </div>
   </section>

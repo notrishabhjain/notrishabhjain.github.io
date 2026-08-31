@@ -1,0 +1,65 @@
+---
+/**
+ * The sequencing decision behind shipping the 8th CPC platform in 30 days:
+ * infrastructure approvals run alongside the build instead of after it.
+ */
+---
+<figure class="figure">
+  <div class="figure__head">
+    <span class="label">Fig. 01</span>
+    <strong style="font-size: var(--step--1)">Why the approvals track decides the date</strong>
+  </div>
+  <div class="figure__body">
+    <svg viewBox="0 0 720 300" role="img" aria-labelledby="pa-title pa-desc">
+      <title id="pa-title">Sequential versus parallel approval scheduling</title>
+      <desc id="pa-desc">
+        Run sequentially, government hosting approvals begin only after the build finishes and
+        push go-live far to the right. Run in parallel with development, they finish with the
+        build, which is how the 8th Central Pay Commission platform reached production in
+        thirty days.
+      </desc>
+
+      <!-- ============ conventional ============ -->
+      <text class="dg-t dg-t--head" x="0" y="14">CONVENTIONAL SEQUENCE</text>
+      <text class="dg-t dg-t--mute" x="0" y="30">approvals start when the build ends</text>
+
+      <rect class="dg-box" x="0" y="46" width="300" height="30" rx="2" />
+      <text class="dg-t" x="14" y="65">Build · design, develop, test</text>
+
+      <rect class="dg-box" x="304" y="86" width="290" height="30" rx="2" />
+      <text class="dg-t" x="318" y="105">Infra provisioning &amp; hosting approvals</text>
+
+      <line class="dg-line dg-line--dashed" x1="304" y1="46" x2="304" y2="130" />
+      <line class="dg-line dg-line--dashed" x1="594" y1="86" x2="594" y2="150" />
+
+      <line class="dg-line" x1="594" y1="140" x2="660" y2="140" />
+      <polygon points="660,136 670,140 660,144" fill="currentColor" class="dg-line" />
+      <text class="dg-t dg-t--mute" x="600" y="132">go-live</text>
+
+      <!-- ============ parallel ============ -->
+      <text class="dg-t dg-t--head" x="0" y="196">HOW I RAN IT — 8TH CPC</text>
+      <text class="dg-t dg-t--mute" x="0" y="212">approvals opened on day one, alongside development</text>
+
+      <rect class="dg-box" x="0" y="228" width="300" height="26" rx="2" />
+      <text class="dg-t" x="14" y="245">Build · design, develop, test</text>
+
+      <rect class="dg-box dg-box--accent" x="0" y="258" width="300" height="26" rx="2" />
+      <text class="dg-t dg-t--accent" x="14" y="275">Infra provisioning &amp; hosting approvals</text>
+
+      <line class="dg-line dg-line--accent" x1="304" y1="256" x2="360" y2="256" />
+      <polygon points="360,252 370,256 360,260" class="dg-line dg-line--accent" fill="currentColor" style="color: var(--accent)" />
+      <text class="dg-t dg-t--signal" x="378" y="252">30 DAYS TO PRODUCTION</text>
+      <text class="dg-t dg-t--mute" x="378" y="268">live on NIC MeghRaj, third-party integrations in place</text>
+
+      <!-- the delta -->
+      <line class="dg-line dg-line--dashed" x1="304" y1="140" x2="304" y2="256" style="stroke: var(--signal)" />
+      <text class="dg-t dg-t--signal" x="312" y="176">the difference is sequencing,</text>
+      <text class="dg-t dg-t--signal" x="312" y="190">not speed of engineering</text>
+    </svg>
+  </div>
+  <figcaption>
+    Nothing here was built faster. The approvals queue is the long pole on almost every
+    government platform, so it gets joined on day one rather than treated as a hand-off at
+    the end.
+  </figcaption>
+</figure>

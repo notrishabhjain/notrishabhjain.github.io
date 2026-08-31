@@ -15,4 +15,9 @@ export default defineConfig({
   // of inline theme handling in the base layout.
   devToolbar: { enabled: false },
   integrations: [sitemap()],
+  // Case studies moved from /case-studies/ to /work/ when the site became a
+  // multi-page portfolio; keep the old URLs resolving.
+  redirects: {
+    '/case-studies/[...slug]': '/work/[...slug]',
+  },
 });

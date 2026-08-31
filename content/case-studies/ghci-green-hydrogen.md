@@ -6,8 +6,31 @@ via: BDO India · National e-Governance Division, MeitY
 role: Delivery & UX Lead
 period: "2026"
 status: Live since July 2026
+live: true
 outcome: Inaugurated by the Minister at a public function, with national media coverage
 order: 1
+metric:
+  figure: Live
+  label: Ministerial launch, July 2026
+results:
+  - v: "Live"
+    l: In production since July 2026, inaugurated by the Minister
+  - v: "8"
+    l: Functional modules taken through a 39-case test framework
+  - v: "AA"
+    l: WCAG 2.1 AA, GIGW and UX4G conformance designed in, not retrofitted
+  - v: "Phase 2"
+    l: AI-assisted review and certificate anchoring approved at CEO level
+decisions:
+  - what: Specify certificate versioning before a line was written
+    why: A certificate is a claim about the past. Without a supersession model, the first data correction would have silently rewritten a claim somebody had already relied on. I wrote the developer specification myself rather than hand it off.
+  - what: Build to accessibility standards from the first Figma frame
+    why: Conformance treated as a final audit costs a release when it fails. Designed in, it costs almost nothing — and the citizens using this have no alternative service to switch to.
+  - what: Own the test framework rather than delegate UAT
+    why: Twelve use case documents and a 39-case workbook across eight modules turned sign-off from a negotiation into a process with a defined exit.
+  - what: Take Phase 2 to CEO-level stakeholders early
+    why: Blockchain anchoring and AI-assisted review needed a sponsor before they needed a budget line. Scoping them while Phase 1 was still shipping is why they were approved rather than deferred.
+diagram: certificate-versioning
 stack: [MERN, React, TypeScript, Headless WordPress, NIC MeghRaj]
 compliance: [WCAG 2.1 AA, GIGW, UX4G]
 ---

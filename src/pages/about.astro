@@ -1,0 +1,151 @@
+---
+import Base from '../layouts/Base.astro';
+import {
+  person, trajectory, convictions, organisations, sectors, toolkit, credentials,
+} from '../data/site';
+---
+
+<Base
+  title={`About — ${person.name}`}
+  description="Six years building, then five leading. How I run programmes, what I believe about delivering software inside institutions, and where I have done it."
+>
+  <section class="wrap" style="padding-block: var(--s5) var(--s4)">
+    <p class="label" style="margin-bottom: var(--s3)">About</p>
+    <h1 class="section-title" style="font-size: var(--step-4); max-width: 18ch">
+      Six years building, then five leading.
+    </h1>
+    <p class="section-lede" style="margin-top: var(--s3)">
+      In that order, which is the part that matters. I started as an engineer writing
+      Hyperledger networks and mainframe automation, and I now run programmes for Government
+      of India ministries. The technical years are not a line on a resume — they are why
+      nothing has to be translated for me.
+    </p>
+  </section>
+
+  <!-- ==================================================== trajectory -->
+  <section class="section">
+    <div class="wrap">
+      <div class="rule-index"><span class="label">Trajectory</span></div>
+      <div class="timeline">
+        {trajectory.map((r) => (
+          <article class="role">
+            <p class="role__years">{r.years}</p>
+            <div>
+              <h2 class="role__title">{r.title} <span class="role__org">· {r.org}</span></h2>
+              {r.note && <p class="role__note">{r.note}</p>}
+              <p class="role__body">{r.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== convictions -->
+  <section class="section section--alt" id="how-i-work">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="label" style="margin-bottom: var(--s2)">How I work</p>
+          <h2 class="section-title">Six things I believe, and where each one came from.</h2>
+        </div>
+        <p class="section-lede">
+          An opinion with no scar tissue behind it is just a post. Each of these cost me
+          something to learn.
+        </p>
+      </div>
+
+      <div class="convictions">
+        {convictions.map((c, i) => (
+          <article class="conviction">
+            <span class="conviction__n">[{String(i + 1).padStart(2, '0')}]</span>
+            <h3 class="conviction__title">{c.title}</h3>
+            <div>
+              <p class="conviction__body">{c.body}</p>
+              <p class="conviction__moment">{c.moment}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== reach -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="label" style="margin-bottom: var(--s2)">Where I have delivered</p>
+          <h2 class="section-title">Who I have done it for.</h2>
+        </div>
+        <p class="section-lede">
+          Six ministries and national bodies, one US enterprise account, and BFSI clients
+          across three continents earlier in my career. All delivered from India.
+        </p>
+      </div>
+
+      <div class="reach-grid">
+        <div>
+          <div class="rule-index"><span class="label">Organisations</span></div>
+          <div class="org-list">
+            {organisations.map((o) => (
+              <div class="org">
+                <p class="org__name">{o.name}</p>
+                <p class="org__meta">{o.meta}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div class="rule-index"><span class="label">Sectors</span></div>
+          <div class="sector-list" style="margin-bottom: var(--s5)">
+            {sectors.map((s) => <span class="tag">{s}</span>)}
+          </div>
+
+          <div class="rule-index"><span class="label">Toolkit</span></div>
+          <div class="kv">
+            {toolkit.map((t) => (
+              <div class="kv__row">
+                <span class="kv__k">{t.k}</span>
+                <span class="kv__v" style="max-width: 22rem">{t.v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== credentials -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="rule-index"><span class="label">Credentials</span></div>
+      <div class="reach-grid">
+        <div class="kv">
+          {credentials.education.map((e) => (
+            <div class="kv__row"><span class="kv__k">Education</span><span class="kv__v">{e}</span></div>
+          ))}
+          {credentials.certifications.map((c) => (
+            <div class="kv__row"><span class="kv__k">Certification</span><span class="kv__v">{c}</span></div>
+          ))}
+        </div>
+        <div>
+          <p class="label" style="margin-bottom: var(--s2)">Earlier technical certifications</p>
+          <ul style="list-style:none;margin:0;padding:0">
+            {credentials.earlier.map((c) => (
+              <li style="font-size: var(--step--1); padding-block:.25rem">
+                <a href={c.href} rel="noopener">{c.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top: var(--s5)">
+        <a class="btn btn--primary" href="/work/">See the work <span class="arrow">&rarr;</span></a>
+        <a class="btn btn--ghost" href={person.resumePdf} style="margin-left: var(--s2)">Resume (PDF)</a>
+      </p>
+    </div>
+  </section>
+</Base>

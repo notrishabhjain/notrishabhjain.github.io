@@ -6,8 +6,31 @@ via: Infosys
 role: Project Manager
 period: 2024–2026
 status: Completed
-outcome: Account to net positive · ~$500K new business in a year · incident resolution from 4 days to under 12 hours
+live: false
+outcome: Account to net positive, ~$500K new business, incident resolution from four days to under twelve hours
 order: 3
+metric:
+  figure: Net positive
+  label: From a loss-making account
+results:
+  - v: "Net positive"
+    l: Account moved from cash outflow to profitable across the engagement
+  - v: "~$500K"
+    l: Additional business won over the following year
+  - v: "4d → 12h"
+    l: Mean time to resolution on the application estate
+  - v: "~50%"
+    l: Delivery efficiency improvement, on a team about half the size
+decisions:
+  - what: Right-size the team before touching the tooling
+    why: The estate was staffed at roughly twice the work. Automation on top of ambiguous ownership just produces faster confusion. Ownership came first, then the tooling.
+  - what: Write a RACI across vendors and the client, not just internally
+    why: In a multi-vendor estate the expensive ambiguity sits between organisations. A RACI that stops at your own team's edge does not resolve the argument that actually delays incidents.
+  - what: Automate the operational floor — deployments, reporting, budgeting
+    why: Manual deployment paths and hand-assembled reports were consuming the capacity that made the account look understaffed once it was right-sized.
+  - what: Put a fixed reporting cadence in front of the CIO
+    why: The relationship was strained because the client learned about problems from their own users. A predictable cadence changed the conversation from escalation to roadmap.
+diagram: estate-turnaround
 ---
 
 ## Context
