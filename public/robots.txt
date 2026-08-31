@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://notrishabhjain.github.io/sitemap-index.xml
