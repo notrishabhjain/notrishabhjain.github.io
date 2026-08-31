@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import WorkRow from '../../components/WorkRow.astro';
+import { person, scale } from '../../data/site';
+
+const cases = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
+const gov = cases.filter((c) => c.data.client.match(/Ministry|Commission|Bureau/));
+const ent = cases.filter((c) => !c.data.client.match(/Ministry|Commission|Bureau/));
+---
+
+<Base
+  title={`Work — ${person.name}`}
+  description="National platforms taken through procurement to production, an enterprise account turned from loss to net positive, and a product nobody was obliged to use."
+>
+  <section class="wrap" style="padding-block: var(--s5) var(--s4)">
+    <p class="label" style="margin-bottom: var(--s3)">Work</p>
+    <h1 class="section-title" style="font-size: var(--step-4); max-width: 20ch">
+      Five projects, and what changed because of them.
+    </h1>
+    <p class="section-lede" style="margin-top: var(--s3)">
+      Government platforms taken from concept note to production, an enterprise account turned
+      from loss-making to profitable, and an internal product that had to earn its adoption.
+      Each case study sets out the problem, the decisions I personally made, and the result.
+    </p>
+  </section>
+
+  <section class="wrap" style="padding-bottom: var(--s6)">
+    <div class="rule-index">
+      <span class="label">Government of India</span>
+      <span class="label" style="margin-left:auto">{gov.length} projects</span>
+    </div>
+    <div class="work-list">{gov.map((entry) => <WorkRow entry={entry} />)}</div>
+
+    <div class="rule-index" style="margin-top: var(--s6)">
+      <span class="label">Enterprise &amp; product</span>
+      <span class="label" style="margin-left:auto">{ent.length} projects</span>
+    </div>
+    <div class="work-list">{ent.map((entry) => <WorkRow entry={entry} />)}</div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <p class="label" style="margin-bottom: var(--s3)">At what scale</p>
+      <div class="kv" style="max-width: 40rem">
+        {scale.map((s) => (
+          <div class="kv__row"><span class="kv__k">{s.k}</span><span class="kv__v">{s.v}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

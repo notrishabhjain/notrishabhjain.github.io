@@ -6,8 +6,29 @@ via: EY
 role: Senior Consultant
 period: 2022–2024
 status: Live
+live: true
 outcome: National platform serving 40M+ users, later extended to deliver Sahara refunds
 order: 4
+metric:
+  figure: 40M+
+  label: Citizens served
+results:
+  - v: "40M+"
+    l: Members and officials served across every state
+  - v: "Reused"
+    l: Extended to deliver Sahara refunds without a new build or procurement
+  - v: "90+"
+    l: Ministry websites brought under security compliance oversight
+  - v: "Secretary"
+    l: Approvals and scope decisions taken at Secretary and Additional Secretary level
+decisions:
+  - what: Design it as a platform, not as one ministry's portal
+    why: This is the decision the Sahara extension later depended on. A system built around a single mandate cannot absorb a second one without a new procurement and a new year.
+  - what: Re-engineer the process before digitising it
+    why: Moving a paper process onto a screen preserves its defects at national scale. As-Is mapping and gap analysis came before any To-Be design.
+  - what: Treat forty million users as a design constraint, not a statistic
+    why: A form that is merely awkward is a support burden at ten thousand users and a national story at forty million, on every kind of connection and device.
+stack: [MIS, Business process re-engineering]
 ---
 
 ## Context

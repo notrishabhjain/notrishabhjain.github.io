@@ -1,11 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import { person, capabilities, credentials } from '../data/site';
+import { person, toolkit, credentials } from '../data/site';
 import { summary, jobs } from '../data/resume';
 
-// Skill groups the resume shows as keyword lines. Stakeholder work is covered by
-// the experience bullets, so it is not repeated here.
-const shown = capabilities.filter((g) => g.group !== 'Stakeholder & client');
+
 ---
 
 <Base
@@ -29,8 +27,8 @@ const shown = capabilities.filter((g) => g.group !== 'Stakeholder & client');
     <p style="color: var(--ink-2); font-size: var(--step--1)">{summary}</p>
 
     <h2>Core competencies</h2>
-    {shown.map((g) => (
-      <p class="resume__comp"><strong>{g.group}:</strong> {g.items.join(' · ')}</p>
+    {toolkit.map((t) => (
+      <p class="resume__comp"><strong>{t.k}:</strong> {t.v}</p>
     ))}
 
     <h2>Professional experience</h2>

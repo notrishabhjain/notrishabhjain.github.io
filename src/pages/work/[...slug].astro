@@ -1,0 +1,118 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ParallelApproval from '../../components/diagrams/ParallelApproval.astro';
+import CertificateVersioning from '../../components/diagrams/CertificateVersioning.astro';
+import EstateTurnaround from '../../components/diagrams/EstateTurnaround.astro';
+import { person } from '../../data/site';
+
+export async function getStaticPaths() {
+  const cases = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
+  return cases.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: cases[(i + 1) % cases.length] },
+  }));
+}
+
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const facts = [
+  { label: 'Client', value: d.client },
+  ...(d.via ? [{ label: 'Delivered via', value: d.via }] : []),
+  { label: 'My role', value: d.role },
+  { label: 'Period', value: d.period },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: d.title,
+  about: d.client,
+  author: { '@type': 'Person', name: person.name },
+  abstract: d.outcome,
+};
+---
+
+<Base title={`${d.short} — ${person.name}`} description={d.outcome} jsonLd={jsonLd}>
+  <article class="wrap">
+    <header class="case-hero">
+      <a class="back-link" href="/work/"><span aria-hidden="true">&larr;</span> All work</a>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--s2);align-items:center;margin-bottom:var(--s3)">
+        <span class={d.live ? 'pill pill--live' : 'pill'}>{d.status}</span>
+        <span class="label">{d.period}</span>
+      </div>
+      <h1 class="case-hero__title">{d.title}</h1>
+      <p class="case-hero__outcome">{d.outcome}</p>
+
+      <div class="factsheet">
+        {facts.map((f) => (
+          <div class="fact">
+            <div class="fact__label">{f.label}</div>
+            <div class="fact__value">{f.value}</div>
+          </div>
+        ))}
+      </div>
+    </header>
+
+    {d.results.length > 0 && (
+      <section>
+        <div class="rule-index"><span class="label">What changed</span></div>
+        <div class="results">
+          {d.results.map((r) => (
+            <div class="result">
+              <span class="result__v">{r.v}</span>
+              <span class="result__l">{r.l}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <div class="prose" style="padding-block: var(--s4)">
+      <Content />
+    </div>
+
+    {d.decisions.length > 0 && (
+      <section style="padding-block: var(--s4)">
+        <div class="rule-index">
+          <span class="label">The calls I made</span>
+          <span class="label" style="margin-left:auto">{d.decisions.length} decisions</span>
+        </div>
+        <div class="decisions">
+          {d.decisions.map((dec, i) => (
+            <article class="decision">
+              <span class="decision__n">[{String(i + 1).padStart(2, '0')}]</span>
+              <p class="decision__what">{dec.what}</p>
+              <p class="decision__why">{dec.why}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {d.diagram && (
+      <section style="padding-block: var(--s4)">
+        {d.diagram === 'parallel-approval' && <ParallelApproval />}
+        {d.diagram === 'certificate-versioning' && <CertificateVersioning />}
+        {d.diagram === 'estate-turnaround' && <EstateTurnaround />}
+      </section>
+    )}
+
+    {(d.stack || d.compliance) && (
+      <section style="padding-block: var(--s4)">
+        <div class="rule-index"><span class="label">Stack &amp; standards</span></div>
+        <div class="tags">
+          {d.stack?.map((s) => <span class="tag">{s}</span>)}
+          {d.compliance?.map((s) => <span class="tag">{s}</span>)}
+        </div>
+      </section>
+    )}
+
+    <nav class="next-nav" aria-label="More work">
+      <a class="btn btn--ghost" href={`/work/${next.id}/`}>Next: {next.data.short} <span class="arrow">&rarr;</span></a>
+      <a class="btn btn--primary" href={`mailto:${person.email}`}>Talk to me about work like this</a>
+    </nav>
+  </article>
+</Base>

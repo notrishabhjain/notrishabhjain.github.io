@@ -1,0 +1,76 @@
+---
+/**
+ * The green hydrogen certificate versioning model: amendments supersede rather
+ * than overwrite, so a reference issued years earlier still resolves.
+ */
+---
+<figure class="figure">
+  <div class="figure__head">
+    <span class="label">Fig. 02</span>
+    <strong style="font-size: var(--step--1)">Amending a certificate without breaking its audit chain</strong>
+  </div>
+  <div class="figure__body">
+    <svg viewBox="0 0 720 268" role="img" aria-labelledby="cv-title cv-desc">
+      <title id="cv-title">Certificate versioning and supersession model</title>
+      <desc id="cv-desc">
+        Each amendment issues a new certificate version that supersedes the previous one.
+        Earlier versions are retained and remain resolvable, marked superseded and carrying a
+        pointer to the current version, so a buyer holding an old reference still gets a
+        truthful answer.
+      </desc>
+
+      <text class="dg-t dg-t--head" x="0" y="14">ISSUED VERSIONS — APPEND ONLY</text>
+
+      <!-- v1 -->
+      <rect class="dg-box" x="0" y="34" width="170" height="66" rx="2" />
+      <text class="dg-t dg-t--head" x="14" y="54">CERT · v1</text>
+      <text class="dg-t dg-t--mute" x="14" y="70">issued 2026-07</text>
+      <text class="dg-t dg-t--mute" x="14" y="86">state: superseded</text>
+
+      <line class="dg-line" x1="170" y1="67" x2="212" y2="67" />
+      <polygon points="212,63 222,67 212,71" class="dg-line" fill="currentColor" />
+      <text class="dg-t dg-t--mute" x="176" y="59">amends</text>
+
+      <!-- v2 -->
+      <rect class="dg-box" x="226" y="34" width="170" height="66" rx="2" />
+      <text class="dg-t dg-t--head" x="240" y="54">CERT · v2</text>
+      <text class="dg-t dg-t--mute" x="240" y="70">production data corrected</text>
+      <text class="dg-t dg-t--mute" x="240" y="86">state: superseded</text>
+
+      <line class="dg-line" x1="396" y1="67" x2="438" y2="67" />
+      <polygon points="438,63 448,67 438,71" class="dg-line" fill="currentColor" />
+      <text class="dg-t dg-t--mute" x="402" y="59">amends</text>
+
+      <!-- v3 current -->
+      <rect class="dg-box dg-box--accent" x="452" y="34" width="170" height="66" rx="2" />
+      <text class="dg-t dg-t--head dg-t--accent" x="466" y="54">CERT · v3</text>
+      <text class="dg-t dg-t--accent" x="466" y="70">state: current</text>
+      <text class="dg-t dg-t--mute" x="466" y="86">authoritative today</text>
+
+      <!-- retention note -->
+      <line class="dg-line dg-line--dashed" x1="0" y1="116" x2="622" y2="116" />
+      <text class="dg-t dg-t--mute" x="0" y="134">no version is ever overwritten or deleted — the chain is the evidence</text>
+
+      <!-- resolution path -->
+      <text class="dg-t dg-t--head" x="0" y="178">WHAT A BUYER HOLDING AN OLD REFERENCE GETS</text>
+
+      <rect class="dg-box dg-box--signal" x="0" y="196" width="176" height="58" rx="2" />
+      <text class="dg-t" x="14" y="216">Buyer resolves</text>
+      <text class="dg-t dg-t--mute" x="14" y="232">a v1 reference from</text>
+      <text class="dg-t dg-t--mute" x="14" y="246">a 2026 contract</text>
+
+      <line class="dg-line dg-line--accent" x1="176" y1="225" x2="228" y2="225" />
+      <polygon points="228,221 238,225 228,229" class="dg-line dg-line--accent" fill="currentColor" style="color: var(--accent)" />
+
+      <rect class="dg-box" x="242" y="196" width="380" height="58" rx="2" />
+      <text class="dg-t" x="256" y="216">v1 as issued, plus: superseded by v3, and why</text>
+      <text class="dg-t dg-t--mute" x="256" y="234">the old claim still resolves truthfully. Nothing silently changes</text>
+      <text class="dg-t dg-t--mute" x="256" y="248">under a decision someone already made.</text>
+    </svg>
+  </div>
+  <figcaption>
+    A certificate is not a document, it is a claim about the past. I wrote this specification
+    because the platform's credibility in 2031 depends on an amendment in 2026 not quietly
+    rewriting what somebody relied on.
+  </figcaption>
+</figure>

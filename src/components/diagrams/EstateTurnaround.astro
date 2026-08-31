@@ -1,0 +1,108 @@
+---
+/**
+ * The GE Vernova estate before and after: the same applications, roughly half
+ * the people, and one accountable owner pair per application.
+ *
+ * Coordinates are placed by hand rather than derived, so the "after" panel
+ * genuinely reads as non-overlapping ownership — which is the whole claim.
+ */
+const apps = ['App A', 'App B', 'App C'];
+const appY = [46, 80, 114]; // top edge of each app box
+const rowMid = appY.map((y) => y + 13);
+
+// Left: 12 people, 4 columns x 3 rows.
+const leftNodes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => ({
+  x: 12 + (i % 4) * 26,
+  y: 56 + Math.floor(i / 4) * 26,
+}));
+// Only the right-hand column fans out, so lines never cross other people.
+const fanFrom = [0, 1, 2].map((r) => ({ x: 12 + 3 * 26 + 8, y: 56 + r * 26 }));
+
+// Right: 6 people, 2 per application, each pair wired to one app only.
+const pairs = rowMid.map((y, r) => [
+  { x: 396, y: y - 8 },
+  { x: 396, y: y + 8 },
+].map((p) => ({ ...p, app: r })));
+---
+<figure class="figure">
+  <div class="figure__head">
+    <span class="label">Fig. 03</span>
+    <strong style="font-size: var(--step--1)">What we removed was ambiguity, not capacity</strong>
+  </div>
+  <div class="figure__body">
+    <svg viewBox="0 0 720 268" role="img" aria-labelledby="et-title et-desc">
+      <title id="et-title">Application estate before and after the turnaround</title>
+      <desc id="et-desc">
+        Before: a large team with overlapping, undefined ownership across the same three
+        applications, four-day incident resolution, and an account running at a loss. After:
+        roughly half the team, two accountable owners per application and no shared lines,
+        incident resolution under twelve hours, and the account net positive.
+      </desc>
+
+      <!-- ===================================== inherited ===================================== -->
+      <text class="dg-t dg-t--head" x="0" y="14">INHERITED</text>
+      <text class="dg-t dg-t--mute" x="0" y="30">30+ people · no RACI · shared, undefined ownership</text>
+
+      {fanFrom.map((f) => apps.map((_, a) => (
+        <line class="dg-line dg-line--dashed" x1={f.x} y1={f.y} x2={196} y2={rowMid[a]} />
+      )))}
+
+      {leftNodes.map((n) => <circle class="dg-box" cx={n.x} cy={n.y} r="7" />)}
+
+      {apps.map((name, i) => (
+        <>
+          <rect class="dg-box" x="198" y={appY[i]} width="104" height="26" rx="2" />
+          <text class="dg-t" x="212" y={appY[i] + 17}>{name}</text>
+        </>
+      ))}
+
+      <text class="dg-t dg-t--mute" x="0" y="164">every incident opens with “whose is this?”</text>
+
+      <line class="dg-line" x1="342" y1="0" x2="342" y2="182" />
+
+      <!-- ======================================= after ======================================= -->
+      <text class="dg-t dg-t--head dg-t--accent" x="376" y="14">AFTER</text>
+      <text class="dg-t dg-t--mute" x="376" y="30">right-sized · two named owners per application</text>
+
+      {pairs.map((pair) => pair.map((p) => (
+        <line class="dg-line dg-line--accent" x1={p.x + 8} y1={p.y} x2={556} y2={rowMid[p.app]} />
+      )))}
+
+      {pairs.map((pair) => pair.map((p) => (
+        <circle class="dg-box dg-box--accent" cx={p.x} cy={p.y} r="7" />
+      )))}
+
+      {apps.map((name, i) => (
+        <>
+          <rect class="dg-box dg-box--accent" x="558" y={appY[i]} width="104" height="26" rx="2" />
+          <text class="dg-t dg-t--accent" x="572" y={appY[i] + 17}>{name}</text>
+        </>
+      ))}
+
+      <text class="dg-t dg-t--mute" x="376" y="164">an incident has one place to land</text>
+
+      <!-- ====================================== outcomes ===================================== -->
+      <line class="dg-line" x1="0" y1="182" x2="720" y2="182" />
+
+      <text class="dg-t dg-t--mute" x="0" y="204">INCIDENT RESOLUTION</text>
+      <text class="dg-t" x="0" y="228" style="font-size:13px">4 days</text>
+      <text class="dg-t dg-t--mute" x="62" y="228" style="font-size:13px">→</text>
+      <text class="dg-t dg-t--signal" x="86" y="228" style="font-size:13px">under 12 hours</text>
+
+      <text class="dg-t dg-t--mute" x="266" y="204">ACCOUNT P&amp;L</text>
+      <text class="dg-t" x="266" y="228" style="font-size:13px">cash outflow</text>
+      <text class="dg-t dg-t--mute" x="368" y="228" style="font-size:13px">→</text>
+      <text class="dg-t dg-t--signal" x="392" y="228" style="font-size:13px">net positive</text>
+
+      <text class="dg-t dg-t--mute" x="546" y="204">NEW BUSINESS, YEAR AFTER</text>
+      <text class="dg-t dg-t--signal" x="546" y="228" style="font-size:13px">~$500K</text>
+
+      <text class="dg-t dg-t--mute" x="0" y="256">Delivery efficiency improved roughly 50% — on a team about half the size.</text>
+    </svg>
+  </div>
+  <figcaption>
+    Over-staffing looks like safety and behaves like the opposite. With no clear ownership,
+    people duplicate each other and collide on the same incident — so the fix started with a
+    RACI, not a hiring plan.
+  </figcaption>
+</figure>

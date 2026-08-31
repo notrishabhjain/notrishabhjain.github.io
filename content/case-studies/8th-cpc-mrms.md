@@ -6,8 +6,31 @@ via: BDO India · National e-Governance Division, MeitY
 role: Manager
 period: "2026"
 status: Live
+live: true
 outcome: From approved proposal to live production in a month, on NIC MeghRaj
 order: 2
+metric:
+  figure: 30 days
+  label: Approved proposal to production
+results:
+  - v: "30 days"
+    l: Accepted proposal to live production, third-party integrations in place
+  - v: "MeghRaj"
+    l: Hosted on NIC MeghRaj 2.0 with approvals expedited to match the build
+  - v: "Accepted"
+    l: Two-phase technical and commercial proposal cleared procurement first pass
+  - v: "0"
+    l: Spreadsheets left in the review process
+decisions:
+  - what: Open the hosting approvals on day one, in parallel with development
+    why: Infrastructure approval is the long pole on almost every government platform — the reason a six-week build takes six months. Joining that queue first is the single decision that produced the thirty days.
+  - what: Cost the proposal against live NICSI rate cards
+    why: A proposal that does not match the rate card procurement actually uses comes back for a second pass. Costing it correctly the first time removed a round trip nobody budgets for.
+  - what: Model the review workflow around who is holding a memorandum
+    why: A spreadsheet cannot answer "where is this and who has it". Designing the Processing Officer, Reviewing Officer and ministry response loops around custody made the status question answerable at any moment.
+  - what: Coordinate vendors and DevOps directly rather than through a plan
+    why: With a month, sequencing had to be live. Provisioning, integration, test and deploy were run as one track with one person accountable for the critical path.
+diagram: parallel-approval
 stack: [MERN, Parichay SSO, NIC MeghRaj 2.0]
 ---
 

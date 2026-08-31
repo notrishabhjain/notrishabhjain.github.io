@@ -6,8 +6,22 @@ via: Internal product
 role: Product & Engineering Lead
 period: 2021–2022
 status: Adopted
+live: false
 outcome: Credentialing platform defined and adopted across 2,500+ employees
 order: 5
+metric:
+  figure: 2,500+
+  label: Employees using it
+results:
+  - v: "2,500+"
+    l: Employees transacting verifiable credentials
+  - v: "Adopted"
+    l: Uptake driven by research cycles rather than mandate
+decisions:
+  - what: Treat adoption as the product problem, not the engineering one
+    why: Writing an immutable credential is trivial. Getting 2,500 people to bother, and anyone downstream to trust it, is the actual product. A credential nobody checks is a database with extra steps.
+  - what: Cut technically interesting features that changed no behaviour
+    why: Research cycles kept surfacing the same thing — capability nobody used was cost, not optionality.
 stack: [Blockchain, Distributed ledger]
 ---
 
