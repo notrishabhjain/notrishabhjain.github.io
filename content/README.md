@@ -1,35 +1,23 @@
 # Content
 
-Every word that appears on the site lives in this folder. Nothing here is styled,
-built, or deployed yet — this is Step 1, the copy review.
+Case studies live here as Markdown — `content/case-studies/*.md`. Astro loads them
+directly from this folder, so what you edit here is what ships. Frontmatter drives the
+card on the homepage and the factsheet on the case study page.
 
-## How to review
+**Everything else on the site** — hero, the three pillars, the timeline, capabilities,
+convictions, reach, credentials, contact — lives in `src/data/site.ts`, and the resume in
+`src/data/resume.ts`. It moved out of Markdown once the site was built: keeping two
+copies of the same prose guarantees they drift apart, and the data files are what the
+pages actually render.
 
-Read the files in this order. They map to the order a visitor reads the page.
-
-1. `site.md` — global positioning, meta, availability
-2. `hero.md` — the first screen
-3. `thesis.md` — the three-pillar argument
-4. `case-studies/` — the proof, one file per engagement
-5. `trajectory.md` — career arc
-6. `capabilities.md` — what I can do, no percentages
-7. `how-i-work.md` — operating convictions (drafted for you to edit)
-8. `reach.md` — domains, ministries, geographies
-9. `credentials.md` — certifications and education
-10. `contact.md` — the ask
-11. `resume.md` — source for the downloadable ATS-friendly resume (`files/Rishabh_Jain_Resume.docx`)
-
-## Marks you will see in the text
-
-- `[VERIFY]` — a fact I could not confirm. Confirm or correct it.
-- `[DISCLOSE?]` — a detail that may be client-confidential. Approve, soften, or cut.
-- `[YOURS]` — a placeholder where your own words are better than mine.
-
-`REVIEW.md` collects every one of these in a single checklist so you can work
-through them without rereading the whole folder.
+Open questions are tracked in `REVIEW.md`.
 
 ## Editing
 
-Change the words directly in these files. Don't worry about formatting or length —
-I'll handle fit when the layout exists. If a section feels wrong in kind rather
-than in wording, say so and I'll restructure rather than reword.
+- **Change a case study:** edit the Markdown here.
+- **Change any other copy:** edit `src/data/site.ts`.
+- **Change the resume:** edit `src/data/resume.ts`, then regenerate the PDF
+  (`npm run build && npm run resume:pdf && npm run build`).
+
+No review markers are left in these files. Anything unresolved is in `REVIEW.md` instead,
+so nothing half-decided can reach the published page by accident.

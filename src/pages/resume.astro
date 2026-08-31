@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import { person, capabilities, credentials } from '../data/site';
+import { summary, jobs } from '../data/resume';
+
+// Skill groups the resume shows as keyword lines. Stakeholder work is covered by
+// the experience bullets, so it is not repeated here.
+const shown = capabilities.filter((g) => g.group !== 'Stakeholder & client');
+---
+
+<Base
+  title={`Resume — ${person.name}`}
+  description="Full career history: program and portfolio management across Government of India and global enterprise delivery."
+>
+  <div class="wrap resume">
+    <h1 class="resume__name">{person.name}</h1>
+    <p class="resume__role">Program Manager · Portfolio Manager · Digital Transformation</p>
+    <p class="resume__contact">
+      {person.location} · <a href={`mailto:${person.email}`}>{person.email}</a> ·
+      <a href={person.linkedin}>linkedin.com/in/notrishabhjain</a>
+    </p>
+
+    <div class="hero__actions resume__actions" style="margin-bottom: var(--s4)">
+      <a class="btn btn--primary btn--sm" href={person.resumePdf}>Download PDF</a>
+      <a class="btn btn--ghost btn--sm" href={person.resumeDocx}>Download Word (.docx)</a>
+    </div>
+
+    <h2>Professional summary</h2>
+    <p style="color: var(--ink-2); font-size: var(--step--1)">{summary}</p>
+
+    <h2>Core competencies</h2>
+    {shown.map((g) => (
+      <p class="resume__comp"><strong>{g.group}:</strong> {g.items.join(' · ')}</p>
+    ))}
+
+    <h2>Professional experience</h2>
+    {jobs.map((job) => (
+      <section class="resume__job">
+        <h3 class="resume__job-title">{job.title} — {job.org}</h3>
+        <p class="resume__job-meta">{job.meta}</p>
+        <ul class="resume__bullets">
+          {job.bullets.map((b) => <li>{b}</li>)}
+        </ul>
+      </section>
+    ))}
+
+    <h2>Education</h2>
+    {credentials.education.map((e) => <p class="resume__line">{e}</p>)}
+
+    <h2>Certifications</h2>
+    {credentials.certifications.map((c) => <p class="resume__line">{c}</p>)}
+    {credentials.earlier.map((c) => <p class="resume__line">{c.label}</p>)}
+  </div>
+</Base>
