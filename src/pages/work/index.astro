@@ -1,48 +1,48 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import WorkRow from '../../components/WorkRow.astro';
+import ProjectRow from '../../components/ProjectRow.astro';
 import { person, scale } from '../../data/site';
 
 const cases = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
-const gov = cases.filter((c) => c.data.client.match(/Ministry|Commission|Bureau/));
-const ent = cases.filter((c) => !c.data.client.match(/Ministry|Commission|Bureau/));
+const gov = cases.filter((c) => /Ministry|Commission|Bureau/.test(c.data.client));
+const ent = cases.filter((c) => !/Ministry|Commission|Bureau/.test(c.data.client));
 ---
 
 <Base
   title={`Work — ${person.name}`}
   description="National platforms taken through procurement to production, an enterprise account turned from loss to net positive, and a product nobody was obliged to use."
 >
-  <section class="wrap" style="padding-block: var(--s5) var(--s4)">
+  <section class="wrap" style="padding-block: var(--s6) var(--s5)">
     <p class="label" style="margin-bottom: var(--s3)">Work</p>
-    <h1 class="section-title" style="font-size: var(--step-4); max-width: 20ch">
-      Five projects, and what changed because of them.
+    <h1 class="section-title" style="font-size: var(--step-4); max-width: 15ch">
+      Five projects, and what <em>changed</em> because of them.
     </h1>
-    <p class="section-lede" style="margin-top: var(--s3)">
+    <p class="section-lede" style="margin-top: var(--s4)">
       Government platforms taken from concept note to production, an enterprise account turned
       from loss-making to profitable, and an internal product that had to earn its adoption.
-      Each case study sets out the problem, the decisions I personally made, and the result.
+      Each one sets out the problem, the decisions I personally made, and the result.
     </p>
   </section>
 
   <section class="wrap" style="padding-bottom: var(--s6)">
-    <div class="rule-index">
-      <span class="label">Government of India</span>
-      <span class="label" style="margin-left:auto">{gov.length} projects</span>
+    <div class="group-head reveal">
+      <span class="label label--accent">Government of India</span>
+      <span class="label group-head__count">{gov.length} projects</span>
     </div>
-    <div class="work-list">{gov.map((entry) => <WorkRow entry={entry} />)}</div>
+    <div class="projects">{gov.map((entry, i) => <ProjectRow entry={entry} index={i} />)}</div>
 
-    <div class="rule-index" style="margin-top: var(--s6)">
-      <span class="label">Enterprise &amp; product</span>
-      <span class="label" style="margin-left:auto">{ent.length} projects</span>
+    <div class="group-head reveal" style="margin-top: var(--s7)">
+      <span class="label label--accent">Enterprise &amp; product</span>
+      <span class="label group-head__count">{ent.length} projects</span>
     </div>
-    <div class="work-list">{ent.map((entry) => <WorkRow entry={entry} />)}</div>
+    <div class="projects">{ent.map((entry, i) => <ProjectRow entry={entry} index={gov.length + i} />)}</div>
   </section>
 
-  <section class="section section--alt">
-    <div class="wrap">
-      <p class="label" style="margin-bottom: var(--s3)">At what scale</p>
-      <div class="kv" style="max-width: 40rem">
+  <section class="section section--raised">
+    <div class="wrap reveal">
+      <p class="label" style="margin-bottom: var(--s4)">At what scale</p>
+      <div class="kv" style="max-width: 44rem">
         {scale.map((s) => (
           <div class="kv__row"><span class="kv__k">{s.k}</span><span class="kv__v">{s.v}</span></div>
         ))}

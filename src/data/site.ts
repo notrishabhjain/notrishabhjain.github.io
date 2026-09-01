@@ -35,16 +35,28 @@ export const hero = {
   standfirst:
     'Eleven years in delivery — six of them writing code, five running programmes. ' +
     'I work where policy meets procurement meets engineering: the place where most ' +
-    'public-sector platforms stall for a year, and where I have shipped three in the ' +
-    'last twelve months.',
+    'public-sector platforms stall for a year. Two of mine went live this year.',
   status: 'Open to Program & Portfolio Management roles — India or international, remote or onsite',
 } as const;
 
 export const proof = [
-  { value: '30', unit: 'days', label: 'Approved proposal to live production, on NIC MeghRaj', src: '8th Central Pay Commission' },
-  { value: '40M+', unit: '', label: 'Citizens served by a platform I helped deliver', src: 'CRCS Portal, Ministry of Cooperation' },
-  { value: '4d → 12h', unit: '', label: 'Incident resolution, after rebuilding the delivery estate', src: 'GE Vernova, via Infosys' },
-  { value: '11', unit: 'years', label: 'Engineer, to lead, to consultant, to manager — in that order', src: 'TCS · UST · EY · Infosys · BDO' },
+  { value: '30', unit: 'days', count: 30, label: 'From approved proposal to live production on NIC MeghRaj', src: '8th Central Pay Commission' },
+  { value: '40', unit: 'M+', count: 40, label: 'Citizens served by a platform I helped deliver', src: 'CRCS Portal · Ministry of Cooperation' },
+  { value: '4d→12h', unit: '', label: 'Incident resolution, after rebuilding the delivery estate', src: 'GE Vernova · via Infosys' },
+  { value: '11', unit: 'yrs', count: 11, label: 'Engineer, to lead, to consultant, to manager — in that order', src: 'TCS · UST · EY · Infosys · BDO' },
+] as const;
+
+/** Marquee strip under the hero: breadth, at a glance. */
+export const ticker = [
+  'Ministry of New & Renewable Energy',
+  '8th Central Pay Commission',
+  'Ministry of Textiles',
+  'Ministry of Cooperation',
+  'Ministry of Electronics & IT',
+  'Bureau of Immigration',
+  'GE Vernova',
+  'UST Global',
+  'BFSI · US / UK / Japan',
 ] as const;
 
 /* ----------------------------------------------------------- engagements -- */

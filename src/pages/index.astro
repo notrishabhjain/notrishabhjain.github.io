@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import WorkRow from '../components/WorkRow.astro';
+import ProjectRow from '../components/ProjectRow.astro';
 import ParallelApproval from '../components/diagrams/ParallelApproval.astro';
-import { person, meta, hero, proof, engagements, contact } from '../data/site';
+import { person, meta, hero, proof, ticker, engagements, contact } from '../data/site';
 
 const cases = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
 const featured = cases.slice(0, 3);
@@ -19,9 +19,7 @@ const jsonLd = {
   sameAs: [person.linkedin],
   address: { '@type': 'PostalAddress', addressLocality: 'New Delhi', addressCountry: 'IN' },
   worksFor: { '@type': 'Organization', name: 'BDO India' },
-  alumniOf: ['Infosys', 'EY', 'UST Global', 'Tata Consultancy Services'].map((n) => ({
-    '@type': 'Organization', name: n,
-  })),
+  alumniOf: ['Infosys', 'EY', 'UST Global', 'Tata Consultancy Services'].map((n) => ({ '@type': 'Organization', name: n })),
   knowsAbout: [
     'Programme management', 'Portfolio management', 'Government of India e-governance',
     'Public procurement and RFP authoring', 'Delivery turnaround', 'Agile and Scrum',
@@ -31,36 +29,54 @@ const jsonLd = {
 ---
 
 <Base jsonLd={jsonLd}>
-  <!-- ==================================================== hero -->
+  <!-- ===================================================== hero -->
   <section class="wrap hero">
-    <div class="hero__grid">
-      <div>
-        <div class="hero__meta">
-          <span class="label">{person.role}</span>
-          <span class="label" style="color: var(--faint)">/</span>
-          <span class="label">{person.location}</span>
-        </div>
-        <h1 class="hero__headline">{hero.headline}</h1>
-      </div>
+    <div class="hero__kicker">
+      <span class="label label--accent">{person.role}</span>
+      <span class="label" style="color: var(--faint)">—</span>
+      <span class="label">{person.location}</span>
+    </div>
 
+    <h1 class="hero__headline">
+      <span class="line"><span>I get government</span></span>
+      <span class="line"><span>platforms built,</span></span>
+      <span class="line"><span>approved, and <em>live</em>.</span></span>
+    </h1>
+
+    <div class="hero__foot">
       <div>
         <p class="hero__standfirst">{hero.standfirst}</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="/work/">See the work <span class="arrow">&rarr;</span></a>
-          <a class="btn btn--ghost" href={person.resumePdf}>Resume</a>
-        </div>
         <p style="margin-top: var(--s4)">
           <span class="status"><span class="status__dot" aria-hidden="true"></span>{hero.status}</span>
         </p>
       </div>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="/work/">See the work <span class="arrow">&rarr;</span></a>
+        <a class="btn" href={person.resumePdf}>Resume</a>
+      </div>
     </div>
+  </section>
 
+  <!-- ===================================================== ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      {[0, 1].map(() => ticker.map((t) => <span class="ticker__item">{t}</span>))}
+    </div>
+  </div>
+
+  <!-- ===================================================== proof -->
+  <section class="wrap">
     <dl class="proof">
-      {proof.map((p) => (
-        <div class="proof__item">
-          <dt class="proof__value">{p.value}{p.unit && <span class="proof__unit"> {p.unit}</span>}</dt>
-          <dd class="proof__label">
-            {p.label}
+      {proof.map((p, i) => (
+        <div class="proof__item reveal" data-d={String(i)}>
+          <dt class="proof__value">
+            {'count' in p
+              ? <span data-count={String(p.count)}>0</span>
+              : <span>{p.value}</span>}
+            {p.unit && <span class="proof__unit">{p.unit}</span>}
+          </dt>
+          <dd style="margin:0">
+            <p class="proof__label">{p.label}</p>
             <span class="proof__src">{p.src}</span>
           </dd>
         </div>
@@ -68,13 +84,13 @@ const jsonLd = {
     </dl>
   </section>
 
-  <!-- ==================================================== engagements -->
-  <section class="section" id="engagements">
+  <!-- ===================================================== engagements -->
+  <section class="section section--raised">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div>
-          <p class="label" style="margin-bottom: var(--s2)">What I'm hired to do</p>
-          <h2 class="section-title">Four problems I get handed.</h2>
+          <p class="label" style="margin-bottom: var(--s3)">What I'm hired to do</p>
+          <h2 class="section-title">Four problems I <em>get handed</em>.</h2>
         </div>
         <p class="section-lede">
           Not a skills inventory. These are the briefs that land on my desk, and the evidence
@@ -84,7 +100,7 @@ const jsonLd = {
 
       <div class="engagements">
         {engagements.map((e, i) => (
-          <article class="engagement">
+          <article class="engagement reveal" data-d={String(i % 4)}>
             <span class="engagement__n">[{String(i + 1).padStart(2, '0')}]</span>
             <h3 class="engagement__title">{e.title}</h3>
             <p class="engagement__body">{e.body}</p>
@@ -96,57 +112,57 @@ const jsonLd = {
     </div>
   </section>
 
-  <!-- ==================================================== the moat, drawn -->
-  <section class="section section--alt" id="method">
+  <!-- ===================================================== work -->
+  <section class="section" id="work">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div>
-          <p class="label" style="margin-bottom: var(--s2)">The part that is hard to copy</p>
-          <h2 class="section-title">Anyone can run the build. The approvals are the job.</h2>
+          <p class="label" style="margin-bottom: var(--s3)">Selected work</p>
+          <h2 class="section-title">What I have <em>shipped</em>.</h2>
+        </div>
+        <p class="section-lede">
+          Each written up with the problem, the calls I personally made, and what changed
+          because of them.
+        </p>
+      </div>
+
+      <div class="projects">
+        {featured.map((entry, i) => <ProjectRow entry={entry} index={i} />)}
+      </div>
+
+      <p style="margin-top: var(--s5)">
+        <a class="btn" href="/work/">All {cases.length} projects <span class="arrow">&rarr;</span></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================================================== method -->
+  <section class="section section--raised">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="label" style="margin-bottom: var(--s3)">The part that is hard to copy</p>
+          <h2 class="section-title">Anyone can run the build. The <em>approvals</em> are the job.</h2>
         </div>
         <p class="section-lede">
           Public-sector platforms rarely stall on engineering. They stall in a queue nobody
           scheduled. Knowing which queue to join, and when, is most of what I bring.
         </p>
       </div>
-      <ParallelApproval />
+      <div class="reveal"><ParallelApproval /></div>
     </div>
   </section>
 
-  <!-- ==================================================== selected work -->
-  <section class="section" id="work">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <p class="label" style="margin-bottom: var(--s2)">Selected work</p>
-          <h2 class="section-title">What I have shipped.</h2>
-        </div>
-        <p class="section-lede">
-          Each one written up with the problem, the calls I made, and what changed as a
-          result.
-        </p>
-      </div>
-
-      <div class="work-list">
-        {featured.map((entry) => <WorkRow entry={entry} />)}
-      </div>
-
-      <p style="margin-top: var(--s4)">
-        <a class="btn btn--ghost" href="/work/">All {cases.length} projects <span class="arrow">&rarr;</span></a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ==================================================== contact -->
-  <section class="section section--alt" id="contact">
-    <div class="wrap">
-      <p class="label" style="margin-bottom: var(--s2)">Contact</p>
+  <!-- ===================================================== contact -->
+  <section class="section section--edge" id="contact">
+    <div class="wrap reveal">
+      <p class="label" style="margin-bottom: var(--s3)">Contact</p>
       <h2 class="contact__heading">{contact.heading}</h2>
       <div class="contact__body">{contact.body.map((p) => <p>{p}</p>)}</div>
       <div class="contact__actions">
         <a class="btn btn--primary" href={`mailto:${person.email}`}>Email me</a>
-        <a class="btn btn--ghost" href={person.linkedin}>LinkedIn</a>
-        <a class="btn btn--ghost" href="/about/">More about how I work <span class="arrow">&rarr;</span></a>
+        <a class="btn" href={person.linkedin}>LinkedIn</a>
+        <a class="btn" href="/about/">How I work <span class="arrow">&rarr;</span></a>
       </div>
     </div>
   </section>

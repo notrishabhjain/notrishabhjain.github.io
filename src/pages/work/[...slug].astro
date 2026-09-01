@@ -58,7 +58,7 @@ const jsonLd = {
 
     {d.results.length > 0 && (
       <section>
-        <div class="rule-index"><span class="label">What changed</span></div>
+        <div class="group-head"><span class="label">What changed</span></div>
         <div class="results">
           {d.results.map((r) => (
             <div class="result">
@@ -76,7 +76,7 @@ const jsonLd = {
 
     {d.decisions.length > 0 && (
       <section style="padding-block: var(--s4)">
-        <div class="rule-index">
+        <div class="group-head">
           <span class="label">The calls I made</span>
           <span class="label" style="margin-left:auto">{d.decisions.length} decisions</span>
         </div>
@@ -102,7 +102,7 @@ const jsonLd = {
 
     {(d.stack || d.compliance) && (
       <section style="padding-block: var(--s4)">
-        <div class="rule-index"><span class="label">Stack &amp; standards</span></div>
+        <div class="group-head"><span class="label">Stack &amp; standards</span></div>
         <div class="tags">
           {d.stack?.map((s) => <span class="tag">{s}</span>)}
           {d.compliance?.map((s) => <span class="tag">{s}</span>)}

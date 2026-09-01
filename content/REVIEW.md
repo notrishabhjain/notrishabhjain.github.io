@@ -36,29 +36,41 @@ level — no real screens, data, or internal structure. Check each one says some
 
 ---
 
-## Applied in the rebuild
+## Applied in this pass
 
-- **Product demoted.** Removed from the hero and contact entirely. It now appears once,
-  as your actual role title on the Skillchain case study, plus one lowercase mention in
-  the engagement about specification work.
-- **"What I actually do" replaced.** The 44-keyword grid is gone. Four engagements —
-  the briefs you actually get handed — each with proof and a link to the case that
-  evidences it. Keywords survive only as a compact toolkit table on the About page and
-  in the resume, where they serve ATS matching.
-- **"Where I've done it" split into three.** Organisations (with what you did at each),
-  sectors, and toolkit are now distinct treatments rather than four identical columns.
-  Scale numbers moved to the work index, where they belong.
-- **"How I work" grounded.** Each conviction now carries the moment it came from.
-- **Work cards fixed.** Ragged two-column cards replaced by aligned rows, each leading
-  with its headline metric and carrying its own call to action.
-- **Value made visible.** Every case study now opens with a "what changed" results band
-  and carries a "the calls I made" section — the decisions and their reasoning.
-- **Multi-page.** `/`, `/work`, `/work/<slug>`, `/about`, `/resume`. Old
-  `/case-studies/<slug>` URLs redirect to `/work/<slug>`.
-- **Resume is now three pages**, down from four.
+- **Dark-first.** Dark is now the design rather than a preference — the light theme applies
+  only when a visitor asks for it via the toggle. Previously anyone whose OS was set to
+  light never saw the intended design at all.
+- **Display type** on Space Grotesk, up to 8.5rem at the hero. Nothing on the old site was
+  ever larger than 3.4rem.
+- **Motion**, all of it progressive enhancement: hero lines rise on load, sections reveal on
+  scroll, metrics count up, a marquee of ministries and clients, hover fills on buttons,
+  underline sweeps in the nav. Everything is fully visible with JavaScript disabled and all
+  of it is disabled under `prefers-reduced-motion`.
+- **Per-project cover art** — generated abstract marks that echo each project's real shape,
+  so the work index has visual identity without pretending to show screens you can't share.
+- **Project rows** now lead with an index, a status pill, a large title and the headline
+  metric in amber.
+
+## Earlier, still applied
+
+- Engagements replaced the 44-keyword grid; "Where I've done it" split into organisations,
+  sectors and toolkit; convictions carry the moment each came from; every case study opens
+  with a results band and carries the decisions behind it.
+- Product appears once, as the role title on Skillchain.
+- Multi-page: `/`, `/work`, `/work/<slug>`, `/about`, `/resume`, with old `/case-studies/`
+  URLs redirecting.
 
 ## Deferred by you
 
 - Custom domain — one line in `astro.config.mjs` plus a `public/CNAME` file.
 - Photograph.
 - GitHub link.
+
+## Not done, and why
+
+You asked me to take design cues from **vasudev.live** and audit **kinetics.colorion.co**.
+Both are blocked by this session's network egress policy, so I never saw either one. The
+direction here is my own, built to the brief you chose — dark, large, kinetic — not an
+interpretation of those sites. If you can paste screenshots, I can calibrate against what
+you actually pointed at.
