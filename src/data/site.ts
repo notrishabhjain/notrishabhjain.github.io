@@ -35,8 +35,7 @@ export const hero = {
   standfirst:
     'Eleven years in delivery — six of them writing code, five running programmes. ' +
     'I work where policy meets procurement meets engineering: the place where most ' +
-    'public-sector platforms stall for a year, and where I have shipped three in the ' +
-    'last twelve months.',
+    'public-sector platforms stall for a year. Two of mine went live this year.',
   status: 'Open to Program & Portfolio Management roles — India or international, remote or onsite',
 } as const;
 
