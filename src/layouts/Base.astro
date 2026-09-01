@@ -2,12 +2,7 @@
 import '../styles/global.css';
 import { person, meta, nav } from '../data/site';
 
-interface Props {
-  title?: string;
-  description?: string;
-  jsonLd?: Record<string, unknown>;
-}
-
+interface Props { title?: string; description?: string; jsonLd?: Record<string, unknown>; }
 const { title = meta.title, description = meta.description, jsonLd } = Astro.props;
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site).href;
@@ -23,6 +18,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(href.replac
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="theme-color" content="#07080b" />
 
     <meta property="og:type" content="profile" />
     <meta property="og:title" content={title} />
@@ -40,9 +36,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(href.replac
         try {
           const t = localStorage.getItem('theme');
           if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
-        } catch {
-          /* Blocked storage: fall back to the OS preference. */
-        }
+        } catch { /* blocked storage: fall back to the OS preference */ }
       })();
     </script>
   </head>
@@ -82,23 +76,61 @@ const isCurrent = (href: string) => path === href || path.startsWith(href.replac
         <span>{person.location}</span>
         <span style="margin-left:auto"><a href={person.linkedin} rel="me">LinkedIn</a></span>
         <span><a href={`mailto:${person.email}`}>{person.email}</a></span>
-        <span><a href={person.resumePdf}>Resume (PDF)</a></span>
+        <span><a href={person.resumePdf}>Resume</a></span>
       </div>
     </footer>
 
     <script is:inline>
       (() => {
-        const b = document.getElementById('theme-toggle');
-        if (!b) return;
-        b.addEventListener('click', () => {
-          const r = document.documentElement;
-          const dark = r.dataset.theme
-            ? r.dataset.theme === 'dark'
-            : matchMedia('(prefers-color-scheme: dark)').matches;
-          const next = dark ? 'light' : 'dark';
-          r.dataset.theme = next;
+        const root = document.documentElement;
+
+        /* Theme toggle. */
+        document.getElementById('theme-toggle')?.addEventListener('click', () => {
+          const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+          root.dataset.theme = next;
           try { localStorage.setItem('theme', next); } catch { /* not persisted */ }
         });
+
+        const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const reveals = document.querySelectorAll('.reveal');
+
+        /* Everything is visible without JS; this only adds the entrance. */
+        if (still || !('IntersectionObserver' in window)) {
+          reveals.forEach((el) => el.classList.add('is-in'));
+          document.querySelectorAll('[data-count]').forEach((el) => {
+            el.textContent = el.dataset.count;
+          });
+          return;
+        }
+
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          }
+        }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
+        reveals.forEach((el) => io.observe(el));
+
+        /* Count the metrics up once, when they first come into view. */
+        const counters = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            const el = e.target;
+            counters.unobserve(el);
+            const target = Number(el.dataset.count);
+            if (!Number.isFinite(target)) { el.textContent = el.dataset.count; continue; }
+            const dur = 1100, t0 = performance.now();
+            const tick = (now) => {
+              const p = Math.min((now - t0) / dur, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              el.textContent = String(Math.round(target * eased));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+        }, { threshold: 0.6 });
+        document.querySelectorAll('[data-count]').forEach((el) => counters.observe(el));
       })();
     </script>
   </body>

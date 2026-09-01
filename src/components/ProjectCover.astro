@@ -1,0 +1,88 @@
+---
+/**
+ * Abstract cover art per project. There are no screenshots to show — these are
+ * generated marks that echo each project's actual shape, so the work index has
+ * visual identity without pretending to show a product.
+ */
+interface Props { variant: string; }
+const { variant } = Astro.props;
+const rows = [0, 1, 2, 3, 4, 5];
+const cols = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+---
+<div class="project__cover" aria-hidden="true">
+  <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
+    {variant === 'ghci-green-hydrogen' && (
+      /* Certificate versions, each superseding the last. */
+      <g>
+        {[0, 1, 2, 3].map((i) => (
+          <rect
+            class={i === 3 ? 'dg-box--accent' : 'dg-box'}
+            x={44 + i * 18} y={44 + i * 16} width="150" height="70" rx="2"
+            style={`opacity:${0.35 + i * 0.22}`}
+          />
+        ))}
+        <line class="dg-line dg-line--accent" x1="52" y1="150" x2="256" y2="150" />
+        {[0, 1, 2, 3].map((i) => (
+          <circle class="dg-line--accent" cx={62 + i * 64} cy="150" r="3.5" fill="currentColor" style="color:var(--accent)" />
+        ))}
+      </g>
+    )}
+
+    {variant === '8th-cpc-mrms' && (
+      /* Two tracks that finish together instead of end to end. */
+      <g>
+        <rect class="dg-box" x="34" y="56" width="150" height="20" rx="2" />
+        <rect class="dg-box" x="192" y="86" width="120" height="20" rx="2" style="opacity:.4" />
+        <rect class="dg-box" x="34" y="118" width="150" height="20" rx="2" />
+        <rect class="dg-box--accent" x="34" y="144" width="150" height="20" rx="2" />
+        <line class="dg-line dg-line--accent" x1="184" y1="154" x2="228" y2="154" />
+        <polygon points="228,150 238,154 228,158" fill="currentColor" style="color:var(--accent)" />
+        <line class="dg-line dg-line--dashed" x1="184" y1="46" x2="184" y2="172" style="stroke:var(--signal)" />
+      </g>
+    )}
+
+    {variant === 'infosys-stabilisation' && (
+      /* Many tangled owners resolving into few clean ones. */
+      <g>
+        {rows.map((r) => (
+          <line class="dg-line dg-line--dashed" x1="40" y1={40 + r * 24} x2="150" y2={76 + (r % 3) * 24} />
+        ))}
+        {rows.map((r) => <circle class="dg-box" cx="40" cy={40 + r * 24} r="5" />)}
+        {[0, 1, 2].map((r) => (
+          <line class="dg-line dg-line--accent" x1="190" y1={76 + r * 24} x2="278" y2={76 + r * 24} />
+        ))}
+        {[0, 1, 2].map((r) => <rect class="dg-box--accent" x="278" y={68 + r * 24} width="14" height="16" rx="2" />)}
+        <line class="dg-line" x1="168" y1="24" x2="168" y2="176" />
+      </g>
+    )}
+
+    {variant === 'crcs-portal' && (
+      /* Scale: a field of citizens, one platform. */
+      <g>
+        {rows.map((r) => cols.map((c) => (
+          <circle
+            class="dg-box"
+            cx={38 + c * 22} cy={38 + r * 24} r="3.2"
+            style={`opacity:${0.25 + ((r + c) % 5) * 0.14}`}
+          />
+        )))}
+        <rect class="dg-box--accent" x="106" y="78" width="108" height="44" rx="2" />
+      </g>
+    )}
+
+    {variant === 'skillchain' && (
+      /* A chain only worth having if the next link accepts it. */
+      <g>
+        {[0, 1, 2, 3].map((i) => (
+          <rect class={i < 3 ? 'dg-box' : 'dg-box--accent'} x={30 + i * 72} y="76" width="54" height="48" rx="2" />
+        ))}
+        {[0, 1, 2].map((i) => (
+          <line class="dg-line dg-line--accent" x1={84 + i * 72} y1="100" x2={102 + i * 72} y2="100" />
+        ))}
+        {[0, 1, 2, 3].map((i) => (
+          <circle class="dg-line--accent" cx={57 + i * 72} cy="100" r="8" fill="none" stroke="currentColor" style="color:var(--accent);opacity:.55" />
+        ))}
+      </g>
+    )}
+  </svg>
+</div>

@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ProjectCover from './ProjectCover.astro';
+
+interface Props { entry: CollectionEntry<'caseStudies'>; index: number; }
+const { entry, index } = Astro.props;
+const d = entry.data;
+---
+<a class="project reveal" href={`/work/${entry.id}/`}>
+  <span class="project__n">{String(index + 1).padStart(2, '0')}</span>
+
+  <div>
+    <div class="project__meta">
+      <span class={d.live ? 'pill pill--live' : 'pill'}>{d.status}</span>
+      <span class="label">{d.client}</span>
+      <span class="label" style="color: var(--faint)">{d.period}</span>
+    </div>
+
+    <h3 class="project__title">{d.short}</h3>
+
+    <div class="project__figure">
+      <span class="project__figure-v">{d.metric.figure}</span>
+      <span class="project__figure-l">{d.metric.label}</span>
+    </div>
+
+    <p class="project__outcome">{d.outcome}</p>
+    <span class="project__cta">Read the case <span class="arrow">&rarr;</span></span>
+  </div>
+
+  <ProjectCover variant={entry.id} />
+</a>
