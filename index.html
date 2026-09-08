@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rishabh Jain — Project Manager</title>
+<meta name="description" content="Project Manager with 11 years delivering digital transformation for Government of India ministries and global enterprise clients.">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="theme-color" content="#0A0B0E">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Rishabh Jain — Project Manager">
+<meta property="og:description" content="Digital transformation for Government of India ministries and global enterprise clients.">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+/* Runs before first paint so the chosen theme never flashes. */
+(function(){
+  try{
+    var t=localStorage.getItem('theme');
+    if(t!=='light'&&t!=='dark') t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+    document.documentElement.dataset.theme=t;
+  }catch(e){/* keep the dark default */}
+})();
+</script>
+<style>
+/* ================================================================ tokens == */
+:root{
+  --bg:#0A0B0E; --panel:#101318; --panel-2:#161A21;
+  --line:#1C212A; --line-2:#2B323D;
+  --txt:#EDEFF3; --txt-2:#A0A8B4; --mute:#6C7684;
+  --accent:#5B8CFF; --accent-ink:#05070D; --accent-soft:rgba(91,140,255,.13);
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --rail:236px; --ease:cubic-bezier(.22,.75,.28,1);
+}
+html[data-theme="light"]{
+  --bg:#FBFBFC; --panel:#FFFFFF; --panel-2:#F4F5F7;
+  --line:#E6E8EC; --line-2:#D2D7DE;
+  --txt:#0E1116; --txt-2:#454D59; --mute:#79828F;
+  --accent:#2F5FE0; --accent-ink:#FFFFFF; --accent-soft:rgba(47,95,224,.09);
+}
+*,*::before,*::after{box-sizing:border-box}
+
+/* ============================================================== app shell == */
+html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none}
+body{
+  background:var(--bg);color:var(--txt);font-family:var(--sans);
+  font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+.app{height:100dvh;display:grid;grid-template-columns:var(--rail) 1fr;overflow:hidden}
+@supports not (height:100dvh){.app{height:100vh}}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute)}
+.scroll{overflow:auto;scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;min-height:0}
+.scroll::-webkit-scrollbar{width:6px;height:6px}
+.scroll::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
+
+/* =================================================================== rail == */
+.rail{
+  border-right:1px solid var(--line);background:var(--panel);
+  display:flex;flex-direction:column;padding:22px 0;min-height:0;
+}
+.brand{padding:0 20px 20px;border-bottom:1px solid var(--line)}
+.brand__n{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.brand__r{font-size:11px;color:var(--mute);margin-top:3px;font-family:var(--mono);letter-spacing:.08em}
+.nav{display:flex;flex-direction:column;padding:12px 10px;gap:1px;flex:1;min-height:0;overflow:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav__b{
+  position:relative;display:flex;align-items:center;gap:11px;
+  padding:9px 12px;border-radius:6px;color:var(--txt-2);
+  transition:color .2s var(--ease),background-color .2s var(--ease);
+}
+.nav__b::before{
+  content:"";position:absolute;left:0;top:50%;width:2px;height:0;
+  background:var(--accent);border-radius:2px;transform:translateY(-50%);
+  transition:height .28s var(--ease);
+}
+.nav__b:hover{background:var(--panel-2);color:var(--txt)}
+.nav__b[aria-current="true"]{color:var(--txt);background:var(--accent-soft)}
+.nav__b[aria-current="true"]::before{height:17px}
+.nav__i{font-family:var(--mono);font-size:10px;color:var(--mute);letter-spacing:.06em;transition:color .2s}
+.nav__b[aria-current="true"] .nav__i{color:var(--accent)}
+.nav__t{font-size:13.5px;font-weight:500}
+.rail__foot{padding:14px 20px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.tgl{
+  display:flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid var(--line-2);
+  border-radius:999px;color:var(--txt-2);transition:border-color .2s,color .2s;
+}
+.tgl:hover{border-color:var(--accent);color:var(--accent)}
+.tgl svg{width:14px;height:14px;transition:transform .45s var(--ease)}
+.tgl:hover svg{transform:rotate(28deg)}
+.tgl span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.kbd{margin-left:auto;font-family:var(--mono);font-size:9.5px;color:var(--mute);letter-spacing:.06em}
+
+/* ================================================================== stage == */
+.stage{position:relative;min-height:0;display:grid;overflow:hidden}
+.view{
+  grid-area:1/1;display:grid;grid-template-rows:auto minmax(0,1fr);min-height:0;overflow:hidden;
+  padding:34px 40px 34px;opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(10px);
+  transition:opacity .34s var(--ease),transform .34s var(--ease),visibility .34s;
+}
+.view.on{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+.vhead{display:flex;align-items:baseline;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:22px}
+.vhead h2{margin:0;font-size:19px;font-weight:600;letter-spacing:-.015em}
+.vhead>.mono:last-of-type{margin-left:auto}
+.vbody{min-height:0}
+
+/* staggered entrance for children of the active view */
+.view.on .st{animation:rise .5s var(--ease) both}
+.view.on .st:nth-child(1){animation-delay:.04s}
+.view.on .st:nth-child(2){animation-delay:.09s}
+.view.on .st:nth-child(3){animation-delay:.14s}
+.view.on .st:nth-child(4){animation-delay:.19s}
+.view.on .st:nth-child(5){animation-delay:.24s}
+.view.on .st:nth-child(6){animation-delay:.29s}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+/* =================================================================== home == */
+.home{display:flex;flex-direction:column;justify-content:center;height:100%;min-height:0}
+.home h1{
+  margin:0;font-size:clamp(34px,5.2vw,62px);font-weight:700;
+  letter-spacing:-.035em;line-height:1.02;
+}
+.home h1 em{font-style:normal;color:var(--accent)}
+.home__tag{color:var(--txt-2);font-size:clamp(14px,1.5vw,17px);margin-top:16px;max-width:52ch}
+.home__loc{margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px;border-radius:8px;overflow:hidden}
+.stat{background:var(--bg);padding:16px 18px}
+.stat__v{font-size:clamp(19px,2.4vw,27px);font-weight:600;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.stat__l{font-size:11.5px;color:var(--mute);margin-top:4px;line-height:1.4}
+.home__cta{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.btn{
+  position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;
+  padding:11px 16px;border:1px solid var(--line-2);border-radius:6px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  transition:color .22s,border-color .22s;
+}
+.btn::before{content:"";position:absolute;inset:0;background:var(--accent);transform:translateY(101%);transition:transform .32s var(--ease);z-index:-1}
+.btn:hover::before{transform:none}
+.btn:hover{color:var(--accent-ink);border-color:var(--accent)}
+.btn--f{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn--f::before{background:var(--txt)}
+.btn--f:hover{color:var(--bg);border-color:var(--txt)}
+</style>
+<style>
+/* ================================================================== split == */
+.split{display:grid;grid-template-columns:290px 1fr;gap:26px;height:100%;min-height:0}
+.picker{display:flex;flex-direction:column;gap:2px;padding-right:6px;min-height:0}
+.pick{
+  position:relative;text-align:left;padding:11px 13px;border-radius:7px;
+  border:1px solid transparent;transition:background-color .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease);
+}
+.pick::before{
+  content:"";position:absolute;left:0;top:12px;bottom:12px;width:2px;background:var(--accent);
+  border-radius:2px;transform:scaleY(0);transform-origin:center;transition:transform .26s var(--ease);
+}
+.pick:hover{background:var(--panel);transform:translateX(2px)}
+.pick[aria-selected="true"]{background:var(--panel);border-color:var(--line-2)}
+.pick[aria-selected="true"]::before{transform:scaleY(1)}
+.pick__t{font-size:13px;font-weight:500;display:block;line-height:1.35}
+.pick__m{font-size:11px;color:var(--mute);margin-top:3px;display:block;line-height:1.35}
+.pick__s{font-family:var(--mono);font-size:10px;color:var(--accent);margin-top:5px;display:block;letter-spacing:.05em}
+
+.detail{min-height:0;padding-right:8px}
+.detail__h{font-size:20px;font-weight:600;letter-spacing:-.02em;margin:0}
+.detail__sub{color:var(--mute);font-size:12px;margin-top:5px;font-family:var(--mono);letter-spacing:.04em}
+.detail__stat{margin-top:14px;font-size:14px;color:var(--txt-2)}
+.detail__stat b{color:var(--accent);font-weight:600}
+.meta{display:flex;flex-wrap:wrap;gap:7px 22px;margin-top:16px;padding:13px 0;border-block:1px solid var(--line)}
+.meta div{font-size:11.5px}
+.meta span{color:var(--mute);font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;display:block;margin-bottom:2px}
+.blk{margin-top:18px}
+.blk__h{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+.blk p{color:var(--txt-2);font-size:13.5px}
+.blk ul{margin:0;padding-left:16px;color:var(--txt-2);font-size:13.5px}
+.blk li{margin-bottom:6px}
+.blk li:last-child{margin-bottom:0}
+.cols{display:grid;gap:18px}
+@media(min-width:1180px){.cols{grid-template-columns:1fr 1fr;gap:18px 30px}}
+
+.hlist{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:6px}
+.hrow{background:var(--panel);padding:11px 14px;font-size:13px;color:var(--txt-2)}
+.hrow b{color:var(--txt);font-weight:600}
+
+/* =================================================================== grid == */
+.cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));align-content:start}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:16px 17px;
+  transition:border-color .22s var(--ease),transform .22s var(--ease);
+}
+.card:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.card__t{font-size:13.5px;font-weight:600}
+.card__m{font-size:11.5px;color:var(--mute);margin-top:3px}
+.card__d{font-size:12.5px;color:var(--txt-2);margin-top:9px;line-height:1.5}
+.group-label{margin:0 0 10px}
+.group+.group{margin-top:22px}
+
+/* ================================================================ contact == */
+.contact{display:flex;flex-direction:column;justify-content:center;height:100%;min-height:0;max-width:620px}
+.contact h3{margin:0;font-size:clamp(26px,3.6vw,40px);font-weight:600;letter-spacing:-.03em;line-height:1.08}
+.contact p{color:var(--txt-2);margin-top:14px;font-size:15px}
+.clist{margin-top:26px;border-top:1px solid var(--line)}
+.crow{
+  display:flex;align-items:center;gap:14px;padding:15px 4px;border-bottom:1px solid var(--line);
+  transition:padding-left .24s var(--ease),color .2s;
+}
+.crow:hover{padding-left:12px;color:var(--accent)}
+.crow__k{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--mute);width:78px;flex:none}
+.crow__v{font-size:14px}
+.crow__a{margin-left:auto;color:var(--mute);transition:transform .24s var(--ease),color .2s}
+.crow:hover .crow__a{transform:translateX(4px);color:var(--accent)}
+
+/* ============================================================== responsive == */
+.topbar{display:none}
+@media(max-width:900px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto}
+  .rail{display:none}
+  .topbar{
+    display:flex;align-items:center;gap:12px;padding:13px 18px;
+    border-bottom:1px solid var(--line);background:var(--panel);
+  }
+  .view{padding:22px 18px}
+  .split{grid-template-columns:1fr;gap:14px;grid-template-rows:auto minmax(0,1fr)}
+  .picker{flex-direction:row;overflow-x:auto;gap:7px;padding-bottom:5px;flex:none}
+  .picker .pick{flex:none;min-width:186px}
+  .pick::before{top:auto;bottom:0;left:12px;right:12px;width:auto;height:2px;transform:scaleX(0)}
+  .pick[aria-selected="true"]::before{transform:scaleX(1)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .cols{grid-template-columns:1fr}
+  .botnav{
+    display:flex;gap:3px;padding:7px 10px;border-top:1px solid var(--line);
+    background:var(--panel);overflow-x:auto;scrollbar-width:none;
+    padding-bottom:max(7px,env(safe-area-inset-bottom));
+  }
+  .botnav::-webkit-scrollbar{display:none}
+  .botnav button{
+    flex:none;padding:8px 13px;border-radius:999px;font-size:12px;font-weight:500;
+    color:var(--txt-2);white-space:nowrap;transition:background-color .2s,color .2s;
+  }
+  .botnav button[aria-current="true"]{background:var(--accent);color:var(--accent-ink)}
+}
+@media(min-width:901px){.botnav{display:none}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .view{transform:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="rail">
+    <div class="brand">
+      <div class="brand__n">Rishabh Jain</div>
+      <div class="brand__r">Project Manager</div>
+    </div>
+    <nav class="nav" id="nav" aria-label="Sections"></nav>
+    <div class="rail__foot">
+      <button class="tgl" id="tgl" type="button" aria-label="Switch colour theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path id="tgl-i" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span id="tgl-t">Dark</span>
+      </button>
+      <span class="kbd">&larr; &rarr;</span>
+    </div>
+  </aside>
+
+  <header class="topbar">
+    <div>
+      <div class="brand__n">Rishabh Jain</div>
+      <div class="brand__r">Project Manager</div>
+    </div>
+    <button class="tgl" id="tgl-m" type="button" aria-label="Switch colour theme" style="margin-left:auto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="stage" id="stage"></main>
+  <nav class="botnav" id="botnav" aria-label="Sections"></nav>
+</div>
+<script>
+/* ================================================================ content ==
+   All copy lives in these arrays. The views render themselves from them.
+   ========================================================================= */
+
+const work = [
+  {
+    co: "BDO India", role: "Manager, Digital Transformation",
+    meta: "New Delhi, India · Client: National e-Governance Division (NeGD), MeitY",
+    dates: "Jan 2026 → Present",
+    sum: "Sole point of accountability to a ministry-level client for two concurrent national platforms delivered under formal government work orders, leading a team of 8 across internal delivery and external agency counterparts.",
+    hi: [
+      "Authored the winning proposal for the 8th Central Pay Commission engagement — <b>scope, architecture, costing, risk model and roadmap</b> — then delivered against it rather than handing it off after sign-off.",
+      "Compressed an <b>eight-module national system of record into roughly a four-week window</b> with a seven-person team by running parallel module streams, meeting a Commission tenure that could not be extended.",
+      "Defined the business logic engineering builds against — demand as sole reporting unit, referral routing, three closure types, archive reinstatement rules — removing workflow ambiguity before it reached the development team.",
+      "Cleared independent VAPT and SAST security review on the green hydrogen certification registry with <b>48 of 51 findings closed</b> pre-launch, and secured the Pay Commission platform's audit certificate with <b>zero re-audit cycles</b> by running audit and remediation in parallel.",
+      "Kept both programmes funded through government finance machinery — utilisation certificates, ministry demand letters, and GFR-compliant milestone billing tied to defined payment gates.",
+      "Introduced AI tooling across the delivery lifecycle with a tracked usage log, one of the earlier structured AI-adoption efforts inside a government programme."
+    ]
+  },
+  {
+    co: "Infosys", role: "Project Manager",
+    meta: "Pune, India · Client: GE Vernova (renewable energy)",
+    dates: "Nov 2024 → Jan 2026",
+    sum: "Owned a $2M+/year multi-year application portfolio and a 35-person delivery organisation, inheriting a loss-making business unit and returning it to profit within six months.",
+    hi: [
+      "Turned a loss-making <b>$2M+/year portfolio net-positive within six months</b> through SOP standardisation and team right-sizing — the largest financial turnaround on the account.",
+      "Held <b>99.9% SLA compliance</b> across ~50–55 applications, several mission-critical, serving wind hardware deployed globally under genuine 24×7 operational requirements.",
+      "Ran Product Owner and Scrum Master roles simultaneously across a <b>20-person core delivery team and a 15-person L1.5 support layer</b> triaging tickets for roughly 800 applications account-wide.",
+      "Cut <b>MTTR from four days to under twelve hours</b> by leading repository migration and deployment automation as a technical transition programme.",
+      "Rebuilt a damaged CIO-level client relationship through structured reporting cadence and formal escalation governance in place of ad hoc updates.",
+      "Drove incident-routing automation that measurably reduced team workload, with the team earning multiple internal awards on the back of the improvement."
+    ]
+  },
+  {
+    co: "EY India", role: "Senior Consultant, Government",
+    meta: "Delhi, India · Ministry of Cooperation, MeitY/NeGD, Bureau of Immigration",
+    dates: "Apr 2022 → Nov 2024",
+    sum: "Delivered four national Government of India platform engagements across two ministries, spanning business process re-engineering, DPR and RFP authorship, vendor selection and ministry-side development oversight.",
+    hi: [
+      "Took the Central Registrar of Cooperative Societies from an <b>entirely paper-based office to a live national platform now serving ~40 million members</b> across 1,500–1,800 cooperative societies.",
+      "<b>Proposed legal and regulatory amendments that were subsequently enacted</b> — the actual blocker to digitisation was the statutory framework, not the technology.",
+      "Authored DPRs and RFPs, ran vendor selection, and held ministry-side development oversight against scope, ensuring the platform delivered matched the platform specified.",
+      "Standardised <b>80+ ministry and department websites</b> onto a common framework covering certification, security audit and shared information architecture.",
+      "Co-built a <b>150+ parameter national website ranking framework</b> with IIT Delhi and an IIM, calibrated against G20 peer governments — now operated nationally by NeSDA and published for open adoption.",
+      "Led UX and process re-engineering for the national visa and foreigner-tracking system revamp, implemented across airports, land ports, seaports and postal checkpoints.",
+      "Worked scope decisions, approvals and progress reviews <b>directly with Secretaries and Additional Secretaries</b>."
+    ]
+  },
+  {
+    co: "UST Global", role: "Software Engineering Lead, Blockchain Architect",
+    meta: "Noida, India · Client: EYGDS",
+    dates: "Jun 2021 → Apr 2022",
+    sum: "Owned product vision and built Skillchain end-to-end — a blockchain credentialing platform taken from concept to production-grade rollout and adopted company-wide.",
+    hi: [
+      "<b>Designed and built the entire platform single-handedly</b>, recording employee skills and qualifications on blockchain so background verification travels with the employee between companies.",
+      "Took it from concept through to <b>production-grade rollout with company-wide adoption</b>, including token-based issuance for employee certifications.",
+      "Ran user research and adoption feedback loops alongside the build, treating adoption as a design problem rather than a rollout afterthought — the difference between a POC and a product.",
+      "Contributed to an internal digital twin initiative exploring metaverse-usable employee representations as a prospective new product line."
+    ]
+  },
+  {
+    co: "ValueCoders Services LLP", role: "Blockchain &amp; Backend Developer",
+    meta: "Noida, India · Multiple client engagements",
+    dates: "Jun 2020 → Jun 2021",
+    sum: "Delivered blockchain and backend engineering across three regulated domains — cryptocurrency exchange platforms, document management systems, and civil/property registry applications.",
+    hi: [
+      "Built <b>cryptocurrency exchange</b> components handling transaction flow and settlement logic.",
+      "Delivered <b>document management systems</b> with blockchain-backed integrity and verifiable audit trails.",
+      "Engineered applications in the <b>civil and property registry</b> domain, where record integrity is the entire product proposition.",
+      "Ran API-level requirement analysis, solution design and performance improvement cycles across all three engagements."
+    ]
+  },
+  {
+    co: "Tata Consultancy Services", role: "IT Analyst",
+    meta: "Gurugram, India · UK-based BFSI client, then TCS blockchain/licenses labs",
+    dates: "Oct 2015 → May 2020",
+    sum: "Delivered mainframe support, development and automation for a UK BFSI client before moving into the licenses domain as a blockchain developer building enterprise proofs of concept.",
+    hi: [
+      "Built mainframe automation generating <b>approximately £200,000 in client savings</b> — the first time delivery work of mine appeared directly on a client's P&amp;L.",
+      "Automated reporting workflows saving the team <b>20+ man-hours weekly</b>, and optimised dispute resolution processes to <b>cut reported defects by 40%</b>.",
+      "Moved into the licenses domain in 2017 as a blockchain developer, building <b>multiple Ethereum and Hyperledger Fabric proofs of concept</b> with no internal playbook to work from.",
+      "Several builds <b>reached production or were adopted internally</b> within TCS's blockchain labs."
+    ]
+  }
+];
+
+const projects = [
+  {
+    t: "8th CPC Demand Management System",
+    c: "8th Central Pay Commission, Government of India",
+    stat: "50,000+ demands",
+    statTail: "pulled out of spreadsheets and physical files into one auditable system of record",
+    role: "Project Manager — BDO India",
+    period: "Jan 2026 – Present",
+    team: "~7-person delivery team",
+    value: "Government work order",
+    brief: "Build a digital system of record for the 8th Central Pay Commission's entire memorandum lifecycle — intake, structured demand creation, evidence-backed examination, ministry referral, multi-officer review, and placement before the Commission. The Commission operates on a fixed, non-extendable tenure and had no audit trail in place.",
+    hard: [
+      "A body making decisions affecting national compensation policy was screening memoranda on forms, spreadsheets and physical files — no de-duplication, no evidence trail, no consolidated view, and no way to defend how any conclusion was reached.",
+      "Roughly a one-month window to design, build and launch an eight-module system eventually handling ~50,000 demands and ~100GB of evidence documents, with a seven-person team.",
+      "Government financial governance — GFR-compliant milestone billing and utilisation certificates — layered over a build moving at startup pace."
+    ],
+    how: [
+      "Authored the full proposal: scope, architecture, costing, risk model and roadmap, structured against milestone-based billing tied to three defined payment gates.",
+      "Ran parallel module streams rather than a sequential plan — the only structure that fit an eight-module workflow into the available window.",
+      "Defined the domain logic engineering builds against: demand as sole reporting unit, referral routing to last-held officer, three closure types, archive reinstatement rules.",
+      "Ran comparative vendor selection for infrastructure and coordinated third-party VAPT security audit procurement end to end.",
+      "Surfaced source data quality gaps as a visible reporting category rather than absorbing them silently."
+    ],
+    out: "An ungoverned paper-and-spreadsheet process is now an auditable system of record with role-based access across four officer roles and a complete evidence and decision trail. The eight-module build landed in roughly four weeks. Groundwork for an AI-enabled Phase 2 was laid by initiating a GPU compute request through the India AI Mission."
+  },
+  {
+    t: "GHCI Digital Portal",
+    c: "Ministry of New &amp; Renewable Energy (MNRE)",
+    stat: "One of India's first",
+    statTail: "digital green hydrogen certification registries — regulatory rules automated end to end",
+    role: "Project Manager — BDO India",
+    period: "Dec 2025 – Present",
+    team: "Tech lead, senior dev, QA, DevOps, UI/UX, 2 developers",
+    value: "Government work order",
+    brief: "Deliver the Green Hydrogen Certification Scheme of India digital registry — the national platform through which producers, verification agencies and technical committees process green hydrogen certification, built under a formal government work order.",
+    hard: [
+      "Regulatory logic had to live inside the system rather than in a policy document beside it: four certificate types, a hard emissions threshold, a formula-driven fee structure, and an engine that automatically withdraws issued certificates when a final result breaches threshold.",
+      "Two separate government-grade signing paths — Aadhaar eSign and Digital Signature Certificate — across every form in the workflow.",
+      "A compliance mandate landed mid-project requiring the platform's entire design standard to change, with a full rebuild as the obvious but costly answer.",
+      "Security had to clear an independently audited bar before launch, not a self-certified checklist."
+    ],
+    how: [
+      "Led design and delivery across an eight-module workflow with full accessibility- and government-design-compliant specifications.",
+      "Ran a gap assessment on the new design standard and built a phased transition against a three-month deadline instead of accepting a disruptive rebuild.",
+      "Authored the certificate versioning specification from first principles — how an issued certificate is amended or superseded without breaking its audit trail.",
+      "Built the UAT framework from nothing: 12 use case documents and a 39-case test workbook across 8 modules.",
+      "Coordinated independent VAPT and SAST audits through to a passing remediation score, and drove the finance cycle keeping both phases funded."
+    ],
+    out: "Phase 1 delivered on schedule and live in production. Independent security review closed 48 of 51 findings before launch. Phase 2 — blockchain certificate anchoring, AI-assisted review, analytics and an API ecosystem — is in active procurement across six modules under a GFR-compliant tender."
+  },
+  {
+    t: "GE Vernova Wind Application Portfolio",
+    c: "GE Vernova",
+    stat: "6 months",
+    statTail: "to turn a loss-making $2M+/year portfolio net-positive — the largest turnaround on the account",
+    role: "Project Manager / Product Owner / Scrum Master — Infosys",
+    period: "Nov 2024 – Jan 2026",
+    team: "35 (20 core + 15 support)",
+    value: "$2M+/year, multi-year",
+    brief: "Own product and delivery for ~50–55 support and enhancement applications inside a multi-year onshore and offshore wind development programme, while running a 35-person delivery and support organisation.",
+    hard: [
+      "Inherited a business unit that was losing money, with no standardisation across the portfolio.",
+      "Applications were mission-critical, serving wind hardware deployed across globally distributed sites — 24×7 uptime was an operational reality, not a target.",
+      "A support layer triaging tickets for roughly 800 applications account-wide, with routing decisions made inconsistently."
+    ],
+    how: [
+      "Standardised SOPs across the portfolio and right-sized the team structure rather than absorbing the loss.",
+      "Split the organisation cleanly between a 20-person core delivery team and a 15-person L1.5 layer with defined routing rules.",
+      "Drove automation into incident routing and resolution to remove manual load from the support layer.",
+      "Led repository migration and deployment automation as a technical transition programme."
+    ],
+    out: "Business unit net-positive within six months. 99.9% SLA compliance held across the portfolio. MTTR cut from four days to under twelve hours. Automation-driven performance gains earned the team multiple internal awards."
+  },
+  {
+    t: "CRCS Portal",
+    c: "Ministry of Cooperation",
+    stat: "40 million+",
+    statTail: "citizens served by a platform that replaced an office running entirely on paper",
+    role: "Senior Consultant — EY India",
+    period: "2022 – 2024",
+    team: "Ministry-side delivery oversight",
+    value: "National programme",
+    brief: "Digitise the Central Registrar of Cooperative Societies — a fully paper-based, offline national office — into a modern platform, starting from first principles.",
+    hard: [
+      "The office ran on paper end to end, and the legal framework itself blocked digitisation. No amount of good system design would have resolved that.",
+      "1,500+ societies and roughly 40 million members meant the platform had to work at national scale on day one rather than scale into it."
+    ],
+    how: [
+      "Ran a Business Process Re-engineering study across the office's full operations before designing anything.",
+      "Proposed the legal and regulatory amendments that were subsequently enacted, clearing the actual blocker rather than working around it.",
+      "Authored the DPR and RFP, selected the delivery vendor, and held ministry-side oversight against scope through delivery.",
+      "Rolled out module by module starting with Registration, instead of betting on a single launch."
+    ],
+    out: "The office is fully paperless. The platform serves ~1,500–1,800 cooperative societies and roughly 40 million members, still growing. The same architecture was later extended to build a national refund-processing platform."
+  },
+  {
+    t: "National Website Benchmarking Framework",
+    c: "NeGD / MeitY — now operated by NeSDA",
+    stat: "80+ ministries",
+    statTail: "standardised under one framework that now sets the national measurement bar",
+    role: "Senior Consultant — EY India",
+    period: "2022 – 2024",
+    team: "Cross-institutional with IIT Delhi and an IIM",
+    value: "National programme",
+    brief: "Bring 80+ fragmented Government of India ministry and department websites onto a shared technical and content standard, then build the framework that measures and ranks them.",
+    hard: [
+      "80+ departments each running different technology, different security postures, and no shared information architecture — a fragmented national digital footprint with no consistent way to assess it."
+    ],
+    how: [
+      "Drove standardisation across certification, security audit and common information architecture for 80+ departments.",
+      "Co-built a 150+ parameter ranking framework with IIT Delhi and an IIM covering content quality, security, accessibility and citizen engagement.",
+      "Calibrated it by benchmarking Indian government websites against G20 peer governments."
+    ],
+    out: "The framework is operated by NeSDA for ongoing national website ranking and improvement, and published publicly for independent adoption — measurement infrastructure that outlived the engagement itself."
+  },
+  {
+    t: "IVFRT 2.0 — Visa &amp; Immigration Systems",
+    c: "Ministry of Home Affairs / Bureau of Immigration",
+    stat: "4 checkpoint types",
+    statTail: "airports, land ports, seaports and postal — modernised under one national system",
+    role: "Senior Consultant — EY India",
+    period: "2022 – 2024",
+    team: "Cross-agency",
+    value: "National programme",
+    brief: "Revamp India's Immigration, Visa, Foreigners Registration and Tracking system, covering foreigner inflow, registration processes and checkpoint verification.",
+    hard: [
+      "A legacy national system needed a full UX and process overhaul across checkpoint types with genuinely different operational realities — an airport desk and a land port do not work the same way."
+    ],
+    how: [
+      "Led UI/UX and process re-engineering across the system.",
+      "Built flow diagrams and ran structured testing ahead of implementation.",
+      "Presented through every approval level to secure sign-off — in government delivery, the approval path is part of the plan."
+    ],
+    out: "Implemented across immigration checkpoints, postal services, land ports and seaports nationally."
+  },
+  {
+    t: "National Portal of India v2.2",
+    c: "Government of India",
+    stat: "5 sources unified",
+    statTail: "disconnected national information sources brought behind one citizen-facing interface",
+    role: "Senior Consultant — EY India",
+    period: "2022 – 2024",
+    team: "Vendor-delivered, EY-scoped",
+    value: "National programme",
+    brief: "Design a next-generation National Portal of India consolidating multiple disconnected information sources into a single citizen-facing platform.",
+    hard: [
+      "National information scattered across separate legacy sources — directories, services, media, tourism — with no shared integration strategy and no single front door for citizens."
+    ],
+    how: [
+      "Authored the DPR and RFP defining integration scope and platform architecture.",
+      "Ran vendor selection and onboarding.",
+      "Defined the strategy for bringing structurally different sources onto one interface."
+    ],
+    out: "Vendor onboarded and development initiated under the scope and architecture defined for the programme."
+  },
+  {
+    t: "Skillchain",
+    c: "UST Global (internal, for EYGDS)",
+    stat: "One engineer",
+    statTail: "one production blockchain platform, adopted across the entire company",
+    role: "Software Engineering Lead, Blockchain Architect",
+    period: "2021 – 2022",
+    team: "Built single-handedly",
+    value: "Internal product",
+    brief: "Build a blockchain platform recording employee skills and qualifications so that background verification becomes portable — travelling with the employee rather than being rebuilt at every company move.",
+    hard: [
+      "No internal blockchain infrastructure existed to build on. The platform had to be designed, built and made adoptable by one person.",
+      "Enterprise blockchain projects typically die as technically-correct proofs of concept nobody uses."
+    ],
+    how: [
+      "Designed and built the full platform independently, including token-based issuance for employee certifications.",
+      "Ran user research and adoption feedback loops in parallel with the build, treating adoption as a design problem rather than a rollout problem.",
+      "Took it through to production-grade rather than stopping at demonstration."
+    ],
+    out: "Adopted company-wide, with employees earning verifiable blockchain-recorded certifications — a proof of concept that became infrastructure."
+  },
+  {
+    t: "Mainframe Automation &amp; Enterprise Blockchain",
+    c: "TCS — UK BFSI client, then internal labs",
+    stat: "£200,000",
+    statTail: "in client savings from automation, before moving into blockchain engineering",
+    role: "IT Analyst — Tata Consultancy Services",
+    period: "2015 – 2020",
+    team: "Individual contributor",
+    value: "Enterprise BFSI",
+    brief: "Deliver mainframe support and development for a UK-based BFSI client, then move into building blockchain proofs of concept inside TCS's licenses domain.",
+    hard: [
+      "Manual, repetitive mainframe processes carrying real recurring cost for the client.",
+      "Proving enterprise blockchain viability inside a large organisation with no internal playbook and no precedent to point at."
+    ],
+    how: [
+      "Built automation to remove manual, repetitive work — and quantified the saving rather than assuming it.",
+      "Automated reporting workflows and optimised dispute resolution processes.",
+      "Shifted into the licenses domain as a blockchain developer, building multiple Ethereum and Hyperledger Fabric proofs of concept."
+    ],
+    out: "Approximately £200,000 in client savings, 20+ man-hours saved weekly through reporting automation, and a 40% reduction in reported defects on dispute resolution. Several blockchain builds reached production or internal lab adoption."
+  }
+];
+
+const education = [
+  { t: "IMT CDL", m: "Ghaziabad, Uttar Pradesh, India", d: "2023 · PGDM — Post Graduate Diploma in Management" },
+  { t: "UPTU", m: "Lucknow, Uttar Pradesh, India", d: "2015 · B.Tech" }
+];
+
+const certifications = [
+  { t: "Certified Scrum Master", m: "Scrum Alliance", d: "Certified in Scrum framework facilitation, sprint governance and agile delivery leadership." },
+  { t: "Project Management Certificate", m: "Google", d: "Covering project lifecycle management, stakeholder governance, risk and delivery planning." }
+];
+
+const skills = [
+  { t: "Delivery &amp; Governance", d: "Programme and PMO governance, RACI design, risk registers, SLA management, milestone and executive reporting, Agile/Scrum, Waterfall, delivery turnaround." },
+  { t: "Client &amp; Stakeholder", d: "Government stakeholder management to Secretary and CEO level, multi-agency coordination, escalation governance, scope negotiation, UAT sign-off." },
+  { t: "Commercial &amp; Procurement", d: "P&amp;L and portfolio ownership, RFP/RFQ/DPR authorship, infrastructure cost modelling, GFR-compliant milestone billing, vendor selection." },
+  { t: "Engineering Depth", d: "Blockchain architecture (Ethereum, Hyperledger Fabric), MERN stack, React/TypeScript, Node.js, system architecture, mainframe automation, CI/CD." },
+  { t: "Security &amp; Compliance", d: "VAPT and SAST audit coordination, CERT-In empanelled agency engagement, WCAG 2.1 AA, GIGW and UX4G government design standards." },
+  { t: "Product &amp; Design", d: "Product ownership, Scrum Master, UX/UI leadership, Figma design systems, business process re-engineering, requirement and workflow definition." }
+];
+
+const profile = {
+  name: "Rishabh Jain",
+  headline: ["Delivering government platforms", "that actually reach", "<em>production.</em>"],
+  tagline: "Project Manager | Techno-Functional PM & Portfolio Manager | Government & Enterprise Digital Transformation",
+  location: "Pune, IN.",
+  email: "rishabh.jain@outlook.in",
+  linkedin: "https://www.linkedin.com/in/notrishabhjain/",
+  resume: "files/Rishabh_Jain_Resume.pdf"
+};
+
+const stats = [
+  { v: "11", suffix: " yrs", count: 11, l: "Delivering digital transformation, government and enterprise" },
+  { v: "40", suffix: "M+", count: 40, l: "Citizens served by a platform built from a paper-only office" },
+  { v: "6", suffix: " mo", count: 6, l: "To turn a loss-making $2M+ portfolio net-positive" },
+  { v: "9", suffix: "", count: 9, l: "National and enterprise programmes delivered end to end" }
+];
+
+const about = `Project Manager with 11 years delivering digital transformation for Government of India ministries and global enterprise clients. Runs the full delivery surface — team, client, commercials, technology and governance — across portfolios valued at $2M+ annually and national platforms delivered under formal government work orders. Track record includes taking a paper-only national office to a platform serving 40M+ citizens, turning a loss-making $2M+ business unit net-positive in six months, and shipping two national platforms into production under fixed regulatory deadlines. Seven years as a hands-on engineer and blockchain architect before moving into programme leadership, which means architecture gets reviewed firsthand rather than relayed.`;
+
+const sections = [
+  { id: "home",        label: "Home",        title: "Overview" },
+  { id: "about",       label: "About",       title: "About" },
+  { id: "work",        label: "Work",        title: "Experience" },
+  { id: "projects",    label: "Projects",    title: "Selected projects" },
+  { id: "skills",      label: "Skills",      title: "Capabilities" },
+  { id: "credentials", label: "Credentials", title: "Education & certifications" },
+  { id: "contact",     label: "Contact",     title: "Get in touch" }
+];
+</script>
+<script>
+/* ================================================================= render == */
+
+const stage = document.getElementById('stage');
+const esc = (s) => String(s);
+
+/* --- home ---------------------------------------------------------------- */
+const homeView = `
+  <section class="view" id="v-home" role="tabpanel" aria-labelledby="t-home">
+    <div class="vhead"><span class="mono">01</span><h2>Overview</h2><span class="mono">Rishabh Jain</span></div>
+    <div class="vbody home">
+      <h1 class="st">${profile.headline.join(' ')}</h1>
+      <p class="home__tag st">${profile.tagline}</p>
+      <p class="mono home__loc st">${profile.location}</p>
+      <div class="stats st">
+        ${stats.map((s) => `
+          <div class="stat">
+            <div class="stat__v"><span data-count="${s.count}">0</span>${s.suffix}</div>
+            <div class="stat__l">${s.l}</div>
+          </div>`).join('')}
+      </div>
+      <div class="home__cta st">
+        <button class="btn btn--f" data-go="projects">See the work</button>
+        <button class="btn" data-go="contact">Get in touch</button>
+        <a class="btn" href="${profile.resume}">Resume</a>
+      </div>
+    </div>
+  </section>`;
+
+/* --- about --------------------------------------------------------------- */
+const aboutView = `
+  <section class="view" id="v-about" role="tabpanel" aria-labelledby="t-about">
+    <div class="vhead"><span class="mono">02</span><h2>About</h2><span class="mono">Profile</span></div>
+    <div class="vbody scroll">
+      <p class="st" style="font-size:clamp(15px,1.7vw,19px);line-height:1.62;max-width:66ch;color:var(--txt-2)">${about}</p>
+      <div class="cards st" style="margin-top:26px">
+        <div class="card"><div class="card__t">Government delivery</div><div class="card__d">Concept note to production inside Government of India machinery — proposal, NICSI-costed infrastructure, security audit, and the finance cycle that keeps a programme funded.</div></div>
+        <div class="card"><div class="card__t">Portfolio turnaround</div><div class="card__d">Inheriting delivery that is late, over-staffed or losing money, and returning it to profit without losing the client relationship on the way.</div></div>
+        <div class="card"><div class="card__t">Technical depth</div><div class="card__d">Seven years building — blockchain architecture, MERN, mainframe automation — before programme leadership. Architecture gets reviewed, not relayed.</div></div>
+      </div>
+    </div>
+  </section>`;
+
+/* --- work / projects: shared list-and-detail ------------------------------ */
+const pickerList = (items, kind, render) => `
+  <div class="picker scroll" role="tablist" aria-orientation="vertical">
+    ${items.map((it, i) => `
+      <button class="pick" role="tab" data-kind="${kind}" data-i="${i}"
+              aria-selected="${i === 0}">${render(it)}</button>`).join('')}
+  </div>`;
+
+const workView = `
+  <section class="view" id="v-work" role="tabpanel" aria-labelledby="t-work">
+    <div class="vhead"><span class="mono">03</span><h2>Experience</h2><span class="mono">${work.length} roles</span></div>
+    <div class="vbody split">
+      ${pickerList(work, 'work', (w) => `
+        <span class="pick__t">${w.co}</span>
+        <span class="pick__m">${w.role}</span>
+        <span class="pick__s">${w.dates}</span>`)}
+      <div class="detail scroll" id="d-work"></div>
+    </div>
+  </section>`;
+
+const projectsView = `
+  <section class="view" id="v-projects" role="tabpanel" aria-labelledby="t-projects">
+    <div class="vhead"><span class="mono">04</span><h2>Selected projects</h2><span class="mono">${projects.length} projects</span></div>
+    <div class="vbody split">
+      ${pickerList(projects, 'proj', (p) => `
+        <span class="pick__t">${p.t}</span>
+        <span class="pick__m">${p.c}</span>
+        <span class="pick__s">${p.stat}</span>`)}
+      <div class="detail scroll" id="d-proj"></div>
+    </div>
+  </section>`;
+
+/* --- skills / credentials / contact --------------------------------------- */
+const skillsView = `
+  <section class="view" id="v-skills" role="tabpanel" aria-labelledby="t-skills">
+    <div class="vhead"><span class="mono">05</span><h2>Capabilities</h2><span class="mono">${skills.length} groups</span></div>
+    <div class="vbody scroll">
+      <div class="cards">
+        ${skills.map((s) => `<div class="card"><div class="card__t">${s.t}</div><div class="card__d">${s.d}</div></div>`).join('')}
+      </div>
+    </div>
+  </section>`;
+
+const credView = `
+  <section class="view" id="v-credentials" role="tabpanel" aria-labelledby="t-credentials">
+    <div class="vhead"><span class="mono">06</span><h2>Education &amp; certifications</h2><span class="mono">Credentials</span></div>
+    <div class="vbody scroll">
+      <div class="group">
+        <p class="mono group-label">Education</p>
+        <div class="cards">
+          ${education.map((e) => `<div class="card"><div class="card__t">${e.t}</div><div class="card__m">${e.m}</div><div class="card__d">${e.d}</div></div>`).join('')}
+        </div>
+      </div>
+      <div class="group">
+        <p class="mono group-label">Certifications</p>
+        <div class="cards">
+          ${certifications.map((c) => `<div class="card"><div class="card__t">${c.t}</div><div class="card__m">${c.m}</div><div class="card__d">${c.d}</div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </section>`;
+
+const contactView = `
+  <section class="view" id="v-contact" role="tabpanel" aria-labelledby="t-contact">
+    <div class="vhead"><span class="mono">07</span><h2>Get in touch</h2><span class="mono">Contact</span></div>
+    <div class="vbody contact">
+      <h3 class="st">Open to Project, Techno-Functional and Portfolio Management roles.</h3>
+      <p class="st">If you are hiring for a programme that has to work inside regulation, procurement and multiple stakeholders, that is the work I do. Happy to talk even if you are not hiring.</p>
+      <div class="clist st">
+        <a class="crow" href="mailto:${profile.email}">
+          <span class="crow__k">Email</span><span class="crow__v">${profile.email}</span><span class="crow__a">&rarr;</span></a>
+        <a class="crow" href="${profile.linkedin}" rel="me noopener">
+          <span class="crow__k">LinkedIn</span><span class="crow__v">linkedin.com/in/notrishabhjain</span><span class="crow__a">&rarr;</span></a>
+        <a class="crow" href="${profile.resume}">
+          <span class="crow__k">Resume</span><span class="crow__v">Download PDF</span><span class="crow__a">&rarr;</span></a>
+        <div class="crow" style="cursor:default">
+          <span class="crow__k">Based in</span><span class="crow__v">${profile.location}</span></div>
+      </div>
+    </div>
+  </section>`;
+
+stage.innerHTML = homeView + aboutView + workView + projectsView + skillsView + credView + contactView;
+
+/* ============================================================ detail panes == */
+
+const workDetail = (w) => `
+  <h3 class="detail__h">${w.co}</h3>
+  <p class="detail__sub">${w.role} · ${w.dates}</p>
+  <div class="meta">
+    <div><span>Location &amp; client</span>${w.meta}</div>
+  </div>
+  <div class="blk">
+    <p class="blk__h">Summary</p>
+    <p>${w.sum}</p>
+  </div>
+  <div class="blk">
+    <p class="blk__h">Highlights</p>
+    <div class="hlist">${w.hi.map((h) => `<div class="hrow">${h}</div>`).join('')}</div>
+  </div>`;
+
+const projDetail = (p) => `
+  <h3 class="detail__h">${p.t}</h3>
+  <p class="detail__sub">${p.c}</p>
+  <p class="detail__stat"><b>${p.stat}</b> — ${p.statTail}</p>
+  <div class="meta">
+    <div><span>Role</span>${p.role}</div>
+    <div><span>Period</span>${p.period}</div>
+    <div><span>Team</span>${p.team}</div>
+    <div><span>Engagement</span>${p.value}</div>
+  </div>
+  <div class="cols">
+    <div>
+      <div class="blk"><p class="blk__h">The brief</p><p>${p.brief}</p></div>
+      <div class="blk"><p class="blk__h">What made it hard</p>
+        <ul>${p.hard.map((x) => `<li>${x}</li>`).join('')}</ul></div>
+    </div>
+    <div>
+      <div class="blk"><p class="blk__h">How I ran it</p>
+        <ul>${p.how.map((x) => `<li>${x}</li>`).join('')}</ul></div>
+      <div class="blk"><p class="blk__h">What it delivered</p><p>${p.out}</p></div>
+    </div>
+  </div>`;
+
+/* Swap a detail pane with a short fade so the change is felt, not jarring. */
+function paint(node, html) {
+  node.style.opacity = '0';
+  node.innerHTML = html;
+  node.scrollTop = 0;
+  requestAnimationFrame(() => {
+    node.style.transition = 'opacity .26s var(--ease)';
+    node.style.opacity = '1';
+  });
+}
+
+const dWork = document.getElementById('d-work');
+const dProj = document.getElementById('d-proj');
+paint(dWork, workDetail(work[0]));
+paint(dProj, projDetail(projects[0]));
+
+document.querySelectorAll('.pick').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const kind = btn.dataset.kind;
+    const i = Number(btn.dataset.i);
+    document.querySelectorAll(`.pick[data-kind="${kind}"]`)
+      .forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+    if (kind === 'work') paint(dWork, workDetail(work[i]));
+    else paint(dProj, projDetail(projects[i]));
+  });
+});
+
+/* ============================================================== navigation == */
+
+const nav = document.getElementById('nav');
+const botnav = document.getElementById('botnav');
+
+nav.innerHTML = sections.map((s, i) => `
+  <button class="nav__b" id="t-${s.id}" role="tab" data-go="${s.id}" aria-controls="v-${s.id}">
+    <span class="nav__i">${String(i + 1).padStart(2, '0')}</span>
+    <span class="nav__t">${s.label}</span>
+  </button>`).join('');
+
+botnav.innerHTML = sections.map((s) => `<button data-go="${s.id}">${s.label}</button>`).join('');
+
+let current = null;
+
+function show(id, { focus = false } = {}) {
+  if (id === current) return;
+  current = id;
+  document.querySelectorAll('.view').forEach((v) => v.classList.toggle('on', v.id === `v-${id}`));
+  document.querySelectorAll('[data-go]').forEach((b) => {
+    if (b.closest('#nav') || b.closest('#botnav')) {
+      b.setAttribute('aria-current', String(b.dataset.go === id));
+    }
+  });
+  const active = document.querySelector(`#botnav button[aria-current="true"]`);
+  active?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  countUp();
+  if (focus) document.getElementById(`v-${id}`)?.focus?.();
+}
+
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-go]');
+  if (t) show(t.dataset.go);
+});
+
+/* Arrow keys move between sections; number keys jump straight to one. */
+addEventListener('keydown', (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const tag = document.activeElement?.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+  const i = sections.findIndex((s) => s.id === current);
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    e.preventDefault(); show(sections[(i + 1) % sections.length].id);
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault(); show(sections[(i - 1 + sections.length) % sections.length].id);
+  } else if (/^[1-9]$/.test(e.key) && sections[Number(e.key) - 1]) {
+    show(sections[Number(e.key) - 1].id);
+  }
+});
+
+/* ============================================================ stat counters == */
+
+let counted = false;
+function countUp() {
+  if (counted || current !== 'home') return;
+  counted = true;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-count]').forEach((el) => {
+    const target = Number(el.dataset.count);
+    if (still || !Number.isFinite(target)) { el.textContent = String(target); return; }
+    const t0 = performance.now(), dur = 900;
+    const tick = (now) => {
+      const p = Math.min((now - t0) / dur, 1);
+      el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+/* ==================================================================== theme == */
+
+const root = document.documentElement;
+const tglText = document.getElementById('tgl-t');
+
+function setTheme(next) {
+  root.dataset.theme = next;
+  if (tglText) tglText.textContent = next === 'dark' ? 'Dark' : 'Light';
+  document.querySelector('meta[name="theme-color"]')
+    ?.setAttribute('content', next === 'dark' ? '#0A0B0E' : '#FBFBFC');
+  try { localStorage.setItem('theme', next); } catch { /* preference just won't persist */ }
+}
+
+/* The head script already applied the theme; just sync the label. */
+if (tglText) tglText.textContent = root.dataset.theme === 'dark' ? 'Dark' : 'Light';
+
+['tgl', 'tgl-m'].forEach((id) => {
+  document.getElementById(id)?.addEventListener('click', () => {
+    setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+});
+
+show('home');
+</script>
+</body>
+</html>
