@@ -6,14 +6,14 @@
 <title>Rishabh Jain — Project Manager</title>
 <meta name="description" content="Project Manager with 11 years delivering digital transformation for Government of India ministries and global enterprise clients.">
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="theme-color" content="#0A0B0E">
+<meta name="theme-color" content="#191714">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Rishabh Jain — Project Manager">
 <meta property="og:description" content="Digital transformation for Government of India ministries and global enterprise clients.">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
 <script>
 /* Runs before first paint so the chosen theme never flashes. */
 (function(){
@@ -27,19 +27,20 @@
 <style>
 /* ================================================================ tokens == */
 :root{
-  --bg:#0A0B0E; --panel:#101318; --panel-2:#161A21;
-  --line:#1C212A; --line-2:#2B323D;
-  --txt:#EDEFF3; --txt-2:#A0A8B4; --mute:#6C7684;
-  --accent:#5B8CFF; --accent-ink:#05070D; --accent-soft:rgba(91,140,255,.13);
+  --bg:#191714; --panel:#211E1A; --panel-2:#282420;
+  --line:#312C26; --line-2:#443D34;
+  --txt:#F2EEE7; --txt-2:#B6AEA2; --mute:#8A8175;
+  --accent:#D08A63; --accent-ink:#1A1512; --accent-soft:rgba(208,138,99,.14);
   --sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:Newsreader,ui-serif,Georgia,serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --rail:236px; --ease:cubic-bezier(.22,.75,.28,1);
 }
 html[data-theme="light"]{
-  --bg:#FBFBFC; --panel:#FFFFFF; --panel-2:#F4F5F7;
-  --line:#E6E8EC; --line-2:#D2D7DE;
-  --txt:#0E1116; --txt-2:#454D59; --mute:#79828F;
-  --accent:#2F5FE0; --accent-ink:#FFFFFF; --accent-soft:rgba(47,95,224,.09);
+  --bg:#F7F4ED; --panel:#FCFAF6; --panel-2:#F1ECE2;
+  --line:#E3DCCF; --line-2:#CFC5B4;
+  --txt:#201C17; --txt-2:#544C42; --mute:#8A8175;
+  --accent:#B0562F; --accent-ink:#FFFFFF; --accent-soft:rgba(176,86,47,.09);
 }
 *,*::before,*::after{box-sizing:border-box}
 
@@ -66,7 +67,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   display:flex;flex-direction:column;padding:22px 0;min-height:0;
 }
 .brand{padding:0 20px 20px;border-bottom:1px solid var(--line)}
-.brand__n{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.brand__n{font-family:var(--serif);font-size:17px;font-weight:500;letter-spacing:-.01em}
 .brand__r{font-size:11px;color:var(--mute);margin-top:3px;font-family:var(--mono);letter-spacing:.08em}
 .nav{display:flex;flex-direction:column;padding:12px 10px;gap:1px;flex:1;min-height:0;overflow:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
@@ -107,7 +108,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .view.on{opacity:1;visibility:visible;pointer-events:auto;transform:none}
 .vhead{display:flex;align-items:baseline;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:22px}
-.vhead h2{margin:0;font-size:19px;font-weight:600;letter-spacing:-.015em}
+.vhead h2{margin:0;font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:-.012em}
 .vhead>.mono:last-of-type{margin-left:auto}
 .vbody{min-height:0}
 
@@ -124,15 +125,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* =================================================================== home == */
 .home{display:flex;flex-direction:column;justify-content:center;height:100%;min-height:0}
 .home h1{
-  margin:0;font-size:clamp(34px,5.2vw,62px);font-weight:700;
-  letter-spacing:-.035em;line-height:1.02;
+  margin:0;font-family:var(--serif);font-size:clamp(36px,5.4vw,66px);font-weight:400;
+  letter-spacing:-.021em;line-height:1.05;
 }
-.home h1 em{font-style:normal;color:var(--accent)}
+.home h1 em{font-style:italic;color:var(--accent)}
 .home__tag{color:var(--txt-2);font-size:clamp(14px,1.5vw,17px);margin-top:16px;max-width:52ch}
 .home__loc{margin-top:10px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px;border-radius:8px;overflow:hidden}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px;border-radius:4px;overflow:hidden}
 .stat{background:var(--bg);padding:16px 18px}
-.stat__v{font-size:clamp(19px,2.4vw,27px);font-weight:600;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.stat__v{font-family:var(--serif);font-size:clamp(22px,2.6vw,31px);font-weight:500;letter-spacing:-.018em;font-variant-numeric:tabular-nums}
 .stat__l{font-size:11.5px;color:var(--mute);margin-top:4px;line-height:1.4}
 .home__cta{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
 .btn{
@@ -163,12 +164,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .pick:hover{background:var(--panel);transform:translateX(2px)}
 .pick[aria-selected="true"]{background:var(--panel);border-color:var(--line-2)}
 .pick[aria-selected="true"]::before{transform:scaleY(1)}
-.pick__t{font-size:13px;font-weight:500;display:block;line-height:1.35}
+.pick__t{font-family:var(--serif);font-size:14.5px;font-weight:500;display:block;line-height:1.3}
 .pick__m{font-size:11px;color:var(--mute);margin-top:3px;display:block;line-height:1.35}
 .pick__s{font-family:var(--mono);font-size:10px;color:var(--accent);margin-top:5px;display:block;letter-spacing:.05em}
 
 .detail{min-height:0;padding-right:8px}
-.detail__h{font-size:20px;font-weight:600;letter-spacing:-.02em;margin:0}
+.detail__h{font-family:var(--serif);font-size:24px;font-weight:500;letter-spacing:-.015em;margin:0;line-height:1.15}
 .detail__sub{color:var(--mute);font-size:12px;margin-top:5px;font-family:var(--mono);letter-spacing:.04em}
 .detail__stat{margin-top:14px;font-size:14px;color:var(--txt-2)}
 .detail__stat b{color:var(--accent);font-weight:600}
@@ -191,11 +192,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* =================================================================== grid == */
 .cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));align-content:start}
 .card{
-  background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:16px 17px;
+  background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:16px 17px;
   transition:border-color .22s var(--ease),transform .22s var(--ease);
 }
 .card:hover{border-color:var(--line-2);transform:translateY(-2px)}
-.card__t{font-size:13.5px;font-weight:600}
+.card__t{font-family:var(--serif);font-size:15.5px;font-weight:500;letter-spacing:-.005em}
 .card__m{font-size:11.5px;color:var(--mute);margin-top:3px}
 .card__d{font-size:12.5px;color:var(--txt-2);margin-top:9px;line-height:1.5}
 .group-label{margin:0 0 10px}
@@ -203,7 +204,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ================================================================ contact == */
 .contact{display:flex;flex-direction:column;justify-content:center;height:100%;min-height:0;max-width:620px}
-.contact h3{margin:0;font-size:clamp(26px,3.6vw,40px);font-weight:600;letter-spacing:-.03em;line-height:1.08}
+.contact h3{margin:0;font-family:var(--serif);font-size:clamp(28px,3.8vw,44px);font-weight:400;letter-spacing:-.018em;line-height:1.14}
 .contact p{color:var(--txt-2);margin-top:14px;font-size:15px}
 .clist{margin-top:26px;border-top:1px solid var(--line)}
 .crow{
@@ -215,6 +216,65 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .crow__v{font-size:14px}
 .crow__a{margin-left:auto;color:var(--mute);transition:transform .24s var(--ease),color .2s}
 .crow:hover .crow__a{transform:translateX(4px);color:var(--accent)}
+
+
+/* ============================================================ line art == */
+/* Original line drawings of Rishabh's own systems. Every stroke uses
+   pathLength="1", so one dash rule drives any path regardless of geometry. */
+.ln{width:100%;height:auto;display:block;overflow:visible}
+.ln [data-draw]{
+  fill:none;stroke:var(--line-2);stroke-width:1.15;
+  stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:1;stroke-dashoffset:1;
+}
+.ln [data-draw][data-accent]{stroke:var(--accent);stroke-width:1.5}
+.ln [data-dot]{fill:var(--bg);stroke:var(--line-2);stroke-width:1.15;opacity:0}
+.ln [data-dot][data-accent]{stroke:var(--accent)}
+.ln [data-label]{
+  font-family:var(--mono);font-size:8.4px;letter-spacing:.11em;
+  text-transform:uppercase;fill:var(--mute);opacity:0;
+}
+.ln [data-label][data-accent]{fill:var(--accent)}
+
+.view.on .ln [data-draw]{animation:draw 1.25s var(--ease) forwards}
+.view.on .ln [data-dot]{animation:pop .45s var(--ease) forwards}
+.view.on .ln [data-label]{animation:fade .5s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+@keyframes fade{to{opacity:1}}
+.ln [data-dot]{transform-box:fill-box;transform-origin:center}
+
+.ln [data-d="1"]{animation-delay:.10s}
+.ln [data-d="2"]{animation-delay:.30s}
+.ln [data-d="3"]{animation-delay:.52s}
+.ln [data-d="4"]{animation-delay:.74s}
+.ln [data-d="5"]{animation-delay:.96s}
+.ln [data-d="6"]{animation-delay:1.16s}
+.ln [data-d="7"]{animation-delay:1.34s}
+
+.figure{margin-top:26px;max-width:660px}
+.figure figcaption{margin-top:12px;font-size:12px;color:var(--mute);line-height:1.5;max-width:56ch}
+@media(prefers-reduced-motion:reduce){
+  .ln [data-draw]{stroke-dashoffset:0}
+  .ln [data-dot],.ln [data-label]{opacity:1}
+}
+
+
+/* Short viewports: the Overview carries the most stacked content, so it
+   tightens rather than clipping. */
+@media(max-height:800px){
+  .figure{margin-top:16px}
+  .figure figcaption{margin-top:8px;font-size:11.5px}
+  .stats{margin-top:18px}
+  .stat{padding:12px 16px}
+  .home__tag{margin-top:12px}
+  .home__cta{margin-top:18px}
+  .view{padding-block:24px}
+}
+@media(max-height:680px){
+  .figure figcaption{display:none}
+  .home__loc{display:none}
+}
 
 /* ============================================================== responsive == */
 .topbar{display:none}
@@ -628,6 +688,67 @@ const sections = [
 const stage = document.getElementById('stage');
 const esc = (s) => String(s);
 
+
+/* The delivery arc: a concept note, two tracks run in parallel, one launch.
+   This is the argument the whole site makes, drawn in one line. */
+const artDelivery = `
+<figure class="figure">
+  <svg class="ln" viewBox="0 0 640 132" role="img" aria-labelledby="ln1t ln1d">
+    <title id="ln1t">How a government platform reaches production</title>
+    <desc id="ln1d">A concept note opens two tracks that run in parallel — the build, and
+      infrastructure approvals. Because they run together rather than end to end, both
+      finish at the same point and the platform goes live.</desc>
+
+    <path data-draw data-d="1" pathLength="1" d="M18 66 H96"/>
+    <circle data-dot data-d="1" cx="18" cy="66" r="3.4"/>
+    <text data-label data-d="1" x="10" y="52">Concept note</text>
+
+    <path data-draw data-d="2" pathLength="1" d="M96 66 C120 66 120 30 144 30 H392"/>
+    <text data-label data-d="3" x="152" y="22">Build</text>
+
+    <path data-draw data-d="2" data-accent pathLength="1" d="M96 66 C120 66 120 102 144 102 H392"/>
+    <text data-label data-d="3" data-accent x="152" y="120">Approvals, in parallel</text>
+
+    <path data-draw data-d="4" pathLength="1" d="M392 30 C416 30 416 66 440 66"/>
+    <path data-draw data-d="4" data-accent pathLength="1" d="M392 102 C416 102 416 66 440 66"/>
+    <path data-draw data-d="5" data-accent pathLength="1" d="M440 66 H568"/>
+    <path data-draw data-d="6" data-accent pathLength="1" d="M556 58 L568 66 L556 74"/>
+    <circle data-dot data-d="6" data-accent cx="440" cy="66" r="3.4"/>
+    <text data-label data-d="7" data-accent x="470" y="52">Live</text>
+  </svg>
+  <figcaption>Approvals are the long pole on almost every public-sector platform. Joined on
+    day one rather than treated as a hand-off, they finish with the build instead of after it.</figcaption>
+</figure>`;
+
+/* Three disciplines converging — the About section's whole claim. */
+const artConverge = `
+<figure class="figure">
+  <svg class="ln" viewBox="0 0 640 128" role="img" aria-labelledby="ln2t ln2d">
+    <title id="ln2t">Policy, procurement and engineering converging</title>
+    <desc id="ln2d">Three separate strands — policy, procurement and engineering — bend
+      toward a single point, where a delivered platform sits.</desc>
+
+    <path data-draw data-d="1" pathLength="1" d="M18 22 H210 C300 22 300 64 392 64"/>
+    <text data-label data-d="1" x="18" y="14">Policy intent</text>
+    <circle data-dot data-d="1" cx="18" cy="22" r="3.2"/>
+
+    <path data-draw data-d="2" pathLength="1" d="M18 64 H392"/>
+    <text data-label data-d="2" x="18" y="56">Procurement</text>
+    <circle data-dot data-d="2" cx="18" cy="64" r="3.2"/>
+
+    <path data-draw data-d="3" pathLength="1" d="M18 106 H210 C300 106 300 64 392 64"/>
+    <text data-label data-d="3" x="18" y="122">Engineering</text>
+    <circle data-dot data-d="3" cx="18" cy="106" r="3.2"/>
+
+    <path data-draw data-d="4" data-accent pathLength="1" d="M392 64 H556"/>
+    <path data-draw data-d="5" data-accent pathLength="1" d="M544 56 L556 64 L544 72"/>
+    <circle data-dot data-d="5" data-accent cx="392" cy="64" r="4.4"/>
+    <text data-label data-d="6" data-accent x="420" y="48">Something that ships</text>
+  </svg>
+  <figcaption>Most programmes stall where these three meet. Eleven years has mostly been
+    spent standing in that intersection rather than on one side of it.</figcaption>
+</figure>`;
+
 /* --- home ---------------------------------------------------------------- */
 const homeView = `
   <section class="view" id="v-home" role="tabpanel" aria-labelledby="t-home">
@@ -643,6 +764,7 @@ const homeView = `
             <div class="stat__l">${s.l}</div>
           </div>`).join('')}
       </div>
+      ${artDelivery}
       <div class="home__cta st">
         <button class="btn btn--f" data-go="projects">See the work</button>
         <button class="btn" data-go="contact">Get in touch</button>
@@ -657,6 +779,7 @@ const aboutView = `
     <div class="vhead"><span class="mono">02</span><h2>About</h2><span class="mono">Profile</span></div>
     <div class="vbody scroll">
       <p class="st" style="font-size:clamp(15px,1.7vw,19px);line-height:1.62;max-width:66ch;color:var(--txt-2)">${about}</p>
+      ${artConverge}
       <div class="cards st" style="margin-top:26px">
         <div class="card"><div class="card__t">Government delivery</div><div class="card__d">Concept note to production inside Government of India machinery — proposal, NICSI-costed infrastructure, security audit, and the finance cycle that keeps a programme funded.</div></div>
         <div class="card"><div class="card__t">Portfolio turnaround</div><div class="card__d">Inheriting delivery that is late, over-staffed or losing money, and returning it to profit without losing the client relationship on the way.</div></div>
@@ -894,7 +1017,7 @@ function setTheme(next) {
   root.dataset.theme = next;
   if (tglText) tglText.textContent = next === 'dark' ? 'Dark' : 'Light';
   document.querySelector('meta[name="theme-color"]')
-    ?.setAttribute('content', next === 'dark' ? '#0A0B0E' : '#FBFBFC');
+    ?.setAttribute('content', next === 'dark' ? '#191714' : '#F7F4ED');
   try { localStorage.setItem('theme', next); } catch { /* preference just won't persist */ }
 }
 
