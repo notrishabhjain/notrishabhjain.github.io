@@ -111,6 +111,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .vhead h2{margin:0;font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:-.012em}
 .vhead>.mono:last-of-type{margin-left:auto}
 .vbody{min-height:0}
+/* content-light panels sit optically centred; `safe` falls back to top when they overflow */
+.vbody.scroll{display:grid;grid-template-columns:minmax(0,1fr);align-content:safe center}
 
 /* staggered entrance for children of the active view */
 .view.on .st{animation:rise .5s var(--ease) both}
@@ -218,53 +220,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .crow:hover .crow__a{transform:translateX(4px);color:var(--accent)}
 
 
-/* ============================================================ line art == */
-/* Original line drawings of Rishabh's own systems. Every stroke uses
-   pathLength="1", so one dash rule drives any path regardless of geometry. */
-.ln{width:100%;height:auto;display:block;overflow:visible}
-.ln [data-draw]{
-  fill:none;stroke:var(--line-2);stroke-width:1.15;
-  stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:1;stroke-dashoffset:1;
-}
-.ln [data-draw][data-accent]{stroke:var(--accent);stroke-width:1.5}
-.ln [data-dot]{fill:var(--bg);stroke:var(--line-2);stroke-width:1.15;opacity:0}
-.ln [data-dot][data-accent]{stroke:var(--accent)}
-.ln [data-label]{
-  font-family:var(--mono);font-size:8.4px;letter-spacing:.11em;
-  text-transform:uppercase;fill:var(--mute);opacity:0;
-}
-.ln [data-label][data-accent]{fill:var(--accent)}
-
-.view.on .ln [data-draw]{animation:draw 1.25s var(--ease) forwards}
-.view.on .ln [data-dot]{animation:pop .45s var(--ease) forwards}
-.view.on .ln [data-label]{animation:fade .5s var(--ease) forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
-@keyframes fade{to{opacity:1}}
-.ln [data-dot]{transform-box:fill-box;transform-origin:center}
-
-.ln [data-d="1"]{animation-delay:.10s}
-.ln [data-d="2"]{animation-delay:.30s}
-.ln [data-d="3"]{animation-delay:.52s}
-.ln [data-d="4"]{animation-delay:.74s}
-.ln [data-d="5"]{animation-delay:.96s}
-.ln [data-d="6"]{animation-delay:1.16s}
-.ln [data-d="7"]{animation-delay:1.34s}
-
-.figure{margin-top:26px;max-width:660px}
-.figure figcaption{margin-top:12px;font-size:12px;color:var(--mute);line-height:1.5;max-width:56ch}
-@media(prefers-reduced-motion:reduce){
-  .ln [data-draw]{stroke-dashoffset:0}
-  .ln [data-dot],.ln [data-label]{opacity:1}
-}
-
-
 /* Short viewports: the Overview carries the most stacked content, so it
    tightens rather than clipping. */
 @media(max-height:800px){
-  .figure{margin-top:16px}
-  .figure figcaption{margin-top:8px;font-size:11.5px}
   .stats{margin-top:18px}
   .stat{padding:12px 16px}
   .home__tag{margin-top:12px}
@@ -272,7 +230,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .view{padding-block:24px}
 }
 @media(max-height:680px){
-  .figure figcaption{display:none}
   .home__loc{display:none}
 }
 
@@ -689,66 +646,6 @@ const stage = document.getElementById('stage');
 const esc = (s) => String(s);
 
 
-/* The delivery arc: a concept note, two tracks run in parallel, one launch.
-   This is the argument the whole site makes, drawn in one line. */
-const artDelivery = `
-<figure class="figure">
-  <svg class="ln" viewBox="0 0 640 132" role="img" aria-labelledby="ln1t ln1d">
-    <title id="ln1t">How a government platform reaches production</title>
-    <desc id="ln1d">A concept note opens two tracks that run in parallel — the build, and
-      infrastructure approvals. Because they run together rather than end to end, both
-      finish at the same point and the platform goes live.</desc>
-
-    <path data-draw data-d="1" pathLength="1" d="M18 66 H96"/>
-    <circle data-dot data-d="1" cx="18" cy="66" r="3.4"/>
-    <text data-label data-d="1" x="10" y="52">Concept note</text>
-
-    <path data-draw data-d="2" pathLength="1" d="M96 66 C120 66 120 30 144 30 H392"/>
-    <text data-label data-d="3" x="152" y="22">Build</text>
-
-    <path data-draw data-d="2" data-accent pathLength="1" d="M96 66 C120 66 120 102 144 102 H392"/>
-    <text data-label data-d="3" data-accent x="152" y="120">Approvals, in parallel</text>
-
-    <path data-draw data-d="4" pathLength="1" d="M392 30 C416 30 416 66 440 66"/>
-    <path data-draw data-d="4" data-accent pathLength="1" d="M392 102 C416 102 416 66 440 66"/>
-    <path data-draw data-d="5" data-accent pathLength="1" d="M440 66 H568"/>
-    <path data-draw data-d="6" data-accent pathLength="1" d="M556 58 L568 66 L556 74"/>
-    <circle data-dot data-d="6" data-accent cx="440" cy="66" r="3.4"/>
-    <text data-label data-d="7" data-accent x="470" y="52">Live</text>
-  </svg>
-  <figcaption>Approvals are the long pole on almost every public-sector platform. Joined on
-    day one rather than treated as a hand-off, they finish with the build instead of after it.</figcaption>
-</figure>`;
-
-/* Three disciplines converging — the About section's whole claim. */
-const artConverge = `
-<figure class="figure">
-  <svg class="ln" viewBox="0 0 640 128" role="img" aria-labelledby="ln2t ln2d">
-    <title id="ln2t">Policy, procurement and engineering converging</title>
-    <desc id="ln2d">Three separate strands — policy, procurement and engineering — bend
-      toward a single point, where a delivered platform sits.</desc>
-
-    <path data-draw data-d="1" pathLength="1" d="M18 22 H210 C300 22 300 64 392 64"/>
-    <text data-label data-d="1" x="18" y="14">Policy intent</text>
-    <circle data-dot data-d="1" cx="18" cy="22" r="3.2"/>
-
-    <path data-draw data-d="2" pathLength="1" d="M18 64 H392"/>
-    <text data-label data-d="2" x="18" y="56">Procurement</text>
-    <circle data-dot data-d="2" cx="18" cy="64" r="3.2"/>
-
-    <path data-draw data-d="3" pathLength="1" d="M18 106 H210 C300 106 300 64 392 64"/>
-    <text data-label data-d="3" x="18" y="122">Engineering</text>
-    <circle data-dot data-d="3" cx="18" cy="106" r="3.2"/>
-
-    <path data-draw data-d="4" data-accent pathLength="1" d="M392 64 H556"/>
-    <path data-draw data-d="5" data-accent pathLength="1" d="M544 56 L556 64 L544 72"/>
-    <circle data-dot data-d="5" data-accent cx="392" cy="64" r="4.4"/>
-    <text data-label data-d="6" data-accent x="420" y="48">Something that ships</text>
-  </svg>
-  <figcaption>Most programmes stall where these three meet. Eleven years has mostly been
-    spent standing in that intersection rather than on one side of it.</figcaption>
-</figure>`;
-
 /* --- home ---------------------------------------------------------------- */
 const homeView = `
   <section class="view" id="v-home" role="tabpanel" aria-labelledby="t-home">
@@ -764,7 +661,6 @@ const homeView = `
             <div class="stat__l">${s.l}</div>
           </div>`).join('')}
       </div>
-      ${artDelivery}
       <div class="home__cta st">
         <button class="btn btn--f" data-go="projects">See the work</button>
         <button class="btn" data-go="contact">Get in touch</button>
@@ -779,7 +675,6 @@ const aboutView = `
     <div class="vhead"><span class="mono">02</span><h2>About</h2><span class="mono">Profile</span></div>
     <div class="vbody scroll">
       <p class="st" style="font-size:clamp(15px,1.7vw,19px);line-height:1.62;max-width:66ch;color:var(--txt-2)">${about}</p>
-      ${artConverge}
       <div class="cards st" style="margin-top:26px">
         <div class="card"><div class="card__t">Government delivery</div><div class="card__d">Concept note to production inside Government of India machinery — proposal, NICSI-costed infrastructure, security audit, and the finance cycle that keeps a programme funded.</div></div>
         <div class="card"><div class="card__t">Portfolio turnaround</div><div class="card__d">Inheriting delivery that is late, over-staffed or losing money, and returning it to profit without losing the client relationship on the way.</div></div>
