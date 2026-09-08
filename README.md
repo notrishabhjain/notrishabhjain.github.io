@@ -1,48 +1,44 @@
 # notrishabhjain.github.io
 
-Personal site for Rishabh Jain — Program & Portfolio Manager. Astro, no client-side
-framework, deployed to GitHub Pages via Actions.
+Personal portfolio for Rishabh Jain — Project Manager.
 
-## Running it
+## What this is
 
-```bash
-npm install
-npm run dev      # local dev server
-npm run build    # static build into dist/
-npm run preview  # serve the built output
-```
+**One file: `index.html`.** Vanilla HTML, CSS and JavaScript. No build step, no
+dependencies, no `node_modules`. The only external request is a Google Fonts
+stylesheet for Inter.
 
-## Where the content lives
+To work on it, open `index.html` in a browser. That is the whole loop.
 
-| What | Where |
+## Editing content
+
+All copy lives in JavaScript arrays near the top of the `<script>` block:
+
+| Array | Section |
 |---|---|
-| Case studies | `content/case-studies/*.md` |
-| Everything else on the page | `src/data/site.ts` |
-| Resume | `src/data/resume.ts` |
-| Open questions | `content/REVIEW.md` |
+| `work` | Six role cards |
+| `projects` | Nine collapsible case studies |
+| `education`, `certifications`, `skills` | The card grids |
+| `navItems` | The floating nav |
 
-## Regenerating the resume PDF
+The markup renders itself from those arrays, so adding a role or a project means
+adding an object — not touching HTML. The `about` paragraph and the header sit
+directly in the markup.
 
-`/resume` is the source of truth; the PDF is printed from that page so the download can
-never drift from what the site says.
+Highlight strings accept inline `<b>` for emphasis. Per the content rules: put
+the emphasis on the number, not the verb.
 
-```bash
-npm run build && npm run resume:pdf && npm run build
-```
+## Deployment
 
-The second build copies the refreshed PDF from `public/files/` into `dist/`. Set
-`CHROMIUM_PATH` if Playwright's bundled Chromium isn't available in your environment.
+Pushing to `master` publishes the repository to GitHub Pages via
+`.github/workflows/deploy.yml`. The workflow does not build anything — it uploads
+the repo and deploys it.
 
-The `.docx` in `public/files/` is generated separately and is the version to upload to
-applicant tracking systems, which parse Word more reliably than PDF.
+Because Pages is set to the "GitHub Actions" source, that workflow is what serves
+the site. If you ever switch Pages to "Deploy from a branch", the same
+`index.html` at the repository root will serve correctly too.
 
-## Deployment — one setting you must change
+## Other files
 
-The workflow in `.github/workflows/deploy.yml` builds on every push to `master` and
-publishes `dist/`. It only takes effect once Pages is switched over:
-
-Pages is set to **GitHub Actions** as its source, so every push to `master` rebuilds and
-publishes the site. Nothing is served from the repository root any more.
-
-If Pages is ever switched back to "Deploy from a branch", the site will 404 — the old
-static files that used to serve from the root have been removed.
+- `files/` — resume downloads, kept at a stable path so older links still resolve
+- `favicon.png`, `robots.txt`

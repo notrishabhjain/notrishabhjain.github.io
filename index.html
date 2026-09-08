@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rishabh Jain — Project Manager</title>
+<meta name="description" content="Project Manager with 11 years delivering digital transformation for Government of India ministries and global enterprise clients.">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Rishabh Jain — Project Manager">
+<meta property="og:description" content="Digital transformation for Government of India ministries and global enterprise clients.">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#F4F4F5; --card-in:#FAFAFA;
+  --text:#18181B; --text-2:#3F3F46; --mute:#71717A;
+  --line:#E4E4E7; --line-2:#D4D4D8;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:620px;margin:0 auto;padding:56px 24px 90px}
+p{margin:0}
+a{color:inherit}
+
+/* ---------------------------------------------------------------- header */
+.hdr-top{display:flex;align-items:flex-start;gap:16px;justify-content:space-between}
+h1{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;line-height:1.2;margin:0}
+.tagline{color:var(--text-2);font-size:.9rem;margin-top:8px}
+.loc{color:var(--mute);font-size:.82rem;margin-top:6px}
+.icons{display:flex;gap:8px;flex:none}
+.icons a{
+  width:34px;height:34px;border-radius:8px;background:var(--text);
+  display:grid;place-items:center;transition:opacity .18s ease;
+}
+.icons a:hover{opacity:.78}
+.icons svg{width:16px;height:16px;fill:#fff}
+
+/* -------------------------------------------------------------- sections */
+section{margin-top:44px;scroll-margin-top:24px}
+h2{font-size:.95rem;font-weight:600;margin:0 0 14px}
+.card{background:var(--card);border-radius:8px;padding:18px 20px;margin-bottom:12px}
+.card:last-child{margin-bottom:0}
+.about{color:var(--text-2);font-size:.9rem}
+
+/* ------------------------------------------------------------------ work */
+.w-head{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}
+.w-co{font-size:.95rem;font-weight:600}
+.w-role{font-size:.95rem;font-weight:600;color:var(--text-2)}
+.w-meta{color:var(--mute);font-size:.82rem;margin-top:4px}
+.w-dates{color:var(--mute);font-size:.82rem;margin-top:2px;font-variant-numeric:tabular-nums}
+.lbl{
+  font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mute);margin:14px 0 6px
+}
+.w-sum{color:var(--text-2);font-size:.86rem}
+.hbox{background:var(--card-in);border:1px solid var(--line);border-radius:8px;padding:2px 14px}
+.hrow{padding:11px 0;border-bottom:1px solid var(--line);color:var(--text-2);font-size:.85rem}
+.hrow:last-child{border-bottom:0}
+.hrow b{font-weight:600;color:var(--text)}
+
+/* -------------------------------------------------------------- projects */
+.p-card{background:var(--card);border-radius:8px;margin-bottom:12px;overflow:hidden}
+.p-head{
+  width:100%;background:none;border:0;text-align:left;cursor:pointer;
+  padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+  font:inherit;color:inherit;transition:background-color .18s ease;
+}
+.p-head:hover{background:#EDEDEF}
+.p-head:focus-visible{outline:2px solid var(--text);outline-offset:-2px}
+.chev{flex:none;margin-top:3px;color:var(--mute);transition:transform .24s ease}
+.p-card.open .chev{transform:rotate(90deg)}
+.p-t{display:block;font-size:.95rem;font-weight:600}
+.p-c{display:block;color:var(--mute);font-size:.82rem;margin-top:3px}
+.p-stat{display:block;margin-top:8px;font-size:.85rem;color:var(--text-2)}
+.p-stat b{font-weight:700;color:var(--text)}
+.p-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+.p-card.open .p-body{grid-template-rows:1fr}
+.p-body>div{overflow:hidden}
+.p-inner{padding:0 20px 18px}
+.p-meta{
+  display:flex;flex-wrap:wrap;gap:6px 18px;padding:12px 0 2px;
+  border-top:1px solid var(--line-2);color:var(--mute);font-size:.78rem
+}
+.p-meta b{color:var(--text-2);font-weight:500}
+.p-h{font-size:.8rem;font-weight:600;margin:16px 0 6px}
+.p-p{color:var(--text-2);font-size:.85rem}
+.p-list{margin:0;padding-left:18px;color:var(--text-2);font-size:.85rem}
+.p-list li{margin-bottom:6px}
+.p-list li:last-child{margin-bottom:0}
+
+/* ------------------------------------------------------------------ grid */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid2 .card{margin-bottom:0}
+@media(max-width:560px){.grid2{grid-template-columns:1fr}}
+.c-t{font-size:.92rem;font-weight:600}
+.c-m{color:var(--mute);font-size:.82rem;margin-top:3px}
+.c-d{color:var(--text-2);font-size:.84rem;margin-top:8px}
+
+/* ------------------------------------------------------------------- nav */
+.nav{
+  position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:20;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  padding:5px;display:flex;gap:2px;max-width:calc(100vw - 32px);
+  overflow-x:auto;scrollbar-width:none;
+}
+.nav::-webkit-scrollbar{display:none}
+.nav button{
+  font:inherit;font-size:.8rem;font-weight:500;color:var(--mute);
+  background:none;border:0;border-radius:999px;padding:7px 13px;
+  cursor:pointer;white-space:nowrap;transition:background-color .18s ease,color .18s ease;
+}
+.nav button:hover{background:var(--card);color:var(--text-2)}
+.nav button[aria-current="true"]{background:var(--text);color:#fff}
+
+/* ---------------------------------------------------------------- motion */
+.rv{opacity:0;transform:translateY(8px)}
+.rv.in{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv,.rv.in{opacity:1;transform:none;transition:none}
+  .p-body{transition:none}
+  .chev{transition:none}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="hdr-top">
+    <div>
+      <h1>Rishabh Jain</h1>
+      <p class="tagline">Project Manager | Techno-Functional PM &amp; Portfolio Manager | Government &amp; Enterprise Digital Transformation</p>
+      <p class="loc">Pune, IN.</p>
+    </div>
+    <div class="icons">
+      <a href="mailto:rishabh.jain@outlook.in" aria-label="Email Rishabh Jain">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.2-8 5-8-5V6l8 5 8-5v2.2Z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/notrishabhjain/" aria-label="LinkedIn profile" rel="me noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.75-1.95C21.6 8.75 22 11 22 14v7h-4v-6.2c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21h-4V9Z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <section id="about" class="rv">
+    <h2>About</h2>
+    <div class="card about">
+      Project Manager with 11 years delivering digital transformation for Government of India
+      ministries and global enterprise clients. Runs the full delivery surface — team, client,
+      commercials, technology and governance — across portfolios valued at $2M+ annually and
+      national platforms delivered under formal government work orders. Track record includes
+      taking a paper-only national office to a platform serving 40M+ citizens, turning a
+      loss-making $2M+ business unit net-positive in six months, and shipping two national
+      platforms into production under fixed regulatory deadlines. Seven years as a hands-on
+      engineer and blockchain architect before moving into programme leadership, which means
+      architecture gets reviewed firsthand rather than relayed.
+    </div>
+  </section>
+
+  <section id="work"><h2 class="rv">Work</h2><div id="work-list"></div></section>
+  <section id="projects"><h2 class="rv">Projects</h2><div id="project-list"></div></section>
+  <section id="education"><h2 class="rv">Education</h2><div id="edu-list"></div></section>
+  <section id="certifications"><h2 class="rv">Certifications</h2><div class="grid2" id="cert-list"></div></section>
+  <section id="skills"><h2 class="rv">Skills</h2><div class="grid2" id="skill-list"></div></section>
+
+</main>
+
+<nav class="nav" id="nav" aria-label="Sections"></nav>
+
+<script>
+/* ============================================================== content ==
+   All copy lives in these arrays. Edit here; the markup renders itself.
+   Content rules: impact leads and method follows; the number carries the
+   emphasis, not the verb; institution-level client names only.
+   ======================================================================== */
+
+const work = [
+  {
+    co: "BDO India", role: "Manager, Digital Transformation",
+    meta: "New Delhi, India · Client: National e-Governance Division (NeGD), MeitY",
+    dates: "Jan 2026 → Present",
+    sum: "Sole point of accountability to a ministry-level client for two concurrent national platforms delivered under formal government work orders, leading a team of 8 across internal delivery and external agency counterparts.",
+    hi: [
+      "Authored the winning proposal for the 8th Central Pay Commission engagement — <b>scope, architecture, costing, risk model and roadmap</b> — then delivered against it rather than handing it off after sign-off.",
+      "Compressed an <b>eight-module national system of record into roughly a four-week window</b> with a seven-person team by running parallel module streams, meeting a Commission tenure that could not be extended.",
+      "Defined the business logic engineering builds against — demand as sole reporting unit, referral routing, three closure types, archive reinstatement rules — removing workflow ambiguity before it reached the development team.",
+      "Cleared independent VAPT and SAST security review on the green hydrogen certification registry with <b>48 of 51 findings closed</b> pre-launch, and secured the Pay Commission platform's audit certificate with <b>zero re-audit cycles</b> by running audit and remediation in parallel.",
+      "Kept both programmes funded through government finance machinery — utilisation certificates, ministry demand letters, and GFR-compliant milestone billing tied to defined payment gates.",
+      "Introduced AI tooling across the delivery lifecycle with a tracked usage log, one of the earlier structured AI-adoption efforts inside a government programme."
+    ]
+  },
+  {
+    co: "Infosys", role: "Project Manager",
+    meta: "Pune, India · Client: GE Vernova (renewable energy)",
+    dates: "Nov 2024 → Jan 2026",
+    sum: "Owned a $2M+/year multi-year application portfolio and a 35-person delivery organisation, inheriting a loss-making business unit and returning it to profit within six months.",
+    hi: [
+      "Turned a loss-making <b>$2M+/year portfolio net-positive within six months</b> through SOP standardisation and team right-sizing — the largest financial turnaround on the account.",
+      "Held <b>99.9% SLA compliance</b> across ~50–55 applications, several mission-critical, serving wind hardware deployed globally under genuine 24×7 operational requirements.",
+      "Ran Product Owner and Scrum Master roles simultaneously across a <b>20-person core delivery team and a 15-person L1.5 support layer</b> triaging tickets for roughly 800 applications account-wide.",
+      "Cut <b>MTTR from four days to under twelve hours</b> by leading repository migration and deployment automation as a technical transition programme.",
+      "Rebuilt a damaged CIO-level client relationship through structured reporting cadence and formal escalation governance in place of ad hoc updates.",
+      "Drove incident-routing automation that measurably reduced team workload, with the team earning multiple internal awards on the back of the improvement."
+    ]
+  },
+  {
+    co: "EY India", role: "Senior Consultant, Government",
+    meta: "Delhi, India · Ministry of Cooperation, MeitY/NeGD, Bureau of Immigration",
+    dates: "Apr 2022 → Nov 2024",
+    sum: "Delivered four national Government of India platform engagements across two ministries, spanning business process re-engineering, DPR and RFP authorship, vendor selection and ministry-side development oversight.",
+    hi: [
+      "Took the Central Registrar of Cooperative Societies from an <b>entirely paper-based office to a live national platform now serving ~40 million members</b> across 1,500–1,800 cooperative societies.",
+      "<b>Proposed legal and regulatory amendments that were subsequently enacted</b> — the actual blocker to digitisation was the statutory framework, not the technology.",
+      "Authored DPRs and RFPs, ran vendor selection, and held ministry-side development oversight against scope, ensuring the platform delivered matched the platform specified.",
+      "Standardised <b>80+ ministry and department websites</b> onto a common framework covering certification, security audit and shared information architecture.",
+      "Co-built a <b>150+ parameter national website ranking framework</b> with IIT Delhi and an IIM, calibrated against G20 peer governments — now operated nationally by NeSDA and published for open adoption.",
+      "Led UX and process re-engineering for the national visa and foreigner-tracking system revamp, implemented across airports, land ports, seaports and postal checkpoints.",
+      "Worked scope decisions, approvals and progress reviews <b>directly with Secretaries and Additional Secretaries</b>."
+    ]
+  },
+  {
+    co: "UST Global", role: "Software Engineering Lead, Blockchain Architect",
+    meta: "Noida, India · Client: EYGDS",
+    dates: "Jun 2021 → Apr 2022",
+    sum: "Owned product vision and built Skillchain end-to-end — a blockchain credentialing platform taken from concept to production-grade rollout and adopted company-wide.",
+    hi: [
+      "<b>Designed and built the entire platform single-handedly</b>, recording employee skills and qualifications on blockchain so background verification travels with the employee between companies.",
+      "Took it from concept through to <b>production-grade rollout with company-wide adoption</b>, including token-based issuance for employee certifications.",
+      "Ran user research and adoption feedback loops alongside the build, treating adoption as a design problem rather than a rollout afterthought — the difference between a POC and a product.",
+      "Contributed to an internal digital twin initiative exploring metaverse-usable employee representations as a prospective new product line."
+    ]
+  },
+  {
+    co: "ValueCoders Services LLP", role: "Blockchain &amp; Backend Developer",
+    meta: "Noida, India · Multiple client engagements",
+    dates: "Jun 2020 → Jun 2021",
+    sum: "Delivered blockchain and backend engineering across three regulated domains — cryptocurrency exchange platforms, document management systems, and civil/property registry applications.",
+    hi: [
+      "Built <b>cryptocurrency exchange</b> components handling transaction flow and settlement logic.",
+      "Delivered <b>document management systems</b> with blockchain-backed integrity and verifiable audit trails.",
+      "Engineered applications in the <b>civil and property registry</b> domain, where record integrity is the entire product proposition.",
+      "Ran API-level requirement analysis, solution design and performance improvement cycles across all three engagements."
+    ]
+  },
+  {
+    co: "Tata Consultancy Services", role: "IT Analyst",
+    meta: "Gurugram, India · UK-based BFSI client, then TCS blockchain/licenses labs",
+    dates: "Oct 2015 → May 2020",
+    sum: "Delivered mainframe support, development and automation for a UK BFSI client before moving into the licenses domain as a blockchain developer building enterprise proofs of concept.",
+    hi: [
+      "Built mainframe automation generating <b>approximately £200,000 in client savings</b> — the first time delivery work of mine appeared directly on a client's P&amp;L.",
+      "Automated reporting workflows saving the team <b>20+ man-hours weekly</b>, and optimised dispute resolution processes to <b>cut reported defects by 40%</b>.",
+      "Moved into the licenses domain in 2017 as a blockchain developer, building <b>multiple Ethereum and Hyperledger Fabric proofs of concept</b> with no internal playbook to work from.",
+      "Several builds <b>reached production or were adopted internally</b> within TCS's blockchain labs."
+    ]
+  }
+];
+
+const projects = [
+  {
+    t: "8th CPC Demand Management System",
+    c: "8th Central Pay Commission, Government of India",
+    stat: "50,000+ demands",
+    statTail: "pulled out of spreadsheets and physical files into one auditable system of record",
+    role: "Project Manager — BDO India",
+    period: "Jan 2026 – Present",
+    team: "~7-person delivery team",
+    value: "Government work order",
+    brief: "Build a digital system of record for the 8th Central Pay Commission's entire memorandum lifecycle — intake, structured demand creation, evidence-backed examination, ministry referral, multi-officer review, and placement before the Commission. The Commission operates on a fixed, non-extendable tenure and had no audit trail in place.",
+    hard: [
+      "A body making decisions affecting national compensation policy was screening memoranda on forms, spreadsheets and physical files — no de-duplication, no evidence trail, no consolidated view, and no way to defend how any conclusion was reached.",
+      "Roughly a one-month window to design, build and launch an eight-module system eventually handling ~50,000 demands and ~100GB of evidence documents, with a seven-person team.",
+      "Government financial governance — GFR-compliant milestone billing and utilisation certificates — layered over a build moving at startup pace."
+    ],
+    how: [
+      "Authored the full proposal: scope, architecture, costing, risk model and roadmap, structured against milestone-based billing tied to three defined payment gates.",
+      "Ran parallel module streams rather than a sequential plan — the only structure that fit an eight-module workflow into the available window.",
+      "Defined the domain logic engineering builds against: demand as sole reporting unit, referral routing to last-held officer, three closure types, archive reinstatement rules.",
+      "Ran comparative vendor selection for infrastructure and coordinated third-party VAPT security audit procurement end to end.",
+      "Surfaced source data quality gaps as a visible reporting category rather than absorbing them silently."
+    ],
+    out: "An ungoverned paper-and-spreadsheet process is now an auditable system of record with role-based access across four officer roles and a complete evidence and decision trail. The eight-module build landed in roughly four weeks. Groundwork for an AI-enabled Phase 2 was laid by initiating a GPU compute request through the India AI Mission."
+  },
+  {
+    t: "GHCI Digital Portal",
+    c: "Ministry of New &amp; Renewable Energy (MNRE)",
+    stat: "One of India's first",
+    statTail: "digital green hydrogen certification registries — regulatory rules automated end to end",
+    role: "Project Manager — BDO India",
+    period: "Dec 2025 – Present",
+    team: "Tech lead, senior dev, QA, DevOps, UI/UX, 2 developers",
+    value: "Government work order",
+    brief: "Deliver the Green Hydrogen Certification Scheme of India digital registry — the national platform through which producers, verification agencies and technical committees process green hydrogen certification, built under a formal government work order.",
+    hard: [
+      "Regulatory logic had to live inside the system rather than in a policy document beside it: four certificate types, a hard emissions threshold, a formula-driven fee structure, and an engine that automatically withdraws issued certificates when a final result breaches threshold.",
+      "Two separate government-grade signing paths — Aadhaar eSign and Digital Signature Certificate — across every form in the workflow.",
+      "A compliance mandate landed mid-project requiring the platform's entire design standard to change, with a full rebuild as the obvious but costly answer.",
+      "Security had to clear an independently audited bar before launch, not a self-certified checklist."
+    ],
+    how: [
+      "Led design and delivery across an eight-module workflow with full accessibility- and government-design-compliant specifications.",
+      "Ran a gap assessment on the new design standard and built a phased transition against a three-month deadline instead of accepting a disruptive rebuild.",
+      "Authored the certificate versioning specification from first principles — how an issued certificate is amended or superseded without breaking its audit trail.",
+      "Built the UAT framework from nothing: 12 use case documents and a 39-case test workbook across 8 modules.",
+      "Coordinated independent VAPT and SAST audits through to a passing remediation score, and drove the finance cycle keeping both phases funded."
+    ],
+    out: "Phase 1 delivered on schedule and live in production. Independent security review closed 48 of 51 findings before launch. Phase 2 — blockchain certificate anchoring, AI-assisted review, analytics and an API ecosystem — is in active procurement across six modules under a GFR-compliant tender."
+  },
+  {
+    t: "GE Vernova Wind Application Portfolio",
+    c: "GE Vernova",
+    stat: "6 months",
+    statTail: "to turn a loss-making $2M+/year portfolio net-positive — the largest turnaround on the account",
+    role: "Project Manager / Product Owner / Scrum Master — Infosys",
+    period: "Nov 2024 – Jan 2026",
+    team: "35 (20 core + 15 support)",
+    value: "$2M+/year, multi-year",
+    brief: "Own product and delivery for ~50–55 support and enhancement applications inside a multi-year onshore and offshore wind development programme, while running a 35-person delivery and support organisation.",
+    hard: [
+      "Inherited a business unit that was losing money, with no standardisation across the portfolio.",
+      "Applications were mission-critical, serving wind hardware deployed across globally distributed sites — 24×7 uptime was an operational reality, not a target.",
+      "A support layer triaging tickets for roughly 800 applications account-wide, with routing decisions made inconsistently."
+    ],
+    how: [
+      "Standardised SOPs across the portfolio and right-sized the team structure rather than absorbing the loss.",
+      "Split the organisation cleanly between a 20-person core delivery team and a 15-person L1.5 layer with defined routing rules.",
+      "Drove automation into incident routing and resolution to remove manual load from the support layer.",
+      "Led repository migration and deployment automation as a technical transition programme."
+    ],
+    out: "Business unit net-positive within six months. 99.9% SLA compliance held across the portfolio. MTTR cut from four days to under twelve hours. Automation-driven performance gains earned the team multiple internal awards."
+  },
+  {
+    t: "CRCS Portal",
+    c: "Ministry of Cooperation",
+    stat: "40 million+",
+    statTail: "citizens served by a platform that replaced an office running entirely on paper",
+    role: "Senior Consultant — EY India",
+    period: "2022 – 2024",
+    team: "Ministry-side delivery oversight",
+    value: "National programme",
+    brief: "Digitise the Central Registrar of Cooperative Societies — a fully paper-based, offline national office — into a modern platform, starting from first principles.",
+    hard: [
+      "The office ran on paper end to end, and the legal framework itself blocked digitisation. No amount of good system design would have resolved that.",
+      "1,500+ societies and roughly 40 million members meant the platform had to work at national scale on day one rather than scale into it."
+    ],
+    how: [
+      "Ran a Business Process Re-engineering study across the office's full operations before designing anything.",
+      "Proposed the legal and regulatory amendments that were subsequently enacted, clearing the actual blocker rather than working around it.",
+      "Authored the DPR and RFP, selected the delivery vendor, and held ministry-side oversight against scope through delivery.",
+      "Rolled out module by module starting with Registration, instead of betting on a single launch."
+    ],
+    out: "The office is fully paperless. The platform serves ~1,500–1,800 cooperative societies and roughly 40 million members, still growing. The same architecture was later extended to build a national refund-processing platform."
+  },
+  {
+    t: "National Website Benchmarking Framework",
+    c: "NeGD / MeitY — now operated by NeSDA",
+    stat: "80+ ministries",
+    statTail: "standardised under one framework that now sets the national measurement bar",
+    role: "Senior Consultant — EY India",
+    period: "2022 – 2024",
+    team: "Cross-institutional with IIT Delhi and an IIM",
+    value: "National programme",
+    brief: "Bring 80+ fragmented Government of India ministry and department websites onto a shared technical and content standard, then build the framework that measures and ranks them.",
+    hard: [
+      "80+ departments each running different technology, different security postures, and no shared information architecture — a fragmented national digital footprint with no consistent way to assess it."
+    ],
+    how: [
+      "Drove standardisation across certification, security audit and common information architecture for 80+ departments.",
+      "Co-built a 150+ parameter ranking framework with IIT Delhi and an IIM covering content quality, security, accessibility and citizen engagement.",
+      "Calibrated it by benchmarking Indian government websites against G20 peer governments."
+    ],
+    out: "The framework is operated by NeSDA for ongoing national website ranking and improvement, and published publicly for independent adoption — measurement infrastructure that outlived the engagement itself."
+  },
+  {
+    t: "IVFRT 2.0 — Visa &amp; Immigration Systems",
+    c: "Ministry of Home Affairs / Bureau of Immigration",
+    stat: "4 checkpoint types",
+    statTail: "airports, land ports, seaports and postal — modernised under one national system",
+    role: "Senior Consultant — EY India",
+    period: "2022 – 2024",
+    team: "Cross-agency",
+    value: "National programme",
+    brief: "Revamp India's Immigration, Visa, Foreigners Registration and Tracking system, covering foreigner inflow, registration processes and checkpoint verification.",
+    hard: [
+      "A legacy national system needed a full UX and process overhaul across checkpoint types with genuinely different operational realities — an airport desk and a land port do not work the same way."
+    ],
+    how: [
+      "Led UI/UX and process re-engineering across the system.",
+      "Built flow diagrams and ran structured testing ahead of implementation.",
+      "Presented through every approval level to secure sign-off — in government delivery, the approval path is part of the plan."
+    ],
+    out: "Implemented across immigration checkpoints, postal services, land ports and seaports nationally."
+  },
+  {
+    t: "National Portal of India v2.2",
+    c: "Government of India",
+    stat: "5 sources unified",
+    statTail: "disconnected national information sources brought behind one citizen-facing interface",
+    role: "Senior Consultant — EY India",
+    period: "2022 – 2024",
+    team: "Vendor-delivered, EY-scoped",
+    value: "National programme",
+    brief: "Design a next-generation National Portal of India consolidating multiple disconnected information sources into a single citizen-facing platform.",
+    hard: [
+      "National information scattered across separate legacy sources — directories, services, media, tourism — with no shared integration strategy and no single front door for citizens."
+    ],
+    how: [
+      "Authored the DPR and RFP defining integration scope and platform architecture.",
+      "Ran vendor selection and onboarding.",
+      "Defined the strategy for bringing structurally different sources onto one interface."
+    ],
+    out: "Vendor onboarded and development initiated under the scope and architecture defined for the programme."
+  },
+  {
+    t: "Skillchain",
+    c: "UST Global (internal, for EYGDS)",
+    stat: "One engineer",
+    statTail: "one production blockchain platform, adopted across the entire company",
+    role: "Software Engineering Lead, Blockchain Architect",
+    period: "2021 – 2022",
+    team: "Built single-handedly",
+    value: "Internal product",
+    brief: "Build a blockchain platform recording employee skills and qualifications so that background verification becomes portable — travelling with the employee rather than being rebuilt at every company move.",
+    hard: [
+      "No internal blockchain infrastructure existed to build on. The platform had to be designed, built and made adoptable by one person.",
+      "Enterprise blockchain projects typically die as technically-correct proofs of concept nobody uses."
+    ],
+    how: [
+      "Designed and built the full platform independently, including token-based issuance for employee certifications.",
+      "Ran user research and adoption feedback loops in parallel with the build, treating adoption as a design problem rather than a rollout problem.",
+      "Took it through to production-grade rather than stopping at demonstration."
+    ],
+    out: "Adopted company-wide, with employees earning verifiable blockchain-recorded certifications — a proof of concept that became infrastructure."
+  },
+  {
+    t: "Mainframe Automation &amp; Enterprise Blockchain",
+    c: "TCS — UK BFSI client, then internal labs",
+    stat: "£200,000",
+    statTail: "in client savings from automation, before moving into blockchain engineering",
+    role: "IT Analyst — Tata Consultancy Services",
+    period: "2015 – 2020",
+    team: "Individual contributor",
+    value: "Enterprise BFSI",
+    brief: "Deliver mainframe support and development for a UK-based BFSI client, then move into building blockchain proofs of concept inside TCS's licenses domain.",
+    hard: [
+      "Manual, repetitive mainframe processes carrying real recurring cost for the client.",
+      "Proving enterprise blockchain viability inside a large organisation with no internal playbook and no precedent to point at."
+    ],
+    how: [
+      "Built automation to remove manual, repetitive work — and quantified the saving rather than assuming it.",
+      "Automated reporting workflows and optimised dispute resolution processes.",
+      "Shifted into the licenses domain as a blockchain developer, building multiple Ethereum and Hyperledger Fabric proofs of concept."
+    ],
+    out: "Approximately £200,000 in client savings, 20+ man-hours saved weekly through reporting automation, and a 40% reduction in reported defects on dispute resolution. Several blockchain builds reached production or internal lab adoption."
+  }
+];
+
+const education = [
+  { t: "IMT CDL", m: "Ghaziabad, Uttar Pradesh, India", d: "2023 · PGDM — Post Graduate Diploma in Management" },
+  { t: "UPTU", m: "Lucknow, Uttar Pradesh, India", d: "2015 · B.Tech" }
+];
+
+const certifications = [
+  { t: "Certified Scrum Master", m: "Scrum Alliance", d: "Certified in Scrum framework facilitation, sprint governance and agile delivery leadership." },
+  { t: "Project Management Certificate", m: "Google", d: "Covering project lifecycle management, stakeholder governance, risk and delivery planning." }
+];
+
+const skills = [
+  { t: "Delivery &amp; Governance", d: "Programme and PMO governance, RACI design, risk registers, SLA management, milestone and executive reporting, Agile/Scrum, Waterfall, delivery turnaround." },
+  { t: "Client &amp; Stakeholder", d: "Government stakeholder management to Secretary and CEO level, multi-agency coordination, escalation governance, scope negotiation, UAT sign-off." },
+  { t: "Commercial &amp; Procurement", d: "P&amp;L and portfolio ownership, RFP/RFQ/DPR authorship, infrastructure cost modelling, GFR-compliant milestone billing, vendor selection." },
+  { t: "Engineering Depth", d: "Blockchain architecture (Ethereum, Hyperledger Fabric), MERN stack, React/TypeScript, Node.js, system architecture, mainframe automation, CI/CD." },
+  { t: "Security &amp; Compliance", d: "VAPT and SAST audit coordination, CERT-In empanelled agency engagement, WCAG 2.1 AA, GIGW and UX4G government design standards." },
+  { t: "Product &amp; Design", d: "Product ownership, Scrum Master, UX/UI leadership, Figma design systems, business process re-engineering, requirement and workflow definition." }
+];
+
+const navItems = [
+  { id: "top", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "work", label: "Work" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education" },
+  { id: "skills", label: "Skills" }
+];
+
+/* =============================================================== render == */
+
+const el = (id) => document.getElementById(id);
+
+el('work-list').innerHTML = work.map((w) => `
+  <article class="card rv">
+    <div class="w-head"><span class="w-co">${w.co}</span><span class="w-role">| ${w.role}</span></div>
+    <p class="w-meta">${w.meta}</p>
+    <p class="w-dates">${w.dates}</p>
+    <p class="lbl">Summary</p>
+    <p class="w-sum">${w.sum}</p>
+    <p class="lbl">Highlights</p>
+    <div class="hbox">${w.hi.map((h) => `<p class="hrow">${h}</p>`).join('')}</div>
+  </article>`).join('');
+
+el('project-list').innerHTML = projects.map((p, i) => `
+  <article class="p-card rv" id="p${i}">
+    <button class="p-head" type="button" aria-expanded="false" aria-controls="pb${i}" data-i="${i}">
+      <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+           stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <span>
+        <span class="p-t">${p.t}</span>
+        <span class="p-c">${p.c}</span>
+        <span class="p-stat"><b>${p.stat}</b> — ${p.statTail}</span>
+      </span>
+    </button>
+    <div class="p-body" id="pb${i}"><div><div class="p-inner">
+      <div class="p-meta">
+        <span>Role <b>${p.role}</b></span>
+        <span>Period <b>${p.period}</b></span>
+        <span>Team <b>${p.team}</b></span>
+        <span>Engagement <b>${p.value}</b></span>
+      </div>
+      <p class="p-h">The brief</p>
+      <p class="p-p">${p.brief}</p>
+      <p class="p-h">What made it hard</p>
+      <ul class="p-list">${p.hard.map((x) => `<li>${x}</li>`).join('')}</ul>
+      <p class="p-h">How I ran it</p>
+      <ul class="p-list">${p.how.map((x) => `<li>${x}</li>`).join('')}</ul>
+      <p class="p-h">What it delivered</p>
+      <p class="p-p">${p.out}</p>
+    </div></div></div>
+  </article>`).join('');
+
+const simpleCard = (x) => `
+  <article class="card rv">
+    <p class="c-t">${x.t}</p>
+    ${x.m ? `<p class="c-m">${x.m}</p>` : ''}
+    <p class="c-d">${x.d}</p>
+  </article>`;
+
+el('edu-list').innerHTML = education.map(simpleCard).join('');
+el('cert-list').innerHTML = certifications.map(simpleCard).join('');
+el('skill-list').innerHTML = skills.map(simpleCard).join('');
+
+el('nav').innerHTML = navItems
+  .map((n) => `<button type="button" data-id="${n.id}">${n.label}</button>`).join('');
+
+/* ========================================================== interaction == */
+
+/* Projects expand and collapse; several can be open at once. */
+document.querySelectorAll('.p-head').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.p-card');
+    const open = card.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+});
+
+/* Nav scrolls to sections. No pushState — it throws in sandboxed frames. */
+const navBtns = [...document.querySelectorAll('#nav button')];
+navBtns.forEach((b) => {
+  b.addEventListener('click', () => {
+    const id = b.dataset.id;
+    if (id === 'top') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* Scroll-spy: the active item is the last section whose top has passed 120px. */
+const spied = navItems.slice(1).map((n) => ({ id: n.id, node: document.getElementById(n.id) }));
+function syncNav() {
+  let active = 'top';
+  for (const s of spied) {
+    if (s.node && s.node.getBoundingClientRect().top <= 120) active = s.id;
+  }
+  navBtns.forEach((b) => {
+    const on = b.dataset.id === active;
+    b.setAttribute('aria-current', String(on));
+    if (on) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  });
+}
+addEventListener('scroll', syncNav, { passive: true });
+syncNav();
+
+/* Cards fade in once. Everything is visible without this — it only adds the
+   entrance — and it is skipped entirely under reduced-motion. */
+const reveals = document.querySelectorAll('.rv');
+if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+  reveals.forEach((n) => n.classList.add('in'));
+} else {
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  }, { rootMargin: '0px 0px 40px 0px', threshold: 0 });
+  reveals.forEach((n) => io.observe(n));
+  /* Safety net: nothing may stay invisible because it never intersected. */
+  addEventListener('load', () => setTimeout(
+    () => reveals.forEach((n) => n.classList.add('in')), 1200));
+}
+</script>
+</body>
+</html>
