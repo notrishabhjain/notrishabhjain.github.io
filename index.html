@@ -210,6 +210,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ================================================================ contact == */
 .contact{display:flex;flex-direction:column;justify-content:center;height:100%;min-height:0;max-width:620px}
+.contact>*{flex-shrink:0}
 .contact h3{margin:0;font-family:var(--serif);font-size:clamp(28px,3.8vw,44px);font-weight:400;letter-spacing:-.018em;line-height:1.14}
 .contact p{color:var(--txt-2);margin-top:14px;font-size:15px}
 .clist{margin-top:26px;border-top:1px solid var(--line)}
@@ -261,6 +262,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .home__cta{margin-top:16px;gap:7px}
   .home__cta .btn{padding:10px 13px;font-size:10px;letter-spacing:.09em}
 
+  .contact h3{font-size:23px;line-height:1.2}
+  .contact p{font-size:13.5px;margin-top:11px}
+  .clist{margin-top:16px}
+  .crow{padding:12px 4px;gap:11px}
+  .crow__k{width:66px}
+
   .split{grid-template-columns:1fr;gap:14px;grid-template-rows:auto minmax(0,1fr)}
   .picker{flex-direction:row;overflow-x:auto;gap:7px;padding-bottom:5px;flex:none}
   .picker .pick{flex:none;min-width:186px}
@@ -283,6 +290,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* Small phone with the browser URL bar showing: Overview still has to fit. */
 @media(max-width:900px) and (max-height:620px){
   .view{padding-block:16px}
+  .contact h3{font-size:20px}
+  .contact p{font-size:13px;margin-top:9px}
+  .clist{margin-top:12px}
+  .crow{padding:10px 4px}
   .vhead{padding-bottom:11px;margin-bottom:14px}
   .home h1{font-size:26px}
   .home__tag{font-size:13px;margin-top:9px}
@@ -293,6 +304,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 @media(max-width:900px) and (max-height:560px){
   .home h1{font-size:24px}
+  .contact h3{font-size:18px}
+  .crow{padding:8px 4px}
   .stats{margin-top:10px}
   .home__cta{margin-top:10px}
 }
