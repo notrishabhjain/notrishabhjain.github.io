@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Engagement Dossier — Rishabh Jain</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="../favicon.png">
+
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('rj-theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = t;
+    } catch (e) { document.documentElement.dataset.theme = 'light'; }
+  })();
+</script>
+
+<style>
+/* Same faces the portfolio uses — already in the repo, so this costs nothing. */
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:300 700;font-display:swap;
+  src:url(../assets/fonts/fraunces-latin.woff2) format('woff2')}
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:300 600;font-display:swap;
+  src:url(../assets/fonts/intertight-latin.woff2) format('woff2')}
+@font-face{font-family:'Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+  src:url(../assets/fonts/plexmono400-latin.woff2) format('woff2')}
+@font-face{font-family:'Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+  src:url(../assets/fonts/plexmono500-latin.woff2) format('woff2')}
+
+:root{
+  color-scheme:light;
+  --paper:#EAE8E2; --surface:#F6F5F1; --surface-2:#E1DED6;
+  --ink:#141519; --ink-2:#45494F; --ink-3:#7E838A;
+  --rule:#CFCCC3; --rule-2:#AEAAA0;
+  --mark:#A32B1C; --ok:#2F6B4F;
+  --display:'Fraunces',ui-serif,Georgia,serif;
+  --text:'Inter Tight',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --mono:'Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0E0F11; --surface:#16171A; --surface-2:#1E2024;
+  --ink:#EDEBE5; --ink-2:#A6AAB1; --ink-3:#6F747B;
+  --rule:#25272B; --rule-2:#3A3D43;
+  --mark:#E2634E; --ok:#6FBF94;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--text);font-size:15px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,p,ul,dl,dd,dt{margin:0}
+ul{padding:0;list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+a{color:var(--mark)}
+:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.mono{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;padding-block:26px 60px}
+
+/* ---------------------------------------------------------------- header */
+.head{display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.head h1{font-family:var(--display);font-size:clamp(22px,3vw,30px);font-weight:400;letter-spacing:-.022em;line-height:1.1}
+.head p{color:var(--ink-2);font-size:13.5px;max-width:64ch;margin-top:6px;font-weight:300}
+.head .home{margin-top:8px;display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.count{margin-left:auto;text-align:right;flex:none}
+.count__n{font-family:var(--display);font-size:26px;font-weight:400;font-variant-numeric:tabular-nums;line-height:1}
+.count__l{color:var(--ink-3);margin-top:4px}
+
+.bar-row{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+.save{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ink-3);flex:none}
+.dot.ok{background:var(--ok)}
+.dot.warn{background:var(--mark)}
+.tools{margin-left:auto;display:flex;gap:7px;flex-wrap:wrap}
+.btn{
+  padding:8px 13px;border:1px solid var(--rule-2);border-radius:4px;background:var(--surface);
+  font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  transition:border-color .18s,color .18s;
+}
+.btn:hover{border-color:var(--ink);color:var(--mark)}
+.btn--solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn--solid:hover{color:var(--paper);opacity:.88}
+
+/* ----------------------------------------------------------------- layout */
+.cols{display:grid;grid-template-columns:272px minmax(0,1fr);gap:26px;margin-top:24px;align-items:start}
+
+.idx{border:1px solid var(--rule);border-radius:4px;background:var(--surface);overflow:hidden;position:sticky;top:16px}
+.idx__h{padding:10px 13px;border-bottom:1px solid var(--rule);color:var(--ink-3);background:var(--surface-2)}
+.idx__list{max-height:calc(100dvh - 140px);overflow:auto}
+.pick{display:block;width:100%;padding:11px 13px;border-bottom:1px solid var(--rule);transition:background-color .15s}
+.pick:last-child{border-bottom:0}
+.pick:hover{background:var(--surface-2)}
+.pick[aria-current="true"]{background:var(--surface-2);box-shadow:inset 3px 0 0 var(--mark)}
+.pick__t{display:block;font-family:var(--display);font-size:14px;font-weight:500;line-height:1.3}
+.pick__c{display:block;color:var(--ink-3);font-size:11px;margin-top:3px}
+.pick__b{display:flex;align-items:center;gap:7px;margin-top:7px}
+.meter{flex:1;height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--mark);width:0;transition:width .3s}
+.pick__n{font-family:var(--mono);font-size:9.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;flex:none}
+
+.panel{border:1px solid var(--rule);border-radius:4px;background:var(--surface);padding:22px 24px;min-width:0}
+.panel__h{font-family:var(--display);font-size:clamp(19px,2.2vw,25px);font-weight:400;letter-spacing:-.02em;line-height:1.18}
+.meta{display:flex;flex-wrap:wrap;gap:0 28px;margin-top:12px;padding-bottom:15px;border-bottom:1px solid var(--rule)}
+.meta>div{padding:5px 0}
+.meta dt{color:var(--ink-3);font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+.meta dd{margin:3px 0 0;font-size:13px}
+
+.rec{margin-top:15px;border:1px solid var(--rule);border-radius:4px;background:var(--paper)}
+.rec>summary{padding:10px 13px;cursor:pointer;color:var(--ink-2);font-size:12.5px;list-style:none}
+.rec>summary::-webkit-details-marker{display:none}
+.rec>summary::before{content:"▸ ";color:var(--ink-3)}
+.rec[open]>summary::before{content:"▾ "}
+.rec ul{padding:0 13px 12px;display:grid;gap:6px}
+.rec li{position:relative;padding-left:14px;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+.rec li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--rule-2)}
+
+.qs{margin-top:22px;display:grid;gap:18px}
+.qgrp{color:var(--ink-3);padding-bottom:7px;border-bottom:1px solid var(--rule-2)}
+.q{display:grid;gap:7px}
+.q__t{display:flex;gap:11px;align-items:baseline}
+.q__n{font-family:var(--mono);font-size:10px;color:var(--mark);font-variant-numeric:tabular-nums;flex:none;padding-top:3px}
+.q__p{font-family:var(--display);font-size:15.5px;line-height:1.45;font-weight:500}
+.q__h{color:var(--ink-3);font-size:12.5px;margin-left:26px;margin-top:-3px;font-weight:300}
+textarea{
+  width:100%;min-height:80px;resize:vertical;padding:10px 12px;
+  font-family:var(--text);font-size:14px;line-height:1.55;color:var(--ink);
+  background:var(--paper);border:1px solid var(--rule-2);border-radius:4px;
+}
+textarea:focus{border-color:var(--mark);background:var(--surface)}
+textarea::placeholder{color:var(--ink-3)}
+.q.filled .q__n{color:var(--ok)}
+.q.filled textarea{border-color:var(--ok)}
+
+.note{margin-top:26px;padding-top:15px;border-top:1px solid var(--rule);color:var(--ink-3);font-size:12.5px;line-height:1.6;font-weight:300}
+
+/* ------------------------------------------------------------------ modal */
+.sheet[hidden]{display:none}
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:20px;z-index:20}
+.sheet__in{background:var(--surface);border:1px solid var(--rule-2);border-radius:5px;padding:20px;width:min(720px,100%);max-height:86dvh;overflow:auto}
+.sheet h2{font-family:var(--display);font-size:19px;font-weight:500}
+.sheet p{color:var(--ink-2);font-size:13px;margin-top:7px;font-weight:300}
+.sheet textarea{min-height:240px;font-family:var(--mono);font-size:11.5px;margin-top:12px}
+.sheet__row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+
+@media(max-width:880px){
+  .cols{grid-template-columns:1fr;gap:16px}
+  .idx{position:static}
+  .idx__list{display:flex;overflow-x:auto;max-height:none}
+  .pick{flex:none;width:208px;border-bottom:0;border-right:1px solid var(--rule)}
+  .pick[aria-current="true"]{box-shadow:inset 0 -3px 0 var(--mark)}
+  .panel{padding:16px}
+  .count{margin-left:0}
+  .tools{margin-left:0;width:100%}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="head">
+    <div>
+      <h1>Engagement Dossier</h1>
+      <p>Nine professional engagements, each with questions written for that engagement. Answer in your own
+         words, in any order, across as many sittings as you like. Everything stays in this browser until
+         you choose to hand it over.</p>
+      <a class="home" href="../">&larr; Back to the portfolio</a>
+    </div>
+    <div class="count">
+      <div class="count__n" id="countN">0 / 0</div>
+      <div class="count__l mono">Answered</div>
+    </div>
+  </header>
+
+  <div class="bar-row">
+    <span class="save"><span class="dot" id="dot"></span><span id="saveText">Ready.</span></span>
+    <div class="tools">
+      <button class="btn" type="button" id="btnImport">Restore</button>
+      <button class="btn" type="button" id="btnDownload">Download</button>
+      <button class="btn btn--solid" type="button" id="btnCopy">Copy for Claude</button>
+    </div>
+  </div>
+
+  <div class="cols">
+    <nav class="idx" aria-label="Engagements">
+      <div class="idx__h mono">Engagements</div>
+      <div class="idx__list" id="idx"></div>
+    </nav>
+    <main class="panel" id="panel" aria-live="polite"></main>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet__in">
+    <h2 id="sheetTitle">Copy for Claude</h2>
+    <p id="sheetNote"></p>
+    <textarea id="sheetBox" spellcheck="false"></textarea>
+    <div class="sheet__row">
+      <button class="btn btn--solid" type="button" id="sheetAct">Copy</button>
+      <button class="btn" type="button" id="sheetClose">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================== content == */
+const UNIVERSAL_A = [
+  { id:"u1", q:"Before this existed, what was actually happening — and who was suffering from it enough that someone funded a change?",
+    h:"The world the project was born into. Paper files, spreadsheets, a failing vendor, an audit finding." },
+  { id:"u2", q:"What were you actually given authority over? What could you decide alone, and what had to go upward?",
+    h:"Title and real decision rights are rarely the same thing." },
+  { id:"u3", q:"Who reported to you, who didn't report to you but you depended on, and which vendors were in play?",
+    h:"Team shape, matrix lines, and who held whose contract." }
+];
+const UNIVERSAL_B = [
+  { id:"u4", q:"What was the moment it might have failed? What did you actually do?",
+    h:"The one that would still make you tense to retell." },
+  { id:"u5", q:"What did you cut, refuse or descope — and who pushed back?",
+    h:"Saying no well is half the job and none of it is on your resume." },
+  { id:"u6", q:"Where does it stand today, and what can't be said publicly?",
+    h:"Still running, extended, handed over, shelved. And any NDA, classification or political sensitivity." }
+];
+
+const PROJECTS = [
+  { id:"cpc8", name:"8th CPC Demand Management System", client:"8th Central Pay Commission",
+    org:"BDO India", period:"2026", role:"Project Manager",
+    domain:"Government of India — pay commission", geo:"New Delhi",
+    record:["8 modules shipped in a ~4-week window with a 7-person team, running parallel module streams.",
+      "24-field demand data model and a 7-state workflow, Demand Creation through Commission placement.",
+      "15,000–20,000 memoranda and ~50,000 demands into production; role-based access across 50 officers.",
+      "Go-live coordinated across four external agencies with no shared reporting line.",
+      "Security audit certificate with zero re-audit cycles."],
+    qs:[
+      { id:"t1", q:"The four-week window came from a Pay Commission tenure that couldn't legally be extended. Who told you that date, and did anyone try to move it?", h:"Whether the constraint was truly immovable, or just presented that way." },
+      { id:"t2", q:"Parallel module streams instead of sequential phases — what specifically broke, or nearly broke, because of that choice?", h:"Parallelism buys time and costs integration. What did it cost here?" },
+      { id:"t3", q:"How did you arrive at 24 fields? What did someone want included that you kept out?", h:"A data model is a series of refusals." },
+      { id:"t4", q:"Four external agencies, no shared reporting line. Who actually had authority over them, and how did you get compliance without it?", h:"The single most transferable thing in the engagement — say how, concretely." },
+      { id:"t5", q:"You diagnosed the vendor-side SSL and routing fault yourself. Why couldn't the vendor? What did it cost in time?", h:"And what you did with that knowledge afterwards." },
+      { id:"t6", q:"The 50 officers split 28 processing / 12 referred / 6 reviewing. Who decided that split, and did it survive contact with real usage?", h:"Role design is product design." },
+      { id:"t7", q:"“Zero licensed components” — a constraint imposed on you, or your choice? What did it rule out?", h:"Procurement, budget, or policy? And what you gave up." }
+    ] },
+  { id:"ghci", name:"GHCI Digital Portal", client:"MNRE — National Green Hydrogen Mission",
+    org:"BDO India", period:"2026", role:"Project Manager · Delivery & UX Lead",
+    domain:"Government of India — energy certification", geo:"New Delhi",
+    record:["One of India's first green hydrogen certification registries.",
+      "Certificate-versioning developer specification across four certificate types.",
+      "CERT-In-empanelled review: 48 of 51 findings closed pre-launch, 82/100 post-remediation SAST.",
+      "Went live; inaugurated by the minister at a public function.",
+      "Phase 2 AI/ML scope now in procurement."],
+    qs:[
+      { id:"t1", q:"Certificate versioning across four types — what exactly breaks when an issued certificate is amended, and which approaches did you reject before settling?", h:"The rejected options are what make this a design decision rather than a task." },
+      { id:"t2", q:"Is there a settled legal definition of a green hydrogen certificate in India, or were you helping create the standard as you built the registry?", h:"Building to a standard and building the standard are very different claims." },
+      { id:"t3", q:"48 of 51 findings closed. What were the three, and who formally accepted that risk?", h:"Naming who signed the residual risk is the credible part." },
+      { id:"t4", q:"The minister inaugurated it on a fixed public date. What did you have to guarantee for that, and what was still incomplete behind the demo?", h:"Honest answer welcome — every launch has a behind-the-curtain." },
+      { id:"t5", q:"Did you write the Phase 2 AI/ML RFQ? What is that scope meant to do?", h:"Authoring procurement for AI scope is a distinctive credential." },
+      { id:"t6", q:"Who are the actual users — producers, auditors, buyers, regulators? Did you meet or observe any of them?", h:"You're listed as UX lead; this is where that either lands or doesn't." }
+    ] },
+  { id:"gev", name:"GE Vernova Wind Portfolio", client:"GE Vernova",
+    org:"Infosys", period:"Nov 2024 – Jan 2026", role:"Project Manager · Product Owner · Scrum Master",
+    domain:"Renewable energy — enterprise support & enhancement", geo:"Pune, India · US client",
+    record:["Loss-making business unit turned net-positive within 6 months — largest turnaround on the account.",
+      "99.9% SLA across ~50–55 support and enhancement applications.",
+      "20-person core delivery team plus a 15-person L1.5 layer triaging ~800 applications account-wide.",
+      "MTTR cut from 4 days to under 12 hours via repository migration and deployment automation.",
+      "RACI matrices defined to remove ownership ambiguity; attrition and burnout reduced."],
+    qs:[
+      { id:"t1", q:"The real numbers: what was the monthly loss when you took it over, and what was the position when it turned?", h:"Even a range or a percentage. This is your only P&L story and it currently has no figures." },
+      { id:"t2", q:"“Right-sizing” — how many people, over what period, and how was it actually handled? Did the client know before or after?", h:"Say it plainly. How someone handles this is what a hiring manager is really asking about." },
+      { id:"t3", q:"Holding Product Owner and Scrum Master at the same time is normally treated as a conflict. How did you manage it, and did anyone object?", h:"A scrum-literate interviewer will ask this. Better to have the answer ready." },
+      { id:"t4", q:"You held 99.9% across ~55 applications while the team shrank. What gave? What did you stop doing?", h:"Something always gives. Naming it is more credible than implying nothing did." },
+      { id:"t5", q:"What was taking four days in the old MTTR, and what specifically removed it?", h:"The mechanism, not the outcome." },
+      { id:"t6", q:"The 15-person L1.5 layer covering ~800 applications — did you own it, share it, or simply depend on it?", h:"Worth being precise; “800 applications” reads as scope you owned." },
+      { id:"t7", q:"Hardware deployed globally under genuine 24×7 obligations. What was the worst incident on your watch, and how did it go?", h:"A real incident, told straight, is worth more than an SLA number." }
+    ] },
+  { id:"crcs", name:"CRCS Portal", client:"Ministry of Cooperation",
+    org:"EY India", period:"2022 – 2024", role:"Senior Consultant",
+    domain:"Government of India — cooperatives registry", geo:"Delhi · national",
+    record:["A fully paper-based, offline office taken to a live national platform serving ~40 million members.",
+      "1,500–1,800 cooperative societies; BPR study run before any system design.",
+      "Legal and regulatory amendments proposed and subsequently enacted.",
+      "DPR and RFP authored; vendor onboarding and ministry-side oversight held.",
+      "Architecture later extended to build the Sahara Refund Portal."],
+    qs:[
+      { id:"t1", q:"How does a consultant get a statute amended? Who did you have to convince, and what was the actual instrument — an Act amendment, a rule change, a notification?", h:"The most unusual thing on your entire resume, and it currently gets one line." },
+      { id:"t2", q:"How long from proposing the amendment to enactment — and what did you and the team do while waiting?", h:"The waiting is the interesting management problem." },
+      { id:"t3", q:"The BPR study came before any system design. What did it find that changed the design?", h:"A finding that changed a decision." },
+      { id:"t4", q:"You wrote the DPR and RFP, then held ministry-side oversight of the vendor delivering against them. What did you do when the vendor deviated?", h:"Sitting on the buyer's side of your own specification is a distinctive position." },
+      { id:"t5", q:"40 million member records — where did that data come from, and what state was it in?", h:"Migration from paper at that scale is its own story." },
+      { id:"t6", q:"Sahara Refund Portal was built on the architecture. Were you involved, or did others build on your work?", h:"Worth being exact — the claim is currently ambiguous." }
+    ] },
+  { id:"nesda", name:"NeSDA Benchmarking Framework", client:"NeGD / MeitY",
+    org:"EY India", period:"2022 – 2024", role:"Senior Consultant",
+    domain:"Government of India — digital governance standards", geo:"Delhi · national, G20-calibrated",
+    record:["150+ parameter national website ranking framework co-built with IIT Delhi and IIM Indore.",
+      "Calibrated by benchmarking G20 government websites against Indian ones.",
+      "80+ government department and ministry websites standardised onto a common framework.",
+      "STQC certification, security audits and shared information architecture.",
+      "Now operated by NeSDA as the national ranking standard."],
+    qs:[
+      { id:"t1", q:"Working alongside IIT Delhi and IIM Indore — what was your role against theirs? Who owned the framework?", h:"Co-built with two premier institutions needs the division of labour stated, or it reads as borrowed credibility." },
+      { id:"t2", q:"How do you get 80+ departments to adopt anything? What was the lever — a mandate, ranking pressure, funding, or persuasion?", h:"Adoption without authority again — a different mechanism from the CPC one." },
+      { id:"t3", q:"What did the G20 comparison actually show, and did it change the parameters?", h:"A finding, and what it changed." },
+      { id:"t4", q:"What happens to a department that scores badly? Does the ranking carry any consequence?", h:"Whether you built a scoreboard or a lever." },
+      { id:"t5", q:"150+ parameters is a lot. How were they weighted, and who contested the weighting?", h:"Weighting is where the politics lives." }
+    ] },
+  { id:"ivfrt", name:"IVFRT 2.0", client:"MHA — Bureau of Immigration",
+    org:"EY India", period:"2022 – 2024", role:"Senior Consultant · UI/UX and process re-engineering",
+    domain:"Government of India — immigration and border control",
+    geo:"National — ICP, India Post, land ports, seaports, airports",
+    record:["National visa and foreigner-tracking system revamp.",
+      "Covered FRRO processes, MRZ codes, land ports and airports.",
+      "Implemented across ICP, India Post, land ports and seaports.",
+      "UI/UX and process re-engineering led."],
+    qs:[
+      { id:"t0", q:"First — what can you say about this publicly at all? Any security classification, restriction, or subject to keep off a public site?", h:"Answer this one before the rest. I'll respect whatever line you draw." },
+      { id:"t1", q:"What was wrong with IVFRT 1.0 from the officer's point of view?", h:"The user problem, in their words if you have them." },
+      { id:"t2", q:"Did you observe FRRO officers or travellers actually working? What did you see that changed the design?", h:"You're credited with UI/UX — field observation is what makes that real." },
+      { id:"t3", q:"MRZ codes, land ports, seaports, ICP, India Post — which integration was hardest, and why?", h:"Different ports, different infrastructure, different institutions." },
+      { id:"t4", q:"What does “implemented across” mean here — piloted, partially rolled out, or fully live at all of them?", h:"Precision protects you in interview." }
+    ] },
+  { id:"npi", name:"National Portal of India v2.2", client:"Government of India",
+    org:"EY India", period:"2022 – 2024", role:"Senior Consultant",
+    domain:"Government of India — citizen portal", geo:"National",
+    record:["DPR and RFP authored; vendor onboarding run.", "Multi-source integration strategy defined."],
+    qs:[
+      { id:"t1", q:"What is the National Portal's actual job, and what was v2.2 changing about it?", h:"This entry is the thinnest on your site — it needs a reason to exist." },
+      { id:"t2", q:"Multi-source integration — how many sources, of what kind, and who owned them?", h:"Integrating across departments that don't report to each other is the recurring theme of your career." },
+      { id:"t3", q:"Did it get built? What happened after you handed over the DPR and RFP?", h:"If it stalled, that's also worth knowing — it changes how we position it." },
+      { id:"t4", q:"Is there more to this engagement than the two lines currently on the site, or was it genuinely a smaller piece of work?", h:"Perfectly fine if it was. We may fold it into the NeSDA entry rather than let it stand alone." }
+    ] },
+  { id:"skill", name:"Skillchain", client:"EYGDS",
+    org:"UST Global", period:"Jun 2021 – Apr 2022", role:"Software Engineering Lead — Blockchain Architect",
+    domain:"Enterprise blockchain — credentials and background verification", geo:"Noida, India",
+    record:["Blockchain platform recording employee skills so background verification travels between companies.",
+      "NFT-based certification issuance.",
+      "Designed and built single-handedly; driven to company-wide adoption.",
+      "User research and feedback loops run alongside the build rather than stopping at a POC."],
+    qs:[
+      { id:"t1", q:"You built it solo and got company-wide adoption. How? Who had to say yes, and what convinced them?", h:"Adoption is the achievement here, not the build." },
+      { id:"t2", q:"NFT-based credentials in 2021–22 — your call or someone else's? Who challenged it, and what was their argument?", h:"A defensible answer is worth a lot; an indefensible one is worth knowing before an interviewer finds it." },
+      { id:"t3", q:"Verification that travels between companies needs other companies to trust it. Did that ever work, or was it internal to EY only?", h:"The claim is currently broader than the evidence might support." },
+      { id:"t4", q:"Is it still running?", h:"" },
+      { id:"t5", q:"This sits on your site as engineering. Was there a product or delivery dimension you're not claiming?", h:"You ran research, adoption and build. That's closer to product ownership than architecture." }
+    ] },
+  { id:"tcs", name:"Mainframe Automation & Blockchain POCs", client:"UK-based BFSI client",
+    org:"Tata Consultancy Services", period:"Oct 2015 – May 2020", role:"IT Analyst",
+    domain:"Banking & financial services", geo:"Gurugram, India · UK client",
+    record:["~£200,000 in client savings from mainframe automation removing manual, recurring-cost processes.",
+      "Reported defects cut 40% by optimising dispute resolution workflows.",
+      "20+ man-hours saved weekly through automated reporting on Unisys Mainframe.",
+      "Ethereum and Hyperledger Fabric POCs, several reaching production or adoption in TCS blockchain labs."],
+    qs:[
+      { id:"t1", q:"The ~£200,000 — how was it calculated, and by whom? Your number or the client's?", h:"A number the client certified is worth far more than one you estimated." },
+      { id:"t2", q:"What was wrong with the dispute resolution workflow that made defects drop 40%?", h:"The defect reduction implies a diagnosis. What was it?" },
+      { id:"t3", q:"Which POCs actually reached production, and what did they do?", h:"“Several” is doing a lot of work in the current line." },
+      { id:"t4", q:"Five years is your longest tenure. What was the arc — did the role change, and why did you leave?", h:"Interviewers always ask about the longest and the shortest." }
+    ] }
+];
+
+PROJECTS.forEach(p => { p.questions = [...UNIVERSAL_A, ...p.qs, ...UNIVERSAL_B]; });
+const TOTAL = PROJECTS.reduce((n,p) => n + p.questions.length, 0);
+
+/* ================================================================ state == */
+const KEY = 'rj-dossier-v1';
+let answers = Object.create(null);
+let currentId = PROJECTS[0].id;
+let saveTimer = null;
+
+const el = s => document.querySelector(s);
+const filled = v => typeof v === 'string' && v.trim().length > 0;
+const countFor = p => p.questions.reduce((n,q) => n + (filled((answers[p.id]||{})[q.id]) ? 1 : 0), 0);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function status(text, kind) {
+  el('#saveText').textContent = text;
+  el('#dot').className = 'dot' + (kind ? ' ' + kind : '');
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (raw) answers = JSON.parse(raw) || Object.create(null);
+  } catch (e) { answers = Object.create(null); }
+}
+
+function save() {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(answers));
+    const t = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    status('Saved in this browser at ' + t + '.', 'ok');
+  } catch (e) {
+    status('This browser refused to save — copy your answers out before leaving.', 'warn');
+  }
+}
+function queueSave() { clearTimeout(saveTimer); status('Saving…'); saveTimer = setTimeout(save, 700); }
+
+/* =============================================================== render == */
+function renderIndex() {
+  const box = el('#idx');
+  box.innerHTML = PROJECTS.map(p => {
+    const n = countFor(p), t = p.questions.length;
+    return `<button class="pick" type="button" data-id="${p.id}" aria-current="${p.id === currentId}">
+      <span class="pick__t">${esc(p.name)}</span>
+      <span class="pick__c">${esc(p.org)} · ${esc(p.period)}</span>
+      <span class="pick__b"><span class="meter"><i style="width:${Math.round(n/t*100)}%"></i></span>
+      <span class="pick__n">${n}/${t}</span></span></button>`;
+  }).join('');
+  box.querySelectorAll('.pick').forEach(b => b.addEventListener('click', () => {
+    currentId = b.dataset.id; renderIndex(); renderPanel();
+    if (innerWidth <= 880) el('#panel').scrollIntoView({block:'start'});
+  }));
+  el('#countN').textContent = PROJECTS.reduce((n,p) => n + countFor(p), 0) + ' / ' + TOTAL;
+}
+
+function renderPanel() {
+  const p = PROJECTS.find(x => x.id === currentId);
+  const mine = answers[p.id] || {};
+  const grp = l => `<div class="qgrp mono">${l}</div>`;
+  const qh = (q, i) => `
+    <div class="q ${filled(mine[q.id]) ? 'filled' : ''}" data-qid="${q.id}">
+      <div class="q__t"><span class="q__n">${String(i+1).padStart(2,'0')}</span>
+        <span class="q__p">${esc(q.q)}</span></div>
+      ${q.h ? `<p class="q__h">${esc(q.h)}</p>` : ''}
+      <textarea id="ta-${p.id}-${q.id}" placeholder="Type freely — fragments are fine."
+        aria-label="Answer ${i+1}">${esc(mine[q.id] || '')}</textarea></div>`;
+  const nA = UNIVERSAL_A.length, nT = p.qs.length;
+
+  el('#panel').innerHTML = `
+    <h2 class="panel__h">${esc(p.name)}</h2>
+    <dl class="meta">
+      <div><dt>Client</dt><dd>${esc(p.client)}</dd></div>
+      <div><dt>Employer</dt><dd>${esc(p.org)}</dd></div>
+      <div><dt>Role</dt><dd>${esc(p.role)}</dd></div>
+      <div><dt>Period</dt><dd>${esc(p.period)}</dd></div>
+      <div><dt>Domain</dt><dd>${esc(p.domain)}</dd></div>
+      <div><dt>Geography</dt><dd>${esc(p.geo)}</dd></div>
+    </dl>
+    <details class="rec"><summary>What the portfolio already says — build on this, don't repeat it</summary>
+      <ul>${p.record.map(r => `<li>${esc(r)}</li>`).join('')}</ul></details>
+    <div class="qs">
+      ${grp('The setup')}${UNIVERSAL_A.map((q,i) => qh(q,i)).join('')}
+      ${grp('This engagement specifically')}${p.qs.map((q,i) => qh(q, nA+i)).join('')}
+      ${grp('Judgment and aftermath')}${UNIVERSAL_B.map((q,i) => qh(q, nA+nT+i)).join('')}
+    </div>
+    <p class="note">Answers are stored in this browser only — they are not uploaded anywhere and are not part of
+      the public site. When you want me to work from them, press <b>Copy for Claude</b> and paste the result into
+      the chat. <b>Download</b> keeps a file as backup; <b>Restore</b> loads one back, which is also how you move
+      your answers to another device or browser.</p>`;
+
+  el('#panel').querySelectorAll('textarea').forEach(ta => {
+    ta.addEventListener('input', () => {
+      const qid = ta.closest('.q').dataset.qid;
+      (answers[p.id] = answers[p.id] || {})[qid] = ta.value;
+      ta.closest('.q').classList.toggle('filled', filled(ta.value));
+      renderIndex(); queueSave();
+    });
+  });
+}
+
+/* =============================================================== export == */
+function asMarkdown() {
+  const out = ['# Engagement Dossier — answers', '', 'Exported ' + new Date().toISOString().slice(0,10), ''];
+  PROJECTS.forEach(p => {
+    const mine = answers[p.id] || {};
+    const got = p.questions.filter(q => filled(mine[q.id]));
+    if (!got.length) return;
+    out.push('## ' + p.name, '*' + p.org + ' · ' + p.client + ' · ' + p.period + ' · ' + p.role + '*', '');
+    got.forEach(q => { out.push('**Q: ' + q.q + '**', '', mine[q.id].trim(), ''); });
+  });
+  if (out.length === 4) out.push('_(nothing answered yet)_');
+  return out.join('\n');
+}
+
+function openSheet(title, note, text, actLabel, act) {
+  el('#sheetTitle').textContent = title;
+  el('#sheetNote').textContent = note;
+  el('#sheetBox').value = text;
+  el('#sheetAct').textContent = actLabel;
+  el('#sheetAct').onclick = act;
+  el('#sheet').hidden = false;
+  el('#sheetBox').focus();
+}
+el('#sheetClose').addEventListener('click', () => { el('#sheet').hidden = true; });
+el('#sheet').addEventListener('click', e => { if (e.target === el('#sheet')) el('#sheet').hidden = true; });
+addEventListener('keydown', e => { if (e.key === 'Escape') el('#sheet').hidden = true; });
+
+el('#btnCopy').addEventListener('click', () => {
+  const text = asMarkdown();
+  openSheet('Copy for Claude',
+    'Paste this into the chat. If the button does nothing, select the text below and copy it manually.',
+    text, 'Copy', function () {
+      const box = el('#sheetBox');
+      const done = () => { this.textContent = 'Copied'; setTimeout(() => { this.textContent = 'Copy'; }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(box.value).then(done, () => { box.select(); this.textContent = 'Select all & copy'; });
+      } else { box.select(); this.textContent = 'Select all & copy'; }
+    });
+});
+
+el('#btnDownload').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(answers, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'engagement-dossier-' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  status('Backup file downloaded.', 'ok');
+});
+
+el('#btnImport').addEventListener('click', () => {
+  openSheet('Restore answers',
+    'Paste a downloaded JSON backup here to load it. This replaces what is currently in this browser.',
+    '', 'Restore', function () {
+      try {
+        const parsed = JSON.parse(el('#sheetBox').value);
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('shape');
+        answers = parsed; save(); renderIndex(); renderPanel();
+        el('#sheet').hidden = true;
+        status('Restored from backup.', 'ok');
+      } catch (err) {
+        this.textContent = 'Not valid JSON — check and retry';
+        setTimeout(() => { this.textContent = 'Restore'; }, 2400);
+      }
+    });
+});
+
+/* ================================================================= boot == */
+load();
+renderIndex();
+renderPanel();
+status(PROJECTS.reduce((n,p) => n + countFor(p), 0)
+  ? 'Earlier answers loaded from this browser.' : 'Ready — answers save as you type.',
+  PROJECTS.reduce((n,p) => n + countFor(p), 0) ? 'ok' : '');
+</script>
+</body>
+</html>
