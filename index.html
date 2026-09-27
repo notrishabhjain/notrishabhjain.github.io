@@ -285,6 +285,35 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .pt__b{font-size:13.5px;line-height:1.56;color:var(--ink-2)}
 .pt__b b{font-weight:500;color:var(--ink)}
 
+/* =============================================================== practice == */
+/* Three entries, each a small dossier: thesis, a metric strip, then evidence. */
+.blds{min-height:0}
+.blds__i{
+  max-width:60ch;color:var(--ink-2);font-size:13.5px;line-height:1.55;font-weight:300;
+  padding-bottom:14px;border-bottom:1px solid var(--rule-2);
+}
+.bld{padding:18px 0;border-bottom:1px solid var(--rule)}
+.bld__h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.bld__n{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--mark)}
+.bld__t{font-family:var(--display);font-size:19px;font-weight:500;letter-spacing:-.014em}
+.bld__s{color:var(--ink-3);font-size:12.5px;font-weight:300}
+.bld__th{
+  margin-top:9px;padding-left:13px;border-left:2px solid var(--rule-2);
+  font-family:var(--display);font-style:italic;font-size:13.5px;line-height:1.5;
+  color:var(--ink-2);max-width:74ch;
+}
+.bld__m{display:flex;flex-wrap:wrap;gap:0 30px;margin:13px 0 0}
+.bld__m>div{padding:7px 0}
+.bld__m dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.bld__m dd{margin:3px 0 0;font-size:12.5px}
+.bld__p{margin-top:9px;display:grid;gap:7px}
+.bld__p li{
+  position:relative;padding-left:15px;font-size:13px;line-height:1.55;
+  color:var(--ink-2);max-width:88ch;
+}
+.bld__p li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--rule-2)}
+.bld__p b{font-weight:500;color:var(--ink)}
+
 /* ============================================================ capabilities == */
 .caps{
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
@@ -368,6 +397,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
   .pick[aria-selected="true"]::before{transform:scaleX(1)}
   .detail{padding-right:4px}
   .detail__h{font-size:19px}
+
+  .blds__i{font-size:12.5px;padding-bottom:11px}
+  .bld{padding:14px 0}
+  .bld__t{font-size:17px}
+  .bld__th{font-size:12.5px;margin-top:7px}
+  .bld__m{gap:0 20px}
+  .bld__p li{font-size:12.5px}
 
   .caps{grid-template-columns:1fr;overflow:auto;align-content:start}
   .cap:nth-child(2){padding-top:13px}
@@ -482,7 +518,7 @@ const figures = [
 
 const lead = `Project Manager with <b>11+ years</b> across Government of India ministries and global enterprise clients. Currently accountable to a ministry-level client for two national platforms, leading a team of eight. I have taken a <b>40-million-member</b> national registry from paper to production, turned a loss-making business unit <b>net-positive in six months</b>, and shipped an eight-module government system of record inside a <b>four-week</b> window.`;
 
-const leadAfter = `Seven years as a hands-on engineer and blockchain architect before moving into delivery leadership — which means architecture, data models and security findings get reviewed directly rather than relayed. The work I am best at is the kind that has to survive statute, procurement and a fixed regulatory clock at the same time.`;
+const leadAfter = `Seven years as a hands-on engineer and blockchain architect before delivery leadership — and still building. On my own projects I write the scope registers, interface contracts and non-negotiables the work is built against, then build to them, with CI and real test coverage. Architecture, data models and security findings get reviewed directly rather than relayed. The work I am best at is the kind that has to survive statute, procurement and a fixed regulatory clock at the same time.`;
 
 const practice = [
   { t: "Delivery &amp; governance",
@@ -491,6 +527,43 @@ const practice = [
     d: "I write the specification engineers build against: the 24-field data model and seven-state referral workflow behind a national pay commission platform; the certificate-versioning spec for India's green hydrogen registry." },
   { t: "Portfolio",
     d: "Concurrent, independently-governed engagements without losing a line. Two national platforms with separate ministries, vendors and regulatory clocks today; a 35-person organisation before that; four national engagements at EY inside three years." }
+];
+
+const builds = [
+  {
+    t: "AI From Zero", sub: "A skill tracker for product managers working on AI",
+    thesis: "Vocabulary acquired before experience becomes jargon; vocabulary acquired after experience becomes testimony. Nothing is named until it has been built and broken.",
+    stack: "Node · vanilla JS · Vercel", scale: "34,794 lines · 104 modules",
+    artifacts: "Curriculum plan of record · content guidelines",
+    pts: [
+      "<b>32 tracked competencies</b> whose mastery is earned by measured evidence and decays without practice — the dashboard routes you to the chapter that moves your weakest skill, rather than front-to-back reading.",
+      "A <b>149-item assessment bank</b> where every answer carries a confidence rating, so the system reports overconfidence in points — not just whether you were right, but whether you knew you were.",
+      "Curriculum rebuilt against a written diagnosis of the previous version: <b>three failures, all measurable rather than felt</b>, including a 20-chapter sequence that stopped being a sequence after chapter seven.",
+      "Localised to Hinglish across <b>7,326 lines</b>, with 1,972 stale keys pruned in the same pass."
+    ]
+  },
+  {
+    t: "TaskMind", sub: "A capture pipeline built so nothing is ever silently dropped",
+    thesis: "Messages, calls and manual input all flow through one auditable intake funnel into a local-first store. Inputs that cannot become tasks are persisted or logged as rejected — never dropped.",
+    stack: "Kotlin · Compose · Room", scale: "11,660 lines · 40% test ratio",
+    artifacts: "BRD · SRS · Decision Record",
+    pts: [
+      "<b>Five non-negotiable principles written before the code</b>: never silently lose a capture; precision beats recall; never fabricate; silent by default; everything visible.",
+      "<b>One intake funnel every source must use</b> — validate, normalise, confidence gate, evidence validation, deduplicate, persist, log — with thresholds fixed at 0.75 to auto-create and 0.40 to reject, and everything between routed to human review.",
+      "<b>30 test files against 111 source files</b>, 4,656 lines of tests; CI lints, tests and assembles a debug APK on every pull request."
+    ]
+  },
+  {
+    t: "Jain Kundali", sub: "Scope discipline where the constraints are doctrinal, not technical",
+    thesis: "A domain where the hard question is not what can be built but what is permitted to be built — and where that answer has to be written down and defended.",
+    stack: "React 19 · TypeScript · Kotlin", scale: "Web and Android · 12,646 Kotlin lines",
+    artifacts: "Scope register · engine contract · sprint plan",
+    pts: [
+      "A <b>scope register</b> recording EXCLUDE, LIMITED-INCLUSION and SYNTHESIZED verdicts, each with a rationale and a provenance marker, written explicitly so future contributors do not re-litigate settled decisions.",
+      "An <b>engine contract freeze</b> pinning the interface between UI and prediction engine, so a full UI overhaul could proceed without altering calculation behaviour.",
+      "A sprint plan carried through four sprints against stated non-negotiables — <b>no core astronomical or dasha formula change</b> — with language and content assertions enforced in CI."
+    ]
+  }
 ];
 
 const work = [
@@ -701,9 +774,10 @@ const sections = [
   { id: "profile",     n: "02", label: "Profile",      title: "Profile",                   meta: "11+ years" },
   { id: "experience",  n: "03", label: "Experience",   title: "Experience",                meta: "6 roles · 2015 — present" },
   { id: "work",        n: "04", label: "Selected work",title: "Selected work",             meta: "9 engagements" },
-  { id: "capabilities",n: "05", label: "Capabilities", title: "Capabilities",              meta: "6 groups" },
-  { id: "credentials", n: "06", label: "Credentials",  title: "Education &amp; certifications", meta: "PGDM · B.Tech · 2 certifications" },
-  { id: "contact",     n: "07", label: "Contact",      title: "Get in touch",              meta: "Open to roles" }
+  { id: "practice",    n: "05", label: "Practice",     title: "Practice",                  meta: "3 things I built myself" },
+  { id: "capabilities",n: "06", label: "Capabilities", title: "Capabilities",              meta: "6 groups" },
+  { id: "credentials", n: "07", label: "Credentials",  title: "Education &amp; certifications", meta: "PGDM · B.Tech · 2 certifications" },
+  { id: "contact",     n: "08", label: "Contact",      title: "Get in touch",              meta: "Open to roles" }
 ];
 </script>
 
@@ -814,7 +888,31 @@ const renderProj = (p) => `
   </div>
   ${bullets('Decisions and outcomes', p.pts)}`;
 
-/* --- 05 capabilities ------------------------------------------------------ */
+/* --- 05 practice ---------------------------------------------------------- */
+const practiceView = view(S.practice, `
+  <div class="vbody blds scroll">
+    <p class="blds__i st">Delivery leadership is the job. These are mine — written to the same rules
+      I ask of a programme, and the reason architecture gets reviewed rather than relayed.</p>
+    ${builds.map((b, i) => `
+      <article class="bld st">
+        <header class="bld__h">
+          <span class="bld__n">0${i + 1}</span>
+          <h3 class="bld__t">${b.t}</h3>
+          <p class="bld__s">${b.sub}</p>
+        </header>
+        <p class="bld__th">${b.thesis}</p>
+        <dl class="bld__m">
+          <div><dt>Stack</dt><dd>${b.stack}</dd></div>
+          <div><dt>Scale</dt><dd>${b.scale}</dd></div>
+          <div><dt>Artifacts</dt><dd>${b.artifacts}</dd></div>
+        </dl>
+        <ul class="bld__p">
+          ${b.pts.map((x) => `<li>${x}</li>`).join('')}
+        </ul>
+      </article>`).join('')}
+  </div>`);
+
+/* --- 06 capabilities ------------------------------------------------------ */
 const capView = view(S.capabilities, `
   <div class="vbody caps scroll">
     ${capabilities.map((c, i) => `
@@ -862,7 +960,8 @@ const contactView = view(S.contact, `
     </div>
   </div>`);
 
-stage.innerHTML = indexView + profileView + experienceView + workView + capView + credView + contactView;
+stage.innerHTML = indexView + profileView + experienceView + workView + practiceView
+              + capView + credView + contactView;
 
 /* navigation lists */
 document.getElementById('index').innerHTML = sections.map((s) => `
@@ -954,7 +1053,7 @@ addEventListener('keydown', (e) => {
   const i = order.indexOf(current);
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); show(order[(i + 1) % order.length]); }
   else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); show(order[(i - 1 + order.length) % order.length]); }
-  else if (/^[1-7]$/.test(e.key)) { e.preventDefault(); show(order[+e.key - 1]); }
+  else if (/^[1-8]$/.test(e.key)) { e.preventDefault(); show(order[+e.key - 1]); }
 });
 
 /* A hash typed or followed in-page must move the view. replaceState (used in

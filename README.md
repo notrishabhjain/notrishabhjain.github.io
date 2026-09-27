@@ -52,11 +52,14 @@ Two consequences worth knowing before editing:
    overflowing visibly.
 2. **Dense sections scroll internally, the page does not.** Experience and
    Selected work use a list-and-detail split; only the detail pane scrolls.
-   Profile, Capabilities and Credentials scroll inside their own pane on short
-   phone viewports.
+   Practice scrolls inside its own pane at any size — three entries do not fit a
+   viewport and a picker would be overkill for three. Profile, Capabilities and
+   Credentials scroll inside their own pane on short phone viewports.
 
 Navigation: the left index rail on desktop, a bottom bar under 940px. Arrow keys
-move between sections; number keys 1–7 jump directly.
+move between sections; number keys 1–8 jump directly. Adding or removing a
+section means updating that key range in the `keydown` handler as well as the
+`sections` array.
 
 ## Editing content
 
@@ -68,6 +71,7 @@ All copy lives in the first `<script>` block, in plain arrays:
 | `figures` | The four counted figures on the index |
 | `lead`, `leadAfter`, `practice` | The Profile section |
 | `work` | Six roles, each with `pts` bullets |
+| `builds` | The three Practice entries — thesis, metric strip, evidence |
 | `projects` | Nine engagements, each with a spec strip and `pts` |
 | `capabilities` | Six capability groups |
 | `education`, `certifications` | Credentials |
