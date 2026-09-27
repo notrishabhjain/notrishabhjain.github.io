@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+# Private working page: answers live only in the owner's browser, but the
+# questions themselves need not be indexed.
+Disallow: /dossier/
 
 Sitemap: https://notrishabhjain.github.io/sitemap-index.xml
