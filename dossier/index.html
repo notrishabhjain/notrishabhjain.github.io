@@ -167,7 +167,8 @@ textarea::placeholder{color:var(--ink-3)}
   <header class="head">
     <div>
       <h1>Engagement Dossier</h1>
-      <p>Nine professional engagements, each with questions written for that engagement. Answer in your own
+      <p>Nine professional engagements, each with questions written for that engagement, followed by five
+        sets on applied AI — what you already hold, what is missing, and what you want. Answer in your own
          words, in any order, across as many sittings as you like. Everything stays in this browser until
          you choose to hand it over.</p>
       <a class="home" href="../">&larr; Back to the portfolio</a>
@@ -188,8 +189,8 @@ textarea::placeholder{color:var(--ink-3)}
   </div>
 
   <div class="cols">
-    <nav class="idx" aria-label="Engagements">
-      <div class="idx__h mono">Engagements</div>
+    <nav class="idx" aria-label="Engagements and applied-AI sections">
+      <div class="idx__h mono">Engagements &amp; applied AI</div>
       <div class="idx__list" id="idx"></div>
     </nav>
     <main class="panel" id="panel" aria-live="polite"></main>
@@ -363,7 +364,84 @@ const PROJECTS = [
     ] }
 ];
 
-PROJECTS.forEach(p => { p.questions = [...UNIVERSAL_A, ...p.qs, ...UNIVERSAL_B]; });
+/* Five thematic sets added for the applied-AI repositioning. They carry solo:true
+   because the universal questions ("before this existed", "who reported to you")
+   are written for an engagement and make no sense against a theme. */
+const AI_THEMES = [
+  { id:"ai-shipped", solo:true, name:"AI already inside your delivered systems", client:"Across engagements",
+    org:"Gap analysis", period:"2015 – 2026", role:"Retrospective",
+    domain:"Finding applied-AI credentials you already hold", geo:"—",
+    record:["National Portal: a custom CMS with search improvements and AI features layered on top.",
+      "National Portal: translation into 22 Indian languages, procured as a second RFP and vendor.",
+      "GHCI: Phase 2 AI/ML scope now in procurement.",
+      "8th CPC: ~50,000 demands requiring examination, referral and de-duplication.",
+      "CRCS: ~40 million member records migrated from paper."],
+    qs:[
+      { id:"t1", q:"The National Portal had search improvements and AI features on top of the custom CMS. What were they concretely — semantic search, recommendations, a chatbot, summarisation? Who decided to include them?", h:"This is one clause on your site today. If it was real AI scope you specified, it is the earliest applied-AI credential you hold." },
+      { id:"t2", q:"The 22-language translation went out as a separate RFP and vendor. Machine translation, human, or hybrid — and how did you judge whether the output was good enough to publish nationally?", h:"Procuring MT and defining 'good enough' across 22 languages is an applied-AI quality decision, whether or not anyone called it that at the time." },
+      { id:"t3", q:"Across ~50,000 demands, was anything automated in classifying, de-duplicating, routing or matching them — or was it deliberately kept rule-based and manual?", h:"Fuzzy matching or classification at that volume is ML work. A deliberate choice to stay rule-based is an equally good answer, if you say why." },
+      { id:"t4", q:"Did any engagement use OCR, document extraction, entity resolution or fuzzy name matching? CRCS moving 40 million member records off paper is the obvious candidate.", h:"Paper-to-digital at that scale rarely happens without extraction technology. If it did, say what and whose." },
+      { id:"t5", q:"Has a client or ministry ever asked you for AI scope that you advised against, or scoped out? What was your argument?", h:"Declining AI credibly is a stronger manager signal than enthusiasm for it." },
+      { id:"t6", q:"Is there AI or ML anywhere in your work that we have never discussed, because it did not seem relevant to a project-manager profile?", h:"Catch-all. Worth one deliberate pass through your memory — it is the cheapest evidence available to us." }
+    ] },
+  { id:"ai-ghci2", solo:true, name:"GHCI Phase 2 — your AI mandate", client:"MNRE — National Green Hydrogen Mission",
+    org:"BDO India", period:"2026 – ", role:"Project Manager",
+    domain:"The only forward-looking AI scope you own", geo:"New Delhi",
+    record:["Phase 2 AI/ML scope is in procurement.",
+      "You authored the certificate-versioning specification for Phase 1.",
+      "You hold Project Manager and Delivery & UX Lead on the registry."],
+    qs:[
+      { id:"t1", q:"What is the Phase 2 AI/ML scope actually meant to do? Name the decisions it will automate or assist.", h:"The single most valuable unknown in your profile for these roles. Everything else you have is retrospective; this is forward-looking and it is yours." },
+      { id:"t2", q:"Did you write that scope? How much of the requirement, the evaluation criteria and the technical approach is yours versus someone else's?", h:"Authoring AI procurement for a national mission is a credential very few project managers can claim." },
+      { id:"t3", q:"How will a bidder's AI be judged good enough to accept? What does the RFQ say about accuracy, evaluation, or acceptance testing?", h:"If you defined acceptance criteria for a model, you have done evaluation design at contract level — which is close to the centre of what applied AI managers are hired for." },
+      { id:"t4", q:"Where would a wrong output cost something real — a certificate wrongly issued, a producer wrongly rejected? What did you specify to guard against it?", h:"Risk framing is the line between an AI manager and an AI enthusiast." },
+      { id:"t5", q:"Did you consider and reject an AI approach for either phase? What, and why?", h:"The rejected option is what makes it a decision rather than a purchase." },
+      { id:"t6", q:"Timeline, budget range, procurement route — and will you run the delivery if it lands?", h:"Whether you will actually be accountable for an AI delivery changes how far we can push this positioning." }
+    ] },
+  { id:"ai-eval", solo:true, name:"Evaluation, measurement and model risk", client:"NeSDA · GHCI · 8th CPC",
+    org:"Cross-cutting", period:"2022 – 2026", role:"Retrospective",
+    domain:"Translating rubric and assurance work into evaluation language", geo:"—",
+    record:["NeSDA: 150+ parameters across 10–11 categories, AHP-weighted, held to objective or yes/no so a manual auditor scores identically to the framework.",
+      "GHCI: 48 of 51 CERT-In findings closed, 82/100 post-remediation SAST.",
+      "8th CPC: security audit certificate with zero re-audit cycles."],
+    qs:[
+      { id:"t1", q:"How did you validate the AHP weights? Did you ever test whether two auditors scoring the same site agreed — and what was the spread?", h:"Inter-rater agreement is exactly what an eval harness measures. If you did this, you have done evaluation design without calling it that, and it is your strongest latent asset for these roles." },
+      { id:"t2", q:"What happened when a parameter turned out to be ambiguous in the field? How did you change it, and how fast?", h:"Iterating a rubric on observed failure is the evaluation loop, in the same shape the AI portfolios use." },
+      { id:"t3", q:"Did the framework ever produce a score that was clearly wrong — a good site scoring badly, or a poor one scoring well? How was that dispute settled?", h:"False positives and negatives, and who adjudicates them, is the hardest part of any evaluation system. Interviewers for these roles ask about it directly." },
+      { id:"t4", q:"Did departments try to game their benchmarking score? What did they do, and how did you close it?", h:"Gaming a benchmark is adversarial evaluation. If it happened, that story is worth more than the framework itself." },
+      { id:"t5", q:"Government assurance runs on CERT-In, VAPT and STQC. Does any of it currently cover an AI system, in your experience — and if not, what fills the gap?", h:"A grounded view on whether Indian public-sector assurance handles models is a genuinely scarce perspective, and you are one of few people positioned to hold it." },
+      { id:"t6", q:"Citizen data at CRCS and IVFRT scale sits under DPDP. Has data protection ever constrained what could be built — and would it constrain an AI feature?", h:"Data governance is half of applied AI in the public sector." }
+    ] },
+  { id:"ai-practice", solo:true, name:"Your hands-on AI practice today", client:"—",
+    org:"Current", period:"Now", role:"Honest calibration",
+    domain:"What you can actually do, as against what you have managed", geo:"—",
+    record:["Seven years hands-on as engineer and blockchain architect before moving into delivery leadership.",
+      "Built Skillchain on Quorum with credentials issued as NFTs.",
+      "You have said you use Claude across your current projects."],
+    qs:[
+      { id:"t1", q:"What do you personally use AI for in a working week, concretely — and what has changed in how your team works because of it?", h:"Running a delivery organisation with AI in the loop is current, first-hand evidence. Name the tools, the tasks, and what you stopped doing." },
+      { id:"t2", q:"Have you built anything yourself with an LLM API, an agent framework or a RAG pipeline — even a throwaway? What was it, and what surprised you?", h:"A plain 'no' is a useful answer. It tells us precisely how large the build ahead is." },
+      { id:"t3", q:"What is your real current level in Python, JavaScript or SQL — not what you could relearn, but what you could sit down and write today without help?", h:"Calibration only, and it decides Applied AI Manager against Applied AI Engineer. I would much rather know than guess on your behalf." },
+      { id:"t4", q:"What would you be comfortable being technically interviewed on right now, and where would you rather not be pushed?", h:"Your profile's job is to route interviewers toward the first and away from the second." },
+      { id:"t5", q:"How much time a week could you give to building two or three public AI artifacts — a RAG tool, an eval harness, an agent — over the next two or three months?", h:"Every portfolio I researched for these roles rests on shipped artifacts. This answer sets what is actually realistic for you." },
+      { id:"t6", q:"Are you willing to publish under your own name — GitHub, writing, in the open?", h:"The strongest profiles in this space belong to public practitioners rather than to employees." }
+    ] },
+  { id:"ai-target", solo:true, name:"Target and appetite", client:"—",
+    org:"Positioning", period:"—", role:"Your call, not mine",
+    domain:"Four decisions only you can make", geo:"—",
+    record:["Applied AI Engineer and Applied AI Manager are different roles with different evidence bars.",
+      "Your site currently markets a Project Manager and Portfolio Manager, and does it well.",
+      "The researched profiles split cleanly: judgement-led for managers, artifact-led for engineers."],
+    qs:[
+      { id:"t1", q:"Of the two titles, which is the real target — and is the other a genuine equal or a fallback?", h:"They need different sites. One convincing profile beats one that hedges." },
+      { id:"t2", q:"Geography and setup: India, remote for a foreign employer, relocation? And are you aiming at AI-first companies, consultancies, or enterprises adopting AI?", h:"An enterprise AI programme values your government delivery record; an AI-native company values shipped artifacts. The emphasis changes completely." },
+      { id:"t3", q:"What is the timeline — applying now, or building toward it over six to twelve months?", h:"This decides whether we reposition what exists or build the evidence first." },
+      { id:"t4", q:"Should the Project and Portfolio Manager positioning stay live while you build toward applied AI — same site, a second section, or a separate site altogether?", h:"The biggest structural decision left, and it is yours. A site that hedges between two targets convinces neither reader." }
+    ] }
+];
+PROJECTS.push(...AI_THEMES);
+
+PROJECTS.forEach(p => { p.questions = p.solo ? [...p.qs] : [...UNIVERSAL_A, ...p.qs, ...UNIVERSAL_B]; });
 const TOTAL = PROJECTS.reduce((n,p) => n + p.questions.length, 0);
 
 /* ================================================================ state == */
@@ -429,7 +507,10 @@ function renderPanel() {
       ${q.h ? `<p class="q__h">${esc(q.h)}</p>` : ''}
       <textarea id="ta-${p.id}-${q.id}" placeholder="Type freely — fragments are fine."
         aria-label="Answer ${i+1}">${esc(mine[q.id] || '')}</textarea></div>`;
-  const nA = UNIVERSAL_A.length, nT = p.qs.length;
+  /* A themed set (solo) takes no universals — "before this existed" and "who reported
+     to you" are written for an engagement and read as nonsense against a theme. */
+  const uA = p.solo ? [] : UNIVERSAL_A, uB = p.solo ? [] : UNIVERSAL_B;
+  const nA = uA.length, nT = p.qs.length;
 
   el('#panel').innerHTML = `
     <h2 class="panel__h">${esc(p.name)}</h2>
@@ -444,9 +525,9 @@ function renderPanel() {
     <details class="rec"><summary>What the portfolio already says — build on this, don't repeat it</summary>
       <ul>${p.record.map(r => `<li>${esc(r)}</li>`).join('')}</ul></details>
     <div class="qs">
-      ${grp('The setup')}${UNIVERSAL_A.map((q,i) => qh(q,i)).join('')}
-      ${grp('This engagement specifically')}${p.qs.map((q,i) => qh(q, nA+i)).join('')}
-      ${grp('Judgment and aftermath')}${UNIVERSAL_B.map((q,i) => qh(q, nA+nT+i)).join('')}
+      ${uA.length ? grp('The setup') + uA.map((q,i) => qh(q,i)).join('') : ''}
+      ${grp(p.solo ? 'Questions' : 'This engagement specifically')}${p.qs.map((q,i) => qh(q, nA+i)).join('')}
+      ${uB.length ? grp('Judgment and aftermath') + uB.map((q,i) => qh(q, nA+nT+i)).join('') : ''}
     </div>
     <p class="note">Answers are stored in this browser only — they are not uploaded anywhere and are not part of
       the public site. When you want me to work from them, press <b>Copy for Claude</b> and paste the result into
