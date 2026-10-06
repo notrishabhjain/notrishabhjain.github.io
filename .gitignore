@@ -1,6 +1,6 @@
 .DS_Store
 *.log
 
-# Generated from index.html on demand, not part of the site. The deploy workflow
-# uploads the whole repository, so committing this would publish it publicly.
+# Generated on demand from the rendered pages, not part of the site. The deploy
+# workflow uploads the whole repository, so committing this would publish it.
 PORTFOLIO_CONTENT.md

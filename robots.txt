@@ -4,4 +4,4 @@ Allow: /
 # questions themselves need not be indexed.
 Disallow: /dossier/
 
-Sitemap: https://notrishabhjain.github.io/sitemap-index.xml
+Sitemap: https://notrishabhjain.github.io/sitemap.xml
