@@ -88,12 +88,26 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .scroll::-webkit-scrollbar-thumb{background:var(--rule-2)}
 .scroll::-webkit-scrollbar-track{background:transparent}
 
+/* --- the ground ----------------------------------------------------------
+   A single flat fill reads as a screen. Two fixed layers give it depth without
+   adding decoration: a fine grain so the paper has tooth, and one soft lift from
+   the top-left so the page has a light source. Both sit under the app and take
+   no pointer events. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none}
+body::before{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23g)'/></svg>");
+  opacity:.034;
+}
+html[data-theme="dark"] body::before{opacity:.06}
+body::after{background:radial-gradient(118% 86% at 13% -4%,var(--paper-2) 0%,transparent 56%)}
+.app{position:relative;z-index:1}
+
 /* ================================================================== shell == */
 .app{height:100dvh;display:grid;grid-template-columns:var(--rail) 1fr;overflow:hidden}
 
 .rail{
   border-right:1px solid var(--rule);display:grid;grid-template-rows:auto 1fr auto;
-  min-height:0;background:var(--paper);
+  min-height:0;
 }
 .rail__head{padding:26px var(--gut) 22px 26px;border-bottom:1px solid var(--rule)}
 .rail__name{font-family:var(--display);font-size:21px;font-weight:400;letter-spacing:-.015em;line-height:1.1}
@@ -176,8 +190,34 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 
 <style>
 /* ================================================================== index == */
-.lede{display:flex;flex-direction:column;justify-content:center;height:100%;min-height:0}
-.lede>*{flex-shrink:0}
+/* The index is a spread, not a hero: the statement on the left, the contents of
+   the dossier on the right. Without the second column the right third of a wide
+   screen is dead space. */
+.lede{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.82fr);
+  gap:clamp(30px,4.6vw,78px);align-items:center;height:100%;min-height:0}
+.lede__main{display:flex;flex-direction:column;justify-content:center;min-height:0}
+.lede__main>*{flex-shrink:0}
+
+.ledger{min-height:0;max-height:100%;overflow:auto;scrollbar-width:thin;
+  scrollbar-color:var(--rule-2) transparent}
+.ledger__h{display:flex;justify-content:space-between;gap:12px;color:var(--ink-3);
+  padding-bottom:11px;border-bottom:1px solid var(--rule-2)}
+.ledger__l{margin:0;padding:0;list-style:none}
+.led{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:12px;align-items:baseline;
+  width:100%;padding:11px 0;border-bottom:1px solid var(--rule);color:var(--ink-2);
+  transition:color .2s var(--ease),padding-left .2s var(--ease)}
+.led:hover{color:var(--ink);padding-left:6px}
+.led__n{color:var(--ink-3)}
+.led__t{font-family:var(--display);font-size:14px;font-weight:400;letter-spacing:-.008em;line-height:1.3}
+.led__y{color:var(--ink-3);font-size:9.5px}
+.led:hover .led__y{color:var(--mark)}
+
+/* Below this the statement needs the full measure, and the contents would only
+   repeat Selected work one tap away. */
+@media(max-width:1380px){
+  .lede{grid-template-columns:1fr}
+  .ledger{display:none}
+}
 .lede h1{
   font-family:var(--display);font-weight:300;
   font-size:clamp(31px,4.55vw,64px);line-height:1.04;letter-spacing:-.031em;
@@ -508,42 +548,37 @@ const work = [
   {
     co: "BDO India", role: "Manager — Digital Transformation", dates: "Jan 2026 — Present",
     where: "New Delhi", client: "National e-Governance Division (NeGD), MeitY",
-    note: "Sole client engagement. A team of eight spanning two concurrent national platforms, both now entering AI-assisted phases.",
+    note: "Sole client engagement. A team of eight across two national platforms, both now entering AI-assisted phases.",
     pts: [
-      "Shipped an <b>eight-module national system of record in four weeks</b> with a seven-person team, against a Pay Commission tenure that could not legally be extended — running parallel module streams so the schedule risk sat in coordination, which can be managed, rather than in the deadline, which could not.",
-      "Replaced forms, spreadsheets and physical files with a governed state machine: a demand data model and a workflow running Demand Creation, Examination, Ministry Reply, Peer Referral, Reviewing Officer and Commission placement, under role-based access across <b>10 processing officers and some 100 ministry users</b>. Live since August on ~1,500 memoranda and ~50,000 demands, and built for the <b>18,000 memoranda and ~200,000 demands</b> expected within six months.",
-      "Wrote the <b>AI scope now in build</b> for that platform — anomaly detection, duplicate detection, evidence referencing against the memoranda a demand cites, and source retrieval — so that examination stops being a page-by-page manual read.",
-      "Cleared go-live across <b>four external bodies with no shared reporting line</b>, spanning NIC and the National Government Cloud, by escalating from infrastructure engineer to NIC chief until instructions came back down — and diagnosing the vendor-side SSL and routing fault myself when it was the last thing blocking launch.",
-      "Delivered one of India's first <b>green hydrogen certification registries</b> to ministerial inauguration, live since June, on an append-only registry where an amended certificate is written as a new record rather than overwriting the original.",
-      "Ran an internal pre-audit that closed <b>48 of 51 findings</b> before the CERT-In-empanelled audit began, so the formal audit passed in a single pass rather than cycling — and secured the 8th CPC security certificate with <b>zero re-audit cycles</b> the same way.",
-      "Authored <b>80–90% of the Phase 2 AI scope</b> for the hydrogen registry — a ~6-month, ~&#8377;2 crore build I will also deliver — and specified its two guardrails: AI is advisory only, with a named officer approving every consequential action, and every generated output must cite the source document it came from."
+      "Accountable to a ministry-level client for <b>two national platforms at once</b> — one live since June, one since August — each with its own statutory clock, vendor set and security regime.",
+      "Carry the specification and the delivery together: I write the requirement, the evaluation criteria and the technical approach, then run the team that builds against them. On the hydrogen registry that now extends to an <b>AI phase I scoped at 80–90% and will deliver</b>.",
+      "Set the terms AI operates under on both platforms — <b>advisory output only</b>, a named officer accountable for every consequential action, mandatory citation of the source behind any generated claim, and acceptance measured against cases already answered by hand.",
+      "Treat security as a delivery constraint rather than a gate at the end. Pre-auditing internally before the empanelled audit, and remediating in parallel with it, is how both platforms cleared certification with <b>no re-audit cycle</b>.",
+      "Deliver inside Government of India constraints as given: open-source only, hosted on government cloud rather than a hyperscaler, and coordinated across bodies that answer to nobody in this engagement."
     ]
   },
   {
     co: "Infosys", role: "Project Manager", dates: "Nov 2024 — Jan 2026",
     where: "Pune", client: "GE Vernova (renewable energy)",
-    note: "Product Owner and Scrum Master for the onshore and offshore wind application portfolio. A 35-person organisation.",
+    note: "P&amp;L, delivery and people for a 35-person application organisation. Product Owner on some applications, Scrum Master on others.",
     pts: [
-      "Took a unit running at <b>100% loss</b> — staffed at roughly double what the contract anticipated — to <b>12–15% profit within six months</b>, the largest financial turnaround on the account, plus around <b>$200,000 a year</b> in new business.",
-      "Cut the team from <b>25 to about 10</b> over ten months without the service degrading, in that order: documented every process into SOPs, shifted repetitive work left to junior engineers and an L1.5 layer, automated monitoring and alerting, and only then reduced headcount while holding a senior–junior mix.",
-      "Introduced AI into live support the way it should be done — <b>shadow mode first</b>, then a six-hour window, then a full day of ticket and task monitoring — so the automation earned its scope instead of being granted it.",
-      "Held <b>99.9% SLA across ~50–55 applications</b> while that happened, having first renegotiated the measurement itself: from one blended pool of all support numbers to separate SLAs across support, enhancements and environment changes. The 99.9% is the consolidated figure, not an artefact of the new split.",
-      "Cut <b>MTTR from four days to under 12 hours</b> through scope tightening, daily standups, SOP standardisation and deployment-script automation.",
-      "Owned a <b>15-person L1.5 layer triaging ~800 applications</b> account-wide on a 24×7 shift rota, with around half the routing and SOP execution automated.",
-      "Cut attrition by defining RACI matrices that removed ownership ambiguity — a turnaround that burns out the team does not hold. The unit now runs at ~25% profit with weekends handled by the automation."
+      "Owned the commercials, the delivery and the team for an organisation serving wind hardware under genuine 24×7 obligations — <b>100% loss to 12–15% profit in six months</b>, and roughly half the headcount.",
+      "Got there by making the work legible before touching the staffing: SOPs so knowledge stopped living in senior heads, repetitive work shifted left, an L1.5 tier standing between users and engineers. <b>Headcount came down last</b>, not first.",
+      "Took AI into live support as a <b>staged mandate rather than a rollout</b> — shadow alongside humans, then a six-hour window, then a full day — so each increment was judged on evidence from the one before.",
+      "Renegotiated what the SLA measured before trying to move it. One blended pool of every support number was not a signal anyone could act on; separate commitments for support, enhancements and environment changes were.",
+      "Grew the account while shrinking the unit, taking requests that fell outside scope as <b>separately scoped work</b> rather than absorbing them — around $200,000 a year of new business."
     ]
   },
   {
     co: "EY India", role: "Senior Consultant — Government", dates: "Apr 2022 — Nov 2024",
     where: "Delhi", client: "Ministry of Cooperation · MeitY/NeGD · Bureau of Immigration",
-    note: "Four national Government of India platform engagements across two ministries in under three years.",
+    note: "Four national platform engagements across two ministries in under three years.",
     pts: [
-      "Took the Central Registrar of Cooperative Societies from a paper-based office to a live national platform <b>serving ~40 million members</b> across some 1,500 multi-state societies, with average application processing time down more than 70%.",
-      "Unblocked that digitisation by <b>proposing legal amendments that were subsequently enacted</b> — the binding constraint was the statute, not the technology. Electronic notice given legal standing, Aadhaar e-sign given validity in place of a wet signature; tabled before the parliamentary committee and passed in about six months.",
-      "Rebuilt the National Portal of India as a single citizen front door — <b>20+ federated sources in one view</b> on a custom CMS, with semantic search, recommendations and summarisation specified on top.",
-      "Designed the <b>22-language translation system</b> behind it as machine translation with experts in the loop, not as a procurement line item: vendors evaluated on translation quality before selection, two reviewers per language at launch, corrections fed back into the model, and new terminology added to each language's lexicon. Initial error rate ~<b>1 sentence in 10</b>, acceptance around <b>80%</b>; review was then concentrated on the five highest-traffic languages as quality rose.",
-      "Put NIC's <b>150+ parameter website benchmarking framework</b> into force across 80+ departments by routing authority rather than persuading each in turn: a secretary's letter to CERT-In, CERT-In directing ministries to onboard, each appointing a nodal officer answerable for closure. Results went to the <b>Cabinet Secretary</b> and into the Samiksha portal.",
-      "Led UI/UX and process re-engineering on the <b>national visa and foreigner-registration revamp</b>, consolidating fragmented visa, OCI and NRI services onto one platform and getting a common standard agreed across ports that had each run to their own. Detail is limited by the system's classification."
+      "Four engagements, four different failure modes: a <b>statute that forbade the build</b>, eighty departments with no reporting line to us, a classified system where downtime closes ports, and a portal whose every data source belonged to somebody else.",
+      "Worked the buyer's side end to end — process study, DPR, RFP, vendor onboarding, then <b>ministry-side oversight of delivery against my own specification</b>, which is an uncomfortable and very effective place to sit.",
+      "Where the binding constraint was legal rather than technical, changed the constraint: proposed amendments to the MSCS Act that were <b>tabled and enacted in about six months</b>, and built against the expected change rather than waiting for it.",
+      "Designed quality systems for machine output before anyone was calling it AI governance — <b>expert-in-the-loop translation across 22 languages</b> with corrections fed back as training signal, and a 150+ parameter audit framework validated against human scorers.",
+      "Moved institutions that had no obligation to move, by finding the authority that did bind them rather than by persuasion."
     ]
   },
   {
@@ -551,8 +586,8 @@ const work = [
     where: "Noida", client: "EYGDS",
     note: "",
     pts: [
-      "Designed and built <b>Skillchain</b> — employee skills and qualifications recorded on chain, one-click deployment on Quorum, credentials issued as NFTs — and carried it from problem statement to a <b>unit-wide pilot</b> at EY.",
-      "Lifted voluntary uptake to around <b>80%</b> through enablement sessions, having run the requirement phase across HR, talent acquisition, hiring managers and the background-verification vendors before designing anything. Nothing compelled an employee to use it, so adoption had to be earned."
+      "Carried a credential-verification product from problem statement to a <b>unit-wide pilot at EY</b> as its architect and de facto owner — research, design, build, and the adoption work that decides whether any of it mattered.",
+      "Adoption was the hard part, not the chain: nothing obliged an employee to use it, so <b>~80% voluntary uptake</b> had to be earned through enablement."
     ]
   },
   {
@@ -560,18 +595,18 @@ const work = [
     where: "Noida", client: "",
     note: "",
     pts: [
-      "Delivered blockchain and backend systems across <b>three regulated domains in twelve months</b> — cryptocurrency exchange platforms, document management systems, and a civil and property registry platform.",
-      "Designed secure, scalable architectures for digital document workflow and transaction systems, running API-level requirement analysis, solution design and performance improvement cycles."
+      "Delivered blockchain and backend systems across <b>three regulated domains in twelve months</b> — exchange platforms, document management, and a civil and property registry.",
+      "Designed for audit and scale from the API upward, across requirement analysis, solution design and performance work."
     ]
   },
   {
     co: "Tata Consultancy Services", role: "IT Analyst", dates: "Oct 2015 — May 2020",
     where: "Gurugram", client: "UK-based BFSI client",
-    note: "Five years from mainframe support tickets to owning the application outright from offshore.",
+    note: "",
     pts: [
-      "Took a hand-run Visa chargeback reconciliation off manual effort entirely, on a legacy Unisys Mapper system, for a saving the <b>client itself put at ~£200,000 over twelve months</b> — reconciliation hours, callout cost, the contractual penalties that fired automatically when an incident missed its resolution window, and refund leakage.",
-      "Cut reported <b>defects by 40%</b>, measured six months after go-live, and returned 20+ man-hours a week to the team through automated reporting on Unisys Mainframe.",
-      "Built proofs of concept that reached production for external clients — Hyperledger sample tracking for Boston Scientific, document management for Sanofi — and stood up the <b>first blockchain lab inside TCS infrastructure</b> to give them somewhere to run."
+      "Five years from mainframe support tickets, to development, to <b>owning the application outright from offshore</b>, to blockchain architecture and the first lab inside TCS infrastructure.",
+      "Automated a hand-run reconciliation the client valued at <b>~£200,000 a year</b>. The blocker was a permission that had never been configured in that environment, so the unlock was commercial rather than technical — negotiated with vendor and client instead of engineered around.",
+      "Learned here what the rest of the record is built on: that the constraint stopping delivery is usually not the one in the ticket."
     ]
   }
 ];
@@ -583,14 +618,13 @@ const projects = [
     scale: "8 modules in ~4 weeks · live since August · AI examination layer in build",
     note: "A Pay Commission tenure is fixed in law. The delivery window could not be extended, so the plan had to absorb the risk instead.",
     pts: [
-      "Shipped <b>eight modules in four weeks</b> with a seven-person team, inside a statutory window the member secretary set as four weeks or the project would be scrapped.",
-      "Absorbed that window by running <b>parallel module streams instead of sequential phases</b> across two two-week sprints — moving the schedule risk into coordination overhead, which a manager can control, and out of the deadline, which nobody could. Two modules not in the original scope were added mid-flight and still landed.",
-      "Converted an unstructured spreadsheet dump into a governed state machine: a demand data model and a workflow from Demand Creation through Examination, Ministry Reply, Peer Referral and Reviewing Officer to Commission placement, under role-based access for <b>10 processing officers</b> — four of whom also review — and some <b>100 ministry users</b>.",
-      "Live since August on ~1,500 memoranda and ~50,000 demands, and <b>built for the 18,000 memoranda and ~200,000 demands</b> expected as the next tranche arrives within six months.",
-      "Wrote the <b>AI scope now in build</b>: anomaly detection, duplicate detection, evidence referencing against the memoranda a demand cites, and retrieval of the sources a demand names — so examination stops being a page-by-page manual read. Power BI handles reporting; the AI is doing the judgement-support work, not the charts.",
-      "Migrated data from <b>14 offices with no common structure</b>, changing migration strategy several times as each attempt surfaced fields the agreed model had no place for — attachments, links, cross-references.",
-      "Cleared go-live across <b>four external bodies with no shared reporting line</b>, spanning NIC and the National Government Cloud, by escalating from infrastructure engineer up to the NIC chief until instructions came back down — and diagnosing the vendor-side SSL and routing fault myself when the vendor could not.",
-      "Built on <b>zero licensed components</b>, per MeitY guidelines, and hosted on NIC cloud rather than a hyperscaler because the data could not leave government infrastructure."
+      "<b>Eight modules. Four weeks. Seven people.</b> The member secretary's terms were that date or no project — a Pay Commission's tenure is set in law and does not negotiate.",
+      "Ran the modules as <b>parallel streams across two sprints</b>. That put the schedule risk into coordination, where a manager has leverage, and took it out of the deadline, which had none. Two unplanned modules arrived mid-flight and still landed.",
+      "Replaced a spreadsheet dump with a <b>governed state machine</b> — a demand model and a workflow running Creation, Examination, Ministry Reply, Peer Referral, Reviewing Officer and Commission placement, under role-based access for <b>10 processing officers and some 100 ministry users</b>.",
+      "Live since August on ~1,500 memoranda and ~50,000 demands, and built for the <b>18,000 and ~200,000</b> arriving within six months.",
+      "Wrote the <b>AI scope now in build</b>: anomaly detection, duplicate detection, evidence matched against the memoranda a demand cites, retrieval of the sources it names. Examination stops being a page-by-page read. Power BI draws the charts; the AI does the judgement work.",
+      "Migrated <b>14 offices that shared no common structure</b>, and cleared go-live across four bodies with no reporting line to us — escalating to the NIC chief until instructions came back down, and diagnosing the vendor's SSL and routing fault when the vendor could not.",
+      "Open-source only, on government cloud. MeitY's constraints, not ours, and the plan was built around them from day one."
     ]
   },
   {
@@ -599,13 +633,13 @@ const projects = [
     scale: "Live since June · Phase 2 AI scope ~&#8377;2 crore, ~6 months, authored and delivered by me",
     note: "No certification for green hydrogen existed in India. There was no as-is process to study — process definition began when the engagement did.",
     pts: [
-      "Delivered one of India's first <b>green hydrogen certification registries</b> to live service, inaugurated by the minister on a fixed public date, with producers registering from day one.",
-      "Designed the registry <b>append-only</b>: an amended certificate is written as a new record rather than overwriting the original, so the full trail survives amendment and supersession across four certificate types. Nothing breaks because nothing is edited in place.",
-      "Ran an <b>internal pre-audit that closed 48 of 51 findings</b> before the CERT-In-empanelled audit began — so the formal audit passed in a single pass instead of cycling. The three left open came from customising reusable components; they were manually verified and the residual risk formally accepted by the CTO.",
-      "Authored <b>80–90% of the Phase 2 AI scope</b> — a ~6-month, ~&#8377;2 crore build with data scientists, developers, DevOps and testers, which I will also deliver. It assists producers, auditors, the technical committee and regulators: scanning submissions for missing or irrelevant information, validating against rules that change by office memorandum and so cannot sensibly be hard-coded, pre-filling an auditor's checklist from the gaps already detected, and checking emissions figures for discrepancy.",
-      "Specified two <b>non-negotiable guardrails</b>: the AI is advisory only, with a named officer approving every consequential action, and every generated output must be bound to the source document it came from. A wrongly issued certificate carries financial and legal benefit; a wrongly rejected producer carries litigation.",
-      "Set the acceptance test as a <b>golden-dataset comparison</b> — the team runs its approach against cases where the answer was already derived manually, and is measured on how closely it matches. There is no bidding here; a team is hired against a job specification, so the evaluation had to be designed rather than procured.",
-      "<b>Rejected putting AI into Phase 1</b>. Auditors and committee members had to become fluent in the portal and the process first; assistance before familiarity would have been assistance nobody could judge."
+      "One of India's first <b>green hydrogen certification registries</b>, live since June, inaugurated on a fixed public date with producers registering the same day.",
+      "The registry is <b>append-only</b>. An amendment is written as a new record and the original is never touched, so the trail survives amendment and supersession across four certificate types.",
+      "Closed <b>48 of 51 findings in an internal pre-audit</b> before the CERT-In-empanelled audit opened. It then passed in a single pass. The three left open came from customised reusable components, were verified by hand, and the residual risk was signed by the CTO.",
+      "Authored <b>80–90% of the Phase 2 AI scope</b> — &#8377;2 crore, six months, data scientists through testers — and will deliver it. It reads submissions for gaps, validates against rules that move by office memorandum and so cannot be hard-coded, pre-fills the auditor's checklist from what it has already found, and flags emissions figures that do not reconcile.",
+      "<b>Two guardrails, neither negotiable.</b> The AI advises and a named officer approves every consequential action. Every generated claim cites the document behind it. A certificate issued wrongly carries money and legal standing; one refused wrongly carries litigation.",
+      "Acceptance is a <b>golden-dataset test</b>: the team runs against cases already answered by hand and is scored on the gap. There is no bidding here, so the evaluation had to be designed from scratch.",
+      "<b>Kept AI out of Phase 1 entirely.</b> Auditors needed fluency in the process first — assistance offered before that is assistance nobody can judge."
     ]
   },
   {
@@ -614,14 +648,13 @@ const projects = [
     scale: "100% loss to 12–15% profit · 25 people to ~10 · AI from shadow mode to live support",
     note: "Inherited a unit staffed at roughly double what the contract anticipated, running at a complete loss, serving wind hardware under genuine 24×7 uptime obligations.",
     pts: [
-      "Took the unit from <b>100% loss to 12–15% profit in six months</b> — the largest financial turnaround on the account — and added around <b>$200,000 a year</b> of new business by taking out-of-scope requests as separately scoped work rather than absorbing them.",
-      "Cut the team from <b>25 to about 10</b> over ten months, in that order: documented every process into SOPs so the work stopped living in senior heads, shifted repetitive tasks left to juniors and to an L1.5 layer, automated monitoring and alerting, and only then reduced headcount while holding a senior–junior mix.",
-      "Introduced AI into live support <b>in stages it had to earn</b>: shadow support first, running alongside humans with no authority; then a six-hour window; then a full day of ticket and task monitoring. The automation is a mix of rule-based scripting, agentic AI and AIOps on an internal platform.",
-      "Held <b>99.9% SLA across ~50–55 applications</b> through all of it, having first renegotiated what was being measured — from one blended pool of all support numbers to separate SLAs across support, enhancements and environment changes. The 99.9% is the consolidated figure, not an artefact of the new split.",
-      "Cut <b>MTTR from four days to under 12 hours</b> by tightening scope so the team was not absorbing work that was never theirs, instituting daily standups with a concrete update per ticket, and standardising SOPs. Tickets unattended past three hours escalated directly to me.",
-      "Owned a <b>15-person L1.5 layer triaging ~800 applications</b> account-wide across 24×7 shifts, around half of its routing and SOP execution automated.",
-      "A safety-alerting service field technicians depend on failed overnight, with <b>two technicians on a turbine and no way to warn them</b>. Raised as P1, woke the on-call rota, and ran the root cause to a third-party alert provider's regional outage rather than anything in our stack — then held the crew on manual all-clears from that provider until they were down safely, and sanitised the affected regions before closing it.",
-      "Reduced attrition by defining RACI matrices that removed ownership ambiguity — a turnaround that burns out the team does not hold. The unit now runs at around <b>25% profit</b> with automation at 70–80% and weekends handled without a human rota."
+      "Took the unit from a <b>total loss to 12–15% profit in six months</b> — the largest turnaround on the account — and won around <b>$200,000 a year</b> of new business by pricing out-of-scope requests as scope.",
+      "Halved the team, <b>25 to about 10</b>, in the only sequence that holds: SOPs first, so the work stopped living in senior heads; then repetitive tasks to juniors and a 15-person L1.5 tier covering ~800 applications; then automation; then headcount — with RACI matrices closing the ownership gaps that were driving attrition.",
+      "<b>AI entered live support on probation.</b> Shadow alongside humans with no authority, then a six-hour window, then a full day — rule-based scripting, agentic AI and AIOps on an internal platform. Every increment was argued from the evidence of the one before it.",
+      "Held <b>99.9% across ~50–55 applications</b> throughout, having first fixed the measurement. One blended pool of every support number told nobody anything; support, enhancements and environment changes now carry separate commitments. The 99.9% is the consolidated figure.",
+      "<b>MTTR fell from four days to under 12 hours.</b> Scope tightened, standups carried a concrete update per ticket, SOPs were standardised, and anything untouched for three hours came to me.",
+      "A safety-alerting service field technicians depend on failed overnight, with <b>two technicians on a turbine and no way to warn them</b>. Raised P1, woke the on-call rota, and ran the cause to a third-party provider's regional outage outside our stack — then held the crew on manual all-clears from that provider until they were down safely, and sanitised the affected regions before closing it.",
+      "The unit runs at around <b>25% profit</b> today, automation at 70–80%, weekends with no human rota."
     ]
   },
   {
@@ -630,11 +663,11 @@ const projects = [
     scale: "~40M members · ~1,500 societies · application time down 70%+",
     note: "The office was entirely paper-based. The blocker turned out not to be technology but the statute itself — the Act had no provision for a notice delivered electronically, or for a signature that was not physical.",
     pts: [
-      "Took an entirely paper-based national office to a live platform serving <b>~40 million members</b> across some 1,500 multi-state cooperative societies, with average application processing time <b>down more than 70%</b>.",
-      "Identified that the <b>MSCS Act itself blocked digitisation</b> and proposed the amendments that cleared it — electronic notice given legal standing, <b>Aadhaar e-sign given validity</b> in place of a wet signature. Put to the ministry, tabled before the parliamentary committee, passed: about six months end to end, with the build continuing against the expected amendment rather than waiting for it.",
-      "Ran the Business Process Re-engineering study before any system design, and rebuilt the process around accountability rather than around forms — <b>role-based access for every officer</b>, and automatic escalation when a file sits five, seven or fifteen days. Previously a file could sit for months at one level with nobody answerable for it.",
-      "Authored the DPR and RFP, then held ministry-side oversight of the vendor building against them — taking them back to agreed scope on deviation and escalating through the ministry when that was the only thing that moved them. We had done the process study; the vendor had not.",
-      "The platform now carries the multi-state cooperative society record for the country, including the Sahara credit cooperative society data that refund validation is run against."
+      "A paper-based national office became a live platform for <b>~40 million members</b> across some 1,500 multi-state societies, with application processing time <b>down more than 70%</b>.",
+      "<b>The blocker was the Act, not the architecture.</b> The MSCS Act recognised neither electronic notice nor a signature that was not physical, so I proposed the amendments. Ministry, parliamentary committee, enacted — about six months, with the build running against the expected change rather than waiting on it.",
+      "Ran the process study before any design and rebuilt around accountability: <b>role-based access per officer</b>, automatic escalation at five, seven and fifteen days. A file used to sit for months at one level with nobody answerable for it.",
+      "Wrote the DPR and RFP, then sat on the ministry's side of my own specification — pulling the vendor back to agreed scope on deviation and escalating when nothing else moved them.",
+      "The platform now holds the country's multi-state society record, including the Sahara credit cooperative society data that refund validation runs against."
     ]
   },
   {
@@ -643,13 +676,13 @@ const projects = [
     scale: "150+ parameters · 80+ departments · ±10% scorer agreement · reported to the Cabinet Secretary",
     note: "Every ministry had to be audited and then change its website on the findings. None of them reported to us, and all of them had reason to say no.",
     pts: [
-      "Put a <b>150+ parameter benchmarking framework</b> into force across <b>80+ departments and ministries</b> and got the findings actually remediated — the part nobody had solved before.",
-      "Solved adoption by <b>routing authority instead of persuading 80 departments one at a time</b>: a secretary's letter to CERT-In, CERT-In directing ministries and departments to onboard, each appointing a nodal officer personally answerable for closing findings. Compliance stopped being a favour anyone could decline.",
-      "Weighted the parameters across 10–11 categories using <b>AHP</b>, then validated the weighting empirically — multiple human auditors scored the same sites manually first, and the weights were set against that baseline. Agreement landed within <b>±10%</b> of the scores we assigned.",
-      "Held every question to objective or yes/no so a manual auditor scores a site exactly as the framework does, and ran <b>parameter-by-parameter sensitivity analysis</b> — tweaking one at a time to see what it moved — before settling the final rubric.",
-      "Handled the false results rather than explaining them away. Good sites scored badly where the crawler could not reach them or the CSS was broken; the fix was workarounds plus <b>averaging across multiple audit runs</b>, with independent human feedback where quality was genuinely subjective.",
-      "Closed the gaming route by design: departments see their score, the section breakdown and the bot's parameter-level answers, but cannot change any of it — only request a rescan, <b>rate-limited to one per week</b> so fixes are batched instead of tested one at a time against our bandwidth.",
-      "Results went to the <b>Cabinet Secretary</b> and his monthly meeting, with six-to-eight week remediation windows by severity, into the <b>Samiksha portal</b> under PMO monitoring. G20 benchmarking placed India in the <b>top five overall</b>. Now live as <b>AKAM</b>: any site going onto NIC infrastructure has to pass the audit first."
+      "A <b>150+ parameter framework</b> in force across <b>80+ departments and ministries</b>, with the findings actually closed — which is the part nobody had managed before.",
+      "<b>Adoption came from authority, not advocacy.</b> A secretary's letter to CERT-In, CERT-In directing ministries to onboard, a nodal officer in each answerable by name. Compliance stopped being something anyone could decline.",
+      "<b>AHP</b> weighted the parameters across 10–11 categories, and the weighting was validated against people: human auditors scored the same sites by hand first, and agreement landed within <b>±10%</b>.",
+      "Every question is objective or yes/no, so a manual auditor reproduces the framework's score exactly. <b>Sensitivity analysis</b>, one parameter at a time, settled the final rubric.",
+      "<b>False results got engineering, not excuses.</b> Good sites scored badly where the crawler stalled or the CSS had broken, so scoring averages across runs, with human review where quality was genuinely subjective.",
+      "Gaming is closed by design. Departments see their score, the section breakdown and the bot's parameter-level answers, and can change none of it — only request a rescan, <b>capped at one a week</b>.",
+      "Results reached the <b>Cabinet Secretary's</b> monthly meeting and the <b>Samiksha portal</b> under PMO watch, with six-to-eight week remediation windows by severity. G20 benchmarking placed India in the <b>top five</b>. It runs today as <b>AKAM</b>: nothing goes onto NIC infrastructure without passing it."
     ]
   },
   {
@@ -658,12 +691,12 @@ const projects = [
     scale: "National visa, OCI and foreigner-registration consolidation",
     note: "This engagement touches national security and the detail is classified. What follows is deliberately limited to what can be said publicly.",
     pts: [
-      "Consolidated fragmented visa, e-visa, OCI and NRI services — which travellers had been navigating as separate portals — onto <b>one platform</b>, and carried it from as-is analysis through to a staged national rollout.",
-      "The officer-side problem was fragility, not features: information was assembled from <b>separate databases and application silos, none of which worked offline</b>, so one system going down could stall a port for hours and occasionally days, with staff falling back to paper registers.",
-      "The hard problem was not technical. Seaports and land ports each ran to their own long-standing local standard, so a <b>common standard had to be agreed, adopted, and trained into staff</b> who had worked the old way for years. The resistance was real and it was won by demonstration rather than mandate.",
-      "Ran the as-is and gap analysis, then led <b>UI/UX and process re-engineering</b> with a consultant team of business analysts, developers and designers — designing from observing officers and travellers at work rather than from the specification alone.",
-      "<b>Deprioritised the database denormalisation</b> — collapsing the siloed databases into one analysable store — to keep the seaports, land ports and core system on schedule. The right call on sequencing, and the thing I would pick up first given a second phase.",
-      "Rolled out in stages from an initial two-seaport pilot; live across seaports today, with airports piloting and land ports to follow."
+      "Consolidated visa, e-visa, OCI and NRI services onto <b>one platform</b>, from as-is analysis through to a staged national rollout. Travellers had been navigating them as separate portals.",
+      "<b>The officer's problem was fragility.</b> Information was assembled across separate databases and application silos, none of which worked offline, so a single failure could stall a port for hours — occasionally days — and staff fell back to paper registers.",
+      "The hard part was never technical. Every seaport and land port ran its own long-standing standard, so <b>one standard had to be agreed, adopted and trained</b> into people who had worked the old way for years. The resistance was real; demonstration moved it where a mandate would not have.",
+      "Led <b>UI/UX and process re-engineering</b> with a team of business analysts, developers and designers, designing from watching officers and travellers work rather than from the specification alone.",
+      "<b>Deprioritised collapsing the siloed databases</b> into one analysable store to protect the ports and the core system. The right call on sequence, and first on my list given a second phase.",
+      "Staged from a two-seaport pilot; live across seaports today, airports piloting, land ports to follow."
     ]
   },
   {
@@ -672,13 +705,12 @@ const projects = [
     scale: "20+ sources · 22 languages, machine translation with experts in the loop · custom CMS",
     note: "Version one was a static site where every link opened a separate sub-portal that knew nothing about the others. The brief was to make the name true.",
     pts: [
-      "Turned a link directory into a working single front door for citizens: <b>20+ federated sources in one view</b> — One District One Product, iGOT, e-Courts, MyScheme, the services portal, Aadhaar services, income-tax verification, state and district tourism, the ministerial and district directories, the judiciary, and live news from News on Air, PIB and PTI.",
-      "Most of those sources belonged to somebody else. Classified every candidate by data type, integration shape and availability, then <b>ranked them by who had to be moved politically against who could simply be built with</b> — so ministerial escalation was spent only where it was the only lever that worked.",
-      "Designed the <b>22-language translation system</b> as a quality problem rather than a procurement line. Vendors were shortlisted on the measured quality of their translation and comparable work, not on price alone — and the output was never trusted raw, because a mistranslation on the national portal is not a defect that stays small.",
-      "Built it as <b>machine translation with language experts in the loop</b>: two reviewers per language at launch, every correction fed back into the model, unknown terminology added to that language's lexicon, and meaning lost in translation repaired by a native expert and returned as training signal. Initial error rate ran at about <b>one sentence in ten</b>, with roughly <b>80% of output accepted</b> as translated.",
-      "<b>Graduated the autonomy as the quality earned it.</b> Human review concentrated on the five highest-traffic languages; lower-traffic languages moved to unreviewed machine output carrying an explicit disclaimer, rather than being held back or silently published as if reviewed.",
-      "Specified <b>semantic search, recommendations and summarisation</b> on a custom CMS built from scratch, because nothing off the shelf ingested sources that heterogeneous consistently. The client set the outcome; the approach was ours to design and get approved.",
-      "Beta ran for over a year before go-live. Citizens now apply for services from the portal itself, with the information collected carrying through to the parent service instead of being re-entered."
+      "Turned a link directory into a <b>single front door</b>: 20+ federated sources in one view — One District One Product, iGOT, e-Courts, MyScheme, the services portal, Aadhaar, income-tax verification, state and district tourism, the ministerial, district and judiciary directories, and live news from News on Air, PIB and PTI.",
+      "Almost none of it was ours. I classified every source by data type, integration shape and availability, then <b>ranked them by who needed a ministerial push against who would simply cooperate</b> — so escalation was spent only where nothing else worked.",
+      "Treated <b>22-language translation as a quality problem</b>. Vendors were shortlisted on the measured quality of their translation and comparable work; a mistranslation on the national portal is not a defect that stays small.",
+      "Built it as <b>machine translation with language experts in the loop</b>: two reviewers per language at launch, every correction returned to the model, unfamiliar terminology added to that language's lexicon, lost meaning repaired by a native speaker and fed back as training signal. Error rate started near <b>one sentence in ten</b>, with roughly <b>80% of output accepted</b> as translated.",
+      "<b>Autonomy was graduated as the quality earned it.</b> Review concentrated on the five highest-traffic languages; lower-traffic languages moved to unreviewed output under an explicit disclaimer — published honestly, or not published as reviewed at all.",
+      "Specified <b>semantic search, recommendations and summarisation</b> on a CMS built from scratch, because nothing off the shelf ingested sources that heterogeneous. Beta ran over a year. Citizens now apply from the portal itself, the information carrying through to the parent service."
     ]
   },
   {
@@ -687,11 +719,11 @@ const projects = [
     scale: "Unit-wide pilot · ~80% voluntary uptake after enablement",
     note: "Background verification was manual and offline — agencies ringing previous employers and working industry contacts. Skills and certifications had no verification path at all beyond an interview.",
     pts: [
-      "Took a blockchain credential platform from problem statement to a <b>unit-wide pilot at EY</b>, with voluntary uptake reaching around <b>80%</b> — earned through enablement, since nothing obliged an employee to use it.",
-      "Treated demand as the risk, not the cryptography: ran the requirement phase across HR, talent acquisition, hiring managers and the background-verification vendors, worked from the internal cases where credentials had proved false, and carried the design through three rounds of partner and director review before a line of code was written.",
-      "Built it — <b>one-click deployment on Quorum</b>, a private Ethereum implementation, with credentials issued as NFTs so an employee could carry a verified skill onto a profile or a job board instead of leaving it behind with the employer.",
-      "<b>Descoped the NFT marketplace deliberately</b> to protect the core platform's delivery. It was the right call: a second team picked the marketplace up and it did not land either.",
-      "Cross-company verification was overtaken when the background-verification agencies shipped the same capability inside their own products. The thesis held — the work ran to 2024 and the capability now lives in EY Skills and EY Badges on Degreed."
+      "Carried a blockchain credential platform from problem statement to a <b>unit-wide pilot at EY</b>, with voluntary uptake near <b>80%</b> — earned through enablement, since nothing obliged anyone to use it.",
+      "<b>The risk was demand, not cryptography.</b> I ran requirements across HR, talent acquisition, hiring managers and the background-verification vendors, worked from the internal cases where credentials had proved false, and took the design through three rounds of partner and director review before any code was written.",
+      "Built it: <b>one-click deployment on Quorum</b>, a private Ethereum implementation, with credentials issued as NFTs so a verified skill travels with the employee onto a profile or a job board.",
+      "<b>Descoped the NFT marketplace</b> to protect the core delivery. Vindicated: another team took it on and it did not land either.",
+      "Cross-company verification was overtaken when the verification agencies shipped the same capability themselves. The thesis survived — the work ran to 2024, and the capability lives today in EY Skills and EY Badges on Degreed."
     ]
   },
   {
@@ -700,10 +732,10 @@ const projects = [
     scale: "~£200,000 saved over twelve months, client-calculated · 40% fewer defects",
     note: "Visa chargebacks were reconciled by hand on a legacy Unisys Mapper system. A failed Monday batch cost four to six hours of manual reconciliation and could escalate to a priority-one incident and an onsite callout.",
     pts: [
-      "Took chargeback reconciliation off manual effort entirely, for a saving <b>the client itself calculated at ~£200,000 across twelve months</b> — reconciliation hours, priority-one callout cost, the contractual penalties that fired automatically whenever an incident missed its resolution window, and the refund leakage where the bank reimbursed customers without recovering from merchants.",
-      "Rebuilt the pipeline end to end — COBOL file handling, triggered-job state persisted across runs — so the nightly batch and weekend runs carried themselves and a failed Monday batch stopped costing a working day.",
-      "The automation could not run without Mapper permissions that had <b>never been configured in that client environment</b>. Negotiated the exception with vendor and client rather than engineering around it: the blocker was commercial, so the fix had to be.",
-      "Reported defects fell <b>40%</b>, measured six months after go-live, as manual reconciliations and false refunds dropped out of the process.",
+      "Took chargeback reconciliation off manual effort entirely. The <b>client put the saving at ~£200,000 over twelve months</b>: reconciliation hours, priority-one callout cost, the contractual penalties that fired automatically on a missed resolution window, and the refund leakage where the bank paid customers without recovering from merchants.",
+      "Rebuilt the pipeline end to end — COBOL file handling, triggered-job state persisted across runs — so the nightly and weekend batches carried themselves and a failed Monday stopped costing a working day.",
+      "It could not run at all without <b>Mapper permissions that had never existed in that environment</b>. I negotiated the exception with vendor and client: the blocker was commercial, and commercial is where it had to be solved.",
+      "Reported <b>defects fell 40%</b>, measured six months after go-live, as manual reconciliations and false refunds left the process.",
       "Built proofs of concept that <b>reached production for external clients</b> — Hyperledger sample tracking for Boston Scientific, document management for Sanofi — and stood up the <b>first blockchain lab inside TCS infrastructure</b> to give them somewhere to run."
     ]
   }
@@ -769,21 +801,34 @@ const S = Object.fromEntries(sections.map((s) => [s.id, s]));
 /* --- 01 index ------------------------------------------------------------- */
 const indexView = view(S.index, `
   <div class="vbody lede">
-    <h1 class="st">${profile.headline.join(' ')}</h1>
-    <p class="lede__sub st">${profile.sub}</p>
-    <p class="lede__loc mono st">${profile.location}</p>
-    <div class="figs st">
-      ${figures.map((f) => `
-        <div class="fig">
-          <div class="fig__v"><span data-count="${f.count}">0</span>${f.suffix}${f.unit ? `<span class="u">${f.unit}</span>` : ''}</div>
-          <div class="fig__l">${f.l}</div>
-        </div>`).join('')}
+    <div class="lede__main">
+      <h1 class="st">${profile.headline.join(' ')}</h1>
+      <p class="lede__sub st">${profile.sub}</p>
+      <p class="lede__loc mono st">${profile.location}</p>
+      <div class="figs st">
+        ${figures.map((f) => `
+          <div class="fig">
+            <div class="fig__v"><span data-count="${f.count}">0</span>${f.suffix}${f.unit ? `<span class="u">${f.unit}</span>` : ''}</div>
+            <div class="fig__l">${f.l}</div>
+          </div>`).join('')}
+      </div>
+      <div class="acts st">
+        <button class="btn btn--f" data-go="work" type="button"><span>Selected work</span></button>
+        <button class="btn" data-go="experience" type="button"><span>Experience</span></button>
+        <a class="btn" href="${profile.resume}"><span>Resume</span></a>
+      </div>
     </div>
-    <div class="acts st">
-      <button class="btn btn--f" data-go="work" type="button"><span>Selected work</span></button>
-      <button class="btn" data-go="experience" type="button"><span>Experience</span></button>
-      <a class="btn" href="${profile.resume}"><span>Resume</span></a>
-    </div>
+    <aside class="ledger st" aria-label="Engagements">
+      <div class="ledger__h mono"><span>Engagements</span><span>2015 — 2026</span></div>
+      <ol class="ledger__l">
+        ${projects.map((p, i) => `
+          <li><button class="led" type="button" data-go="work" data-pick="${i}">
+            <span class="led__n mono">${String(i + 1).padStart(2, '0')}</span>
+            <span class="led__t">${p.t}</span>
+            <span class="led__y mono">${p.year}</span>
+          </button></li>`).join('')}
+      </ol>
+    </aside>
   </div>`);
 
 /* --- 02 profile ----------------------------------------------------------- */
@@ -944,7 +989,14 @@ function show(id) {
   history.replaceState(null, '', `#${id}`);
 }
 
-navBtns.forEach((b) => b.addEventListener('click', () => show(b.dataset.go)));
+navBtns.forEach((b) => b.addEventListener('click', () => {
+  show(b.dataset.go);
+  /* A contents row goes to the section and opens that engagement, the way a
+     contents page sends you to the page rather than to the chapter. */
+  if (b.dataset.pick !== undefined) {
+    document.querySelector(`.pick[data-kind="proj"][data-i="${b.dataset.pick}"]`)?.click();
+  }
+}));
 
 /* list-and-detail panes */
 function paint(kind, i) {
