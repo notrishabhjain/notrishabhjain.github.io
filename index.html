@@ -358,7 +358,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
   .acts{margin-top:16px;gap:7px}
   .btn{padding:10px 13px;font-size:9.5px;letter-spacing:.13em}
 
-  .prof{grid-template-columns:1fr;gap:18px;overflow:auto}
+  /* Plain block flow on one column, not a grid. As a grid the rows stretch to the
+     pane height while "safe center" leaves each item at its content height, so a
+     tall item overflows its row and paints over the next one rather than clipping.
+     Block flow cannot do that: the children stack and .prof scrolls as a whole. */
+  .prof{display:block;overflow:auto}
+  .prof>*{max-height:none;overflow:visible}
+  .prof>*+*{margin-top:20px}
   .prof__lead{font-size:15px;max-width:none}
   .prof__after{margin-top:14px;font-size:13px}
 
@@ -491,7 +497,7 @@ const practice = [
   { t: "Delivery &amp; governance",
     d: "Programme and PMO governance, RACI design, risk registers, SLA management, milestone and Secretary-level reporting. Agile and waterfall — and the turnaround work when delivery is late, over-staffed or losing money." },
   { t: "Techno-functional",
-    d: "I write the specification engineers build against: the 24-field data model and seven-state referral workflow behind a national pay commission platform; the certificate-versioning spec for India's green hydrogen registry." },
+    d: "I write the specification engineers build against: the demand data model and referral workflow behind a national pay commission platform; the certificate-versioning spec for India's green hydrogen registry." },
   { t: "Applied AI",
     d: "Scoping AI into systems that carry legal consequence, and governing what it is allowed to decide: machine translation with language experts in the loop across 22 languages; anomaly, duplicate and evidence detection over a national demand register; an assist layer for green hydrogen certification, authored and now being delivered." },
   { t: "Portfolio",
@@ -726,7 +732,6 @@ const education = [
 ];
 
 const certifications = [
-  { t: "Certified Scrum Master", y: "Scrum Alliance", m: "Scrum framework facilitation, sprint governance and agile delivery leadership." },
   { t: "Project Management Certificate", y: "Google", m: "Project lifecycle management, stakeholder governance, risk and delivery planning." }
 ];
 
@@ -736,7 +741,7 @@ const sections = [
   { id: "experience",  n: "03", label: "Experience",   title: "Experience",                meta: "6 roles · 2015 — present" },
   { id: "work",        n: "04", label: "Selected work",title: "Selected work",             meta: "9 engagements" },
   { id: "capabilities",n: "05", label: "Capabilities", title: "Capabilities",              meta: "7 groups" },
-  { id: "credentials", n: "06", label: "Credentials",  title: "Education &amp; certifications", meta: "PGDM · B.Tech · 2 certifications" },
+  { id: "credentials", n: "06", label: "Credentials",  title: "Education &amp; certifications", meta: "PGDM · B.Tech · 1 certification" },
   { id: "contact",     n: "07", label: "Contact",      title: "Get in touch",              meta: "Open to roles" }
 ];
 </script>
