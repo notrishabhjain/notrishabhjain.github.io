@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>National Portal of India v2.0 — case study — Rishabh Jain</title>
+<meta name="description" content="National Portal of India v2.0: 20-plus federated sources behind one front door, with 22-language machine translation run as a measured quality system with reviewers in the loop and graduated review.">
+<meta name="author" content="Rishabh Jain">
+<link rel="canonical" href="https://notrishabhjain.github.io/work/national-portal-of-india/">
+<link rel="icon" href="../../favicon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="National Portal of India v2.0 — Rishabh Jain">
+<meta property="og:description" content="National Portal of India v2.0: 20-plus federated sources behind one front door, with 22-language machine translation run as a measured quality system with reviewers in the loop and graduated review.">
+<meta property="og:url" content="https://notrishabhjain.github.io/work/national-portal-of-india/">
+<meta name="twitter:card" content="summary">
+
+<script>
+  (function () {
+    document.documentElement.dataset.js = '1';
+    try {
+      var t = localStorage.getItem('rj-theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    } catch (e) { /* private mode — the markup default stands */ }
+  })();
+</script>
+
+<link rel="preload" href="../../assets/fonts/plexsans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__in">
+    <a class="nav__me" href="../../">Rishabh Jain</a>
+    <button class="nav__burger" type="button" data-burger aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" id="nav-links" aria-label="Sections">
+      <a href="../../#work">Case studies</a>
+      <a href="../../#approach">How I work</a>
+      <a href="../../about/">Background</a>
+      <a href="../../#contact">Contact</a>
+      <a href="../../files/Rishabh_Jain_Resume.pdf">Resume</a>
+      <button class="nav__tgl" type="button" data-theme-toggle>Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<article>
+  <div class="wrap">
+    <div class="cs__head">
+      <a class="cs__back" href="../../#work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> All case studies</a>
+      <p class="label label--accent">Case study 07 &nbsp;·&nbsp; Government of India · PMO</p>
+      <h1 class="cs__t">National Portal of India v2.0</h1>
+      <p class="cs__sub">Turning a static directory of disconnected portals into a single digital front door — and treating translation across 22 languages as a measurable quality problem rather than a model choice.</p>
+      <ul class="cs__spine"><li>Disconnected portals</li><li>One front door</li><li>Translation as a metric</li><li>Graduated review</li></ul>
+      <div class="glance"><div><p class="label">Role</p><b>Senior Consultant — PMO</b><span>Platform strategy, product definition, language quality</span></div><div><p class="label">Scope</p><b>20+ federated sources</b><span>22 languages, custom CMS</span></div><div><p class="label">Span</p><b>2022–24</b><span>Semantic search and summarisation specified for the next phase</span></div><div><p class="label">Headline</p><b>~80% of output accepted</b><span>From an initial error rate near 1 in 10 sentences</span></div></div>
+    </div>
+
+    <div class="cs__body">
+      <nav class="toc" aria-label="On this page">
+        <p class="label" style="margin-bottom:var(--s2)">On this page</p>
+        <ol>
+        <li><a href="#situation">01 — Situation</a></li>
+        <li><a href="#constraint">02 — The constraint</a></li>
+        <li><a href="#mandate">03 — My mandate</a></li>
+        <li><a href="#decisions">04 — Decisions</a></li>
+        <li><a href="#delivery">05 — Delivery</a></li>
+        <li><a href="#outcome">06 — Outcome</a></li>
+        <li><a href="#forward">07 — What I'd carry forward</a></li>
+        </ol>
+      </nav>
+      <div class="cs__main">
+      <section class="cs__block rise" id="situation" aria-labelledby="situation-h">
+        <p class="label" id="situation-h">01 — Situation</p>
+        <div class="cs__in">
+          <h2>A directory of portals, not a service</h2>
+          <p>The objective was to turn a static directory of disconnected government portals into a <strong>single digital front door</strong>, federating more than twenty sources: One District One Product, iGOT, e-Courts, MyScheme, the services portal, Aadhaar, income-tax verification, tourism, government directories and live news.</p>
+        </div>
+      </section>
+      <section class="cs__block rise" id="constraint" aria-labelledby="constraint-h">
+        <p class="label" id="constraint-h">02 — The constraint</p>
+        <div class="cs__in">
+          <h2>Twenty-two languages, and a source ecosystem nothing off the shelf could ingest</h2>
+          <p>Two constraints shaped the build. The sources were heterogeneous enough that an off-the-shelf ingestion model could not adequately handle them. And the platform had to work in <strong>22 languages</strong>, where a plausible-sounding mistranslation of a government service is worse than no translation at all.</p>
+        </div>
+      </section>
+      <section class="cs__block rise" id="mandate" aria-labelledby="mandate-h">
+        <p class="label" id="mandate-h">03 — My mandate</p>
+        <div class="cs__in">
+          <p>Work from the PMO side on platform strategy, product definition, and the language quality system.</p>
+        </div>
+      </section>
+      <section class="cs__block rise" id="decisions" aria-labelledby="decisions-h">
+        <p class="label" id="decisions-h">04 — Decisions</p>
+        <div class="cs__in">
+          <div class="dec">
+            <div>
+              <p class="label label--accent">Decision 01</p>
+              <p class="dec__t">Treat translation as a measurable quality problem, not a model choice.</p>
+            </div>
+            <div class="dec__body">
+              <p><span class="dec__k">Why</span>Rather than selecting a translation engine and accepting its output, the programme instrumented quality: machine translation, <strong>two reviewers per language at launch</strong>, corrections fed back into the model, language-specific terminology, and native-speaker intervention where it was needed.</p>
+              <div class="dec__off"><p><span class="dec__k">Trade-off accepted</span>Two reviewers per language across 22 languages is a standing cost, and it slowed launch. It produced a number we could manage against — an initial error rate near one sentence in ten, with roughly 80% of output accepted as translated.</p></div>
+            </div>
+          </div>
+          <div class="dec">
+            <div>
+              <p class="label label--accent">Decision 02</p>
+              <p class="dec__t">Graduate review by traffic and measured quality.</p>
+            </div>
+            <div class="dec__body">
+              <p><span class="dec__k">Why</span>Reviewing every language equally forever would have been unaffordable and wrong: a high-traffic language with a poor error rate needs more attention than a low-traffic one performing well. Review intensity was graduated on both signals.</p>
+              <div class="dec__off"><p><span class="dec__k">Trade-off accepted</span>It accepted that lower-traffic languages would get less scrutiny, which is a real quality trade-off and had to be stated rather than hidden. It made the review model sustainable past launch.</p></div>
+            </div>
+          </div>
+          <div class="dec">
+            <div>
+              <p class="label label--accent">Decision 03</p>
+              <p class="dec__t">Build a custom CMS rather than adopt an ingestion product.</p>
+            </div>
+            <div class="dec__body">
+              <p><span class="dec__k">Why</span>The heterogeneous source ecosystem could not be adequately handled by an off-the-shelf ingestion model, so the programme specified a custom CMS and then <strong>semantic search, recommendations and summarisation</strong> on top of it.</p>
+              <div class="dec__off"><p><span class="dec__k">Trade-off accepted</span>Custom means owning maintenance and upgrades that a product vendor would otherwise carry. It was the only way to federate sources that did not agree on structure.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cs__block rise" id="delivery" aria-labelledby="delivery-h">
+        <p class="label" id="delivery-h">05 — Delivery</p>
+        <div class="cs__in">
+          <h2>The language pipeline</h2>
+          <ul class="flow flow--boxed"><li>Machine translation</li><li>Two reviewers per language</li><li>Correction feedback</li><li>Terminology</li><li>Graduated review</li></ul>
+          <p>Corrections were not just fixes: they were training signal and terminology, which is why the error rate was something the programme could move rather than simply report.</p>
+        </div>
+      </section>
+      <section class="cs__block rise" id="outcome" aria-labelledby="outcome-h">
+        <p class="label" id="outcome-h">06 — Outcome</p>
+        <div class="cs__in">
+          <div class="outcome"><div><b>20+</b><span>federated sources behind one door</span></div><div><b>22</b><span>languages live</span></div><div><b>~80%</b><span>of machine output accepted as translated</span></div><div><b>~1 in 10</b><span>initial sentence error rate</span></div></div>
+          <p>A single front door over twenty-plus federated sources, with a language quality system that could be measured and improved, and semantic search, recommendations and summarisation specified on a custom CMS for the following phase.</p>
+        </div>
+      </section>
+      <section class="cs__block rise" id="forward" aria-labelledby="forward-h">
+        <p class="label" id="forward-h">07 — What I'd carry forward</p>
+        <div class="cs__in">
+          <p><strong>AI quality is an operating process, not a model selection.</strong> The reviewers, the feedback loop, the terminology and the graduation rule were the product; the model was a component.</p>
+          <p>Instrumenting quality before scaling is what made the trade-offs explicit. Without a measured error rate there is no honest way to decide which languages get less review.</p>
+        </div>
+      </section>
+      <section class="cs__block rise" id="demonstrates" aria-labelledby="demonstrates-h">
+        <p class="label" id="demonstrates-h">What this demonstrates</p>
+        <div class="cs__in">
+          <ul class="chips"><li>AI quality systems</li><li>Human-in-the-loop design</li><li>Multilingual technology</li><li>Platform integration</li><li>Product strategy</li></ul>
+        </div>
+      </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="csnext">
+      <p class="label">Next case study</p>
+      <a href="../skillchain/">Skillchain <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</article>
+</main>
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <p class="label" style="margin-bottom:var(--s3)">Resume &amp; contact</p>
+    <h2 class="foot__h">Interested in the work?</h2>
+    <p style="color:var(--text-2);max-width:52ch">I build the bridge between what an organisation needs to achieve and what technology can responsibly deliver. If that is the problem in front of you, get in touch.</p>
+    <p class="btns" style="margin-top:var(--s4)">
+      <a class="btn btn--solid" href="../../files/Rishabh_Jain_Resume.pdf">View resume</a>
+      <a class="btn" href="https://www.linkedin.com/in/notrishabhjain/" rel="noopener">Get in touch</a>
+    </p>
+    <div class="foot__grid">
+      <div class="foot__i">
+        <p class="label">Rishabh Jain</p>
+        <p style="color:var(--text-2);font-size:16px">Applied AI Project Manager · Digital Transformation · Techno-Functional Leadership</p>
+      </div>
+      <div class="foot__i">
+        <p class="label">Location</p>
+        <p style="color:var(--text-2);font-size:16px">Delhi, India</p>
+      </div>
+      <div class="foot__i">
+        <p class="label">Elsewhere</p>
+        <a href="https://www.linkedin.com/in/notrishabhjain/" rel="noopener">LinkedIn</a>
+        <a href="mailto:rishabh.jain@outlook.in">rishabh.jain@outlook.in</a>
+        <a href="../../files/Rishabh_Jain_Resume.pdf">Resume (PDF)</a>
+      </div>
+    </div>
+    <p class="foot__fine">
+      <span>© <span id="yr">2026</span> Rishabh Jain</span>
+      <span>Built as a static site — no framework, no tracking.</span>
+    </p>
+  </div>
+</footer>
+<script src="../../assets/js/site.js" defer></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

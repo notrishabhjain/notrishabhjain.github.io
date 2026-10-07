@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>GE Vernova Wind Portfolio — Case study — Rishabh Jain</title>
+<title>GE Vernova Wind Portfolio — case study — Rishabh Jain</title>
 <meta name="description" content="GE Vernova wind portfolio: 100% loss to 12–15% profit in six months, 99.9% SLA across some 55 applications, MTTR from four days to under twelve hours, and AI taken from shadow mode into live production support.">
 <meta name="author" content="Rishabh Jain">
 <link rel="canonical" href="https://notrishabhjain.github.io/work/ge-vernova-wind-portfolio/">
@@ -30,7 +30,6 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
 <header class="nav">
   <div class="nav__in">
     <a class="nav__me" href="../../">Rishabh Jain</a>
@@ -38,11 +37,10 @@
       <span></span><span></span><span></span>
     </button>
     <nav class="nav__links" id="nav-links" aria-label="Sections">
-      <a href="../../#work">Work</a>
-      <a href="../../#approach">Approach</a>
-      <a href="../../#experience">Experience</a>
-      <a href="../../#capabilities">Capabilities</a>
-      <a href="../../#about">About</a>
+      <a href="../../#work">Case studies</a>
+      <a href="../../#approach">How I work</a>
+      <a href="../../about/">Background</a>
+      <a href="../../#contact">Contact</a>
       <a href="../../files/Rishabh_Jain_Resume.pdf">Resume</a>
       <button class="nav__tgl" type="button" data-theme-toggle>Dark</button>
     </nav>
@@ -53,79 +51,125 @@
 <article>
   <div class="wrap">
     <div class="cs__head">
-      <a class="cs__back" href="../../#work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Selected work</a>
-      <p class="label label--accent">Case study 03 · GE Vernova · Project Manager, Product Owner, Scrum Master · 2024–26</p>
+      <a class="cs__back" href="../../#work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> All case studies</a>
+      <p class="label label--accent">Case study 03 &nbsp;·&nbsp; GE Vernova · Renewable Energy</p>
       <h1 class="cs__t">GE Vernova Wind Portfolio</h1>
       <p class="cs__sub">A loss-making application unit supporting wind hardware under genuine 24×7 obligations, turned net-positive in six months by changing the operating model before the headcount.</p>
       <ul class="cs__spine"><li>Loss-making unit</li><li>Model before headcount</li><li>Staged AI authority</li><li>12–15% profit</li></ul>
+      <div class="glance"><div><p class="label">Role</p><b>PM, Product Owner, Scrum Master</b><span>P&L, delivery, operations, product and people</span></div><div><p class="label">Scope</p><b>~50–55 applications</b><span>24×7 support for wind hardware operations</span></div><div><p class="label">Span</p><b>Six months to net-positive</b><span>Now operating at around 25% profit</span></div><div><p class="label">Headline</p><b>100% loss to 12–15% profit</b><span>Without cutting people first</span></div></div>
     </div>
 
     <div class="cs__body">
-      <section class="cs__block rise">
-        <p class="label">01 — Context</p>
+      <nav class="toc" aria-label="On this page">
+        <p class="label" style="margin-bottom:var(--s2)">On this page</p>
+        <ol>
+        <li><a href="#situation">01 — Situation</a></li>
+        <li><a href="#constraint">02 — The constraint</a></li>
+        <li><a href="#mandate">03 — My mandate</a></li>
+        <li><a href="#decisions">04 — Decisions</a></li>
+        <li><a href="#delivery">05 — Delivery</a></li>
+        <li><a href="#outcome">06 — Outcome</a></li>
+        <li><a href="#forward">07 — What I'd carry forward</a></li>
+        </ol>
+      </nav>
+      <div class="cs__main">
+      <section class="cs__block rise" id="situation" aria-labelledby="situation-h">
+        <p class="label" id="situation-h">01 — Situation</p>
         <div class="cs__in">
-          <h2>A unit at a complete loss, supporting hardware that runs 24×7</h2>
-          <p>I inherited an application organisation supporting a wind portfolio at <strong>100% loss</strong>, staffed at roughly twice the contractual requirement, under genuine round-the-clock operational obligations — the hardware does not stop at close of business, and neither can the applications that watch it.</p>
-          <p>Scope covered roughly <strong>50 to 55 applications</strong> and a team of about 25 people.</p>
+          <h2>A unit at 100% loss, supporting hardware that does not stop</h2>
+          <p>I inherited an application organisation supporting a wind portfolio at <strong>100% loss</strong>, staffed at roughly twice the contractual requirement, under genuine round-the-clock operational obligations. Turbines do not stop at close of business, and neither can the applications watching them.</p>
+          <p>Scope covered roughly <strong>50 to 55 applications</strong> and a team of about 25.</p>
         </div>
       </section>
-      <section class="cs__block rise">
-        <p class="label">02 — Challenge</p>
+      <section class="cs__block rise" id="constraint" aria-labelledby="constraint-h">
+        <p class="label" id="constraint-h">02 — The constraint</p>
         <div class="cs__in">
-          <h2>The problem was not the headcount</h2>
-          <p>The obvious move on a loss-making unit is to cut people. That would have removed the cost and kept the cause, because the cause was spread across six things at once:</p>
-          <ul class="flow flow--boxed"><li>Operating model</li><li>Knowledge management</li><li>SLA definition</li><li>Automation</li><li>Commercial scope</li><li>Team structure</li></ul>
-          <p>Critical knowledge lived inside individual senior engineers. Support, enhancements and environment changes were measured as one blended service pool, which hid where the service was actually failing. Out-of-scope work was absorbed rather than charged.</p>
+          <h2>The obvious fix was the wrong one</h2>
+          <p>The standard response to a loss-making unit staffed at twice requirement is to cut. That would have removed the cost and left the cause, because the cause was spread across six things at once:</p>
+          <ul class="chips"><li>Operating model</li><li>Knowledge management</li><li>SLA definition</li><li>Automation</li><li>Commercial scope</li><li>Team structure</li></ul>
+          <p>Critical knowledge lived inside individual senior engineers. Support, enhancements and environment changes were measured as one blended pool, which hid where the service was actually failing. Out-of-scope work was absorbed rather than charged.</p>
         </div>
       </section>
-      <section class="cs__block rise">
-        <p class="label">03 — Mandate</p>
+      <section class="cs__block rise" id="mandate" aria-labelledby="mandate-h">
+        <p class="label" id="mandate-h">03 — My mandate</p>
         <div class="cs__in">
-          <p>Own <strong>P&amp;L, delivery, operational performance, product responsibilities and people management</strong> for the application organisation — as Project Manager, Product Owner and Scrum Master.</p>
+          <p>Own <strong>P&amp;L, delivery, operational performance, product responsibilities and people management</strong> for the application organisation.</p>
         </div>
       </section>
-      <section class="cs__block rise">
-        <p class="label">04 — Critical decisions</p>
+      <section class="cs__block rise" id="decisions" aria-labelledby="decisions-h">
+        <p class="label" id="decisions-h">04 — Decisions</p>
         <div class="cs__in">
-          <p class="label">Decision 01</p>
-          <blockquote class="callout" style="margin-top:0">Fix the operating model before reducing people.<small><b>Why.</b> SOPs were standardised first, so critical knowledge stopped living in individual senior resources. Repetitive work was shifted left and an <strong>L1.5 layer</strong> was established — and only then was headcount reduced. Cutting first would have removed the capacity and kept the dependency.</small></blockquote>
-          <p class="label">Decision 02</p>
-          <blockquote class="callout" style="margin-top:0">Separate the commercial signals.<small><b>Why.</b> Support, enhancements and environment changes were given separate commitments rather than being measured as one blended pool. You cannot manage a service whose failures average out against each other.</small></blockquote>
-          <p class="label">Decision 03</p>
-          <blockquote class="callout" style="margin-top:0">Commercialise scope instead of absorbing it.<small><b>Why.</b> Out-of-scope requests became separately scoped work, generating around <strong>$200,000 a year</strong> of new business from demand the unit had previously been giving away.</small></blockquote>
+          <div class="dec">
+            <div>
+              <p class="label label--accent">Decision 01</p>
+              <p class="dec__t">Fix the operating model before reducing people.</p>
+            </div>
+            <div class="dec__body">
+              <p><span class="dec__k">Why</span>Cutting first removes capacity and keeps the dependency: the work still needs doing and only a few people can do it. I standardised SOPs so knowledge stopped living in individuals, shifted repetitive work left, and established an <strong>L1.5 layer</strong> — and only then reduced headcount.</p>
+              <div class="dec__off"><p><span class="dec__k">Trade-off accepted</span>It delayed the visible financial improvement by months while the cost base stayed where it was, which is an uncomfortable thing to hold in front of a P&L review. It made the reduction survivable rather than a transfer of risk onto the people who remained.</p></div>
+            </div>
+          </div>
+          <div class="dec">
+            <div>
+              <p class="label label--accent">Decision 02</p>
+              <p class="dec__t">Separate the commercial signals.</p>
+            </div>
+            <div class="dec__body">
+              <p><span class="dec__k">Why</span>Support, enhancements and environment changes were being measured as one service pool, so failures in one averaged out against successes in another. Each got its own commitment, which made the actual failure visible and chargeable.</p>
+              <div class="dec__off"><p><span class="dec__k">Trade-off accepted</span>Three commitments are harder to report and to govern than one blended number, and it removed a convenient place to hide. That was the point.</p></div>
+            </div>
+          </div>
+          <div class="dec">
+            <div>
+              <p class="label label--accent">Decision 03</p>
+              <p class="dec__t">Commercialise scope instead of absorbing it.</p>
+            </div>
+            <div class="dec__body">
+              <p><span class="dec__k">Why</span>Out-of-scope requests were being delivered for free, which hid demand and funded a loss. They became separately scoped work, generating around <strong>$200,000 a year</strong> of new business.</p>
+              <div class="dec__off"><p><span class="dec__k">Trade-off accepted</span>It introduced friction into requests that previously just happened, and required holding a line with a client used to getting them. It converted a leak into revenue and made the real demand visible.</p></div>
+            </div>
+          </div>
+          <div class="dec">
+            <div>
+              <p class="label label--accent">Decision 04</p>
+              <p class="dec__t">Give AI production authority only as fast as the evidence allowed.</p>
+            </div>
+            <div class="dec__body">
+              <p><span class="dec__k">Why</span>AI entered production support in controlled stages — shadow mode, then a six-hour window, then full-day operation — with each expansion resting on evidence from the stage before it. The environment combined rule-based scripting with agentic AI and AIOps on an internal platform.</p>
+              <div class="dec__off"><p><span class="dec__k">Trade-off accepted</span>Staging it meant running human and machine in parallel for longer than strictly necessary, paying twice for the same coverage during shadow. It is why the expansion was never reversed.</p></div>
+            </div>
+          </div>
         </div>
       </section>
-      <section class="cs__block rise">
-        <p class="label">05 — Applied AI</p>
+      <section class="cs__block rise" id="delivery" aria-labelledby="delivery-h">
+        <p class="label" id="delivery-h">05 — Delivery</p>
         <div class="cs__in">
-          <h2>AI earned its authority one stage at a time</h2>
-          <p>AI entered production support through controlled stages, and each expansion of authority was based on evidence from the stage before it — not on a decision to trust it.</p>
-          <ul class="flow flow--boxed"><li>Shadow mode</li><li>Six-hour window</li><li>Full-day operation</li></ul>
-          <p>The environment combined rule-based scripting, <strong>agentic AI and AIOps</strong> on an internal platform. The result is visible in the operating pattern rather than in a model metric: automation reached <strong>70–80%</strong> and weekends now run without a human rota.</p>
+          <h2>When the safety alerting failed with technicians on a turbine</h2>
+          <p>A safety-alerting service used by field technicians failed overnight while <strong>two technicians were on a turbine</strong>. I raised it as P1, activated the on-call rota, and the fault was traced to a third-party regional outage outside the application stack.</p>
+          <p>Outside our stack did not make it outside our responsibility. Until the provider restored service the team maintained <strong>manual all-clear controls</strong> and sanitised the affected regions before the incident was closed.</p>
         </div>
       </section>
-      <section class="cs__block rise">
-        <p class="label">06 — Outcome</p>
+      <section class="cs__block rise" id="outcome" aria-labelledby="outcome-h">
+        <p class="label" id="outcome-h">06 — Outcome</p>
         <div class="cs__in">
-          <div class="outcome"><div><b>100% loss<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span class="vh"> to </span>12–15%</b><span>profit, in six months</span></div><div><b>25<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span class="vh"> to </span>~10</b><span>people, after the model changed</span></div><div><b>99.9%</b><span>SLA across ~50–55 applications</span></div><div><b>4 days<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span class="vh"> to </span>&lt;12 hrs</b><span>MTTR</span></div></div>
-          <ul class="cs__list"><li>Unit now operates at around <strong>25% profit</strong></li><li>Automation at <strong>70–80%</strong></li><li>Weekends operating <strong>without a human rota</strong></li><li>Around <strong>$200,000 a year</strong> of new business from scope that was previously absorbed</li><li>MTTR reduced from <strong>four days to under 12 hours</strong></li></ul>
+          <div class="outcome"><div><b>100% loss<br>to 12–15%</b><span>profit, in six months</span></div><div><b>25 to ~10</b><span>people, after the model changed</span></div><div><b>99.9%</b><span>SLA across ~50–55 applications</span></div><div><b>4 days<br>to &lt;12 hrs</b><span>MTTR</span></div></div>
+          <ul class="cs__list"><li>Unit now operates at around <strong>25% profit</strong></li><li>Automation at <strong>70–80%</strong></li><li>Weekends operating <strong>without a human rota</strong></li><li>Around <strong>$200,000 a year</strong> of new business from scope previously absorbed</li><li>MTTR reduced from <strong>four days to under 12 hours</strong></li></ul>
         </div>
       </section>
-      <section class="cs__block rise">
-        <p class="label">07 — Critical incident leadership</p>
+      <section class="cs__block rise" id="forward" aria-labelledby="forward-h">
+        <p class="label" id="forward-h">07 — What I'd carry forward</p>
         <div class="cs__in">
-          <h2>Two technicians on a turbine, and the safety alerting down</h2>
-          <p>A safety-alerting service used by field technicians failed overnight while <strong>two technicians were on a turbine</strong>. The incident was raised as P1, the on-call rota was activated, and the fault was traced to a third-party regional outage outside the application stack.</p>
-          <p>Being outside our stack did not make it outside our responsibility. Until the provider restored service the team maintained <strong>manual all-clear controls</strong> and sanitised the affected regions before closing the incident.</p>
+          <p>A unit losing money at twice the required headcount looks like a staffing problem and usually is not. <strong>Reduce people last</strong>: standardise the knowledge, move the work to the right tier, then resize. Reversing that order transfers the risk to whoever is left.</p>
+          <p>And a blended metric is a place for failure to hide. Separating the commitments cost reporting simplicity and bought the ability to see what was actually wrong.</p>
         </div>
       </section>
-      <section class="cs__block rise">
-        <p class="label">08 — What this demonstrates</p>
+      <section class="cs__block rise" id="demonstrates" aria-labelledby="demonstrates-h">
+        <p class="label" id="demonstrates-h">What this demonstrates</p>
         <div class="cs__in">
-          <div class="demo"><p>Technology delivery tied directly to operational and commercial outcomes: a loss-making unit turned net-positive in six months by changing the operating model before the headcount, separating the commercial signals, charging for scope, and giving AI production authority only as fast as the evidence allowed.</p></div>
-          <ul class="flow"><li>Business turnaround</li><li>AI operationalisation</li><li>P&amp;L ownership</li><li>Service management</li><li>Automation</li><li>Incident leadership</li><li>Product ownership</li><li>Commercial management</li></ul>
+          <ul class="chips"><li>Business turnaround</li><li>P&L ownership</li><li>AI operationalisation</li><li>Service management</li><li>Incident leadership</li><li>Commercial management</li></ul>
         </div>
       </section>
+      </div>
     </div>
   </div>
 
@@ -137,7 +181,6 @@
   </div>
 </article>
 </main>
-
 <footer class="foot" id="contact">
   <div class="wrap">
     <p class="label" style="margin-bottom:var(--s3)">Resume &amp; contact</p>
@@ -165,11 +208,10 @@
     </div>
     <p class="foot__fine">
       <span>© <span id="yr">2026</span> Rishabh Jain</span>
-      <span><a href="../../" style="color:inherit">Back to the portfolio</a></span>
+      <span>Built as a static site — no framework, no tracking.</span>
     </p>
   </div>
 </footer>
-
 <script src="../../assets/js/site.js" defer></script>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
