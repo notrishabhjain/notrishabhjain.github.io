@@ -10,3 +10,8 @@ PORTFOLIO_CONTENT.md
 # what is weak in the profile, and the questions behind it, at a public URL.
 CONTENT_AUDIT.md
 QUESTIONNAIRE.md
+
+# Content export for use elsewhere, not part of the site. The deploy workflow
+# uploads the whole repository, so committing this would publish a document
+# that also lists what the profile is missing.
+RISHABH_JAIN_CONTENT.md
