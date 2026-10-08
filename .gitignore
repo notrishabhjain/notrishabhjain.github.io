@@ -4,3 +4,9 @@
 # Generated on demand from the rendered pages, not part of the site. The deploy
 # workflow uploads the whole repository, so committing this would publish it.
 PORTFOLIO_CONTENT.md
+
+# Working documents for the rebuild, not part of the site. The deploy workflow
+# uploads the whole repository, so committing these would publish an audit of
+# what is weak in the profile, and the questions behind it, at a public URL.
+CONTENT_AUDIT.md
+QUESTIONNAIRE.md
