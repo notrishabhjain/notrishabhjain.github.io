@@ -1,211 +1,163 @@
-/* Rishabh Jain — portfolio behaviour.
-
-   Five jobs: theme, the capability filter, opening an engagement in place,
-   deep links, and marking where you are. Everything degrades: with scripting
-   off the page is a complete document, every engagement is a <details> that
-   still opens, and only the filter is lost. */
 (function () {
-  'use strict';
+  var d = document, root = d.documentElement;
+  root.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var raf = window.requestAnimationFrame || function (f) { return setTimeout(f, 16); };
 
-  var root = document.documentElement;
-
-  /* ---------------------------------------------------------------- theme -- */
-  // there are two: one in the bar, one in the rail, and they must agree
-  var tgls = [].slice.call(document.querySelectorAll('[data-theme-toggle]'));
-  function paint() {
-    var dark = root.dataset.theme === 'dark';
-    tgls.forEach(function (t) {
-      t.textContent = dark ? 'Light' : 'Dark';
-      t.setAttribute('aria-label', 'Switch to ' + (dark ? 'light' : 'dark') + ' appearance');
-    });
+  /* theme */
+  try { var saved = localStorage.getItem('rj-theme'); if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved); } catch (e) {}
+  function isDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return !!(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
   }
-  paint();
-  tgls.forEach(function (t) {
-    t.addEventListener('click', function () {
-      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      try { localStorage.setItem('rj-theme', root.dataset.theme); } catch (e) { /* private mode */ }
-      paint();
-    });
-  });
-
-  /* ----------------------------------------------------------- bar menu --
-     The jump rail has no room on a narrow screen, so the sticky bar carries
-     the same links. A <details> so it works before this script runs. */
-  var menu = document.getElementById('menu');
-  if (menu) {
-    menu.addEventListener('click', function (e) { if (e.target.closest('a')) menu.open = false; });
-    document.addEventListener('click', function (e) { if (!menu.contains(e.target)) menu.open = false; });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); }
+  var tb = d.querySelector('.theme-btn');
+  if (tb) {
+    tb.setAttribute('aria-pressed', String(isDark()));
+    tb.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      tb.setAttribute('aria-pressed', String(next === 'dark'));
+      try { localStorage.setItem('rj-theme', next); } catch (e) {}
     });
   }
 
-  /* --------------------------------------------------------------- filter --
-     Selecting capabilities hides the engagements that do not evidence any of
-     them, and orders the rest by how many they do — so the closest match to
-     what someone is hiring for ends up at the top. */
-  var engs = [].slice.call(document.querySelectorAll('[data-eng]'));
-  var chips = [].slice.call(document.querySelectorAll('[data-cap]'));
-  var work = document.getElementById('work-list');
-  var state = document.getElementById('filter-state');
-  var count = document.getElementById('filter-count');
-  var names = document.getElementById('filter-names');
-  var clear = document.getElementById('filter-clear');
-  var order = engs.map(function (e) { return e; });   // the original ranking
-  var picked = [];
-
-  function capsOf(el) {
-    return (el.getAttribute('data-caps') || '').split('|').filter(Boolean);
-  }
-  function labelOf(id) {
-    var c = document.querySelector('[data-cap="' + id + '"]');
-    return c ? c.getAttribute('data-label') : id;
-  }
-
-  function apply() {
-    var hits = [];
-    engs.forEach(function (el) {
-      var mine = capsOf(el);
-      var matched = picked.filter(function (p) { return mine.indexOf(p) > -1; });
-      el.hidden = picked.length > 0 && matched.length === 0;
-      el.classList.toggle('eng--hit', picked.length > 0 && matched.length > 0);
-      var hit = el.querySelector('[data-hit]');
-      if (hit) {
-        hit.innerHTML = matched.length
-          ? 'Matches <b>' + matched.map(labelOf).join('</b>, <b>') + '</b>'
-          : '';
-      }
-      if (!el.hidden) hits.push({ el: el, n: matched.length });
+  /* mobile menu */
+  var nav = d.querySelector('.nav'), mb = d.querySelector('.menu-btn');
+  if (nav && mb) {
+    mb.addEventListener('click', function () {
+      var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', String(o));
     });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('li a')) { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }
+    });
+    d.addEventListener('keydown', function (e) { if (e.key === 'Escape') { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); } });
+  }
 
-    // strongest match first; ties keep the original order
-    if (picked.length) {
-      hits.sort(function (a, b) {
-        if (b.n !== a.n) return b.n - a.n;
-        return order.indexOf(a.el) - order.indexOf(b.el);
-      });
-    } else {
-      hits = order.map(function (e) { return { el: e, n: 0 }; });
+  /* reveal: only elements below the fold are hidden, so nothing flashes on load */
+  var hasIO = 'IntersectionObserver' in window;
+  var vh = window.innerHeight || 800;
+  var rvs = [].slice.call(d.querySelectorAll('.rv'));
+  if (hasIO && !reduce) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.remove('pre'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    rvs.forEach(function (el) {
+      if (el.getBoundingClientRect().top > vh * 0.95) { el.classList.add('pre'); io.observe(el); }
+    });
+  }
+
+  /* draw / grow animations for figures */
+  var anim = [].slice.call(d.querySelectorAll('.draw,.grow,.growy'));
+  if (hasIO && !reduce) {
+    var io2 = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io2.unobserve(en.target); } });
+    }, { threshold: 0.2 });
+    anim.forEach(function (el) { io2.observe(el); });
+  } else { anim.forEach(function (el) { el.classList.add('in'); }); }
+
+  /* count-up */
+  var counts = [].slice.call(d.querySelectorAll('[data-count]'));
+  function runCount(el) {
+    var end = parseFloat(el.getAttribute('data-count')), dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+    var t0 = null, dur = 1100;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (end * e).toFixed(dec);
+      if (p < 1) raf(step); else el.textContent = end.toFixed(dec);
     }
-    hits.forEach(function (h) { work.appendChild(h.el); });
-
-    chips.forEach(function (c) {
-      c.setAttribute('aria-pressed', picked.indexOf(c.getAttribute('data-cap')) > -1 ? 'true' : 'false');
-    });
-
-    if (!picked.length) {
-      if (state) state.hidden = true;
-    } else {
-      if (state) state.hidden = false;
-      if (count) count.textContent = hits.length + ' of ' + engs.length;
-      if (names) names.textContent = picked.map(labelOf).join(', ');
-    }
+    raf(step);
+  }
+  if (hasIO && !reduce) {
+    var io3 = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { runCount(en.target); io3.unobserve(en.target); } });
+    }, { threshold: 0.6 });
+    counts.forEach(function (el) { io3.observe(el); });
   }
 
-  chips.forEach(function (c) {
-    c.addEventListener('click', function () {
-      var id = c.getAttribute('data-cap');
-      var i = picked.indexOf(id);
-      if (i > -1) picked.splice(i, 1); else picked.push(id);
-      apply();
-    });
-  });
-  if (clear) clear.addEventListener('click', function () {
-    picked = [];
-    apply();
-    var f = document.getElementById('capabilities');
-    if (f) f.scrollIntoView({ block: 'start' });
-  });
-  if (engs.length) apply();
-
-  /* ----------------------------------------------------------- deep links --
-     /#crcs-portal opens that engagement and scrolls to it, so a single
-     case study is still something you can send someone. */
-  function openHash(hash, smooth) {
-    if (!hash) return false;
-    var el = document.getElementById(hash.replace(/^#/, ''));
-    if (!el) return false;
-    if (el.tagName === 'DETAILS') {
-      el.open = true;
-      el.hidden = false;
-    }
-    el.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
-    return true;
-  }
-  if (location.hash) setTimeout(function () { openHash(location.hash, false); }, 0);
-  addEventListener('hashchange', function () { openHash(location.hash, true); });
-
-  // the career section points at the engagements that sat inside each role
-  document.querySelectorAll('[data-open]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var id = b.getAttribute('data-open');
-      picked = [];
-      apply();
-      if (history.replaceState) history.replaceState(null, '', '#' + id);
-      openHash('#' + id, true);
-    });
-  });
-
-  // keep the address bar honest as engagements are opened and closed by hand
-  engs.forEach(function (el) {
-    el.addEventListener('toggle', function () {
-      if (!el.open || !history.replaceState) return;
-      history.replaceState(null, '', '#' + el.id);
-    });
-  });
-
-  /* --------------------------------------------------------------- marking --
-     Reads position on scroll rather than on intersection thresholds: a jump
-     between sections crosses no threshold, and an observer would leave the
-     mark on the section the reader has already left. */
-  var links = [].slice.call(document.querySelectorAll('.jump a[href^="#"]'))
-    .map(function (a) { return { a: a, sec: document.getElementById(a.getAttribute('href').slice(1)) }; })
-    .filter(function (p) { return p.sec; });
-  var at = null;
-  function mark() {
-    if (!links.length) return;
-    var h = window.innerHeight, hit = null;
-    for (var i = 0; i < links.length; i++) {
-      var r = links[i].sec.getBoundingClientRect();
-      if (r.bottom > h * 0.14 && r.top < h * 0.6) { hit = links[i]; break; }
-    }
-    if (!hit) {
-      var last = links[links.length - 1];
-      if (last.sec.getBoundingClientRect().bottom <= h * 0.14) hit = last;
-    }
-    if (!hit || hit === at) return;
-    at = hit;
-    links.forEach(function (p) {
-      if (p === hit) p.a.setAttribute('aria-current', 'true');
-      else p.a.removeAttribute('aria-current');
-    });
-  }
-
-  /* -------------------------------------------------------------- entrance -- */
-  var risers = document.querySelectorAll('.rise');
-  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (risers.length) {
-    if (still || !('IntersectionObserver' in window)) {
-      [].forEach.call(risers, function (el) { el.classList.add('in'); });
-    } else {
-      var io = new IntersectionObserver(function (entries, obs) {
-        entries.forEach(function (en) {
-          if (!en.isIntersecting) return;
-          en.target.classList.add('in');
-          obs.unobserve(en.target);
-        });
-      }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
-      [].forEach.call(risers, function (el) { io.observe(el); });
-    }
-  }
-
-  var queued = false;
+  /* scroll-driven: reading progress, journey line, case toc */
+  var prog = d.querySelector('.prog i'), jr = d.querySelector('.jr');
+  var secs = [].slice.call(d.querySelectorAll('.case-sec[id]'));
+  var tocLinks = [].slice.call(d.querySelectorAll('.toc a'));
+  var ticking = false;
   function onScroll() {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(function () { queued = false; mark(); });
+    ticking = false;
+    var h = root.scrollHeight - window.innerHeight;
+    if (prog) prog.style.width = (h > 0 ? Math.min(100, Math.max(0, (window.scrollY / h) * 100)) : 0) + '%';
+    if (jr) {
+      var r = jr.getBoundingClientRect();
+      var p = (window.innerHeight * 0.72 - r.top) / Math.max(1, r.height);
+      jr.style.setProperty('--p', Math.max(0.04, Math.min(1, p)).toFixed(3));
+    }
+    if (secs.length && tocLinks.length) {
+      var cur = secs[0].id;
+      secs.forEach(function (s) { if (s.getBoundingClientRect().top < window.innerHeight * 0.35) cur = s.id; });
+      tocLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + cur); });
+    }
   }
-  addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', onScroll);
-  mark();
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; raf(onScroll); } }, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* work filters */
+  var fbs = [].slice.call(d.querySelectorAll('.filters button'));
+  var cards = [].slice.call(d.querySelectorAll('[data-tags]'));
+  fbs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-f');
+      fbs.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      cards.forEach(function (c) {
+        var ok = f === 'all' || (' ' + c.getAttribute('data-tags') + ' ').indexOf(' ' + f + ' ') > -1;
+        c.hidden = !ok;
+      });
+    });
+  });
+
+  /* capability map filter */
+  var pbs = [].slice.call(d.querySelectorAll('.pf button'));
+  var caps = [].slice.call(d.querySelectorAll('.cap'));
+  pbs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var p = b.getAttribute('data-p');
+      var already = b.getAttribute('aria-pressed') === 'true';
+      pbs.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      if (already || p === 'all') { caps.forEach(function (c) { c.classList.remove('on', 'off'); }); var a = d.querySelector('.pf button[data-p="all"]'); if (a) a.setAttribute('aria-pressed', 'true'); return; }
+      b.setAttribute('aria-pressed', 'true');
+      caps.forEach(function (c) {
+        var has = (' ' + c.getAttribute('data-p') + ' ').indexOf(' ' + p + ' ') > -1;
+        c.classList.toggle('on', has); c.classList.toggle('off', !has);
+      });
+    });
+  });
+
+  /* copy buttons (address stays selectable as a fallback) */
+  [].slice.call(d.querySelectorAll('.copy')).forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.getAttribute('data-copy') || (location && location.href) || '';
+      var label = b.getAttribute('data-label') || b.textContent;
+      function done(ok) { b.textContent = ok ? 'Copied' : 'Select and copy'; setTimeout(function () { b.textContent = label; }, 1800); }
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(function () { done(true); }, function () { fallback(); });
+        } else { fallback(); }
+      } catch (e) { fallback(); }
+      function fallback() {
+        var v = b.parentNode && b.parentNode.querySelector('.v');
+        try { if (v) { var r = d.createRange(); r.selectNodeContents(v); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); } } catch (e) {}
+        done(false);
+      }
+    });
+  });
+
+  /* hero glow follows the pointer (fine pointers only) */
+  var st = d.querySelector('.stage');
+  if (st && !reduce && window.matchMedia && matchMedia('(pointer:fine)').matches) {
+    var pend = false, mx = 0, my = 0;
+    st.addEventListener('mousemove', function (e) {
+      var r = st.getBoundingClientRect();
+      mx = ((e.clientX - r.left) / r.width - 0.5) * 80; my = ((e.clientY - r.top) / r.height - 0.5) * 60;
+      if (!pend) { pend = true; raf(function () { pend = false; st.style.setProperty('--mx', mx.toFixed(1) + 'px'); st.style.setProperty('--my', my.toFixed(1) + 'px'); }); }
+    });
+  }
 })();
