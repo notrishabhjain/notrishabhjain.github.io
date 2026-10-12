@@ -1,6 +1,7 @@
 (function () {
   var d = document, root = d.documentElement;
   root.classList.add('js');
+  try { if (window.matchMedia && matchMedia('(max-width:560px)').matches) { d.querySelectorAll('details[data-phone-open]').forEach(function (e) { e.open = true; }); } } catch (e) {}
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var raf = window.requestAnimationFrame || function (f) { return setTimeout(f, 16); };
 
