@@ -57,6 +57,17 @@
     anim.forEach(function (el) { io2.observe(el); });
   } else { anim.forEach(function (el) { el.classList.add('in'); }); }
 
+  /* background glow and card sheen follow the pointer */
+  if (!reduce && window.matchMedia && matchMedia('(hover:hover)').matches) {
+    var bp = false, bx = 0, by = 0;
+    d.addEventListener('pointermove', function (e) {
+      bx = e.clientX; by = e.clientY;
+      var c = e.target.closest && e.target.closest('.card,.tile,.panel,.np');
+      if (c) { var r = c.getBoundingClientRect(); c.style.setProperty('--cx', (e.clientX - r.left).toFixed(0) + 'px'); c.style.setProperty('--cy', (e.clientY - r.top).toFixed(0) + 'px'); }
+      if (!bp) { bp = true; raf(function () { bp = false; root.style.setProperty('--px', bx + 'px'); root.style.setProperty('--py', by + 'px'); }); }
+    }, { passive: true });
+  }
+
   /* count-up */
   var counts = [].slice.call(d.querySelectorAll('[data-count]'));
   function runCount(el) {
@@ -150,6 +161,16 @@
       }
     });
   });
+
+  /* open the folded case-study details when a link points inside them */
+  function openMore() {
+    try {
+      var id = decodeURIComponent((location.hash || '').slice(1)); if (!id) return;
+      var t = d.getElementById(id); var m = t && t.closest ? t.closest('details.more') : null;
+      if (m && !m.open) { m.open = true; setTimeout(function () { t.scrollIntoView(); }, 30); }
+    } catch (e) {}
+  }
+  openMore(); window.addEventListener('hashchange', openMore);
 
   /* hero glow follows the pointer (fine pointers only) */
   var st = d.querySelector('.stage');
