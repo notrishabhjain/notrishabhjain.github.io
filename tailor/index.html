@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tailor · Resume Builder</title>
+<meta name="description" content="Rule-based resume tailoring: reads a job description, matches it to the master profile and assembles an ATS-ready resume without generative AI.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="../favicon.png">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('tailor.theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="./"><b>Tailor</b><span class="label">rule-based resume builder</span></a>
+  <div class="tabs" role="tablist" aria-label="Panes">
+    <button role="tab" data-pane="jdPane" aria-selected="true">Job</button>
+    <button role="tab" data-pane="matchPane" aria-selected="false">Match</button>
+    <button role="tab" data-pane="resumePane" aria-selected="false">Resume</button>
+  </div>
+  <div class="status" id="status">Loading…</div>
+  <nav>
+    <button class="btn quiet" id="openProfile" title="Edit your master profile"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="5.5" r="2.7"/><path d="M2.8 14c.6-2.8 2.7-4.3 5.2-4.3s4.6 1.5 5.2 4.3"/></svg><span>Profile</span></button>
+    <button class="btn quiet" id="openLibrary" title="Skills library and settings"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 2.5h3v11H3zM7 2.5h3v11H7zM11 3.2l2.6-.7 2.4 10.4-2.6.7z"/></svg><span>Library</span></button>
+    <button class="btn quiet" id="themeBtn" title="Switch theme" aria-label="Switch theme"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11" /><path d="M8 2.5a5.5 5.5 0 0 1 0 11z" fill="currentColor"/></svg></button>
+  </nav>
+</header>
+
+<main class="grid">
+  <section class="pane active" id="jdPane" aria-labelledby="jdTitle">
+    <div class="pane-h"><span class="n">01</span><h2 id="jdTitle">Job description</h2><span class="grow"></span>
+      <button class="btn quiet" id="editJd" hidden>Edit</button>
+      <button class="btn primary" id="analyseBtn">Analyse</button>
+    </div>
+    <div class="pane-b">
+      <textarea id="jdInput" spellcheck="false" placeholder="Paste the full job description here: title, responsibilities, requirements, nice-to-haves. Headings help, but are not required."></textarea>
+      <div id="jdRead" hidden>
+        <div class="jd-meta" id="jdMeta"></div>
+        <div class="jd-view" id="jdView"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pane" id="matchPane" aria-labelledby="matchTitle">
+    <div class="pane-h"><span class="n">02</span><h2 id="matchTitle">Match</h2></div>
+    <div class="pane-b" id="matchBody"><p class="empty">Analyse a job description to see which of its skills your profile can back up.</p></div>
+  </section>
+
+  <section class="pane" id="resumePane" aria-labelledby="resumeTitle">
+    <div class="pane-h"><span class="n">03</span><h2 id="resumeTitle">Resume</h2><span class="grow"></span>
+      <div class="exportbar">
+        <button class="btn quiet" id="resetBtn" title="Undo your pins, removals and edits for this job" disabled>Reset</button>
+        <button class="btn quiet" id="copyBtn" disabled>Copy text</button>
+        <button class="btn quiet" id="printBtn" disabled>PDF</button>
+        <button class="btn primary" id="docxBtn" disabled>Download .docx</button>
+      </div>
+    </div>
+    <div class="pane-b" id="resumeBody"><p class="empty">The tailored resume appears here.</p></div>
+  </section>
+</main>
+
+<dialog id="profileDlg" aria-labelledby="profileDlgTitle">
+  <div class="dh"><h2 id="profileDlgTitle">Master profile</h2><button class="iconbtn" data-close aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.5"><path d="M2 2l10 10M12 2L2 12"/></svg></button></div>
+  <div class="db">
+    <div class="form" id="contactForm">
+      <label>Name<input name="name"></label>
+      <label>Location<input name="location"></label>
+      <label>Email<input name="email" type="email"></label>
+      <label>Phone<input name="phone" placeholder="Not in the public profile; add it here"></label>
+      <label>LinkedIn<input name="linkedin"></label>
+      <label>Website<input name="website"></label>
+    </div>
+    <p class="label" style="margin:0 0 6px">Full profile (JSON)</p>
+    <textarea id="profileJson" spellcheck="false"></textarea>
+  </div>
+  <div class="df">
+    <span class="msg" id="profileMsg">Saved in this browser only. Download it to keep a copy.</span>
+    <button class="btn quiet" id="profileReset">Reset to bundled</button>
+    <button class="btn quiet" id="profileDownload">Download JSON</button>
+    <button class="btn primary" id="profileSave">Save</button>
+  </div>
+</dialog>
+
+<dialog id="libraryDlg" aria-labelledby="libraryDlgTitle">
+  <div class="dh"><h2 id="libraryDlgTitle">Skills library</h2><button class="iconbtn" data-close aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.5"><path d="M2 2l10 10M12 2L2 12"/></svg></button></div>
+  <div class="db" id="libraryBody"></div>
+  <div class="df"><button class="btn primary" data-close>Done</button></div>
+</dialog>
+
+<div id="printRoot"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

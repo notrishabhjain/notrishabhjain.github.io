@@ -1,0 +1,20 @@
+SENIOR PROJECT MANAGER - APPLICATION MANAGED SERVICES
+
+Position Summary
+Our client, a Fortune 500 energy company, is looking for a Senior Project Manager to lead an onsite-offshore application support and enhancement portfolio of 60+ applications.
+
+Responsibilities:
+* Own SLA performance and service delivery for L2/L3 application support, with 24x7 coverage for critical systems
+* Lead a distributed team of 30+ engineers across India and the US; handle resourcing, hiring and performance management
+* Run ITIL-aligned incident, problem and change management; drive down MTTR and recurring incidents
+* Manage P&L for the account, including budgeting, forecasting and margin improvement
+* Identify automation opportunities (CI/CD, scripting, monitoring) to reduce manual effort
+* Build trusted relationships with client CIO and application owners; run QBRs and governance meetings
+* Grow the account through proactive proposals and new business
+
+Requirements:
+* 12+ years in IT services with 5+ years managing application support or AMS engagements
+* Demonstrated experience turning around underperforming accounts
+* Working knowledge of ServiceNow, Azure DevOps and Git
+* ITIL Foundation certification required
+* Experience in renewable energy or utilities domain is a plus

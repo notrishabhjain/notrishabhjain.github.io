@@ -13,3 +13,4 @@ anything committed here is publicly fetchable.
 - `assets/share/`: share cards and one-page PDFs
 - `files/`: résumé downloads
 - `dossier/`: private, noindex working page
+- `tailor/`: rule-based résumé tailoring tool (no AI), noindex and unlinked; see `tailor/README.md`

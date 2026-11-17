@@ -1,0 +1,19 @@
+Delivery Manager — Cloud Migration & DevOps
+
+About the Opportunity
+Join our cloud consulting practice to lead large-scale AWS and Azure migration programmes for enterprise and public sector clients.
+
+Key responsibilities
+• Lead delivery of cloud migration and application modernisation programmes end to end
+• Plan and manage migration waves, cutover and hypercare with multiple workstreams running in parallel
+• Work with architects on landing zones, infrastructure as code (Terraform) and CI/CD pipelines in GitHub Actions or Jenkins
+• Track cost, schedule and quality; manage FinOps and cloud cost optimisation with clients
+• Own security and compliance sign-off with InfoSec, including VAPT and remediation tracking
+• Manage stakeholders up to CTO level and coordinate third-party vendors
+
+Skills & experience
+• 10+ years in delivery management, 4+ in cloud programmes
+• Hands-on understanding of AWS (EC2, S3, Lambda), Docker and Kubernetes
+• Experience with Agile and hybrid delivery models
+• Strong commercial acumen: SOWs, change requests and estimation
+• AWS Certified Solutions Architect is an advantage

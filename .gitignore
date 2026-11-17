@@ -1,5 +1,6 @@
 .DS_Store
 *.log
+tailor/tests/out/
 
 # Generated on demand from the rendered pages, not part of the site. The deploy
 # workflow uploads the whole repository, so committing this would publish it.
