@@ -1,8 +1,10 @@
 name: Deploy site
 
-# The site is a single static index.html with no build step. This workflow only
-# publishes the repository as-is, so Pages can stay on its "GitHub Actions"
-# source without anyone changing a repository setting.
+# The site is static HTML, CSS and one small script with no build step: a
+# homepage plus a page per case study under work/. This workflow only publishes
+# the repository as-is, so Pages can stay on its "GitHub Actions" source without
+# anyone changing a repository setting. Note that it uploads the WHOLE
+# repository, so anything committed here becomes publicly fetchable.
 
 on:
   push:

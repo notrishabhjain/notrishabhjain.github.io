@@ -6,4 +6,4 @@ Disallow: /dossier/
 # Personal resume-tailoring tool.
 Disallow: /tailor/
 
-Sitemap: https://notrishabhjain.github.io/sitemap-index.xml
+Sitemap: https://notrishabhjain.github.io/sitemap.xml
