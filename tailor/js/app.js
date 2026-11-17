@@ -2,6 +2,7 @@
 
 import { createEngine } from './engine.js';
 import { buildDocx } from './docx.js';
+import { buildPdf } from './pdf.js';
 import { atsCheck } from './ats.js';
 import { tokenize, escapeHtml as esc, slug } from './text.js';
 import { findSkills } from './taxonomy.js';
@@ -46,7 +47,9 @@ async function boot() {
     $('#status').textContent = 'Could not load the data files. Serve this folder over http(s), not file://.';
     return;
   }
-  S.profile = store.get('profile', null) || S.data.profile;
+  S.contact = store.get('contact', {});
+  migrateStoredProfile();
+  S.profile = currentProfile();
   S.userSkills = store.get('userSkills', []);
   S.ignored = new Set(store.get('ignored', []));
   S.corpus = store.get('corpus', { n: 0, df: {}, seen: [] });
@@ -56,6 +59,42 @@ async function boot() {
   wire();
   const last = store.get('lastJD', '');
   if (last) { $('#jdInput').value = last; analyse(false); }
+}
+
+// Contact details live apart from the profile, so the bundled profile can be updated without
+// losing them, and a phone number never has to go into the public repository.
+const CONTACT_KEYS = ['name', 'location', 'email', 'phone', 'linkedin', 'website'];
+
+function currentProfile() {
+  const base = store.get('profile', null) || S.data.profile;
+  const p = { ...S.data.profile, ...base };
+  p.person = { ...(base.person || {}), ...S.contact };
+  return p;
+}
+
+// A full profile saved by an older version would hide every later improvement to the bundled one.
+// Keep its contact details, back it up, and move to the current bundled profile.
+function migrateStoredProfile() {
+  const stored = store.get('profile', null);
+  if (!stored || stored.version === S.data.profile.version) return;
+  const person = stored.person || {};
+  for (const k of CONTACT_KEYS) {
+    if (person[k] && person[k] !== (S.data.profile.person || {})[k] && !S.contact[k]) S.contact[k] = person[k];
+  }
+  store.set('contact', S.contact);
+  store.set('profileBackup', stored);
+  store.del('profile');
+  setTimeout(() => toast('Updated to the latest profile. Your contact details were kept.'), 600);
+}
+
+function saveContact(fields) {
+  for (const k of CONTACT_KEYS) {
+    if (fields[k] == null) continue;
+    const v = String(fields[k]).trim();
+    if (v && v !== (S.data.profile.person || {})[k]) S.contact[k] = v; else delete S.contact[k];
+  }
+  if (!store.set('contact', S.contact)) toast('Browser storage is unavailable; this lasts until you close the tab.');
+  S.profile = currentProfile();
 }
 
 function rebuild() {
@@ -289,7 +328,10 @@ const ICON = {
 
 function renderResume() {
   const r = S.resume, p = r.person;
-  let h = `<article class="doc" aria-label="Resume preview">
+  let h = p.phone ? '' : `<form class="phone-ask"><label for="phoneAsk"><b>Add your mobile number</b>
+    <span>It goes on every resume you download. It is kept in this browser only, never in the public repository.</span></label>
+    <div><input id="phoneAsk" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 98xxx xxxxx" required><button class="btn primary">Add</button></div></form>`;
+  h += `<article class="doc" aria-label="Resume preview">
     <h1>${esc(p.name)}</h1><p class="headline">${esc(r.headline)}</p>
     <p class="contact">${[p.location, p.email, p.phone, p.linkedin, p.website].filter(Boolean).map(esc).join(' | ')}</p>
     <h2>Professional Summary</h2><p>${markKeywords(r.summary)}</p>
@@ -393,9 +435,23 @@ function downloadDocx() {
   toast('Downloaded ' + a.download);
 }
 
-function printPdf() {
+function downloadPdf() {
+  const blob = new Blob([buildPdf(S.resume)], { type: 'application/pdf' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = fileBase() + '.pdf';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  toast('Downloaded ' + a.download);
+}
+
+// Ctrl+P / Cmd+P prints only the resume. Page margins are zero so the browser has nowhere to put its
+// header and footer; the repeating table header and footer give every page its top and bottom space.
+function fillPrintRoot() {
+  if (!S.resume) { $('#printRoot').innerHTML = ''; return; }
   const r = S.resume, p = r.person;
-  $('#printRoot').innerHTML = `<h1>${esc(p.name)}</h1><p class="headline">${esc(r.headline)}</p>
+  $('#printRoot').innerHTML = `<table class="pt"><thead><tr><td><div class="pt-sp"></div></td></tr></thead>
+    <tfoot><tr><td><div class="pt-sp"></div></td></tr></tfoot><tbody><tr><td class="pt-body"><h1>${esc(p.name)}</h1><p class="headline">${esc(r.headline)}</p>
     <p class="contact">${[p.location, p.email, p.phone, p.linkedin, p.website].filter(Boolean).map(esc).join(' | ')}</p>
     <h2>Professional Summary</h2><p>${esc(r.summary)}</p>
     <h2>Core Competencies</h2>${r.skills.map(g => `<p><b>${esc(g.label)}:</b> ${g.items.map(i => esc(i.label)).join(', ')}</p>`).join('')}
@@ -403,12 +459,8 @@ function printPdf() {
       <div class="meta">${esc([role.company, role.location, role.dates].join(' | '))}${role.client ? ' | <i>Client: ' + esc(role.client) + '</i>' : ''}</div>
       <ul>${role.bullets.map(b => `<li>${esc(b.text)}</li>`).join('')}</ul>`).join('')}
     <h2>Education</h2>${r.education.map(e => `<p><b>${esc(e.degree)}</b>, ${esc(e.school)}, ${esc(e.year)}</p>`).join('')}
-    <h2>Certifications</h2>${r.certifications.map(c => `<p>${esc(c.name)}, ${esc(c.issuer)}</p>`).join('')}`;
-  const old = document.title;
-  document.title = fileBase();
-  window.print();
-  document.title = old;
-  toast('In the print dialog choose “Save as PDF” and untick headers and footers.');
+    <h2>Certifications</h2>${r.certifications.map(c => `<p>${esc(c.name)}${c.issuer ? ', ' + esc(c.issuer) : ''}</p>`).join('')}
+    </td></tr></tbody></table>`;
 }
 
 async function copyText() {
@@ -423,7 +475,8 @@ function openProfile() {
   const f = $('#contactForm');
   for (const k of ['name', 'location', 'email', 'phone', 'linkedin', 'website']) f.querySelector(`[name="${k}"]`).value = S.profile.person[k] || '';
   $('#profileJson').value = JSON.stringify(S.profile, null, 2);
-  $('#profileMsg').textContent = store.get('profile', null) ? 'Using your edited profile, saved in this browser.' : 'Using the bundled profile. Edits are saved in this browser only.';
+  $('#profileMsg').textContent = store.get('profile', null) ? 'Using your edited profile, saved in this browser.' : 'Contact details and edits are saved in this browser only, never in the repository.';
+  $('#profileBackup').hidden = !store.get('profileBackup', null);
   $('#profileMsg').classList.remove('err');
   d.showModal();
 }
@@ -433,19 +486,25 @@ function saveProfile() {
   try { p = JSON.parse($('#profileJson').value); }
   catch (e) { $('#profileMsg').textContent = 'JSON error: ' + e.message; $('#profileMsg').classList.add('err'); return; }
   const f = $('#contactForm');
-  p.person = p.person || {};
-  for (const k of ['name', 'location', 'email', 'phone', 'linkedin', 'website']) p.person[k] = f.querySelector(`[name="${k}"]`).value.trim();
+  const fields = {};
+  for (const k of CONTACT_KEYS) fields[k] = f.querySelector(`[name="${k}"]`).value;
+  const strip = (x) => JSON.stringify({ ...x, person: null });
+  const edited = strip(p) !== strip(S.profile);
+  p.person = { ...(p.person || {}), ...fields };
   let test;
   try { test = createEngine({ skillsTxt: S.data.skillsTxt, profile: p, rules: S.data.rules, userSkills: S.userSkills }); }
   catch (e) { $('#profileMsg').textContent = 'Profile error: ' + e.message; $('#profileMsg').classList.add('err'); return; }
-  S.profile = p;
-  if (!store.set('profile', p)) toast('Browser storage is unavailable; the change lasts until you close this tab.');
+  if (edited) {
+    p.version = S.data.profile.version;
+    if (!store.set('profile', { ...p, person: S.data.profile.person })) toast('Browser storage is unavailable; the change lasts until you close this tab.');
+  }
+  saveContact(fields);
   rebuild();
   if (S.jd) analyse(false);
   const w = test.pidx.warnings;
   $('#profileMsg').classList.toggle('err', w.length > 0);
   $('#profileMsg').textContent = w.length ? `Saved with ${w.length} warning${w.length > 1 ? 's' : ''}: ${w.slice(0, 2).join('; ')}` : 'Saved.';
-  $('#profileJson').value = JSON.stringify(p, null, 2);
+  $('#profileJson').value = JSON.stringify(S.profile, null, 2);
 }
 
 function renderLibrary() {
@@ -540,15 +599,16 @@ function wire() {
   });
 
   $('#docxBtn').addEventListener('click', downloadDocx);
-  $('#printBtn').addEventListener('click', printPdf);
+  $('#printBtn').addEventListener('click', downloadPdf);
+  window.addEventListener('beforeprint', fillPrintRoot);
   $('#copyBtn').addEventListener('click', copyText);
   $('#resetBtn').addEventListener('click', () => { S.overrides = {}; saveOverrides(); compose(); toast('Back to the automatic selection'); });
 
   $('#openProfile').addEventListener('click', openProfile);
   $('#profileSave').addEventListener('click', saveProfile);
   $('#profileReset').addEventListener('click', () => {
-    store.del('profile'); S.profile = S.data.profile; rebuild(); if (S.jd) analyse(false); openProfile();
-    $('#profileMsg').textContent = 'Back to the bundled profile.';
+    store.del('profile'); S.profile = currentProfile(); rebuild(); if (S.jd) analyse(false); openProfile();
+    $('#profileMsg').textContent = 'Back to the bundled profile. Your contact details were kept.';
   });
   $('#profileDownload').addEventListener('click', () => {
     const blob = new Blob([JSON.stringify(S.profile, null, 2) + '\n'], { type: 'application/json' });
@@ -556,6 +616,21 @@ function wire() {
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   });
 
+  $('#profileBackup').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(store.get('profileBackup', {}), null, 2) + '\n'], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'profile-backup.json'; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  });
+  $('#resumeBody').addEventListener('submit', (e) => {
+    if (!e.target.matches('.phone-ask')) return;
+    e.preventDefault();
+    const v = e.target.querySelector('input').value.trim();
+    if (!/^[+()\d][\d\s()+\-]{6,}$/.test(v)) { toast('That does not look like a phone number.'); return; }
+    saveContact({ phone: v });
+    rebuild();
+    if (S.jd) analyse(false);
+    toast('Mobile number added. It is stored in this browser only.');
+  });
   $('#openLibrary').addEventListener('click', () => { renderLibrary(); $('#libraryDlg').showModal(); });
   $('#libraryBody').addEventListener('click', async (e) => {
     const t = e.target;

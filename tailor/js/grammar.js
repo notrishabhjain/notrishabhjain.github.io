@@ -112,7 +112,9 @@ export function joinList(items, conj = 'and') {
   if (xs.length <= 1) return xs[0] || '';
   const semi = xs.some(x => x.includes(','));
   if (semi) return xs.slice(0, -1).join('; ') + '; ' + xs[xs.length - 1];
-  return xs.slice(0, -1).join(', ') + ' ' + conj + ' ' + xs[xs.length - 1];
+  // an item that itself contains "and" needs the serial comma to stay unambiguous
+  const serial = xs.length > 2 && xs.some(x => / (and|or) /.test(x));
+  return xs.slice(0, -1).join(', ') + (serial ? ', ' : ' ') + conj + ' ' + xs[xs.length - 1];
 }
 
 /** Choose "a" or "an" for the word that follows. */
@@ -134,6 +136,16 @@ export function lowerFirst(s) {
   if (!s) return s;
   if (/^[A-Z]{2}/.test(s)) return s; // keep acronyms
   return s[0].toLowerCase() + s.slice(1);
+}
+
+const NB = ' ';
+/** Join numbers to their units and currency with non-breaking spaces, so "Rs 21 lakh" never splits across lines. */
+export function glue(s) {
+  return String(s)
+    .replace(/\b(Rs|INR|USD|GBP|EUR)\.? (?=[\d~])/g, `$1${NB}`)
+    .replace(/(\d[\d,.]*[%+]?) (lakh|crore|million|billion|days?|hours?|weeks?|months?|years?|modules?|features|requirements|people|applications|parameters|departments|websites|sources|languages|tonnes)\b/g, `$1${NB}$2`)
+    .replace(/(\d+) (January|February|March|April|May|June|July|August|September|October|November|December)\b/g, `$1${NB}$2`)
+    .replace(/(\d+) of (\d+)/g, `$1${NB}of${NB}$2`);
 }
 
 /** Tidy spacing and punctuation of an assembled sentence. */

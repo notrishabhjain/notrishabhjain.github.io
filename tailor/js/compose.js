@@ -2,7 +2,7 @@
 
 import { tokenize, light } from './text.js';
 import { findSkills, resolveTag, ancestors } from './taxonomy.js';
-import { realize } from './realize.js';
+import { realize, applySwaps } from './realize.js';
 import { capFirst, joinList } from './grammar.js';
 import { spell } from './text.js';
 
@@ -33,10 +33,16 @@ export function selectBullets({ match, pidx, profile, rules, overrides = {}, tod
   // A role whose best achievement speaks strongly to the JD earns one more line.
   const focusOf = (a) => { const c = match.credit.get(a.id); let s = 0; if (c) for (const [j, cr] of c) s += (jdW.get(j) || 0) ** 2 * cr; return s; };
   const maxFocus = Math.max(1e-9, ...pool.map(focusOf));
+  // Lines follow relevance: the role that fits the JD best gets one more, a weakly relevant current role one fewer.
+  const roleScore = new Map(roles.map(r => [r.id, pool.filter(a => a.role === r.id).map(focusOf).sort((x, y) => y - x).slice(0, 3).reduce((a, b) => a + b, 0)]));
+  const topRole = [...roleScore.entries()].sort((a, b) => b[1] - a[1])[0];
   roles.forEach((r, k) => {
-    if (k < 2) return;
-    const best = Math.max(0, ...pool.filter(a => a.role === r.id).map(focusOf));
-    if (best >= 0.5 * maxFocus) roleCap.set(r.id, roleCap.get(r.id) + 1);
+    if (k >= 2) {
+      const best = Math.max(0, ...pool.filter(a => a.role === r.id).map(focusOf));
+      if (best >= 0.5 * maxFocus) roleCap.set(r.id, roleCap.get(r.id) + 1);
+    }
+    if (topRole && r.id === topRole[0] && k > 0) roleCap.set(r.id, roleCap.get(r.id) + 1);
+    if (k === 0 && topRole && roleScore.get(r.id) < 0.5 * topRole[1]) roleCap.set(r.id, Math.max(3, roleCap.get(r.id) - 1));
   });
   const relevance = (a) => {
     const c = match.credit.get(a.id);
@@ -179,63 +185,62 @@ export function buildResume(env) {
     for (const s of chosen.swaps || []) if (/\(/.test(s.to)) usedAcronyms.add(s.id);
     byId.set(a.id, { id: a.id, role: a.role, text: chosen.text, pattern: chosen.pattern, skills: chosen.skills, swaps: chosen.swaps,
       alts: res.candidates.slice(0, 6), rejected: res.rejected.length, relevance: p.relevance, verify: !!a.verify, note: a.note,
-      src: a.src, pinned: !!ov.pin, manual: !!chosen.manual });
+      src: a.src, strength: a.strength, pinned: !!ov.pin, manual: !!chosen.manual });
   }
 
   const roles = profile.roles.map(r => {
     const bullets = picks.filter(p => p.role === r.id).map(p => ({ ...byId.get(p.id), focus: p.focus })).filter(b => b.text)
-      .sort((x, y) => (y.focus + 0.3 * y.relevance) - (x.focus + 0.3 * x.relevance));
+      .sort((x, y) => (y.focus + 0.3 * y.relevance + 0.04 * y.strength) - (x.focus + 0.3 * x.relevance + 0.04 * x.strength));
     const pool = [...pidx.achievements.values()].filter(a => a.role === r.id && !byId.has(a.id)).map(a => a.id);
     return { ...r, dates: `${fmtDate(r.start)} – ${fmtDate(r.end)}`, bullets, unused: pool };
   });
 
-  // ---- summary ----
+  // ---- summary and headline: broad statements chosen by fit, never specific achievements ----
   const title = titleFor(jd, profile, idx);
   const years = match.years.profile;
-  const identity = (profile.summary.identity.find(x => x.when === sector) || profile.summary.identity[0]).text
-    .replace('{title}', title).replace('{years}', years);
-  const shortRoles = new Set();
-  const shortsRanked = [...picks].map(p => ({ p, a: pidx.achievements.get(p.id) })).filter(x => x.a.short)
-    .sort((x, y) => (y.p.focus + 0.1 * y.a.strength) - (x.p.focus + 0.1 * x.a.strength))
-    .filter(x => (shortRoles.has(x.a.role) ? false : shortRoles.add(x.a.role)));
-  // prefer proof points that open with different verbs ("took…; took…; took…" reads as a template)
-  const verbOf = (x) => x.a.short.split(' ')[0].toLowerCase();
-  const picked = [];
-  for (const x of shortsRanked) if (picked.length < 3 && !picked.some(y => verbOf(y) === verbOf(x))) picked.push(x);
-  for (const x of shortsRanked) if (picked.length < 3 && !picked.includes(x)) picked.push(x);
-  const shorts = picked.map(x => x.a.short);
-  const sentences = [identity];
-  if (shorts.length >= 2) sentences.push(capFirst(joinList(shorts)) + '.');
-  const extras = profile.summary.extra.map(x => {
+  const tagCache = new Map();
+  const credit = { matched: 1, claimed: 0.6, related: 0.3, gap: 0 };
+  const fit = (tags) => {
     let sc = 0;
-    for (const t of x.tags) {
-      const id = resolveTag(t, tax, idx);
-      const row = id && jdMap.get(id);
-      if (row && row.status !== 'gap') sc += row.weight;
+    for (const t of tags || []) {
+      if (!tagCache.has(t)) tagCache.set(t, resolveTag(t, tax, idx));
+      const row = jdMap.get(tagCache.get(t));
+      if (row) sc += row.weight * credit[row.status];
     }
-    return { text: x.text, sc };
-  }).filter(x => x.sc >= 0.2).sort((a, b) => b.sc - a.sc).slice(0, 2);
-  for (const x of extras) {
-    const n = (sentences.join(' ') + ' ' + x.text).split(/\s+/).length;
-    if (n <= 95) sentences.push(x.text);
+    return sc;
+  };
+  const byFit = (list) => (list || []).map((x, k) => ({ ...x, sc: fit(x.tags), k })).sort((a, b) => b.sc - a.sc || a.k - b.k);
+  const S = profile.summary || {};
+  const domains = byFit(S.domains).filter(d => d.sc > 0.05).slice(0, 2).map(d => d.label);
+  const identity = ((S.identity || []).find(x => x.when === sector) || (S.identity || [])[0] || { text: '{title} with {years}+ years of experience{domains}.' }).text
+    .replace('{title}', title).replace('{years}', years)
+    .replace('{domains}', domains.length ? `, with domain experience in ${joinList(domains)}` : '');
+  const strengths = byFit(S.capabilities).slice(0, 3).map(c => c.text);
+  const sentences = [identity];
+  if (strengths.length) sentences.push(`Strengths include ${joinList(strengths)}.`);
+  const approach = byFit(S.approach);
+  if (approach.length) sentences.push(approach[0].text);
+  if (approach[1] && approach[1].sc >= 0.5) {
+    const n = (sentences.join(' ') + ' ' + approach[1].text).split(/\s+/).length;
+    if (n <= 85) sentences.push(approach[1].text);
   }
-  const summary = sentences.join(' ');
+  const summary = applySwaps(sentences.join(' '), jdMap, idx, new Set()).text;
 
-  // ---- headline ----
-  const others = (profile.titles || []).filter(t => t !== title).map(t => {
-    const ids = findSkills(tokenize(t), idx.roles, t, { ext: false }).map(m => m.id);
-    const overlap = jd && jd.title ? tokenize(t).filter(x => x.kind === 'w' && jd.title.text.toLowerCase().includes(x.t.toLowerCase())).length : 0;
-    return { t, sc: overlap + (ids.some(i => jd?.titleRoles.includes(i)) ? 1 : 0) };
-  }).sort((a, b) => b.sc - a.sc).map(x => x.t);
-  const headline = [title, ...others.slice(0, 2)].join(' · ');
+  const titleWords = new Set(tokenize(title).filter(t => t.kind === 'w').map(t => light(t.t)));
+  const areas = byFit(profile.focusAreas)
+    .filter(a => !tokenize(a.label).some(t => t.kind === 'w' && titleWords.has(light(t.t))))
+    .slice(0, 2).map(a => a.label);
+  const headline = applySwaps([title, ...areas].join(' | '), jdMap, idx, new Set()).text;
 
   // ---- skills section ----
   const groups = rules.displayGroups.map(g => ({ ...g, items: [], w: 0 }));
   const groupOf = (cat) => groups.find(g => g.cats.includes(cat));
   const seen = new Set();
+  const skip = new Set((rules.notInSkillsSection || []).map(x => x.toLowerCase()));
   const addSkill = (id, label, w, why) => {
     const s = tax.skills.get(id);
     if (!s || s.abstract || ['soft', 'role', 'degree', 'cert'].includes(s.cat)) return;
+    if (skip.has(s.name.toLowerCase())) return;
     if (seen.has(id)) return;
     const g = groupOf(s.cat);
     if (!g) return;

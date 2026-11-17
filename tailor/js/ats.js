@@ -70,7 +70,7 @@ export function atsCheck(resume, bytes, ctx) {
   add(pages <= 2.2, `Length about ${pages} pages`, pages > 2.2 ? 'Over two pages; consider unpinning or removing a few bullets.' : 'Within two pages.');
 
   // characters some parsers mangle
-  const odd = [...new Set(text.match(/[^\x00-\x7F£€₹–—•·×’“”~]/g) || [])];
+  const odd = [...new Set(text.match(/[^\x00-\x7F£€₹–—•·×’“”~\u00a0]/g) || [])];
   add(!odd.length, 'No unusual characters', odd.length ? `Check: ${odd.join(' ')}` : 'Plain text characters only.');
 
   return { checks, pages, text };

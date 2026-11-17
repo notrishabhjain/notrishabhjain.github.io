@@ -1,59 +1,261 @@
 {
   "_readme": "Tunable rules for Tailor. Everything the engine weighs, swaps or blocks is here so it can be changed without touching code.",
-
-  "sectionWeights": { "title": 3.0, "intro": 1.2, "role": 1.2, "resp": 1.5, "req": 2.0, "pref": 1.0, "other": 1.2, "about": 0.15, "benefits": 0 },
-  "domainInAbout": 1.0,
-
-  "categoryFactors": {
-    "soft": 0.45, "role": 0, "degree": 0.6, "cert": 1.0, "domain": 0.85, "tool": 0.85, "stakeholder": 0.95,
-    "leadership": 0.9, "govt": 1.0, "ext": 0.7
+  "sectionWeights": {
+    "title": 3.0,
+    "intro": 1.2,
+    "role": 1.2,
+    "resp": 1.5,
+    "req": 2.0,
+    "pref": 1.0,
+    "other": 1.2,
+    "about": 0.15,
+    "benefits": 0
   },
-
+  "domainInAbout": 1.0,
+  "categoryFactors": {
+    "soft": 0.45,
+    "role": 0,
+    "degree": 0.6,
+    "cert": 1.0,
+    "domain": 0.85,
+    "tool": 0.85,
+    "stakeholder": 0.95,
+    "leadership": 0.9,
+    "govt": 1.0,
+    "ext": 0.7
+  },
   "displayGroups": [
-    { "label": "Delivery and governance", "cats": ["method", "delivery"] },
-    { "label": "Product and analysis", "cats": ["product", "analysis", "design"] },
-    { "label": "Commercial", "cats": ["commercial"] },
-    { "label": "Leadership and stakeholders", "cats": ["leadership", "stakeholder"] },
-    { "label": "Technology", "cats": ["lang", "framework", "engineering", "cloud", "devops", "data", "ai", "blockchain", "security", "enterprise"] },
-    { "label": "Compliance and standards", "cats": ["compliance"] },
-    { "label": "Government digital stack", "cats": ["govt"] },
-    { "label": "Tools", "cats": ["tool"] },
-    { "label": "Industries", "cats": ["domain"] }
+    {
+      "label": "Delivery and governance",
+      "cats": [
+        "method",
+        "delivery"
+      ]
+    },
+    {
+      "label": "Product and analysis",
+      "cats": [
+        "product",
+        "analysis",
+        "design"
+      ]
+    },
+    {
+      "label": "Commercial",
+      "cats": [
+        "commercial"
+      ]
+    },
+    {
+      "label": "Leadership and stakeholders",
+      "cats": [
+        "leadership",
+        "stakeholder"
+      ]
+    },
+    {
+      "label": "Technology",
+      "cats": [
+        "lang",
+        "framework",
+        "engineering",
+        "cloud",
+        "devops",
+        "data",
+        "ai",
+        "blockchain",
+        "security",
+        "enterprise"
+      ]
+    },
+    {
+      "label": "Compliance and standards",
+      "cats": [
+        "compliance"
+      ]
+    },
+    {
+      "label": "Government digital stack",
+      "cats": [
+        "govt"
+      ]
+    },
+    {
+      "label": "Tools",
+      "cats": [
+        "tool"
+      ]
+    },
+    {
+      "label": "Industries",
+      "cats": [
+        "domain"
+      ]
+    }
   ],
-
   "_verbSynonyms": "Swapped automatically in any sentence, so only pairs that stay true and grammatical whatever follows them. Anything context-dependent goes in the achievement's own verb list (ship|deliver).",
   "verbSynonyms": [
-    ["cut", "reduce"],
-    ["deliver", "ship"],
-    ["build", "develop"],
-    ["author", "write", "draft"],
-    ["run", "manage"],
-    ["increase", "raise"]
+    [
+      "cut",
+      "reduce"
+    ],
+    [
+      "deliver",
+      "ship"
+    ],
+    [
+      "build",
+      "develop"
+    ],
+    [
+      "author",
+      "write",
+      "draft"
+    ],
+    [
+      "run",
+      "manage"
+    ],
+    [
+      "increase",
+      "raise"
+    ]
   ],
-
   "bannedWords": [
-    "spearhead", "spearheaded", "spearheading", "leverage", "leveraged", "leveraging", "utilize", "utilized", "utilise",
-    "utilised", "utilizing", "synergy", "synergies", "synergize", "seamless", "seamlessly", "robust", "cutting-edge",
-    "best-in-class", "world-class", "results-driven", "passionate", "dynamic", "game-changer", "game-changing",
-    "revolutionized", "revolutionised", "harnessed", "orchestrated", "empowered", "pivotal", "holistic", "paradigm",
-    "tapestry", "delve", "delved", "meticulously", "transformative", "unparalleled", "innovative solutions", "go-getter",
-    "rockstar", "ninja", "thought leader"
+    "spearhead",
+    "spearheaded",
+    "spearheading",
+    "leverage",
+    "leveraged",
+    "leveraging",
+    "utilize",
+    "utilized",
+    "utilise",
+    "utilised",
+    "utilizing",
+    "synergy",
+    "synergies",
+    "synergize",
+    "seamless",
+    "seamlessly",
+    "robust",
+    "cutting-edge",
+    "best-in-class",
+    "world-class",
+    "results-driven",
+    "passionate",
+    "dynamic",
+    "game-changer",
+    "game-changing",
+    "revolutionized",
+    "revolutionised",
+    "harnessed",
+    "orchestrated",
+    "empowered",
+    "pivotal",
+    "holistic",
+    "paradigm",
+    "tapestry",
+    "delve",
+    "delved",
+    "meticulously",
+    "transformative",
+    "unparalleled",
+    "innovative solutions",
+    "go-getter",
+    "rockstar",
+    "ninja",
+    "thought leader"
   ],
-
   "jdVerbs": [
-    "lead", "drive", "own", "manage", "deliver", "define", "build", "develop", "design", "coordinate", "oversee", "run",
-    "establish", "create", "implement", "deploy", "partner", "collaborate", "work", "support", "ensure", "track", "monitor",
-    "report", "communicate", "present", "negotiate", "plan", "prioritise", "prioritize", "scope", "write", "author", "draft",
-    "analyse", "analyze", "assess", "evaluate", "identify", "mitigate", "resolve", "improve", "optimise", "optimize",
-    "streamline", "automate", "standardise", "standardize", "scale", "launch", "ship", "migrate", "integrate", "transform",
-    "modernise", "modernize", "facilitate", "mentor", "coach", "hire", "grow", "champion", "influence", "align", "secure",
-    "maintain", "govern", "translate", "gather", "document", "test", "validate", "consolidate", "convert", "cut", "reduce",
+    "lead",
+    "drive",
+    "own",
+    "manage",
+    "deliver",
+    "define",
+    "build",
+    "develop",
+    "design",
+    "coordinate",
+    "oversee",
+    "run",
+    "establish",
+    "create",
+    "implement",
+    "deploy",
+    "partner",
+    "collaborate",
+    "work",
+    "support",
+    "ensure",
+    "track",
+    "monitor",
+    "report",
+    "communicate",
+    "present",
+    "negotiate",
+    "plan",
+    "prioritise",
+    "prioritize",
+    "scope",
+    "write",
+    "author",
+    "draft",
+    "analyse",
+    "analyze",
+    "assess",
+    "evaluate",
+    "identify",
+    "mitigate",
+    "resolve",
+    "improve",
+    "optimise",
+    "optimize",
+    "streamline",
+    "automate",
+    "standardise",
+    "standardize",
+    "scale",
+    "launch",
+    "ship",
+    "migrate",
+    "integrate",
+    "transform",
+    "modernise",
+    "modernize",
+    "facilitate",
+    "mentor",
+    "coach",
+    "hire",
+    "grow",
+    "champion",
+    "influence",
+    "align",
+    "secure",
+    "maintain",
+    "govern",
+    "translate",
+    "gather",
+    "document",
+    "test",
+    "validate",
+    "consolidate",
+    "convert",
+    "cut",
+    "reduce",
     "increase"
   ],
-
   "selection": {
     "totalBullets": 17,
-    "roleCaps": [5, 5, 4, 2, 1, 2],
+    "roleCaps": [
+      5,
+      5,
+      4,
+      2,
+      1,
+      2
+    ],
     "oldRoleYears": 8,
     "oldRoleCap": 2,
     "repeatCredit": 0.25,
@@ -61,8 +263,27 @@
     "claimedCredit": 0.6,
     "minGain": 0.15
   },
-
-  "bullet": { "idealMin": 110, "idealMax": 230, "hardMax": 280 },
-
-  "keywordRepeatCap": 3
+  "bullet": {
+    "idealMin": 100,
+    "idealMax": 205,
+    "hardMax": 270
+  },
+  "keywordRepeatCap": 3,
+  "_notInSkillsSection": "Skills that are true but read as padding or as a project rather than a competency in the skills section. They still count for matching.",
+  "notInSkillsSection": [
+    "Pay commission",
+    "Cooperative sector",
+    "Immigration systems",
+    "Samiksha portal",
+    "Right to Information",
+    "Digital transformation",
+    "Leadership",
+    "Governance",
+    "Automation",
+    "Documentation",
+    "Ownership",
+    "Certification schemes",
+    "Design",
+    "Data integration"
+  ]
 }
