@@ -195,10 +195,15 @@ export function buildResume(env) {
   const identity = (profile.summary.identity.find(x => x.when === sector) || profile.summary.identity[0]).text
     .replace('{title}', title).replace('{years}', years);
   const shortRoles = new Set();
-  const shorts = [...picks].map(p => ({ p, a: pidx.achievements.get(p.id) })).filter(x => x.a.short)
+  const shortsRanked = [...picks].map(p => ({ p, a: pidx.achievements.get(p.id) })).filter(x => x.a.short)
     .sort((x, y) => (y.p.focus + 0.1 * y.a.strength) - (x.p.focus + 0.1 * x.a.strength))
-    .filter(x => (shortRoles.has(x.a.role) ? false : shortRoles.add(x.a.role)))
-    .slice(0, 3).map(x => x.a.short);
+    .filter(x => (shortRoles.has(x.a.role) ? false : shortRoles.add(x.a.role)));
+  // prefer proof points that open with different verbs ("took…; took…; took…" reads as a template)
+  const verbOf = (x) => x.a.short.split(' ')[0].toLowerCase();
+  const picked = [];
+  for (const x of shortsRanked) if (picked.length < 3 && !picked.some(y => verbOf(y) === verbOf(x))) picked.push(x);
+  for (const x of shortsRanked) if (picked.length < 3 && !picked.includes(x)) picked.push(x);
+  const shorts = picked.map(x => x.a.short);
   const sentences = [identity];
   if (shorts.length >= 2) sentences.push(capFirst(joinList(shorts)) + '.');
   const extras = profile.summary.extra.map(x => {

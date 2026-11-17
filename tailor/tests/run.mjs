@@ -31,7 +31,9 @@ if (engine.idx.collisions.length) {
   for (const c of engine.idx.collisions) console.log('    ' + c);
 }
 
-const RETRACTED = [/sahara refund/i, /organi[sz]ation-wide adoption/i, /company-wide adoption/i];
+// Claims the owner has retracted or corrected; none may ever reach a resume.
+const RETRACTED = [/sahara refund/i, /organi[sz]ation-wide adoption/i, /company-wide adoption/i, /15,000/, /82\/100/,
+  /50 officers/i, /24-field/i, /\$500K/i, /SAST score/i, /Certified Scrum Master who/i, /eight-module/i, /seven-person/i];
 
 // ---- unit checks on the rules themselves ----
 {
