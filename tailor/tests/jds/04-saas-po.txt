@@ -1,0 +1,23 @@
+Product Owner (B2B SaaS)
+
+Who we are: A Series C B2B SaaS company helping enterprises automate compliance workflows.
+
+The role
+We're looking for a Product Owner to own the backlog for our workflow engine and certification module.
+
+In this role, you will:
+- Translate product strategy and roadmap into well-groomed epics, user stories and acceptance criteria
+- Lead sprint planning, backlog refinement, sprint reviews and retrospectives with a cross-functional Scrum team
+- Conduct user research and customer interviews to inform prioritization and discovery
+- Define and track success metrics and product analytics after launch
+- Work with UX designers in Figma on prototypes and usability testing
+- Write clear functional specifications for complex state machine and audit trail requirements
+
+You have:
+- 5+ years as a Product Owner, Product Manager or Business Analyst in Agile teams
+- CSPO, PSPO or CSM certification
+- Experience with Jira, Confluence and Miro
+- Comfort with ambiguity and a bias for action
+- SQL and basic data analysis skills
+
+Bonus points if you have experience with GDPR, SOC 2 or audit-heavy products.

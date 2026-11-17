@@ -1,0 +1,21 @@
+Job Title: Program Manager – Digital Public Infrastructure
+
+Overview
+A leading consulting firm is hiring a Program Manager to support a central government ministry on a national e-governance platform under the Digital India programme.
+
+Key Responsibilities
+1. Manage end-to-end delivery of the national portal, from DPR and RFP drafting through vendor onboarding, development oversight and go-live
+2. Coordinate with MeitY, NIC and multiple implementation agencies; maintain the project plan, risk register and milestone tracker
+3. Run the PMO: weekly progress reporting to the Joint Secretary, steering committee packs and MIS dashboards
+4. Ensure compliance with GIGW 3.0, WCAG 2.1 and STQC/CERT-In security audit requirements before launch
+5. Drive business process re-engineering, as-is/to-be analysis and change management with state departments
+6. Oversee UAT, training and phased rollout across states
+
+Eligibility Criteria
+- B.Tech/B.E. with MBA preferred
+- Minimum 10 years of experience, with at least 5 years managing large government IT projects
+- Strong knowledge of GFR, GeM procurement and CVC guidelines
+- Experience with Aadhaar, DigiLocker or other India Stack integrations is desirable
+- Excellent stakeholder management with senior government officials
+
+Good to have: PMP or PRINCE2 certification, experience with NIC MeghRaj cloud hosting.

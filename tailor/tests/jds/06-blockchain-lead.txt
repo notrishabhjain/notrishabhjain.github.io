@@ -1,0 +1,17 @@
+Blockchain Program Lead – Digital Credentials
+
+We are building verifiable credentials infrastructure on permissioned blockchain for universities and employers.
+
+What you will do
+- Lead the program roadmap for our credentialing platform built on Hyperledger Fabric and Ethereum (Quorum)
+- Work with smart contract engineers on Solidity and chaincode design, NFT-based credential issuance and wallet integrations
+- Drive pilots with enterprise HR teams and background-verification partners, and convert pilots into adoption
+- Define APIs and integration patterns with HRMS and talent platforms
+- Manage requirements gathering, stakeholder workshops and solution design
+
+What we're looking for
+- 6+ years combining software engineering and program or product management
+- Hands-on blockchain architecture experience; understanding of DLT consensus, cryptography and digital identity
+- Experience with Node.js, React and REST APIs
+- Familiarity with self-sovereign identity (SSI) and W3C Verifiable Credentials standards
+- Strong written communication

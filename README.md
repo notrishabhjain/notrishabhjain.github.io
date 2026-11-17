@@ -93,3 +93,4 @@ the site. If Pages is ever switched to "Deploy from a branch", the same
 - `assets/fonts/` — self-hosted Latin woff2 subsets
 - `files/` — resume downloads, kept at a stable path so older links still resolve
 - `favicon.png`, `robots.txt`
+- `tailor/` — a separate, unlinked resume-tailoring tool (rule-based, no AI); see `tailor/README.md`

@@ -1,0 +1,31 @@
+Senior Technical Program Manager, Payments Platform
+
+About us
+We are a fast-growing fintech building real-time card payments and settlement infrastructure for banks across APAC.
+
+About the role
+You will own end-to-end delivery of our payments platform roadmap, working with engineering, product, risk and compliance teams.
+
+What you'll do
+- Drive cross-functional programs from planning through launch, managing dependencies across multiple engineering teams
+- Own program governance: risk, issue and change management, RAID logs and executive status reporting
+- Partner with C-suite stakeholders and external vendors, including card schemes and processors
+- Manage budgets and resource plans, and report delivery KPIs to leadership
+- Lead incident retrospectives and drive improvements to MTTR and platform reliability
+- Champion Agile/Scrum practices and continuous improvement
+
+What we're looking for
+- 8+ years of program management experience, including 3+ years in payments or financial services
+- Proven track record managing multiple vendors and complex, multi-team programs
+- Strong understanding of APIs, microservices and cloud platforms (AWS preferred)
+- Experience with PCI DSS and regulatory compliance in a regulated environment
+- Excellent written and verbal communication skills
+- Hands-on experience with Jira and Confluence
+
+Nice to have
+- PMP or PgMP certification
+- Familiarity with chargebacks, dispute management and reconciliation
+- Exposure to Kafka or event-driven architecture
+
+Benefits
+Health insurance, flexible working, and visa sponsorship is not available for this role.

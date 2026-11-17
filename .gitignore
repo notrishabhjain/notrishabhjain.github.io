@@ -1,2 +1,3 @@
 .DS_Store
 *.log
+tailor/tests/out/

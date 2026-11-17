@@ -1,0 +1,788 @@
+# Tailor skills taxonomy
+#
+# One skill per line:
+#   Name = swap-safe forms | match-only forms ^ Parent, Parent ~ Related, Related
+#
+#   =   forms that mean exactly the same thing and can replace each other in a
+#       bullet (acronym <-> expansion, word-order variants). Keep this short.
+#   |   forms that are recognised in a job description but never written in.
+#   ^   broader skills. A JD asking for the broader skill gives partial credit
+#       to evidence of this one, and the other way round.
+#   ~   related skills: partial credit, never swapped.
+#
+#   *Name      an abstract group. Skills under it are not related to each other
+#              just because they share it (Java and Python are both languages).
+#   form!      case-sensitive.
+#   form!!     case-sensitive and ignored at the start of a sentence
+#              ("Spark" the engine, not "spark" the verb).
+#   All-caps forms of four letters or fewer are case-sensitive automatically.
+#
+# UK and US spellings, plurals, hyphens and word order ("managing vendors",
+# "vendor management") are normalised by the matcher, so list one spelling only.
+# Lines starting with @ set the category for the lines below them.
+
+@method
+*Delivery methodology | delivery methodologies, project methodologies, project management methodologies
+Agile = agile methodology, agile delivery | agile ways of working, agile practices, agile environment, agile framework, agile principles, agile teams, agile projects, agile development, agile mindset ^ Delivery methodology
+Scrum = scrum framework | scrum methodology, scrum teams, scrum practices ^ Agile ~ Sprint planning, Backlog management
+Kanban | kanban boards, kanban method ^ Agile ~ Lean
+SAFe = SAFe!, scaled agile framework | safe framework ^ Agile ~ PI planning, Agile release train
+LeSS = LeSS!, large-scale scrum ^ Agile, Scrum
+Scrum@Scale | scrum at scale ^ Scrum
+Scaled agile delivery | agile at scale, scaling agile, scaled agile delivery ^ Agile ~ SAFe
+Waterfall = waterfall methodology | waterfall model, traditional project management, predictive project management, plan-driven ^ Delivery methodology
+Hybrid delivery = hybrid methodology, hybrid agile | hybrid project management, agile-waterfall, water-scrum-fall, hybrid approach ^ Delivery methodology ~ Agile, Waterfall
+Lean = Lean!!, lean methodology | lean principles, lean thinking, lean management ^ Delivery methodology ~ Continuous improvement
+Six Sigma | six sigma methodology ^ Delivery methodology ~ Lean Six Sigma, DMAIC
+Lean Six Sigma ^ Lean, Six Sigma
+DMAIC ^ Six Sigma
+PRINCE2 = PRINCE2!, projects in controlled environments | prince 2 ^ Delivery methodology
+PMBOK = PMBOK!, project management body of knowledge ^ Delivery methodology ~ Project Management Professional
+ITIL = ITIL!, information technology infrastructure library | itil framework, itil processes, itil v4, itil 4 ^ IT service management
+COBIT ~ Governance
+TOGAF ~ Enterprise architecture
+Design thinking | human-centred design, human-centered design ~ User research
+DevOps practices | devops culture, devops methodology ^ DevOps
+Extreme programming = XP! | extreme programming practices ^ Agile
+Critical chain project management | critical chain
+Stage-gate | stage gate, phase gate, phase-gate, gating reviews, stage gates ^ Project governance
+SDLC = software development lifecycle, software development life cycle | sdlc processes, systems development life cycle ~ Software development
+Project lifecycle = project life cycle | end-to-end project lifecycle, full project lifecycle, project life-cycle management ^ Project management
+
+@delivery
+*Project and programme management
+Project management | managing projects, project management experience, pm experience, project manager experience, project management skills ^ Project and programme management
+Program management = programme management | managing programs, program management experience, managing large programs, program manager experience ^ Project and programme management ~ Project management, Portfolio management
+Portfolio management = project portfolio management, PPM | portfolio governance, managing portfolios, portfolio of projects, portfolio of programs ^ Project and programme management ~ Program management
+Technical program management = TPM | technical project management, technical programme management ^ Program management ~ Software development
+Delivery management = delivery leadership | managing delivery, delivery excellence, delivery assurance, delivery ownership, delivery oversight, delivery governance ^ Project and programme management
+End-to-end delivery = end-to-end project delivery | end-to-end ownership, delivered end to end, full lifecycle delivery, end-to-end execution ^ Delivery management
+Project delivery | delivering projects, project execution, delivery of projects, on-time delivery ^ Project management
+Program delivery = programme delivery | delivering programs, program execution, large-scale delivery ^ Program management
+Project planning | project plans, detailed project plans, integrated project plans, plan projects ^ Project management ~ Scheduling
+Scheduling = project scheduling | schedule management, project schedules, timelines, delivery timelines, timeline management, master schedule ^ Project planning ~ Critical path
+Work breakdown structure = WBS ^ Project planning
+Critical path = critical path method, CPM! | critical path analysis ^ Scheduling
+Milestone tracking | milestones, milestone management, milestone planning, milestone reviews, key milestones ^ Project planning
+Dependency management | dependencies, cross-team dependencies, interdependencies, dependency tracking, dependency mapping ^ Project planning
+Scope management | project scope, scope definition, scope control, managing scope, scope creep, scoping ^ Project management ~ Change control
+Change control = change request management | change requests, scope change control, change control process, change control board ^ Scope management
+Risk management | managing risks, risk mitigation, risk identification, risk planning, risk management frameworks, project risks, delivery risks, risk and issue management, risk control ^ Project management ~ Risk register, Issue management
+Risk register = risk log, risk logs | risk registers, raid logs, raid log, RAID! ^ Risk management ~ Issue management
+Issue management | issue tracking, issue resolution, issue logs, managing issues, issue log ^ Project management ~ Risk management, Escalation management
+RACI = RACI matrix, responsibility assignment matrix | raci matrices, raci charts, raci model, raci framework, raci design, ownership matrix ^ Project governance ~ Escalation management
+Escalation management | escalations, escalation paths, escalation frameworks, escalation governance, escalation matrix, escalation handling, managing escalations ^ Issue management
+Project governance = programme governance, program governance | governance frameworks, delivery governance frameworks, governance structures, governance cadence, governance model ^ Governance ~ PMO
+Governance | governance processes, governance and controls, oversight ^ Project and programme management
+PMO = project management office, program management office, programme management office | pmo governance, pmo setup, pmo processes, pmo functions, pmo leadership, establishing a pmo ^ Project governance
+Steering committee = steering committees, SteerCo | steering group, steerco reporting, project board, governance boards ^ Project governance ~ Executive reporting
+Status reporting = progress reporting, project status reporting | status reports, weekly status reports, project reporting, program reporting, status updates, progress reports, reporting cadence, rag status, rag reporting ^ Project governance ~ Executive reporting
+Executive reporting = executive status reporting | executive updates, leadership reporting, senior management reporting, board reporting, c-level reporting, management reporting ^ Status reporting ~ Executive communication
+KPIs = key performance indicators | KPI!, kpi tracking, metrics, success metrics, delivery metrics, performance metrics, kpi frameworks, kpi definition, measurable outcomes ^ Performance management ~ Dashboards, OKRs
+OKRs = objectives and key results | OKR!, okr frameworks ~ KPIs, Strategic planning
+Quality management | quality assurance processes, quality control, quality standards, quality gates, delivery quality ^ Project management ~ Software testing
+Benefits realization = benefits realisation | benefits management, benefits tracking, value realization, value delivery, business value delivery ^ Program management
+Resource management = resource planning, resource allocation | resourcing, resource utilization, resource utilisation, staffing plans, resource forecasting ^ Project management ~ Capacity planning
+Capacity planning | capacity management, team capacity, demand and capacity planning, demand planning ^ Resource management
+Release management | release planning, releases, release coordination, release cycles, release governance, release schedules ^ Delivery management ~ Deployment management
+Deployment management | deployments, production deployments, deployment planning, deployment coordination ^ Release management
+Go-live management = go-live | go live, go-lives, production launch, launch readiness, production readiness, cutover, cutover planning, go-live readiness, hypercare ^ Release management
+Transition management = service transition | transitions, knowledge transfer, transition planning, account transition, project transition, takeover, handover ^ Delivery management
+Delivery turnaround = project turnaround, programme turnaround | troubled projects, project recovery, failing projects, recovery of distressed projects, turnaround management, turnaround, turnarounds, rescue projects, turning around, turn around, underperforming accounts, underperforming projects, loss-making accounts ^ Delivery management
+Project closure | project close-out, closeout, lessons learned, post-implementation review ^ Project lifecycle
+Process improvement | process optimization, process enhancements, improving processes, process efficiency, process redesign, streamlining processes, workflow optimization ^ Operational excellence ~ Continuous improvement
+Continuous improvement | kaizen, continuous improvement culture, iterative improvement ^ Process improvement
+Operational excellence | operations excellence, operational efficiency, efficiency improvements, delivery efficiency ~ Process improvement
+Standard operating procedures = SOPs, SOP | sop standardization, standardised procedures, standardized processes, process standardization, operating procedures, runbooks, playbooks ^ Operational excellence
+Documentation | project documentation, process documentation, delivery documentation, documentation standards ~ Technical writing
+Cross-functional coordination | cross-functional teams, cross-functional collaboration, cross-functional delivery, cross-team coordination, coordinate across teams, cross-functional stakeholders, cross-functional initiatives, matrixed teams, matrix environment ^ Stakeholder management ~ Cross-functional leadership
+Multi-vendor management | multi-vendor, multiple vendors, multi-vendor programs, multi-vendor environment, multi-vendor delivery, multiple vendor teams, multi-party delivery ^ Vendor management
+Parallel workstreams = parallel module streams | parallel streams, concurrent workstreams, workstreams, multiple workstreams, workstream management, parallel delivery tracks ^ Program management ~ Dependency management
+Multi-project management | multiple projects, concurrent projects, multiple concurrent projects, multiple engagements, concurrent programs, juggle multiple projects ^ Portfolio management
+Large-scale programs | large-scale programs, large scale programmes, complex programs, enterprise-scale programs, large complex projects, national-scale, large transformation programs, complex initiatives ^ Program management
+Phased rollout = staged rollout | phased rollouts, phased implementation, pilot, pilots, piloting, pilot programs, rollout, rollouts, roll-out, roll out, rolled out, national rollout, rollout planning ^ Release management ~ Change management
+Deadline management | tight deadlines, fixed deadlines, time-bound delivery, hard deadlines, deadline-driven, time-critical delivery, fixed timelines, aggressive timelines ^ Scheduling
+Rapid delivery | fast-paced delivery, accelerated delivery, speed to market, fast turnaround, rapid execution ^ Delivery management
+SLA management = service level management | SLA!, SLAs, service level agreements, sla compliance, sla adherence, sla governance, sla reporting, service levels ^ Service delivery ~ Vendor management
+Service delivery = service delivery management | managing service delivery, it service delivery ^ IT service management
+IT service management = ITSM | it service management processes ~ ITIL
+Incident management | incidents, incident resolution, incident response process, major incident management, p1 incidents, priority incidents, outage management, production incidents ^ IT service management ~ Problem management
+Problem management | problem resolution, recurring incidents ^ IT service management ~ Root cause analysis
+MTTR = mean time to resolution, mean time to resolve | mean time to repair, mean time to recovery, time to resolution, resolution times ^ Incident management
+Root cause analysis = RCA | root cause, root causes, root-cause analysis, 5 whys, fishbone ^ Problem management
+High availability = HA! | uptime, 24x7 uptime, 99.9%, 24/7 availability, system availability, reliability targets ~ Site reliability engineering
+Application support = application maintenance | application management services, AMS!, production support, L1!, L2!, L3!, l2/l3 support, l1 support, l2 support, l3 support, l1.5 support, support and enhancements, maintenance and support, run support ^ IT service management
+Application portfolio management | application portfolio, application rationalization, application landscape, portfolio of applications ^ Portfolio management ~ Application support
+Managed services | managed service, managed services engagements, outsourced services ^ Service delivery
+Global delivery model = onsite-offshore model | offshore delivery, onshore offshore, offshore teams, global delivery, distributed delivery, offshore model, nearshore, global teams ^ Delivery management ~ Distributed teams
+Account management = client account management | key account management, account growth, account planning, managing accounts, enterprise accounts, strategic accounts ^ Client relationship management ~ Business development
+Project estimation = effort estimation | estimation, estimates, estimating, sizing, cost and effort estimation, story points, story point estimation, t-shirt sizing ^ Project planning ~ Cost estimation
+Earned value management = EVM | earned value, earned value analysis ^ Project controls
+*Project controls | project control
+Sprint planning | sprints, sprint goals, sprint cadence, iteration planning ^ Scrum
+Backlog management = backlog refinement, backlog grooming | product backlog, backlog prioritization, backlog prioritisation, managing the backlog, groomed backlog ^ Scrum
+Agile ceremonies | scrum ceremonies, daily stand-ups, daily standups, stand-ups, retrospectives, retros, sprint reviews, sprint retrospectives, demos ^ Scrum
+Agile metrics | velocity, burndown, burn-down, burnup, cycle time, lead time, throughput, flow metrics ^ Agile ~ KPIs
+PI planning = program increment planning | program increment ^ SAFe
+Agile release train = ART! | release train, release trains ^ SAFe
+Agile coaching | agile coach, coaching agile teams, agile maturity ^ Agile ~ Agile transformation
+Agile transformation | agile adoption, agile transition, scaling agile adoption, ways of working transformation ^ Agile ~ Digital transformation
+User stories | user story, story writing, writing user stories, epics, features and stories ^ Requirements gathering ~ Acceptance criteria
+Acceptance criteria | definition of done, definition of ready, dod ^ User stories
+Product Owner role = Product Owner | product owner responsibilities, acting product owner, po role ^ Scrum ~ Product management
+Scrum Master role = Scrum Master | scrum master responsibilities, servant leader for scrum teams ^ Scrum ~ Agile coaching
+
+@product
+Product management | managing products, product manager experience, product leadership ~ Product strategy
+Product strategy | product vision, product direction, product thinking ~ Product management, Product roadmap
+Product roadmap = product roadmapping | roadmap, roadmaps, roadmapping, technology roadmap, platform roadmap, delivery roadmap, multi-year roadmap, phase 2 roadmap ^ Product strategy ~ Strategic planning
+Product discovery | discovery, discovery phase, problem discovery, opportunity discovery ^ Product management ~ User research
+Requirements gathering = requirements elicitation | gathering requirements, eliciting requirements, requirement gathering, requirements workshops, requirement phase, capturing requirements, stakeholder requirements, business requirements ^ Business analysis ~ Requirements analysis
+Prioritization = prioritisation | prioritize, prioritising, moscow, rice scoring, feature prioritization, trade-offs, tradeoffs, trade-off decisions ^ Product management
+Minimum viable product = MVP | MVPs, minimum viable products ^ Product management
+Go-to-market = GTM, go-to-market strategy | go to market, launch strategy, market launch ^ Product management
+Product launch | product launches, launches, launching products, feature launches ^ Go-to-market
+Product lifecycle management = product lifecycle, PLM! | product life cycle ^ Product management
+Product analytics | product metrics, usage analytics, product data, funnel analysis ^ Product management ~ Data analysis
+User adoption | adoption, adoption rates, driving adoption, user uptake, uptake, platform adoption, onboarding users ^ Change management ~ Stakeholder engagement
+Customer journey mapping = journey mapping | customer journeys, user journeys ^ User experience design
+Platform products | platform product management, platform strategy, internal platforms ^ Product management
+API products | api product management, developer platforms, api ecosystem, partner api ecosystem ^ Platform products
+B2B products | B2B!, b2b saas, enterprise products ^ Product management
+B2C products | B2C!, consumer products ^ Product management
+SaaS = software as a service | SaaS!, saas products, saas platforms, cloud software ^ Cloud computing ~ B2B products
+Experimentation | a/b testing, A/B tests, split testing, hypothesis testing, experiments ^ Product analytics
+Competitive analysis | competitor analysis, competitive landscape, market analysis ^ Market research
+Market research | market sizing, customer research, market insights ^ Product discovery
+Product requirements = product requirements document, PRD | PRDs, product specs, product specifications ^ Product management ~ Functional specifications
+Feature definition | feature specification, scoping features, feature scoping ^ Product requirements
+Monetization = monetisation | revenue models ^ Product strategy ~ Pricing strategy
+
+@analysis
+Business analysis | business analyst experience, ba experience, business analysis techniques ~ Requirements analysis
+Requirements analysis = requirement analysis | functional requirement analysis, analyzing requirements, requirements definition, requirements management, requirements documentation, api-level requirement analysis ^ Business analysis ~ Requirements gathering
+Functional specifications = functional specification, FSD | functional specs, functional design, functional design documents, functional requirements, functional requirement documents, FRD!, FRDs ^ Requirements analysis ~ Technical specifications
+Technical specifications = technical specification, developer specification | technical specs, technical design documents, design specifications, developer specifications, system specifications, technical design ^ Requirements analysis ~ Solution design
+Business requirements document = BRD | BRDs, business requirements documents ^ Requirements analysis
+Software requirements specification = SRS | software requirements specifications ^ Requirements analysis
+Use cases = use case documents | use case, use case modelling, use case diagrams ^ Requirements analysis
+Requirements traceability = RTM, requirements traceability matrix | traceability, traceability matrix ^ Requirements analysis ~ Audit trails
+Business process re-engineering = BPR, business process reengineering | process re-engineering, process reengineering, business process redesign ^ Business process management ~ Process improvement
+Business process management = BPM | process management, business processes, process governance ^ Process improvement
+Process mapping = process modelling | process maps, process flows, workflow mapping, swimlane diagrams, value stream mapping ^ Business process management ~ BPMN
+As-is to-be analysis = as-is and to-be | as-is analysis, to-be design, current state, future state, current-state assessment, future-state design, as-is mapping, to-be workflows, current and future state ^ Business process management ~ Gap analysis
+Gap analysis | gap assessments, fit-gap, fit gap analysis ^ Business analysis ~ As-is to-be analysis
+Workflow design | workflows, workflow engine, workflow modelling, approval workflows, multi-stage workflows, referral workflow, workflow configuration ^ Process mapping ~ State machine design
+State machine design = state machine | state machines, state design, workflow states, state transitions ^ Workflow design
+Data modeling = data modelling | data model, data models, logical data model, conceptual data model, entity relationship, erd, er diagrams, data structures ^ Data architecture ~ Database design
+Feasibility studies = feasibility study | feasibility analysis, feasibility assessment ^ Business analysis
+Impact analysis | impact assessment, change impact analysis ^ Business analysis
+Stakeholder analysis | stakeholder mapping, stakeholder maps, power-interest grid ^ Stakeholder management
+UML = unified modeling language | uml diagrams ^ Modelling notations
+BPMN = business process model and notation | bpmn 2.0 ^ Modelling notations ~ Process mapping
+*Modelling notations
+Benchmarking | benchmark, benchmarking frameworks, maturity assessment, maturity models, scoring frameworks, ranking frameworks, assessment frameworks ^ Business analysis ~ KPIs
+Analytic hierarchy process = AHP | multi-criteria decision analysis, mcda, weighted scoring ^ Benchmarking
+Techno-functional delivery | techno-functional, techno functional, functional and technical, bridge between business and technology, business and technology teams, translate business requirements into technical, requirement-to-specification ^ Business analysis ~ Technical specifications
+Solution design | designing solutions, solutioning, solution development ^ Solution architecture ~ Technical specifications
+Systems analysis | system analysis, systems analyst ^ Business analysis
+Policy analysis | policy research, policy drafting, policy design, policy formulation ^ Public policy ~ Compliance management
+
+@design
+User experience design = UX design, UX!, user experience | ux/ui, ux strategy, experience design ^ Design ~ User interface design
+User interface design = UI design, UI! | ui/ux, interface design, visual design, front-end design ^ Design ~ User experience design
+*Design
+User research | ux research, user interviews, usability research, user needs, contextual inquiry, field research, ethnographic research, observing users ^ User experience design ~ Product discovery
+Usability testing | usability, usability studies, user testing ^ User research
+Wireframing = wireframes | low-fidelity designs, mockups, mock-ups ^ User experience design ~ Prototyping
+Prototyping | prototypes, clickable prototypes, high-fidelity prototypes ^ User experience design
+Information architecture | site structure, content structure, navigation design ^ User experience design
+Interaction design | interaction patterns ^ User experience design
+Design systems | design system, component libraries, ui component library ^ User interface design
+Accessibility = digital accessibility | accessible design, inclusive design, a11y, accessibility standards, accessibility audits, accessibility compliance, accessibility testing ~ WCAG
+Service design | service blueprint, end-to-end service design, citizen-centric design ^ Design
+
+@commercial
+Commercial management | commercials, commercial acumen, commercial awareness, commercial ownership ~ P&L management
+P&L management = P&L, profit and loss | p&l responsibility, p&l ownership, profit and loss responsibility, bottom line, profitability ^ Financial management ~ Margin management
+*Financial management | financial acumen, financial oversight, financial governance
+Budget management = budgeting | budgets, budget, budget ownership, budget control, budget tracking, budget planning, managing budgets, cost control, within budget, financial tracking, budget forecasting, budgetary control ^ Financial management ~ Cost management
+Cost management = cost optimization, cost optimisation | cost reduction, cost savings, cost efficiency, reducing costs, cost-cutting, cost containment, cost avoidance ^ Financial management ~ Budget management
+Cost estimation | cost estimates, costing, infrastructure costing, cost modelling, cost models, effort and cost estimation, infrastructure cost modelling ^ Financial management ~ Project estimation
+Forecasting | financial forecasting, revenue forecasting, forecasts, demand forecasting ^ Financial management
+Financial modeling = financial modelling | financial models ^ Financial management ~ Business case development
+Business case development = business cases | business case, cost-benefit analysis, cba, investment cases, roi analysis, ROI!, return on investment, value cases ^ Financial management
+Total cost of ownership = TCO ^ Cost estimation
+Margin management | margins, gross margin, margin improvement, utilization targets ^ P&L management
+Revenue growth | revenue, top-line growth, growing revenue, account revenue, new revenue ^ Business development
+Business development | new business, winning new business, pipeline development, growth, account expansion, upselling, cross-selling, business growth ^ Commercial management ~ Pre-sales
+Pre-sales = presales | pre-sales support, solutioning for bids, sales support, technical pre-sales ^ Business development ~ Proposal writing
+Bid management | bids, bidding, bid process, tender management, tenders, tendering ^ Pre-sales ~ Proposal writing
+Proposal writing = proposal development | proposals, technical proposals, commercial proposals, technical and commercial proposals, writing proposals, proposal authoring, rfp responses ^ Pre-sales ~ RFP management
+RFP management = RFP!, request for proposal | RFPs, rfp authoring, rfp drafting, rfp preparation, rfp process, rfp evaluation ^ Procurement ~ Proposal writing
+RFQ = request for quotation | RFQs ^ Procurement
+RFI = request for information | RFIs ^ Procurement
+Statement of work = SOW | SOWs, statements of work, work orders ^ Contract management
+Detailed project report = DPR | DPRs, detailed project reports ^ Procurement ~ Business case development
+Procurement | procurement processes, procurement management, purchasing, public procurement, procurement frameworks, procurement strategy, government procurement ~ Vendor management
+Vendor management = third-party management | vendor oversight, vendor relationships, vendor governance, vendor performance, vendor performance monitoring, vendors, vendor partners, supplier management, managing vendors, third-party vendors, third parties, external agencies, implementation agencies, partner management, vendor coordination, vendor onboarding, vendor selection ^ Stakeholder management ~ Procurement, Contract management
+Contract management | contracts, contract negotiation, contract governance, contractual obligations, contract compliance, contract administration ^ Commercial management ~ Vendor management
+Negotiation | negotiating, negotiations, commercial negotiation, negotiation skills ^ Communication skills ~ Contract management
+Pricing strategy | pricing, price modelling, rate cards ^ Commercial management
+Client relationship management | client relationships, client relations, customer relationships, client engagement, client management, client partnership, trusted advisor, client satisfaction, client-facing ^ Stakeholder management ~ Account management
+Customer success | customer satisfaction, csat, nps, net promoter score, customer outcomes, customer retention ^ Client relationship management
+Capital expenditure = CapEx | capex planning, capital budgeting ^ Budget management
+Operating expenditure = OpEx ^ Budget management
+FinOps | cloud financial management, cloud cost management ^ Cost management ~ Cloud computing
+
+@leadership
+Leadership | leadership skills, leadership experience, leading people ~ Team leadership
+Team leadership = leading teams | team lead, team management, managing teams, lead a team, led teams, direct reports, managing a team, team of engineers ^ Leadership ~ People management
+People management | line management, managing people, people leadership, staff management, team supervision ^ Leadership ~ Performance management
+Cross-functional leadership | leading cross-functional teams, cross-functional team leadership, lead cross-functional ^ Leadership ~ Cross-functional coordination
+Distributed teams = remote teams | distributed team, geographically distributed, global team management, multi-location teams, virtual teams, multicultural teams, teams across time zones ^ Team leadership ~ Global delivery model
+Team building | building teams, team formation, building high-performing teams, high-performing teams, team culture ^ Team leadership
+Hiring and recruitment = recruitment | recruiting, talent acquisition, interviewing, hiring plans, hiring and firing, building a team, staffing, hiring engineers, hiring talent ^ People management
+Mentoring = mentorship | mentor, mentoring junior, coaching and mentoring ^ People management ~ Coaching
+Coaching | coach, coaching teams, coaching skills ^ People management
+Performance management | performance reviews, appraisals, performance evaluation, performance feedback ^ People management
+Talent development | upskilling, capability building, learning and development, training programs, skill development ^ People management
+Training delivery | training, end-user training, user training, staff training, workshops for users, train the trainer ^ Change management
+Workforce optimization = team right-sizing | right-sizing, rightsizing, headcount optimization, headcount reduction, workforce planning, resource optimization, team restructuring, org restructuring, team optimization ^ Resource management ~ Cost management
+Employee retention = attrition reduction | attrition, retention, reducing attrition, burnout, employee engagement, team morale, retention strategies ^ People management
+Organizational design = organisational design | org design, operating model design, operating models, target operating model, tom ^ Strategic planning
+Strategic planning = strategy development | strategy, strategic initiatives, strategic roadmap, business strategy, strategic direction, long-term planning, strategic priorities ^ Leadership ~ Product strategy
+Strategic thinking | strategic mindset, big-picture thinking, strategic perspective ^ Strategic planning
+Decision making = decision-making | decisions, data-driven decisions, sound judgment, judgement, decisive ^ Leadership
+Change leadership | leading change, driving change, change agent, change champion ^ Leadership ~ Change management
+Change management = organizational change management, organisational change management, OCM | change adoption, people change management, managing change, business change, change readiness, transformation change management, adkar, prosci ~ User adoption, Change leadership
+Influencing without authority | influence without authority, influencing, influence, persuasion, building consensus without authority, no direct authority, influence stakeholders ^ Stakeholder management
+Conflict resolution | resolving conflicts, conflict management, mediation ^ Leadership ~ Negotiation
+Servant leadership | servant leader ^ Leadership ~ Scrum Master role
+Executive presence | gravitas, board-level presence ^ Leadership ~ Executive communication
+Team scaling | scaling teams, growing teams, team growth, scale the team ^ Team leadership ~ Hiring and recruitment
+
+@stakeholder
+Stakeholder management | stakeholder relationships, managing stakeholders, stakeholder engagement and management, stakeholders, stakeholder alignment, stakeholder expectations, multi-stakeholder, stakeholder coordination, stakeholder communication, stakeholder relations, stakeholder buy-in ~ Stakeholder engagement, Executive stakeholder management
+Stakeholder engagement | engaging stakeholders, stakeholder consultation, stakeholder collaboration ^ Stakeholder management
+Executive stakeholder management = C-suite stakeholder management | c-suite, c-level, c-level executives, c-suite executives, senior executives, senior leadership, executive stakeholders, executive leadership, senior stakeholders, leadership team, cxo, cxos, ceo, cio, cto, coo, cfo, board members, vp-level, director-level, executive sponsors, executive management, ceo-level, cio relationships, secretary-level, senior government officials, joint secretary, additional secretary, permanent secretary, secretaries and additional secretaries, senior civil servants ^ Stakeholder management ~ Executive communication
+Government stakeholder management | government stakeholders, government officials, ministry stakeholders, public sector stakeholders, government clients, ministries and departments, government departments, senior bureaucrats, policy makers, policymakers, regulators ^ Stakeholder management ~ Public sector
+Expectation management = managing expectations | expectations, expectation setting, setting expectations ^ Stakeholder management
+Facilitation | facilitating, workshop facilitation, facilitate workshops, facilitating meetings, running workshops, workshops ^ Communication skills
+Consensus building | building consensus, alignment, driving alignment, building alignment, aligning stakeholders, alignment across teams ^ Stakeholder management
+Executive communication | executive presentations, communicating with executives, executive briefings, briefing senior leaders, leadership communication, boardroom presentations ^ Communication skills ~ Executive reporting
+Presentation skills | presentations, presenting, public speaking, presenting to senior leaders, presentation ^ Communication skills
+Technical writing | technical documentation, writing specifications, technical authoring, documentation writing ^ Written communication ~ Documentation
+Storytelling | data storytelling, narratives, narrative building ^ Communication skills
+
+@soft
+Ownership | accountability, accountable, end-to-end accountability, sense of ownership, owner mindset, extreme ownership ^ Leadership
+Verbal communication | verbal communication skills, oral communication ^ Communication skills
+Written communication | written communication skills, writing skills, business writing, clear writing ^ Communication skills ~ Technical writing
+Communication skills | communication, communicator, excellent communication, strong communication, communication abilities, communicate effectively, interpersonal and communication skills
+Problem solving | problem-solving skills, solving problems, troubleshooting skills, solve complex problems, creative problem solving, problem solver
+Critical thinking | analytical thinking, analytical skills, analytical mindset, structured thinking, logical thinking, analytical
+Attention to detail | detail-oriented, detail oriented, meticulous, eye for detail
+Adaptability | adaptable, flexibility, flexible, agility, comfortable with change
+Ambiguity tolerance | ambiguity, ambiguous environments, comfortable with ambiguity, navigate ambiguity, ambiguous situations
+Time management | managing time, time-management skills, deadlines
+Organizational skills = organisational skills | organized, well-organized, organizational ability, highly organized
+Collaboration | collaborative, teamwork, team player, working collaboratively, collaborate, partnership
+Interpersonal skills | people skills, relationship building, building relationships, relationship management, rapport
+Self-starter | self-motivated, proactive, self-directed, autonomous, autonomy, driven, takes initiative
+Results orientation | results-oriented, results-driven, outcome-oriented, outcome focused, delivery-focused, bias for action, getting things done
+Customer focus | customer-centric, customer obsession, customer-first, user-centric, client-centric, citizen-centric
+Resilience | resilient, grit, perseverance, composure under pressure, pressure, high-pressure environments, works well under pressure
+Multitasking | multi-tasking, juggling priorities, competing priorities, multiple priorities
+Fast-paced environments | fast-paced, fast paced environment, dynamic environment, high-growth environment, startup environment
+Integrity | ethics, ethical, trustworthiness, honesty
+Emotional intelligence | empathy, empathetic, eq, self-awareness
+Curiosity | curious, learning agility, eager to learn, continuous learning, growth mindset
+Creativity | creative, innovative thinking, innovation, innovative
+
+@lang
+*Programming languages | programming languages, coding, programming skills, scripting languages
+JavaScript = JS, javascript es6 | JS!, ecmascript, es6, vanilla javascript ^ Programming languages
+TypeScript = TS! ^ Programming languages ~ JavaScript
+Python | python 3, python3, python scripting ^ Programming languages
+Java | core java, java 8, java ee, j2ee ^ Programming languages
+C# = C#!, c sharp ^ Programming languages ~ .NET
+C++ = cpp | C++! ^ Programming languages
+C programming | c language, ansi c ^ Programming languages
+Go = Go!!, golang | go programming, go language ^ Programming languages
+Rust = Rust!! | rust programming, rust language ^ Programming languages
+Ruby = Ruby!! ^ Programming languages ~ Ruby on Rails
+PHP ^ Programming languages
+Kotlin ^ Programming languages
+Swift = Swift!! | swift programming, swiftui ^ Programming languages
+Scala ^ Programming languages
+R programming = R language | r programming language, rstudio, r studio ^ Programming languages ~ Statistics
+SQL = structured query language | SQL!, sql queries, writing sql, sql scripting, ansi sql ^ Programming languages ~ Relational databases
+PL/SQL ^ SQL
+T-SQL = transact-sql ^ SQL
+COBOL ^ Programming languages ~ Mainframe
+JCL = job control language ^ Mainframe
+Shell scripting = shell scripts | bash scripting, unix shell, shell script, Bash!!, scripting automation, unix scripting ^ Programming languages ~ Linux
+PowerShell ^ Shell scripting
+Solidity = Solidity!! ^ Programming languages ~ Smart contracts
+Perl ^ Programming languages
+MATLAB ^ Programming languages
+HTML = HTML5 | html/css ^ Web development
+CSS = CSS3 | sass, scss, less css ^ Web development
+GraphQL ^ APIs
+XML | xslt, xsd ^ Data formats
+JSON ^ Data formats
+YAML ^ Data formats
+*Data formats
+
+@framework
+*Frameworks and libraries
+React = React!!, React.js, ReactJS | react js, react hooks, react components, react/typescript ^ Front-end development ~ JavaScript
+Angular = Angular!!, AngularJS, angular.js ^ Front-end development
+Vue.js = Vue!, vuejs, vue js ^ Front-end development
+Next.js = nextjs ^ React
+Node.js = Node!, NodeJS, node js ^ Back-end development ~ JavaScript
+Express.js = Express!!, expressjs ^ Node.js
+NestJS ^ Node.js
+MERN stack = MERN | mern ^ Full-stack development ~ MongoDB, Express.js, React, Node.js
+MEAN stack = MEAN! ^ Full-stack development ~ MongoDB, Angular, Node.js
+Django ^ Back-end development ~ Python
+Flask ^ Back-end development ~ Python
+FastAPI ^ Back-end development ~ Python
+Spring Boot = Spring!!, spring framework | springboot ^ Back-end development ~ Java
+.NET = dotnet, .NET Core, .NET Framework | asp.net, asp.net core, .net 6 ^ Back-end development ~ C#
+Ruby on Rails = Rails!! | ror ^ Back-end development ~ Ruby
+Laravel ^ Back-end development ~ PHP
+jQuery ^ Front-end development
+Redux ^ React
+React Native ^ Mobile development ~ React
+Flutter ^ Mobile development
+Tailwind CSS = Tailwind ^ CSS
+Bootstrap = Bootstrap!! ^ CSS
+Jest = Jest!! ^ Test automation
+Selenium ^ Test automation
+Cypress ^ Test automation
+Playwright ^ Test automation
+JUnit ^ Test automation
+Pytest ^ Test automation
+
+@engineering
+Software development = software engineering | software engineer, software developer, developing software, application development, coding experience, hands-on development, hands-on engineering, engineering background, technical background ~ SDLC
+Full-stack development = full stack development | full-stack, full stack, full-stack engineer ^ Software development
+Front-end development = frontend development | front-end, frontend, front end, ui development, client-side ^ Software development
+Back-end development = backend development | back-end, backend, server-side, backend systems, backend services ^ Software development
+Web development | web applications, web apps, web platforms, websites, web portals, portals ^ Software development
+Mobile development | mobile apps, mobile applications, ios development, android development, mobile ^ Software development
+APIs = API! | apis, api development, application programming interfaces, web services, api-first ^ Software architecture ~ API integration
+REST APIs = RESTful APIs, REST! | rest api, restful services, restful web services, rest services ^ APIs
+SOAP ^ APIs
+API integration | integrating apis, api integrations, third-party apis, external apis, api gateway ^ Systems integration
+API design | designing apis, api specifications, openapi, swagger ^ APIs
+Systems integration = system integration | integrations, integration projects, enterprise integration, data integration, third-party integration, integrating systems, interoperability, integrating sources, integration of multiple sources ^ Software architecture ~ API integration
+Middleware | integration middleware, esb, enterprise service bus, message queues ^ Systems integration
+Microservices = microservices architecture | micro-services, microservice, service-oriented architecture, SOA! ^ Software architecture
+Event-driven architecture | event-driven, event streaming, pub/sub, messaging ^ Software architecture
+Software architecture = application architecture | architecture, system architecture, technical architecture, architecting, architect, architecture design, architecture reviews ~ Solution architecture
+Solution architecture | solutions architecture, solution architect, technical solutioning ^ Software architecture ~ Enterprise architecture
+Enterprise architecture | enterprise architect, ea frameworks ^ Software architecture
+System design | systems design, designing systems, distributed systems, large-scale systems ^ Software architecture
+Scalability = scalable systems | scale, scalable, scaling systems, scalable architectures ^ Software architecture ~ Performance optimization
+Performance optimization = performance tuning | performance improvement, performance engineering, optimization, optimisation, latency reduction ^ Software development
+Disaster recovery = DR! | business continuity planning, bcp, backup and recovery, backups, resilience planning ^ High availability
+Business continuity ^ Disaster recovery
+Legacy modernization = application modernization | legacy systems, legacy migration, modernization, modernisation, legacy modernisation, replatforming, re-platforming, legacy replacement ^ Digital transformation ~ Mainframe
+Mainframe | mainframes, mainframe systems, Unisys!, unisys mainframe, ibm mainframe, z/os, legacy mainframe ~ COBOL
+Batch processing | batch jobs, batch processing systems, nightly batch, batch runs, batch automation ^ Mainframe
+Troubleshooting | debugging, fault diagnosis, diagnosing, diagnosed, technical troubleshooting, production issues, triage, triaging ~ Incident management, Problem solving
+Code review | code reviews, peer review, pull request reviews ^ Software development
+Technical debt | tech debt, refactoring ^ Software development
+Digital transformation | transformation, transformation programs, digital programs, digitization, digitisation, digitalization, digitalisation, digital initiatives, business transformation, it transformation, technology transformation, paper to digital, paper-based to digital, digital journey, modernizing services ~ Legacy modernization
+Platform engineering | platform teams, internal developer platform, platform development ^ DevOps
+Low-code platforms = low-code | low code, no-code, low-code/no-code ^ Software development
+Content management systems = CMS | content management, cms platforms, custom cms, headless cms, wordpress, drupal ^ Web development
+Document management systems = DMS | document management, document workflows, records digitization, digital document workflow, e-office, document management system ^ Enterprise applications
+Workflow automation | automated workflows, workflow tools, automating workflows ^ Process automation
+Process automation | automating processes, business process automation, automation of manual processes, manual process automation, reporting automation, automated reporting ^ Automation ~ Robotic process automation
+Automation | automate, automated, automating, automation initiatives
+Test automation | automated testing, automation testing, test automation frameworks ^ Software testing ~ Automation
+Software testing = quality assurance, QA! | testing, qa testing, test planning, test plans, test strategy, testing strategy, test cases, test case design, test scripts, regression testing, functional testing, system testing, integration testing, end-to-end testing, SIT, test workbooks ^ Quality management ~ User acceptance testing
+User acceptance testing = UAT | user acceptance, acceptance testing, uat coordination, uat planning, uat sign-off ^ Software testing
+Test management | test managers, test governance, defect management, defect governance, defect tracking, defect triage, bug triage, defects ^ Software testing
+Localization = localisation | translation, multilingual, multi-language, internationalization, i18n, l10n, indian languages ^ Software development
+Search engineering | search functionality, search engines, search relevance, search improvements, enterprise search, site search ^ Software development
+Versioning = version management | version control of records, record versioning, certificate versioning, amendment and supersession, document versioning ^ Data governance ~ Audit trails
+Single sign-on = SSO | single sign on, federated login, federated identity, sso integration ^ Identity and access management
+Identity and access management = IAM | identity management, access management, access control, identity governance ^ Information security
+Role-based access control = RBAC, role-based access | role based access, role-based permissions, user roles and permissions, access roles ^ Identity and access management
+OAuth = OAuth 2.0, OAuth2 | openid connect, oidc ^ Identity and access management
+SAML ^ Identity and access management
+LDAP | active directory, azure ad, entra id ^ Identity and access management
+Audit trails = audit trail | auditability, auditable, audit logs, audit logging, traceable records, tamper-proof ^ Compliance management
+Digital signatures = e-signature, e-sign | electronic signatures, digital signature, esign, e-signatures, aadhaar esign, aadhaar-based e-sign, DSC!, digital signature certificate ^ Identity and access management
+
+@cloud
+Cloud computing | cloud, cloud technologies, cloud platforms, cloud services, cloud infrastructure, cloud environments, cloud-based, cloud solutions, public cloud
+AWS = Amazon Web Services | aws cloud, amazon aws, aws services, aws infrastructure, aws costing ^ Cloud computing
+Microsoft Azure = Azure | azure cloud, azure services, ms azure ^ Cloud computing
+Google Cloud Platform = GCP, Google Cloud | google cloud services ^ Cloud computing
+Oracle Cloud = Oracle Cloud Infrastructure ^ Cloud computing
+NIC MeghRaj = MeghRaj, NIC MeghRaj 2.0 | meghraj 2.0, government cloud, govt cloud, gi cloud ^ Cloud computing ~ National Informatics Centre
+Cloud migration | migrating to the cloud, migration to cloud, lift and shift, cloud adoption, cloud transformation ^ Cloud computing ~ Legacy modernization
+Cloud architecture = cloud solution architecture | cloud design, cloud-native architecture, cloud native, cloud-native ^ Cloud computing ~ Solution architecture
+Multi-cloud = hybrid cloud | multicloud, multi cloud ^ Cloud computing
+Serverless | serverless architecture, faas ^ Cloud computing ~ AWS Lambda
+AWS Lambda = Lambda!! ^ AWS
+Amazon EC2 = EC2 ^ AWS
+Amazon S3 = S3! ^ AWS
+Amazon RDS = RDS ^ AWS
+Amazon DynamoDB = DynamoDB ^ AWS ~ NoSQL databases
+AWS CloudFormation = CloudFormation ^ AWS ~ Infrastructure as code
+Infrastructure management | infrastructure provisioning, hosting, hosting approvals, infrastructure setup, servers, it infrastructure, infra, provisioning infrastructure ^ Cloud computing ~ DevOps
+Data centers = data centres | data center, datacenter, data centre operations, on-premises, on-prem ^ Infrastructure management
+Virtualization = virtualisation | VMware, vsphere, hyper-v, virtual machines ^ Infrastructure management
+Networking | network infrastructure, routing, dns, load balancing, tcp/ip, firewalls, vpn, network configuration ^ Infrastructure management ~ Network security
+
+@devops
+DevOps | devops engineering, dev ops, devops tools, devops pipelines ~ CI/CD
+CI/CD = continuous integration and continuous delivery, continuous integration and delivery | ci/cd pipelines, continuous integration, continuous delivery, continuous deployment, build pipelines, deployment pipelines, release pipelines, cd pipelines ^ DevOps ~ Deployment automation
+Deployment automation = release automation | automated deployments, deployment scripts, deployment script automation, automated releases, build automation, deployment tooling ^ CI/CD ~ Automation
+Jenkins = Jenkins!! ^ CI/CD
+GitHub Actions ^ CI/CD
+GitLab CI = GitLab CI/CD ^ CI/CD
+Azure DevOps | azure pipelines, ado, tfs, vsts ^ CI/CD
+Docker | containers, containerization, containerisation, docker compose ^ DevOps ~ Kubernetes
+Kubernetes = K8s | k8s, eks, aks, gke, openshift, helm ^ DevOps ~ Docker
+Terraform ^ Infrastructure as code
+Ansible ^ Configuration management
+Infrastructure as code = IaC | infrastructure-as-code, pulumi ^ DevOps
+Configuration management | Chef!!, Puppet!!, saltstack ^ DevOps
+Git = version control | git, source control, version control systems, git workflows, branching strategies, repository management, repository migration, repositories, repos, code repositories, svn, subversion ^ DevOps
+GitHub | github enterprise ^ Git
+GitLab ^ Git
+Bitbucket ^ Git
+Monitoring and observability = observability | monitoring, application monitoring, system monitoring, alerting, apm, logging, log management ^ DevOps ~ Site reliability engineering
+Prometheus ^ Monitoring and observability
+Grafana ^ Monitoring and observability
+Splunk ^ Monitoring and observability ~ SIEM
+Datadog ^ Monitoring and observability
+New Relic ^ Monitoring and observability
+ELK stack = ELK | elastic stack, kibana, logstash ^ Monitoring and observability
+Site reliability engineering = SRE | site reliability, reliability engineering, service reliability ^ DevOps ~ High availability
+Linux | unix, linux administration, red hat, ubuntu, centos ^ Infrastructure management ~ Shell scripting
+Windows Server ^ Infrastructure management
+
+@data
+Data analysis = data analytics | analytics, analysing data, analyzing data, data-driven, data driven insights, data insights, quantitative analysis, analytical reporting ~ Business intelligence
+Business intelligence = BI! | bi tools, bi reporting, bi dashboards ^ Data analysis ~ Dashboards
+Dashboards = dashboard reporting | dashboard, dashboards and reports, kpi dashboards, reporting dashboards, milestone dashboards, executive dashboards, mis dashboards ^ Business intelligence ~ KPIs
+Reporting and MIS = MIS reporting | mis, management information, report builder, configurable reports, custom reports, reporting tools, operational reporting, mis reports ^ Business intelligence
+Data visualization = data visualisation | visualizations, charts, data viz ^ Business intelligence
+Power BI = PowerBI, Microsoft Power BI ^ Business intelligence
+Tableau = Tableau!! ^ Business intelligence
+Looker = Looker!! ^ Business intelligence
+Qlik = QlikView, Qlik Sense ^ Business intelligence
+Microsoft Excel = Excel!!, MS Excel | advanced excel, excel modelling, pivot tables, vlookup, spreadsheets, spreadsheet ^ Office tools
+Data engineering | data engineer, data platforms, data infrastructure ~ Data pipelines
+Data pipelines = ETL pipelines | data pipeline, ETL!, elt, extract transform load, data ingestion, ingestion ^ Data engineering
+Data warehousing = data warehouse | dwh, data warehouses, data marts, enterprise data warehouse ^ Data engineering
+Data lakes = data lake | lakehouse, data lakehouse ^ Data engineering
+Snowflake = Snowflake!! ^ Data warehousing
+Databricks ^ Data engineering ~ Apache Spark
+BigQuery ^ Data warehousing ~ Google Cloud Platform
+Amazon Redshift = Redshift ^ Data warehousing ~ AWS
+Apache Spark = Spark!!, PySpark | spark sql ^ Data engineering
+Hadoop | hdfs, Hive!!, mapreduce ^ Data engineering
+Apache Kafka = Kafka | kafka streams ^ Data engineering ~ Event-driven architecture
+Apache Airflow = Airflow!! ^ Data pipelines
+dbt = dbt! | data build tool ^ Data pipelines
+Data governance | data stewardship, data ownership, data policies, data standards, data lineage, data catalog ^ Governance ~ Data quality
+Data quality | data accuracy, data validation, data cleansing, data integrity, clean data ^ Data governance
+Master data management = MDM ^ Data governance
+Data migration | data migrations, migrating data, legacy data migration, data conversion, legacy data ^ Data engineering ~ Legacy modernization
+Data architecture | data strategy, data design ~ Data modeling
+Databases = database management | database, database administration, dbms, database systems, database development, data stores ~ SQL
+Database design ^ Databases
+Relational databases = RDBMS | relational database ^ Databases
+MongoDB = Mongo | mongo db ^ NoSQL databases
+NoSQL databases = NoSQL | nosql database, document databases, cassandra, couchbase ^ Databases
+PostgreSQL = Postgres ^ Relational databases
+MySQL ^ Relational databases
+Oracle Database = Oracle DB | oracle rdbms, Oracle!! ^ Relational databases
+Microsoft SQL Server = SQL Server, MSSQL ^ Relational databases
+Redis ^ Databases
+Elasticsearch | opensearch ^ Search engineering
+Statistics = statistical analysis | statistical methods, statistical modelling, regression analysis ^ Data analysis
+Data science | data scientist, predictive analytics, predictive modelling, advanced analytics ^ Data analysis ~ Machine learning
+Data reconciliation | reconciliation, reconciliations, financial reconciliation, chargeback reconciliation, reconciling ^ Data quality
+
+@ai
+Artificial intelligence = AI | AI!, ai/ml, ai solutions, ai initiatives, ai capabilities, ai-enabled, ai-powered, ai features, ai services, ai roadmap, ai-assisted, applied ai ~ Machine learning
+Machine learning = ML | ML!, machine learning models, ml models, ml systems, ai/ml models ^ Artificial intelligence
+Deep learning | neural networks ^ Machine learning
+Natural language processing = NLP | NLP!, text analytics, text mining, language models ^ Artificial intelligence
+Computer vision | image recognition, image processing, ocr, optical character recognition ^ Artificial intelligence
+Generative AI = GenAI, Gen AI | generative artificial intelligence, gen-ai, generative models ^ Artificial intelligence ~ Large language models
+Large language models = LLMs | LLM!, llm applications, gpt, chatgpt, claude, openai, foundation models ^ Generative AI
+Prompt engineering | prompting, prompt design ^ Generative AI
+Retrieval-augmented generation = RAG | RAG!, retrieval augmented generation, vector databases, embeddings ^ Large language models
+MLOps | ml ops, model deployment, model monitoring ^ Machine learning ~ DevOps
+AI governance = responsible AI | ai ethics, ethical ai, trustworthy ai, ai risk, ai policy ^ Artificial intelligence ~ Governance
+Conversational AI = chatbots | chatbot, virtual assistants, conversational interfaces ^ Artificial intelligence
+AI product management | ai products, ai product, ml product management ^ Product management ~ Artificial intelligence
+AI-assisted delivery | ai-assisted delivery, ai in delivery, ai for productivity, ai-enabled workflows, ai tools adoption, copilot, ai tooling ^ Artificial intelligence ~ Process improvement
+TensorFlow ^ Machine learning
+PyTorch ^ Machine learning
+scikit-learn = sklearn ^ Machine learning
+Robotic process automation = RPA | RPA!, uipath, automation anywhere, blue prism ^ Process automation
+Intelligent automation | hyperautomation, intelligent process automation ^ Process automation ~ Artificial intelligence
+
+@blockchain
+Blockchain = distributed ledger technology, DLT | blockchain technology, distributed ledger, distributed ledgers, blockchain platforms, blockchain solutions, blockchain-based, blockchain networks, enterprise blockchain, permissioned blockchain, blockchain anchoring, on-chain, on chain
+Hyperledger Fabric = Hyperledger | hyperledger fabric networks, multi-node hyperledger, fabric network ^ Blockchain
+Ethereum | evm, private ethereum ^ Blockchain ~ Smart contracts
+Quorum = Quorum!! | consensys quorum, goquorum ^ Ethereum
+Smart contracts | smart contract development, chaincode ^ Blockchain ~ Solidity
+NFTs = non-fungible tokens | NFT!, nft ^ Blockchain
+Web3 | web 3.0, decentralized applications, dapps, decentralised applications ^ Blockchain
+Cryptocurrency | crypto, cryptocurrency exchange, crypto exchange, digital assets, exchange platforms, cryptocurrency exchange platforms ^ Blockchain ~ Fintech
+Tokenization = tokenisation | token economics, tokenomics ^ Blockchain
+Verifiable credentials = digital credentials | credentialing, credential verification, digital badges, blockchain credentials, credentials issued, self-sovereign identity, ssi, digital identity ^ Blockchain ~ Identity and access management
+Cryptography | encryption, public key infrastructure, PKI!, hashing ^ Information security
+
+@security
+Information security = cybersecurity, cyber security | infosec, IT security, security, security programs, security posture, security controls, secure systems, security best practices ^ Compliance management
+Application security = AppSec | secure coding, software security, application security testing, owasp, owasp top 10 ^ Information security
+Vulnerability assessment and penetration testing = VAPT | vapt audits, penetration testing, pen testing, pentesting, vulnerability assessment, vulnerability assessments, vulnerability management, vulnerability remediation, security testing ^ Information security ~ Security audits
+Static application security testing = SAST | static analysis, static code analysis, sast scans, sast score, sonarqube, checkmarx, fortify ^ Application security
+Dynamic application security testing = DAST | dynamic analysis, dast scans, burp suite, owasp zap ^ Application security
+Security audits = security audit | security auditing, third-party security audit, security assessments, security reviews, security audit certification, security certification, security clearance of applications, audit certificate, cert-in audit, cert-in empanelled audit, security audit certificate ^ Information security ~ Audit management
+Security remediation | remediation, remediation governance, remediation tracking, closing findings, closing audit findings, audit findings, findings closure, fixing vulnerabilities ^ Security audits
+Threat modeling = threat modelling | threat models, threat assessment ^ Application security
+Zero trust | zero-trust architecture ^ Information security
+Network security | firewall management, intrusion detection, ids/ips ^ Information security
+SIEM = security information and event management | soc operations, security operations, security operations centre, security monitoring ^ Information security
+Security incident response | incident response plans, cyber incident response, breach response, csirt ^ Information security ~ Incident management
+SSL/TLS = SSL!, TLS! | ssl certificates, tls certificates, https, certificate management ^ Network security
+DevSecOps = secure SDLC | security in ci/cd, shift-left security, secure development lifecycle ^ Application security ~ DevOps
+Risk assessment | risk assessments, risk analysis, security risk assessment, it risk assessment, risk evaluation ^ Risk management ~ Information security
+
+@compliance
+Compliance management = regulatory compliance | compliance, compliance requirements, compliance frameworks, regulatory requirements, compliance monitoring, compliance programs, regulatory frameworks, standards compliance, compliance-driven, compliant ~ Audit management
+Audit management = audits | audit, audit readiness, audit coordination, internal audit, external audit, audit adherence, audit cycles, audit support, re-audit ^ Compliance management ~ Security audits
+Regulatory change = legislative change | regulatory amendments, legal amendments, statutory amendments, legislative amendments, amendments to the act, regulatory reform, law reform, statute, statutory framework, regulatory constraints, legal and regulatory ^ Compliance management ~ Policy analysis
+Public policy | policy work, government policy, policy implementation, governance reform ~ Policy analysis
+SOX compliance = SOX, Sarbanes-Oxley ^ Compliance management
+ISO 27001 = ISO/IEC 27001 | iso 27001 certification, isms ^ Compliance management ~ Information security
+ISO 9001 | quality management system, qms ^ Compliance management ~ Quality management
+SOC 2 = SOC2 | soc 2 type ii, soc 2 compliance ^ Compliance management ~ Information security
+NIST = NIST CSF, NIST cybersecurity framework | nist 800-53 ^ Compliance management ~ Information security
+GDPR = General Data Protection Regulation ^ Data protection
+HIPAA ^ Compliance management ~ Healthcare
+PCI DSS = PCI-DSS, PCI! | payment card industry data security standard ^ Compliance management ~ Payments
+Data protection = data privacy | privacy, privacy compliance, personal data protection, privacy by design, data protection regulations ^ Compliance management
+DPDP Act = Digital Personal Data Protection Act | dpdp, dpdpa, dpdp act 2023 ^ Data protection
+IT Act | information technology act, it act 2000 ^ Regulatory change
+CMMI = capability maturity model integration | cmmi level 5, cmmi level 3 ^ Quality management
+WCAG = WCAG 2.1, WCAG 2.1 AA, web content accessibility guidelines | wcag 2.0, wcag 2.2, wcag aa ^ Accessibility
+Section 508 = section 508 compliance | 508 compliance ^ Accessibility
+GIGW = guidelines for indian government websites | gigw 3.0, gigw guidelines ^ Accessibility ~ Government digital standards
+UX4G = UX4G! | ux for government ^ Government digital standards ~ User experience design
+STQC = STQC certification, Standardisation Testing and Quality Certification | stqc audit, stqc compliance ^ Government digital standards ~ Security audits
+CERT-In = CERT-In!, Indian Computer Emergency Response Team | cert-in empanelled, cert-in guidelines, cert-in empanelled auditors ^ Government digital standards ~ Security audits
+KYC = know your customer | KYC!, ekyc, e-kyc, customer due diligence ^ Compliance management ~ Banking
+AML = anti-money laundering | AML!, anti money laundering, transaction monitoring ^ Compliance management ~ Banking
+Basel III = Basel | basel norms ^ Compliance management ~ Banking
+RBI guidelines = RBI | reserve bank of india, rbi compliance, rbi regulations ^ Compliance management ~ Banking
+SEBI regulations = SEBI ^ Compliance management ~ Capital markets
+ESG = environmental social and governance | esg reporting, sustainability reporting, esg compliance ^ Sustainability
+Sustainability | climate, decarbonization, decarbonisation, net zero, net-zero, carbon accounting, carbon emissions, emissions reduction, green energy transition, energy transition ~ Renewable energy
+Certification schemes | certification process, certification workflows, certification portal, certification registry, certifications issued, issuing certificates, certificate issuance, certification programme ^ Compliance management ~ Green hydrogen
+
+@govt
+*Government digital standards | government standards, government digital guidelines
+Public sector = government sector | government, govt, public-sector, public services, government projects, government programs, government programmes, government of india, goi, central government, state government, ministries, ministry, public administration, federal government, public agencies, government agencies, psus, public sector undertakings
+GovTech = e-governance | egovernance, e-gov, digital government, government technology, egov, digital public services, digital governance, citizen services, citizen-facing services, government platforms, government portals, national platforms, national portals ^ Public sector ~ Digital transformation
+Digital public infrastructure = DPI | india stack, digital public goods, dpg ^ GovTech
+Digital India | digital india programme, digital india initiative ^ GovTech
+MeitY = Ministry of Electronics and Information Technology, Ministry of Electronics and IT ^ Public sector
+NeGD = National e-Governance Division ^ GovTech ~ MeitY
+National Informatics Centre = NIC | NIC!, nic infrastructure, nic cloud ^ GovTech ~ NIC MeghRaj
+NICSI = National Informatics Centre Services Inc | nicsi rate cards, nicsi empanelment ^ Procurement ~ National Informatics Centre
+Parichay SSO = Parichay | nic parichay, jan parichay ^ Single sign-on ~ GovTech
+Aadhaar | aadhaar authentication, aadhaar integration, uidai, aadhaar-based ^ Digital public infrastructure ~ Digital signatures
+DigiLocker ^ Digital public infrastructure
+UPI = Unified Payments Interface | UPI! ^ Digital public infrastructure ~ Payments
+API Setu ^ Digital public infrastructure
+UMANG ^ GovTech
+Government e-Marketplace = GeM! | gem portal, gem procurement ^ Procurement ~ Public sector
+CPPP = Central Public Procurement Portal | e-procurement, eprocurement, e-tendering ^ Procurement ~ Public sector
+General Financial Rules = GFR | GFR 2017 ^ Procurement ~ Public sector
+CVC guidelines = CVC | central vigilance commission ^ Procurement ~ Public sector
+PFMS = Public Financial Management System ^ Public sector
+Samiksha portal = Samiksha ^ GovTech
+Smart Cities Mission | smart cities, smart city ^ GovTech
+ONDC = Open Network for Digital Commerce ^ Digital public infrastructure
+Account Aggregator framework = Account Aggregator ^ Digital public infrastructure ~ Fintech
+Right to Information = RTI ^ Public sector
+Cooperative sector | cooperatives, cooperative societies, multi-state cooperative societies, credit cooperative, mscs act, cooperative registry ^ Public sector
+Immigration systems | immigration, visa systems, visa processing, e-visa, oci, foreigner registration, border management, ports of entry, immigration check posts ^ Public sector
+Pay commission = Central Pay Commission | 8th cpc, 8th central pay commission, pay commission memoranda ^ Public sector
+FedRAMP ^ Compliance management ~ Public sector
+G-Cloud ^ Procurement ~ Public sector
+GDS service standard = service standard | government digital service, gds ^ Government digital standards
+
+@domain
+*Industries | industry experience, domain experience, domain knowledge, domain expertise, sector experience
+Financial services = financial services industry | financial institutions, finserv ^ Industries ~ Banking
+BFSI = banking financial services and insurance | bfsi sector, bfsi clients ^ Financial services
+Banking | banks, retail banking, corporate banking, investment banking, core banking, digital banking, bank ^ Financial services ~ Payments
+Payments | payment systems, payment processing, payments platform, payment platforms, card payments, credit cards, debit cards, card schemes, visa payments, Mastercard, card networks, chargebacks, chargeback, payment disputes, dispute management, dispute resolution, payment gateways, merchant services, transaction processing, transaction systems ^ Financial services ~ Fintech
+Fintech = financial technology | fin-tech, neobank, neobanks, digital lending, lending platforms ^ Financial services ~ Payments
+Insurance | insurtech, insurance industry, claims processing, underwriting ^ Financial services
+Capital markets | trading, securities trading, asset management, wealth management, investment management, brokerage ^ Financial services
+Healthcare | health care, hospitals, healthtech, health tech, digital health, ehr, electronic health records, clinical systems, patient care, healthcare it ^ Industries
+Life sciences = pharmaceuticals | pharma, pharmaceutical, biotech, medical devices, medtech, clinical trials, regulated life sciences ^ Industries ~ Healthcare
+Energy sector | energy industry, energy companies, power sector, utilities, oil and gas, power generation ^ Industries
+Renewable energy | renewables, renewable energy sector, wind energy, wind power, onshore wind, offshore wind, solar, solar energy, clean energy, green energy, wind turbines, wind hardware ^ Energy sector ~ Sustainability
+Green hydrogen | hydrogen, green hydrogen certification, hydrogen economy, national green hydrogen mission ^ Renewable energy ~ Certification schemes
+Telecommunications = telecom | telco, telcos, telecom operators, 5g, telecommunication ^ Industries
+Retail | retail industry, retailers, consumer goods, cpg, fmcg ^ Industries ~ E-commerce
+E-commerce = ecommerce | online retail, marketplaces, marketplace platforms, d2c ^ Retail
+Logistics = supply chain | supply chain management, scm, transportation, shipping, warehousing, fulfilment, fulfillment ^ Industries
+Manufacturing | industrial, factory, industry 4.0, plant operations, production lines ^ Industries
+Automotive | auto industry, vehicles, ev, electric vehicles, mobility ^ Industries
+Aerospace and defence = aerospace, defense | defence sector, defense industry, aviation, airlines ^ Industries
+Education sector = EdTech | education industry, higher education, universities, learning platforms, e-learning, lms, learning management systems ^ Industries
+Media and entertainment | media industry, entertainment industry, publishing, streaming, broadcasting ^ Industries
+Travel and hospitality | travel industry, hospitality, tourism, hotels ^ Industries
+Real estate | proptech, property registry, land records, property registration, civil registry ^ Industries
+Agriculture = agritech | agri, farming, agribusiness ^ Industries
+Non-profit = nonprofit, NGO | ngos, social sector, development sector, philanthropy, international development ^ Industries
+Consulting = management consulting | consulting firm, big four, big 4, advisory, professional services, consultancy ^ Industries
+IT services | it services industry, it outsourcing, outsourcing, system integrators, technology services, it consulting ^ Industries ~ Managed services
+Enterprise software | enterprise clients, enterprise customers, global enterprise clients, fortune 500, large enterprises ^ Industries
+Human resources technology = HR tech | hrtech, hr technology, background verification, talent platforms ^ Industries
+
+@enterprise
+*Enterprise applications | enterprise systems, enterprise platforms, business applications
+ERP = enterprise resource planning | erp systems, erp implementation, erp implementations ^ Enterprise applications
+SAP | sap s/4hana, s/4hana, sap erp, sap implementation, sap ecc ^ ERP
+Oracle E-Business Suite = Oracle EBS | oracle erp, oracle fusion ^ ERP
+Microsoft Dynamics 365 = Dynamics 365 | ms dynamics, dynamics crm ^ ERP ~ CRM
+Workday = Workday!! ^ Enterprise applications
+CRM = customer relationship management | crm systems, crm platforms, crm implementation ^ Enterprise applications
+Salesforce | sfdc, salesforce crm, sales cloud, service cloud ^ CRM
+HubSpot ^ CRM
+ServiceNow | servicenow itsm, servicenow itbm, servicenow spm ^ IT service management
+Zendesk ^ Customer success
+SharePoint ^ Collaboration tools
+Microsoft Power Platform = Power Platform | power apps, powerapps, power automate ^ Low-code platforms
+Pega = Pegasystems ^ Low-code platforms ~ Business process management
+Appian ^ Low-code platforms
+MuleSoft ^ Middleware
+HRMS = human resource management system | hris, hcm ^ Enterprise applications
+
+@tool
+*Project management tools | pm tools, project tracking tools, work management tools
+Jira = Atlassian Jira, JIRA | jira software, jira align, jira dashboards, jira administration ^ Project management tools ~ Confluence
+Confluence = Confluence!! | atlassian confluence ^ Collaboration tools ~ Jira
+Microsoft Project = MS Project, MSP | ms-project, project online, microsoft project server ^ Project management tools
+Smartsheet ^ Project management tools
+Asana = Asana!! ^ Project management tools
+Trello ^ Project management tools
+Monday.com ^ Project management tools
+ClickUp ^ Project management tools
+Rally = Rally!!, Broadcom Rally, CA Agile Central ^ Project management tools
+Primavera P6 = Primavera, Oracle Primavera ^ Project management tools
+Clarity PPM = CA Clarity ^ Project management tools ~ Portfolio management
+Planview ^ Project management tools ~ Portfolio management
+Azure Boards ^ Project management tools
+*Collaboration tools | collaboration software
+Miro ^ Collaboration tools
+Microsoft Teams = MS Teams ^ Collaboration tools
+Slack = Slack!! ^ Collaboration tools
+Notion = Notion!! ^ Collaboration tools
+Google Workspace = G Suite | google docs, google sheets, google slides ^ Office tools
+*Office tools
+Microsoft Office = MS Office, Microsoft 365, Office 365 | ms office suite, microsoft office suite, o365, m365 ^ Office tools
+Microsoft PowerPoint = PowerPoint | ms powerpoint, powerpoint presentations ^ Office tools ~ Presentation skills
+Microsoft Word = MS Word ^ Office tools
+Microsoft Visio = Visio | ms visio ^ Diagramming tools
+Lucidchart ^ Diagramming tools
+draw.io = diagrams.net ^ Diagramming tools
+*Diagramming tools | diagramming
+Figma | figma prototypes, figma specifications, figma designs ^ Design tools ~ Prototyping
+Sketch = Sketch!! ^ Design tools
+Adobe XD ^ Design tools
+*Design tools
+Postman ^ API tools
+*API tools
+TestRail ^ Test management
+Zephyr ^ Test management
+
+@cert
+*Certifications | certification, certifications, certified
+Project Management Professional = PMP | PMP!, pmp certification, pmp certified, pmp® ^ Certifications ~ PMBOK
+CAPM = Certified Associate in Project Management ^ Certifications
+PgMP = Program Management Professional | PgMP! ^ Certifications ~ Program management
+PfMP = Portfolio Management Professional ^ Certifications ~ Portfolio management
+PMI-ACP = PMI Agile Certified Practitioner ^ Certifications ~ Agile
+PRINCE2 certification = PRINCE2 Practitioner, PRINCE2 Foundation | prince2 certified ^ Certifications ~ PRINCE2
+Certified ScrumMaster = CSM, Certified Scrum Master | CSM!, csm certification, csm®, scrum alliance csm ^ Certifications ~ Scrum Master role
+Professional Scrum Master = PSM | PSM!, psm i, psm ii ^ Certifications ~ Scrum Master role
+Certified Scrum Product Owner = CSPO ^ Certifications ~ Product Owner role
+Professional Scrum Product Owner = PSPO ^ Certifications ~ Product Owner role
+SAFe Agilist = SAFe Agilist!, Certified SAFe Agilist | safe certification, safe sa, safe certified, safe pop, safe rte ^ Certifications ~ SAFe
+ITIL Foundation = ITIL certification | itil certified, itil v4 foundation, itil 4 foundation ^ Certifications ~ ITIL
+Lean Six Sigma Green Belt = Six Sigma Green Belt | green belt ^ Certifications ~ Lean Six Sigma
+Lean Six Sigma Black Belt = Six Sigma Black Belt | black belt ^ Certifications ~ Lean Six Sigma
+AWS certification = AWS Certified Solutions Architect | aws certified, aws solutions architect, aws cloud practitioner, aws certified cloud practitioner ^ Certifications ~ AWS
+Azure certification = Azure Solutions Architect | az-900, az-104, az-305, azure fundamentals, microsoft certified azure ^ Certifications ~ Microsoft Azure
+Google Cloud certification = Professional Cloud Architect | gcp certified, google cloud certified ^ Certifications ~ Google Cloud Platform
+CISSP ^ Certifications ~ Information security
+CISM ^ Certifications ~ Information security
+CISA ^ Certifications ~ Audit management
+CRISC ^ Certifications ~ Risk management
+CEH = Certified Ethical Hacker ^ Certifications ~ Vulnerability assessment and penetration testing
+CompTIA Security+ = Security+ ^ Certifications ~ Information security
+CBAP = Certified Business Analysis Professional | CCBA!, ECBA!, iiba certification ^ Certifications ~ Business analysis
+TOGAF certification = TOGAF certified ^ Certifications ~ TOGAF
+Google Project Management Certificate = Google Project Management Professional Certificate | google pm certificate, google project management ^ Certifications ~ Project management
+Blockchain certification | certified blockchain, blockchain specialization, blockchain for business, blockchain architecture certification ^ Certifications ~ Blockchain
+
+@degree
+*Degrees | degree, degrees, qualification, educational qualifications, graduate, graduation
+Bachelor's degree = bachelor's | bachelors, bachelor degree, undergraduate degree, ba/bs, bs/ba, b.s., b.a., bachelor of science, bachelor of arts, graduate degree in any discipline ^ Degrees
+Engineering degree = B.Tech, B.E., Bachelor of Technology | btech, b tech, be degree, bachelor of engineering, engineering graduate, b.e ^ Bachelor's degree ~ Computer science degree
+Computer science degree = computer science | cs degree, degree in computer science, bachelor's in computer science, information technology degree, computer engineering ^ Degrees
+Master's degree = master's | masters, masters degree, postgraduate degree, post-graduate, postgraduate, ms degree, m.s. ^ Degrees
+MBA = master of business administration | MBA!, mba degree, mba preferred, management degree ^ Master's degree ~ PGDM
+PGDM = post graduate diploma in management | pgdm, pgdba, postgraduate diploma in management ^ Master's degree ~ MBA
+PhD = doctorate | ph.d, phd degree ^ Degrees
+
+@role
+*Role titles
+Program Manager = Programme Manager | program managers, programme managers ^ Role titles
+Senior Program Manager = Senior Programme Manager ^ Program Manager
+Technical Program Manager | technical programme manager, senior technical program manager ^ Program Manager
+Project Manager | project managers, it project manager, senior project manager, technical project manager ^ Role titles
+Portfolio Manager | portfolio lead, head of portfolio ^ Role titles
+Delivery Manager | delivery lead, delivery head, head of delivery, senior delivery manager, delivery director, engagement delivery manager, service delivery manager ^ Role titles
+Engagement Manager | engagement lead, engagement director ^ Role titles
+Product Manager | product managers, senior product manager, group product manager ^ Role titles
+Agile Coach | enterprise agile coach ^ Role titles
+PMO Manager = PMO Lead | pmo head, pmo analyst, head of pmo, pmo director ^ Role titles
+Transformation Manager = Digital Transformation Manager | transformation lead, transformation director, digital transformation lead, transformation programme manager ^ Role titles
+Business Analyst | business analysts, senior business analyst, lead business analyst ^ Role titles
+Consultant | senior consultant, management consultant, technology consultant, it consultant, principal consultant ^ Role titles
+Techno-functional consultant | techno functional, techno-functional, functional consultant, technical consultant ^ Role titles
+Solutions Architect = Solution Architect | solutions architects, technical architect ^ Role titles
+Blockchain Architect | blockchain lead, blockchain developer ^ Role titles
+Engineering Manager | engineering lead, software engineering manager, development manager ^ Role titles
+Implementation Manager | implementation lead, implementation consultant ^ Role titles
+Release Manager ^ Role titles
+Account Manager | client partner, account director ^ Role titles
+Operations Manager | operations lead, head of operations ^ Role titles
+Chief of Staff ^ Role titles
+Director of Program Management | head of programs, head of program management, director of programs, vp program management ^ Role titles
+Software Engineer | software developer, developer, engineer, sde, software development engineer ^ Role titles

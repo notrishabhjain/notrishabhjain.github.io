@@ -3,5 +3,7 @@ Allow: /
 # Private working page: answers live only in the owner's browser, but the
 # questions themselves need not be indexed.
 Disallow: /dossier/
+# Personal resume-tailoring tool.
+Disallow: /tailor/
 
 Sitemap: https://notrishabhjain.github.io/sitemap-index.xml
