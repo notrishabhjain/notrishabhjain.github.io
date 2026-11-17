@@ -1,4 +1,5 @@
 {
+  "version": 3,
   "_readme": "Master profile for Tailor. Achievements are stored as parts, not finished sentences, so the app can recombine them for each job description. Syntax is in tailor/README.md. Source: the site's Experience page and case studies as of the November 2026 corrections (8th CPC volumes and team, GHCI audit wording, Infosys figures, AI work), plus dossier-confirmed EY, UST and TCS detail. Anything still marked verify:true is from an older resume and not yet reconfirmed.",
   "person": {
     "name": "Rishabh Jain",
@@ -24,68 +25,307 @@
   ],
   "defaultTitle": "Project Manager",
   "summary": {
+    "_how": "The summary is built only from these broad lines, never from individual achievements. Each line carries tags; the app picks the ones that best fit the JD's skills that your record backs up.",
     "identity": [
       {
-        "text": "{title} with {years}+ years in IT: software engineering first, then government consulting, now delivering national digital platforms for Government of India ministries and enterprise portfolios for global clients.",
-        "when": "public"
+        "when": "public",
+        "text": "{title} with {years}+ years in IT, delivering government and enterprise digital programmes from requirements to go-live{domains}."
       },
       {
-        "text": "{title} with {years}+ years in IT: software engineering first, then government consulting, now delivering government and enterprise digital platforms from requirements to go-live.",
-        "when": "private"
+        "when": "private",
+        "text": "{title} with {years}+ years in IT, delivering enterprise and government digital programmes from requirements to go-live{domains}."
       }
     ],
-    "extra": [
+    "domains": [
       {
-        "text": "Scopes AI into products where it helps, with a named person responsible for every decision, and uses it to deliver faster.",
+        "label": "financial services",
+        "tags": [
+          "Financial services",
+          "Banking",
+          "Payments",
+          "BFSI",
+          "Fintech",
+          "Insurance",
+          "Capital markets"
+        ]
+      },
+      {
+        "label": "renewable energy",
+        "tags": [
+          "Renewable energy",
+          "Energy sector",
+          "Green hydrogen",
+          "Sustainability"
+        ]
+      },
+      {
+        "label": "IT services",
+        "tags": [
+          "IT services",
+          "Managed services",
+          "Global delivery model"
+        ]
+      },
+      {
+        "label": "HR technology",
+        "tags": [
+          "Human resources technology"
+        ]
+      }
+    ],
+    "capabilities": [
+      {
+        "text": "end-to-end delivery of digital platforms",
+        "tags": [
+          "Program delivery",
+          "Project delivery",
+          "End-to-end delivery",
+          "Go-live management",
+          "Delivery management",
+          "Project management",
+          "Program management"
+        ]
+      },
+      {
+        "text": "programme governance and change control",
+        "tags": [
+          "Project governance",
+          "Governance",
+          "Risk management",
+          "Risk register",
+          "Change control",
+          "PMO",
+          "Status reporting",
+          "Steering committee",
+          "Issue management"
+        ]
+      },
+      {
+        "text": "multi-vendor and multi-agency coordination",
+        "tags": [
+          "Vendor management",
+          "Multi-vendor management",
+          "Cross-functional coordination",
+          "Dependency management",
+          "Contract management"
+        ]
+      },
+      {
+        "text": "senior stakeholder management",
+        "tags": [
+          "Stakeholder management",
+          "Executive stakeholder management",
+          "Government stakeholder management",
+          "Client relationship management",
+          "Executive reporting",
+          "Executive communication"
+        ]
+      },
+      {
+        "text": "requirements and functional specifications",
+        "tags": [
+          "Requirements gathering",
+          "Requirements analysis",
+          "Business analysis",
+          "Functional specifications",
+          "Business requirements document",
+          "Product requirements",
+          "User stories",
+          "Techno-functional delivery"
+        ]
+      },
+      {
+        "text": "process re-engineering and workflow design",
+        "tags": [
+          "Business process re-engineering",
+          "Workflow design",
+          "Process improvement",
+          "Process mapping",
+          "As-is to-be analysis"
+        ]
+      },
+      {
+        "text": "agile and hybrid delivery",
+        "tags": [
+          "Agile",
+          "Scrum",
+          "Hybrid delivery",
+          "Sprint planning",
+          "Kanban",
+          "SAFe",
+          "Backlog management",
+          "Agile ceremonies"
+        ]
+      },
+      {
+        "text": "P&L ownership and delivery turnaround",
+        "tags": [
+          "P&L management",
+          "Delivery turnaround",
+          "Budget management",
+          "Cost management",
+          "Commercial management",
+          "Financial management",
+          "Margin management"
+        ]
+      },
+      {
+        "text": "procurement through DPRs and RFPs",
+        "tags": [
+          "Procurement",
+          "RFP management",
+          "Detailed project report",
+          "Proposal writing",
+          "Bid management",
+          "Statement of work"
+        ]
+      },
+      {
+        "text": "service delivery and SLA management",
+        "tags": [
+          "SLA management",
+          "Service delivery",
+          "Application support",
+          "IT service management",
+          "Incident management",
+          "MTTR",
+          "High availability"
+        ]
+      },
+      {
+        "text": "security audits and regulatory compliance",
+        "tags": [
+          "Security audits",
+          "Compliance management",
+          "Information security",
+          "Audit management",
+          "Vulnerability assessment and penetration testing",
+          "CERT-In",
+          "STQC",
+          "Regulatory change"
+        ]
+      },
+      {
+        "text": "applied AI with human oversight",
         "tags": [
           "Artificial intelligence",
           "AI governance",
           "AI product management",
+          "Machine learning",
           "Generative AI",
-          "AI-assisted delivery",
-          "Machine learning"
+          "Intelligent automation",
+          "Large language models"
         ]
       },
       {
-        "text": "Seven years as a hands-on engineer and blockchain architect before moving into delivery leadership, so architecture, data models and security findings get reviewed directly rather than relayed.",
+        "text": "leading delivery and support teams",
+        "tags": [
+          "Team leadership",
+          "People management",
+          "Leadership",
+          "Hiring and recruitment",
+          "Performance management",
+          "Distributed teams"
+        ]
+      },
+      {
+        "text": "user adoption and change management",
+        "tags": [
+          "Change management",
+          "User adoption",
+          "Training delivery",
+          "Change leadership"
+        ]
+      },
+      {
+        "text": "technical solution design",
+        "tags": [
+          "Solution design",
+          "Solution architecture",
+          "Software architecture",
+          "Data modeling",
+          "System design",
+          "APIs",
+          "Systems integration",
+          "Cloud computing"
+        ]
+      },
+      {
+        "text": "blockchain and full-stack engineering",
+        "tags": [
+          "Blockchain",
+          "Hyperledger Fabric",
+          "Ethereum",
+          "Smart contracts",
+          "Full-stack development",
+          "Software development",
+          "Back-end development",
+          "Verifiable credentials"
+        ]
+      }
+    ],
+    "approach": [
+      {
+        "text": "Works across ministries, vendors and technical teams that do not report to one another, and plans around what cannot move: a statute, a date or a security audit.",
+        "tags": [
+          "Stakeholder management",
+          "Government stakeholder management",
+          "Vendor management",
+          "Multi-vendor management",
+          "Deadline management",
+          "Regulatory change",
+          "Cross-functional coordination",
+          "Public sector"
+        ]
+      },
+      {
+        "text": "Started in software engineering and blockchain architecture, so architecture, data models and security findings get reviewed directly rather than relayed.",
         "tags": [
           "Software development",
           "Software architecture",
           "Blockchain",
           "Technical program management",
           "Solution architecture",
-          "Full-stack development"
+          "Full-stack development",
+          "Systems integration",
+          "APIs",
+          "Cloud computing",
+          "DevOps"
         ]
       },
       {
-        "text": "Has held the Project Manager, Product Owner and Scrum Master roles at the same time across a 35-person delivery organisation.",
+        "text": "Scopes AI into products where it helps, with a named person responsible for every decision.",
+        "tags": [
+          "Artificial intelligence",
+          "AI governance",
+          "AI product management",
+          "Generative AI",
+          "Machine learning",
+          "Large language models"
+        ]
+      },
+      {
+        "text": "Comfortable carrying product ownership and Scrum responsibilities alongside project management.",
         "tags": [
           "Agile",
           "Scrum",
           "Product Owner role",
           "Scrum Master role",
-          "SAFe"
+          "Product management",
+          "Backlog management"
         ]
       },
       {
-        "text": "Strongest where delivery has to survive statute, procurement and a fixed regulatory clock at the same time.",
+        "text": "Fixes how the work is organised before cutting cost, and measures results rather than deliverables.",
         "tags": [
-          "Compliance management",
-          "Regulatory change",
-          "Procurement",
-          "Public sector",
-          "GovTech",
-          "Deadline management"
-        ]
-      },
-      {
-        "text": "Has worked on government projects worth over ₹35 crore and owned a $2M+ a year enterprise portfolio.",
-        "tags": [
-          "Large-scale programs",
-          "Portfolio management",
+          "Delivery turnaround",
           "P&L management",
-          "Budget management",
-          "Program management"
+          "Cost management",
+          "Operational excellence",
+          "Workforce optimization",
+          "KPIs",
+          "SLA management",
+          "Process improvement"
         ]
       }
     ]
@@ -197,8 +437,7 @@
         "GovTech",
         "Delivery management",
         "Go-live management"
-      ],
-      "short": "took the 8th Pay Commission's demand portal live in about a month, across four organisations"
+      ]
     },
     {
       "id": "bdo-cpc-workflow",
@@ -216,8 +455,7 @@
         "Business process re-engineering",
         "Digital transformation",
         "Techno-functional delivery"
-      ],
-      "short": "replaced a statutory commission's spreadsheet with an auditable, role-based workflow"
+      ]
     },
     {
       "id": "bdo-cpc-spec",
@@ -244,8 +482,8 @@
       "strength": 8,
       "src": "site",
       "patterns": "OC",
-      "text": "Sized the portal for about ten times its live volume so there would be no re-architecture inside the Commission's term; demand entry rose from about 50 a day to about 1,000, and about 21,000 demands are on it today.",
-      "core": "size :: the portal for about ten times its live volume",
+      "text": "Sized the Pay Commission portal for about ten times its live volume so there would be no re-architecture inside the Commission's term; demand entry rose from about 50 a day to about 1,000, and about 21,000 demands are on it today.",
+      "core": "size :: the Pay Commission portal for about ten times its live volume",
       "parts": [
         "purpose! :: so there would be no re-architecture inside the Commission's term #Scalability #Software architecture",
         "coda :: demand entry rose from about 50 a day to about 1,000 #Process improvement #Operational excellence",
@@ -298,9 +536,8 @@
       "role": "bdo",
       "strength": 9,
       "src": "site",
-      "patterns": "OC",
-      "text": "Took the Green Hydrogen certification portal, a project of about ₹7 crore, from the first meeting with the ministry to launch by the Minister on 1 July 2026; 8 certificates have been issued so far from 20+ applications.",
-      "core": "take :: the Green Hydrogen certification portal, a project of about ₹7 crore, from the first meeting with the ministry to launch by the Minister on 1 July 2026",
+      "text": "Took the Green Hydrogen certification portal, a project of about Rs 7 crore, from the first meeting with the ministry to launch by the Minister on 1 July 2026; 8 certificates have been issued so far from 20+ applications.",
+      "core": "take|lead :: the Green Hydrogen certification portal, a project of about Rs 7 crore, from the first meeting with the ministry to launch by the Minister on 1 July 2026",
       "parts": [
         "scope :: with a team of ten #Team leadership",
         "coda :: 8 certificates have been issued so far from 20+ applications #Certification schemes"
@@ -314,8 +551,7 @@
         "Certification schemes",
         "End-to-end delivery",
         "Program delivery"
-      ],
-      "short": "took India's green hydrogen certification portal from a first meeting to a launch by the Minister"
+      ]
     },
     {
       "id": "bdo-ghci-process",
@@ -333,8 +569,7 @@
         "Requirements gathering",
         "Product requirements",
         "Process mapping"
-      ],
-      "short": "defined a national certification process from scheme rules before a line was built"
+      ]
     },
     {
       "id": "bdo-ghci-version",
@@ -374,8 +609,7 @@
         "Compliance management",
         "Audit management",
         "Vulnerability assessment and penetration testing"
-      ],
-      "short": "got two national platforms through external security audits before launch"
+      ]
     },
     {
       "id": "bdo-ghci-uat",
@@ -431,8 +665,7 @@
         "AI governance",
         "Product roadmap",
         "Requirements analysis"
-      ],
-      "short": "scoped advisory-only Phase 2 AI layers for two national platforms"
+      ]
     },
     {
       "id": "bdo-ai-delivery",
@@ -460,10 +693,10 @@
       "strength": 6,
       "src": "site",
       "patterns": "OC",
-      "text": "Ran two national government platforms for NeGD at the same time, worth about ₹7 crore and about ₹21 lakh, each with its own ministry, agencies and fixed date.",
+      "text": "Ran two national government platforms for NeGD at the same time, worth about Rs 7 crore and about Rs 21 lakh, each with its own ministry, agencies and fixed date.",
       "core": "run :: two national government platforms for NeGD at the same time",
       "parts": [
-        "outcome :: worth about ₹7 crore and about ₹21 lakh #Budget management",
+        "outcome :: worth about Rs 7 crore and about Rs 21 lakh #Budget management",
         "outcome :: each with its own ministry, agencies and fixed date #Multi-project management #Government stakeholder management"
       ],
       "tags": [
@@ -478,7 +711,7 @@
       "strength": 10,
       "src": "site",
       "text": "Took a loss-making unit to about 15% profit within six months, and around 25% since, by fixing how the work was organised (SOPs and a new L1.5 support layer) before reducing headcount.",
-      "core": "take :: a loss-making unit to about 15% profit within six months",
+      "core": "take|bring :: a loss-making unit to about 15% profit within six months",
       "parts": [
         "scope :: and around 25% since #P&L management",
         "method :: fix :: how the work was organised (SOPs and a new L1.5 support layer) before reducing headcount #Standard operating procedures #Operational excellence #Workforce optimization"
@@ -489,8 +722,7 @@
         "Cost management",
         "Commercial management",
         "Financial management"
-      ],
-      "short": "took a loss-making unit to about 15% profit in six months"
+      ]
     },
     {
       "id": "inf-portfolio",
@@ -498,8 +730,8 @@
       "strength": 7,
       "src": "site",
       "patterns": "OC",
-      "text": "Owned a $2M+ a year application portfolio (about ₹15 crore) for a global wind-energy company: the P&L, delivery, service levels and a team of 35.",
-      "core": "own :: a $2M+ a year application portfolio (about ₹15 crore) for a global wind-energy company",
+      "text": "Owned a $2M+ a year application portfolio (about Rs 15 crore) for a global wind-energy company: the P&L, delivery, service levels and a team of 35.",
+      "core": "own :: a $2M+ a year application portfolio (about Rs 15 crore) for a global wind-energy company",
       "parts": [
         "list :: the P&L, delivery, service levels and a team of 35 #P&L management #Team leadership #SLA management"
       ],
@@ -527,8 +759,7 @@
         "Renewable energy",
         "IT service management",
         "Service delivery"
-      ],
-      "short": "held 99.9% service levels across ~55 round-the-clock applications"
+      ]
     },
     {
       "id": "inf-mttr",
@@ -546,8 +777,7 @@
         "Incident management",
         "Process automation",
         "Operational excellence"
-      ],
-      "short": "cut production fix time from 4 days to under 12 hours"
+      ]
     },
     {
       "id": "inf-ai",
@@ -567,8 +797,7 @@
         "Incident management",
         "Process automation",
         "IT service management"
-      ],
-      "short": "brought AI into production ticket handling in evidence-gated stages"
+      ]
     },
     {
       "id": "inf-commercial",
@@ -587,8 +816,7 @@
         "Scope management",
         "Contract management",
         "Account management"
-      ],
-      "short": "turned unpaid out-of-scope work into about $200,000 a year of new business"
+      ]
     },
     {
       "id": "inf-team",
@@ -605,8 +833,7 @@
         "People management",
         "Application support",
         "Delivery management"
-      ],
-      "short": "ran a 35-person team as Project Manager, Product Owner and Scrum Master at once"
+      ]
     },
     {
       "id": "inf-targets",
@@ -665,7 +892,7 @@
       "strength": 10,
       "src": "site",
       "text": "Took the Central Registrar of Cooperative Societies from a paper-based office to a live national platform for about 1,800 multi-state societies and 40 million members, with application processing more than 70% faster.",
-      "core": "take :: the Central Registrar of Cooperative Societies from a paper-based office to a live national platform",
+      "core": "take|move :: the Central Registrar of Cooperative Societies from a paper-based office to a live national platform",
       "parts": [
         "scope! :: for about 1,800 multi-state societies and 40 million members #Large-scale programs #Cooperative sector",
         "outcome :: with application processing more than 70% faster #Process improvement #Operational excellence"
@@ -677,8 +904,7 @@
         "Public sector",
         "Large-scale programs",
         "End-to-end delivery"
-      ],
-      "short": "took a 40-million-member national registry from paper to a live platform"
+      ]
     },
     {
       "id": "ey-crcs-bpr",
@@ -696,8 +922,7 @@
         "As-is to-be analysis",
         "Process mapping",
         "Business analysis"
-      ],
-      "short": "ran the process re-engineering that redesigned a national registry around accountability"
+      ]
     },
     {
       "id": "ey-crcs-law",
@@ -720,7 +945,6 @@
         "Digital transformation",
         "Compliance management"
       ],
-      "short": "got a national Act amended so a digital registry had legal standing",
       "patterns": "OC"
     },
     {
@@ -745,8 +969,7 @@
         "Procurement",
         "Vendor management",
         "Governance"
-      ],
-      "short": "authored national-programme DPRs and RFPs and held vendors to agreed scope"
+      ]
     },
     {
       "id": "ey-websites",
@@ -765,18 +988,17 @@
         "GovTech",
         "Web development",
         "Government digital standards"
-      ],
-      "short": "standardised 80+ ministry websites onto a common framework"
+      ]
     },
     {
       "id": "ey-nesda",
       "role": "ey",
       "strength": 8,
       "src": "site",
-      "text": "Project-managed the benchmarking workstream behind NIC's 150+ parameter national website ranking framework (a project of about ₹5 crore), working the parameters, ranking and scoring alongside NIC's research partners at IIT Delhi and IIM Indore; NeSDA uses it today.",
+      "text": "Project-managed the benchmarking workstream behind NIC's 150+ parameter national website ranking framework (a project of about Rs 5 crore), working the parameters, ranking and scoring alongside NIC's research partners at IIT Delhi and IIM Indore; NeSDA uses it today.",
       "core": "project-manage :: the benchmarking workstream behind NIC's 150+ parameter national website ranking framework",
       "parts": [
-        "detail :: a project of about ₹5 crore",
+        "detail :: a project of about Rs 5 crore",
         "then :: work :: the parameters, ranking and scoring alongside NIC's research partners at IIT Delhi and IIM Indore #Benchmarking #Stakeholder management",
         "coda :: results went to the Cabinet Secretary and into the Samiksha portal #Executive stakeholder management #Executive reporting",
         "coda :: NeSDA uses it today #Government digital standards"
@@ -787,8 +1009,7 @@
         "KPIs",
         "Government stakeholder management",
         "Workstream management"
-      ],
-      "short": "project-managed the benchmarking framework that now gates every government site going live on NIC infrastructure"
+      ]
     },
     {
       "id": "ey-nesda-adoption",
@@ -806,8 +1027,7 @@
         "Change management",
         "Government stakeholder management",
         "Influencing without authority"
-      ],
-      "short": "won adoption across 80 departments by routing authority rather than persuasion"
+      ]
     },
     {
       "id": "ey-nesda-ahp",
@@ -846,7 +1066,6 @@
         "Immigration systems",
         "Public sector"
       ],
-      "short": "led UI/UX and process re-engineering on the national visa platform revamp",
       "patterns": "OC"
     },
     {
@@ -871,8 +1090,7 @@
         "User adoption",
         "Immigration systems",
         "Change leadership"
-      ],
-      "short": "won adoption of a common standard across seaports and land ports by demonstration rather than mandate"
+      ]
     },
     {
       "id": "ey-portal",
@@ -892,8 +1110,7 @@
         "Web development",
         "GovTech",
         "Data integration"
-      ],
-      "short": "integrated 20+ government sources into a single citizen view for the National Portal of India"
+      ]
     },
     {
       "id": "ey-portal-rfp",
@@ -903,8 +1120,8 @@
       "exclusive": [
         "ey-dpr"
       ],
-      "text": "Wrote the DPR and RFP for a new version of the National Portal of India, a project of about ₹23 crore, onboarded the vendor, then ran a second RFP for machine translation into 22 Indian languages with human review.",
-      "core": "write|author :: the DPR and RFP for a new version of the National Portal of India, a project of about ₹23 crore",
+      "text": "Wrote the DPR and RFP for a new version of the National Portal of India, a project of about Rs 23 crore, onboarded the vendor, then ran a second RFP for machine translation into 22 Indian languages with human review.",
+      "core": "write|author :: the DPR and RFP for a new version of the National Portal of India, a project of about Rs 23 crore",
       "parts": [
         "and :: onboard :: the vendor #Vendor management",
         "then :: run :: a second RFP for machine translation into 22 Indian languages with human review #Localization #Natural language processing #RFP management #AI governance"
@@ -914,8 +1131,7 @@
         "Detailed project report",
         "Procurement",
         "Vendor management"
-      ],
-      "short": "wrote the DPR and RFP for a ₹23 crore national portal"
+      ]
     },
     {
       "id": "ey-pmo",
@@ -969,18 +1185,17 @@
         "Verifiable credentials",
         "Product management",
         "Human resources technology"
-      ],
-      "short": "designed and built an enterprise blockchain credentialing platform"
+      ]
     },
     {
       "id": "ust-research",
       "role": "ust",
       "strength": 6,
       "src": "site",
-      "text": "Ran the requirement phase before designing anything (HR, talent acquisition, hiring managers, the verification vendors), and about 80% of people joined voluntarily after sessions explaining what a credential on chain actually gave them.",
-      "core": "run :: the requirement phase before designing anything",
+      "text": "Ran the requirement phase with HR, talent acquisition, hiring managers and the verification vendors before designing anything, and about 80% of people joined voluntarily after sessions explaining what a credential on chain actually gave them.",
+      "core": "run :: the requirement phase with HR, talent acquisition, hiring managers and the verification vendors",
       "parts": [
-        "detail :: HR, talent acquisition, hiring managers and the verification vendors #Stakeholder management #User research",
+        "scope! :: before designing anything #Requirements gathering #Stakeholder management #User research",
         "coda :: about 80% of people joined voluntarily after sessions explaining what a credential on chain actually gave them #User adoption #Change management"
       ],
       "tags": [
@@ -988,8 +1203,7 @@
         "User research",
         "User adoption",
         "Product discovery"
-      ],
-      "short": "got about 80% voluntary uptake of a new credentialing platform"
+      ]
     },
     {
       "id": "ust-descope",
@@ -1022,8 +1236,7 @@
         "Back-end development",
         "Software development",
         "Software architecture"
-      ],
-      "short": "built backend and blockchain systems in three regulated areas within a year"
+      ]
     },
     {
       "id": "tcs-chargeback",
@@ -1045,7 +1258,6 @@
         "Mainframe",
         "Batch processing"
       ],
-      "short": "automated a manual card-dispute reconciliation for a UK bank, saving about £200,000 a year",
       "patterns": "OC"
     },
     {
@@ -1064,8 +1276,7 @@
         "Payments",
         "Workflow design",
         "Quality management"
-      ],
-      "short": "cut reported defects by 40% on a UK banking client's dispute workflows"
+      ]
     },
     {
       "id": "tcs-pocs",
@@ -1187,11 +1398,122 @@
   "certifications": [
     {
       "name": "Certified Scrum Master",
-      "issuer": "Scrum certification"
+      "issuer": ""
     },
     {
       "name": "Project Management Certificate",
       "issuer": "Google"
+    }
+  ],
+  "focusAreas": [
+    {
+      "label": "Digital Transformation",
+      "tags": [
+        "Digital transformation",
+        "Legacy modernization",
+        "GovTech",
+        "Business process re-engineering"
+      ]
+    },
+    {
+      "label": "Government Platforms",
+      "tags": [
+        "Public sector",
+        "GovTech",
+        "Digital public infrastructure",
+        "Government stakeholder management"
+      ]
+    },
+    {
+      "label": "Programme Governance",
+      "tags": [
+        "Project governance",
+        "PMO",
+        "Risk management",
+        "Change control",
+        "Status reporting",
+        "Steering committee"
+      ]
+    },
+    {
+      "label": "Agile Delivery",
+      "tags": [
+        "Agile",
+        "Scrum",
+        "Hybrid delivery",
+        "Sprint planning",
+        "Backlog management"
+      ]
+    },
+    {
+      "label": "Applied AI",
+      "tags": [
+        "Artificial intelligence",
+        "AI governance",
+        "AI product management",
+        "Machine learning",
+        "Generative AI"
+      ]
+    },
+    {
+      "label": "Service Delivery",
+      "tags": [
+        "SLA management",
+        "Service delivery",
+        "Application support",
+        "IT service management",
+        "Incident management"
+      ]
+    },
+    {
+      "label": "Vendor Management",
+      "tags": [
+        "Vendor management",
+        "Multi-vendor management",
+        "Procurement",
+        "Contract management"
+      ]
+    },
+    {
+      "label": "Product Ownership",
+      "tags": [
+        "Product Owner role",
+        "Product management",
+        "Backlog management",
+        "Product roadmap",
+        "User stories"
+      ]
+    },
+    {
+      "label": "P&L and Turnaround",
+      "tags": [
+        "P&L management",
+        "Delivery turnaround",
+        "Commercial management",
+        "Cost management",
+        "Budget management"
+      ]
+    },
+    {
+      "label": "Blockchain",
+      "tags": [
+        "Blockchain",
+        "Hyperledger Fabric",
+        "Ethereum",
+        "Smart contracts",
+        "Verifiable credentials"
+      ]
+    },
+    {
+      "label": "Technical Delivery",
+      "tags": [
+        "Technical program management",
+        "Software development",
+        "Software architecture",
+        "Cloud computing",
+        "DevOps",
+        "APIs"
+      ]
     }
   ]
 }

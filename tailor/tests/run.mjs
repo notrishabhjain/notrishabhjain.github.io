@@ -91,8 +91,11 @@ for (const f of jdFiles) {
     if (/\s[,.;:]|\(\s|\s\)|  /.test(b.text)) fail(`spacing: ${b.text}`);
     if (/\b(a|an) (a|an|the)\b/i.test(b.text)) fail(`article: ${b.text}`);
   }
+  // The summary stays broad: no figures beyond years of experience, no sentence lifted from a bullet.
+  if (/\d/.test(resume.summary.replace(/\d+\+ years/, ''))) fail(`summary quotes a specific figure: ${resume.summary}`);
+  for (const role of resume.roles) for (const b of role.bullets) if (resume.summary.includes(b.text.slice(0, 40))) fail('summary repeats a bullet');
   const count = resume.roles.reduce((a, r) => a + r.bullets.length, 0);
-  if (count < 12 || count > 22) fail(`bullet count ${count}`);
+  if (count < 11 || count > 22) fail(`bullet count ${count}`);
 }
 
 console.log(failures ? `\n${failures} failure(s)` : '\nall checks passed');

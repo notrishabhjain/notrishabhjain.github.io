@@ -2,6 +2,8 @@
 // Output is deliberately plain for applicant tracking systems: one column, real paragraphs and list
 // bullets, standard headings, contact details in the body. No tables, text boxes, images, headers or footers.
 
+import { glue } from './grammar.js';
+
 const enc = new TextEncoder();
 
 // ---- zip (stored, no compression) ------------------------------------------------
@@ -84,7 +86,7 @@ export function unzipStored(bytes) {
 // ---- document -------------------------------------------------------------------
 
 const W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main';
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const esc = (s) => glue(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 function run(text, { b, i, sz, color } = {}) {
   const pr = [b ? '<w:b/>' : '', i ? '<w:i/>' : '', color ? `<w:color w:val="${color}"/>` : '', sz ? `<w:sz w:val="${sz}"/><w:szCs w:val="${sz}"/>` : ''].join('');

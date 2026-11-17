@@ -183,7 +183,13 @@ function assemble(a, spec, opts) {
   const get = (type) => a.partsP.filter(p => p.type === type && on(p));
   const pv = (p) => spec.pv.get(p.i) || p.verbs[0];
   const details = get('detail'), contexts = get('context'), scopes = get('scope'), lists = get('list');
-  const outcomes = get('outcome'), purposes = get('purpose'), codas = get('coda');
+  // A relative clause ("two of which reached production") describes the object, so it stays beside it.
+  const REL = /^(\w+ of )?(which|whom|whose|who)\b/i;
+  const allOutcomes = get('outcome');
+  const relOutcomes = allOutcomes.filter(p => REL.test(p.text));
+  const outcomes = allOutcomes.filter(p => !REL.test(p.text));
+  const purposes = get('purpose'), codas = get('coda');
+  const long = (x) => x.split(/\s+/).length > 13;
   const methods = get('method'), thens = get('then'), ands = get('and'), results = get('result');
   const coreObj = a.coreP.obj;
 
@@ -197,6 +203,7 @@ function assemble(a, spec, opts) {
     }
     for (const p of contexts) s += ' ' + p.text;
     for (const p of scopes) s += ' ' + p.text;
+    for (const p of relOutcomes) s += ', ' + p.text;
     return s;
   };
   const endings = (skipOutcomes) => {
@@ -225,11 +232,11 @@ function assemble(a, spec, opts) {
     // C: core-led
     const lead = `${P(spec.verb)} ${coreObj}`;
     s = lead + tailAfterObject();
-    if (methods.length && spec.join === 'by') s += ' by ' + joinList(methods.map(p => `${G(pv(p))} ${p.obj}`));
+    if (methods.length && spec.join === 'by') s += (long(s) ? ', by ' : ' by ') + joinList(methods.map(p => `${G(pv(p))} ${p.obj}`));
     if (results.length) s += ', ' + joinList(results.map(p => `${G(pv(p))} ${p.obj}`));
     if (ands.length) {
       const items = ands.map(p => `${P(pv(p))} ${p.obj}`);
-      s = items.length === 1 ? `${s}${results.length ? ',' : ''} and ${items[0]}` : `${s}, ${joinList(items)}`;
+      s = items.length === 1 ? `${s}${results.length || long(s) ? ',' : ''} and ${items[0]}` : `${s}, ${joinList(items)}`;
     }
     const parts = [];
     if (methods.length && spec.join !== 'by') parts.push(...methods.map(p => `${G(pv(p))} ${p.obj}`));
@@ -361,8 +368,8 @@ export function realize(a, ctx) {
       spec.pattern === 'M' ? pv.get(pa.partsP.find(p => p.type === 'method')?.i) : spec.verb;
     const verbJD = leadVerb && jdVerbs.has(leadVerb) ? 0.08 : 0;
     const L = text.length;
-    const lenPen = L > B.idealMax ? (L - B.idealMax) / 120 : L < B.idealMin ? (B.idealMin - L) / 200 : 0;
-    const fidelity = spec.pattern === 'O' ? 0.14 : spec.pattern === 'C' ? (spec.join === 'by' ? 0.07 : 0.05) : 0;
+    const lenPen = L > B.idealMax ? (L - B.idealMax) / 90 : L < B.idealMin ? (B.idealMin - L) / 200 : 0;
+    const fidelity = spec.pattern === 'O' ? (L <= B.idealMax + 25 ? 0.14 : 0.06) : spec.pattern === 'C' ? (spec.join === 'by' ? 0.07 : 0.05) : 0;
     const metric = /\d/.test(text) ? 0.06 : 0;
     const lv = leadVerb || '';
     const roleUsed = ctx.state.roleVerbs.get(a.role) || new Set();

@@ -1,11 +1,12 @@
 // node tailor/tests/docx.mjs <outdir>
-// Writes one .docx per sample JD and prints the ATS self-check for each.
+// Writes one .docx and one .pdf per sample JD and prints the ATS self-check for each.
 
 import { readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createEngine } from '../js/engine.js';
 import { buildDocx } from '../js/docx.js';
+import { buildPdf } from '../js/pdf.js';
 import { atsCheck } from '../js/ats.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -27,6 +28,7 @@ for (const f of readdirSync(join(here, 'jds')).filter(f => f.endsWith('.txt'))) 
   const bytes = buildDocx(resume, today);
   const name = f.replace('.txt', '.docx');
   writeFileSync(join(out, name), bytes);
+  writeFileSync(join(out, f.replace('.txt', '.pdf')), buildPdf(resume, today));
   const res = atsCheck(resume, bytes, { idx: engine.idx, match, resumeText: engine.resumeText });
   console.log(`\n${name}  ${bytes.length} bytes`);
   for (const c of res.checks) {
