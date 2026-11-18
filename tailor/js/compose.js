@@ -4,7 +4,7 @@ import { tokenize, light } from './text.js';
 import { findSkills, resolveTag, ancestors } from './taxonomy.js';
 import { realize, applySwaps } from './realize.js';
 import { capFirst, joinList } from './grammar.js';
-import { spell } from './text.js';
+import { spell, findTerms } from './text.js';
 
 function monthsAgo(ym, today) {
   if (!ym || ym === 'present') return 0;
@@ -224,7 +224,7 @@ export function buildResume(env) {
     const n = (sentences.join(' ') + ' ' + approach[1].text).split(/\s+/).length;
     if (n <= 85) sentences.push(approach[1].text);
   }
-  const summary = applySwaps(sentences.join(' '), jdMap, idx, new Set()).text;
+  const summary = applySwaps(sentences.filter(x => !findTerms(x, rules.confidentialTerms).length).join(' '), jdMap, idx, new Set()).text;
 
   const titleWords = new Set(tokenize(title).filter(t => t.kind === 'w').map(t => light(t.t)));
   const areas = byFit(profile.focusAreas)
@@ -325,6 +325,8 @@ export function lint(r, { jd, match, idx, rules }) {
     if (b.text.length > rules.bullet.hardMax) out.push({ level: 'warn', msg: `Long bullet (${b.text.length} characters)`, where: b.text.slice(0, 60) });
     if (b.verify) out.push({ level: 'info', msg: `From the resume PDF only, not yet confirmed in the dossier${b.note ? ': ' + b.note : ''}`, where: b.text.slice(0, 60), id: b.id });
     if (b.manual) out.push({ level: 'info', msg: 'Edited by hand, so the wording check does not apply', where: b.text.slice(0, 60), id: b.id });
+    const secret = findTerms(b.text, rules.confidentialTerms);
+    if (secret.length) out.push({ level: 'warn', msg: `Contains a confidential name or detail: ${secret.join(', ')}`, where: b.text.slice(0, 60), id: b.id });
   }
   for (const [v, n] of lead) if (n > 2) out.push({ level: 'warn', msg: `"${capFirst(v)}" opens ${n} bullets` });
   if (jd) {

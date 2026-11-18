@@ -157,6 +157,17 @@ export function sentences(text) {
     .map(s => s.replace(/\u0001/g, '.').trim()).filter(Boolean);
 }
 
+/** Which of `terms` occur in `text` (case-insensitive, whole words). Used to keep confidential names out. */
+export function findTerms(text, terms) {
+  if (!terms || !terms.length || !text) return [];
+  const hits = [];
+  for (const t of terms) {
+    const re = new RegExp(`(?<![A-Za-z0-9])${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![A-Za-z0-9])`, 'i');
+    if (re.test(text)) hits.push(t);
+  }
+  return hits;
+}
+
 export function words(text) {
   return tokenize(text).filter(t => t.kind === 'w');
 }

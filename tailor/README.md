@@ -239,6 +239,34 @@ Verbs:
 Tags go at the end of a part (`#Skill name`); `#-Skill` stops a word from counting as that
 skill.
 
+## Confidential details
+
+The profile describes projects instead of naming them. For example:
+
+- "Led delivery of a statutory commission's case-management platform"
+- "a multi-crore national clean-energy certification platform"
+
+Clients appear as descriptions ("Central government digital-governance agency"). Contract values,
+launch dates, internal counts and exact security-finding numbers are generalised; for example,
+"over 90% of findings closed" rather than the count. The scale of each accomplishment stays: team
+sizes, timelines and outcomes.
+
+`confidentialTerms` in `data/rules.json` lists the names and details that must never appear:
+
+- **Generated sentences:** any sentence containing one is rejected.
+- **Hand edits:** one containing a term is flagged.
+- **Tests:** they fail if a term appears in `profile.json` (which is published with the site) or in
+  any generated resume.
+
+Add to the list whenever something new should stay private.
+
+Two things this does not cover:
+
+- **Git history:** older versions of `profile.json` in the repository's history still contain the
+  names.
+- **The portfolio site:** its own case studies, which the resume's website link points to, name
+  the projects.
+
 ## The skills library
 
 `data/skills.txt` has about 710 skills across delivery, product, commercial, leadership,

@@ -22,6 +22,8 @@ const engine = createEngine({
 });
 
 let failures = 0;
+const { findTerms } = await import('../js/text.js');
+const CONFIDENTIAL = JSON.parse(read('data/rules.json')).confidentialTerms;
 const fail = (msg) => { failures++; console.log('  FAIL ' + msg); };
 
 console.log(`taxonomy: ${engine.tax.skills.size} skills, ${engine.idx.exact.size} exact forms, ${engine.idx.cased.size} cased, ${engine.idx.bag.size} bag keys`);
@@ -32,6 +34,12 @@ if (engine.idx.collisions.length) {
 }
 
 // Claims the owner has retracted or corrected; none may ever reach a resume.
+// profile.json is published with the site, so the profile itself must not carry confidential names either.
+{
+  const prof = JSON.parse(read('data/profile.json'));
+  const fields = [...prof.roles.map(r => r.client || ''), ...prof.achievements.flatMap(a => [a.text, a.core, ...(a.parts || []), ...(a.facts || [])])];
+  for (const f of fields) for (const t of findTerms(f, CONFIDENTIAL)) console.log(`  FAIL confidential term in profile: "${t}" in ${f.slice(0, 70)}`), failures++;
+}
 const RETRACTED = [/sahara refund/i, /organi[sz]ation-wide adoption/i, /company-wide adoption/i, /15,000/, /82\/100/,
   /50 officers/i, /24-field/i, /\$500K/i, /SAST score/i, /Certified Scrum Master who/i, /eight-module/i, /seven-person/i];
 
@@ -40,6 +48,9 @@ const RETRACTED = [/sahara refund/i, /organi[sz]ation-wide adoption/i, /company-
   const { integrityGaps } = await import('../js/realize.js');
   const { conjugate, aOrAn } = await import('../js/grammar.js');
   const { light } = await import('../js/text.js');
+  const planted = findTerms('Led the 8th Pay Commission portal and the GHCI launch on 1 July 2026; closed 48 of 51 findings.', CONFIDENTIAL);
+  for (const t of ['8th Pay Commission', 'GHCI', '1 July 2026', '48 of 51']) if (!planted.includes(t)) fail(`confidential guard missed "${t}"`);
+  if (findTerms('Worked on an NRIC system and a bonsai project', CONFIDENTIAL).length) fail('confidential guard matched inside a word');
   const vocab = new Set(['cut', 'mttr', 'from', 'four', 'day', 'under', '12', 'hour', 'lead', 'repository', 'migration'].map(w => light(w)));
   const gaps = integrityGaps('Spearheaded cutting-edge MTTR synergies from four days', vocab);
   if (!gaps.includes('Spearheaded') || !gaps.includes('synergies')) fail(`integrity check missed invented words: ${gaps}`);
@@ -81,6 +92,8 @@ for (const f of jdFiles) {
   // ---- assertions ----
   const all = engine.resumeText(resume);
   for (const re of RETRACTED) if (re.test(all)) fail(`retracted claim present: ${re}`);
+  const shown = [resume.headline, resume.summary, ...resume.roles.flatMap(r => [r.client || '', ...r.bullets.map(b => b.text)])].join('\n');
+  for (const t of findTerms(shown, CONFIDENTIAL)) fail(`confidential term in resume: ${t}`);
   const gapIds = new Set(match.rows.filter(r => r.status === 'gap').map(r => r.id));
   const bodyText = [resume.summary, ...resume.skills.flatMap(g => g.items.map(i => i.label)), ...resume.roles.flatMap(r => r.bullets.map(b => b.text))].join('\n');
   for (const m of findSkills(tokenize(bodyText), engine.idx, bodyText, { ext: false })) {

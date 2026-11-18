@@ -75,6 +75,20 @@
     ],
     "capabilities": [
       {
+        "text": "full project ownership (scope, schedule, budget and risk)",
+        "tags": [
+          "Scope management",
+          "Scheduling",
+          "Budget management",
+          "Risk management",
+          "Project planning",
+          "Project management",
+          "Program management",
+          "Delivery management",
+          "Project estimation"
+        ]
+      },
+      {
         "text": "end-to-end delivery of digital platforms",
         "tags": [
           "Program delivery",
@@ -266,6 +280,21 @@
     ],
     "approach": [
       {
+        "text": "Owns the whole delivery surface on fixed-date programmes: scope, schedule, budget, people, vendors and governance.",
+        "tags": [
+          "Project management",
+          "Program management",
+          "Delivery management",
+          "Scope management",
+          "Budget management",
+          "Vendor management",
+          "Project governance",
+          "Team leadership",
+          "Deadline management",
+          "Portfolio management"
+        ]
+      },
+      {
         "text": "Works across ministries, vendors and technical teams that do not report to one another, and plans around what cannot move: a statute, a date or a security audit.",
         "tags": [
           "Stakeholder management",
@@ -338,7 +367,7 @@
       "location": "New Delhi",
       "start": "2026-01",
       "end": "present",
-      "client": "NeGD, Ministry of Electronics and IT",
+      "client": "Central government digital-governance agency",
       "sector": "public",
       "industries": [
         "Consulting",
@@ -367,7 +396,7 @@
       "location": "Delhi",
       "start": "2022-04",
       "end": "2024-11",
-      "client": "Ministries of the Government of India",
+      "client": "Central government ministries",
       "sector": "public",
       "industries": [
         "Consulting",
@@ -381,7 +410,7 @@
       "location": "Noida",
       "start": "2021-06",
       "end": "2022-04",
-      "client": "EY Global Delivery Services",
+      "client": "Global professional-services firm",
       "sector": "private",
       "industries": [
         "IT services",
@@ -408,7 +437,7 @@
       "location": "Gurugram",
       "start": "2015-10",
       "end": "2020-05",
-      "client": "UK-based BFSI client",
+      "client": "UK-based banking client",
       "sector": "private",
       "industries": [
         "IT services",
@@ -422,21 +451,22 @@
       "role": "bdo",
       "strength": 9,
       "src": "site",
-      "text": "Led the 8th Pay Commission demand portal from kick-off to go-live in about a month, across four organisations with no reporting line between them, by cutting the plan from five sprints to two and building the modules in parallel.",
-      "core": "lead :: the 8th Pay Commission demand portal from kick-off to go-live in about a month",
+      "text": "Led delivery of a statutory commission's case-management platform from kick-off to go-live in about a month, across four organisations with no reporting line between them, by cutting the plan from five sprints to two and building the modules in parallel.",
+      "core": "lead|direct :: delivery of a statutory commission's case-management platform from kick-off to go-live in about a month",
       "parts": [
         "scope :: across four organisations with no reporting line between them #Multi-vendor management #Stakeholder management #Influencing without authority",
         "scope :: with a team of eight #Team leadership",
         "method :: cut :: the plan from five sprints to two #Project planning #Agile",
         "method :: build :: the modules in parallel #Parallel workstreams #Dependency management",
-        "purpose :: against a date set by statute #Deadline management #Public sector"
+        "purpose :: against a deadline fixed in law #Deadline management #Public sector"
       ],
       "tags": [
         "Program delivery",
         "Rapid delivery",
         "GovTech",
         "Delivery management",
-        "Go-live management"
+        "Go-live management",
+        "Project management"
       ]
     },
     {
@@ -445,10 +475,10 @@
       "strength": 8,
       "src": "site",
       "patterns": "OC",
-      "text": "Replaced the Commission's Excel workbook with an auditable workflow: each demand moves from creation through examination, ministry referral and review to the Commission, with a named officer at every step and an append-only audit log.",
-      "core": "replace :: the Commission's Excel workbook with an auditable workflow",
+      "text": "Replaced the commission's spreadsheet-based process with an auditable workflow: every case moves through creation, examination, referral and review, with a named officer at each step and an append-only audit log.",
+      "core": "replace :: the commission's spreadsheet-based process with an auditable workflow",
       "parts": [
-        "list :: each demand moves from creation through examination, ministry referral and review to the Commission, with a named officer at every step and an append-only audit log #Workflow design #State machine design #Audit trails #Role-based access control"
+        "list :: every case moves through creation, examination, referral and review, with a named officer at each step and an append-only audit log #Workflow design #State machine design #Audit trails #Role-based access control"
       ],
       "tags": [
         "Workflow design",
@@ -463,11 +493,10 @@
       "strength": 7,
       "src": "site",
       "patterns": "OC",
-      "text": "Used the officers' own review workbook as the first requirement, turning each of its columns into a structured field, through a BRD and an as-built functional specification of 143 requirements across 11 modules.",
+      "text": "Used the officers' own review workbook as the first requirement and baselined scope through a BRD and an as-built functional specification of 140+ requirements across 11 modules.",
       "core": "use :: the officers' own review workbook as the first requirement",
       "parts": [
-        "then :: turn :: each of its columns into a structured field #Data modeling #Requirements analysis",
-        "scope :: through a BRD and an as-built functional specification of 143 requirements across 11 modules #Business requirements document #Functional specifications"
+        "and :: baseline :: scope through a BRD and an as-built functional specification of 140+ requirements across 11 modules #Business requirements document #Functional specifications #Scope management #Requirements traceability"
       ],
       "tags": [
         "Requirements gathering",
@@ -482,12 +511,11 @@
       "strength": 8,
       "src": "site",
       "patterns": "OC",
-      "text": "Sized the Pay Commission portal for about ten times its live volume so there would be no re-architecture inside the Commission's term; demand entry rose from about 50 a day to about 1,000, and about 21,000 demands are on it today.",
-      "core": "size :: the Pay Commission portal for about ten times its live volume",
+      "text": "Sized the platform for about ten times its launch volume so it would need no re-architecture within the commission's term; daily case intake rose roughly twentyfold.",
+      "core": "size :: the platform for about ten times its launch volume",
       "parts": [
-        "purpose! :: so there would be no re-architecture inside the Commission's term #Scalability #Software architecture",
-        "coda :: demand entry rose from about 50 a day to about 1,000 #Process improvement #Operational excellence",
-        "coda :: about 21,000 demands are on it today, used by about 200 people #Large-scale programs"
+        "purpose! :: so it would need no re-architecture within the commission's term #Scalability #Software architecture",
+        "coda :: daily case intake rose roughly twentyfold #Process improvement #Operational excellence"
       ],
       "tags": [
         "Scalability",
@@ -501,10 +529,10 @@
       "strength": 6,
       "src": "site",
       "patterns": "OC",
-      "text": "Ran the one-time load of the Commission's Excel data from 14 offices with no common structure as its own stream, so it could not block module delivery.",
-      "core": "run :: the one-time load of the Commission's Excel data from 14 offices with no common structure",
+      "text": "Ran the one-time migration of legacy spreadsheet data from more than a dozen offices with no common structure as a separate stream, so it could not block module delivery.",
+      "core": "run :: the one-time migration of legacy spreadsheet data from more than a dozen offices with no common structure",
       "parts": [
-        "scope! :: as its own stream #Parallel workstreams",
+        "scope! :: as a separate stream #Parallel workstreams",
         "purpose :: so it could not block module delivery #Dependency management"
       ],
       "tags": [
@@ -518,17 +546,19 @@
       "strength": 7,
       "src": "site",
       "patterns": "OC",
-      "text": "Ran coordination across four bodies with no reporting line through a weekly steering committee and status reports naming an owner for every dependency, and walked the CEO of NeGD and the Commission's Member Secretary through the prototype.",
-      "core": "run :: coordination across four bodies with no reporting line",
+      "text": "Ran delivery governance across four bodies with no reporting line: a weekly steering committee, status reports naming an owner for every dependency, and prototype walkthroughs with agency and commission leadership.",
+      "core": "run :: delivery governance across four bodies with no reporting line",
       "parts": [
-        "scope! :: through a weekly steering committee and status reports naming an owner for every dependency #Steering committee #Status reporting #Dependency management",
-        "and :: walk :: the CEO of NeGD and the Commission's Member Secretary through the prototype #Executive stakeholder management #Prototyping"
+        "list! :: a weekly steering committee, status reports naming an owner for every dependency, and prototype walkthroughs with agency and commission leadership #Steering committee #Status reporting #Dependency management #Executive stakeholder management #Prototyping"
       ],
       "tags": [
         "Project governance",
         "Stakeholder management",
         "Government stakeholder management",
         "Cross-functional coordination"
+      ],
+      "exclusive": [
+        "bdo-pm-governance"
       ]
     },
     {
@@ -536,21 +566,20 @@
       "role": "bdo",
       "strength": 9,
       "src": "site",
-      "text": "Took the Green Hydrogen certification portal, a project of about Rs 7 crore, from the first meeting with the ministry to launch by the Minister on 1 July 2026; 8 certificates have been issued so far from 20+ applications.",
-      "core": "take|lead :: the Green Hydrogen certification portal, a project of about Rs 7 crore, from the first meeting with the ministry to launch by the Minister on 1 July 2026",
+      "text": "Led a multi-crore national clean-energy certification platform from the first client meeting to a ministerial launch, with a team of ten.",
+      "core": "lead|direct|take :: a multi-crore national clean-energy certification platform from the first client meeting to a ministerial launch",
       "parts": [
-        "scope :: with a team of ten #Team leadership",
-        "coda :: 8 certificates have been issued so far from 20+ applications #Certification schemes"
+        "scope :: with a team of ten #Team leadership"
       ],
       "tags": [
         "Go-live management",
         "Product launch",
-        "Green hydrogen",
         "Renewable energy",
         "GovTech",
         "Certification schemes",
         "End-to-end delivery",
-        "Program delivery"
+        "Program delivery",
+        "Project management"
       ]
     },
     {
@@ -558,11 +587,11 @@
       "role": "bdo",
       "strength": 8,
       "src": "site",
-      "text": "Defined India's green hydrogen certification process with the ministry before any build, mapping every user journey from the scheme rules, and got the requirements (about 250 features across 11 modules) signed off before the first sprint.",
-      "core": "define :: India's green hydrogen certification process with the ministry before any build",
+      "text": "Defined a first-of-its-kind certification process with the client ministry before any build, mapping every user journey from the scheme rules, and got about 250 features across 11 modules signed off before the first sprint.",
+      "core": "define :: a first-of-its-kind certification process with the client ministry before any build",
       "parts": [
         "method :: map :: every user journey from the scheme rules #Process mapping #Customer journey mapping #Requirements gathering",
-        "and :: get :: the requirements (about 250 features across 11 modules) signed off before the first sprint #Scope management #Requirements traceability #Software requirements specification"
+        "and :: get :: about 250 features across 11 modules signed off before the first sprint #Scope management #Requirements traceability #Software requirements specification"
       ],
       "tags": [
         "Business process re-engineering",
@@ -597,11 +626,11 @@
       "strength": 8,
       "src": "site",
       "patterns": "OC",
-      "text": "Got both platforms through external security audits before launch; on the hydrogen portal an internal review closed 48 of 51 findings before the CERT-In empanelled audit began, so it needed one short round of fixes.",
-      "core": "get :: both platforms through external security audits before launch",
+      "text": "Took both platforms through external security audits before launch; an internal review closed over 90% of findings before the external audit began, so it needed only one short round of fixes.",
+      "core": "take|get :: both platforms through external security audits before launch",
       "parts": [
-        "coda :: on the hydrogen portal an internal review closed 48 of 51 findings before the CERT-In empanelled audit began #Security remediation #CERT-In #Application security",
-        "coda :: the audit then needed one short round of fixes"
+        "coda :: an internal review closed over 90% of findings before the external audit began #Security remediation #Application security",
+        "coda :: it needed only one short round of fixes"
       ],
       "tags": [
         "Security audits",
@@ -617,11 +646,11 @@
       "strength": 6,
       "src": "site",
       "patterns": "OC",
-      "text": "Re-cut the plan when the cloud environment arrived two and a half weeks before the UAT target and released UAT in phases, with a workshop round for producers, verification agencies and the Technical Committee; the 1 July launch held.",
-      "core": "re-cut :: the plan when the cloud environment arrived two and a half weeks before the UAT target",
+      "text": "Re-planned delivery when the cloud environment arrived two and a half weeks before the UAT target, released UAT in phases with producers, verifiers and the approving committee, and held the launch date.",
+      "core": "re-plan :: delivery when the cloud environment arrived two and a half weeks before the UAT target",
       "parts": [
-        "and :: release :: UAT in phases #User acceptance testing #Phased rollout",
-        "coda :: the 1 July launch held #Deadline management"
+        "and :: release :: UAT in phases with producers, verifiers and the approving committee #User acceptance testing #Phased rollout #Stakeholder management",
+        "and :: hold :: the launch date #Deadline management"
       ],
       "tags": [
         "Project planning",
@@ -648,16 +677,37 @@
       ]
     },
     {
+      "id": "bdo-pm-governance",
+      "role": "bdo",
+      "strength": 7,
+      "src": "site",
+      "exclusive": [
+        "bdo-cpc-governance"
+      ],
+      "patterns": "OC",
+      "text": "Set up the delivery cadence and escalation path: daily stand-ups, weekly blocker reviews, a Director-level review at each milestone, monthly progress reports and a defined route to the client's programme director.",
+      "core": "set up :: the delivery cadence and escalation path",
+      "parts": [
+        "list! :: daily stand-ups, weekly blocker reviews, a Director-level review at each milestone, monthly progress reports and a defined route to the client's programme director #Agile ceremonies #Status reporting #Escalation management #Executive reporting"
+      ],
+      "tags": [
+        "Project governance",
+        "Status reporting",
+        "Escalation management",
+        "Governance"
+      ]
+    },
+    {
       "id": "bdo-ai-scope",
       "role": "bdo",
       "strength": 8,
       "src": "site",
-      "text": "Scoped the Phase 2 AI work for both platforms as advisory only, with a named officer approving every important decision and every AI claim pointing to its source document; the hydrogen portal's Phase 2 is approved and in procurement.",
-      "core": "scope :: the Phase 2 AI work for both platforms",
+      "text": "Scoped the Phase 2 AI layer for both platforms as advisory only, with a named officer approving every important decision and every AI claim pointing to its source document; one is approved and in procurement.",
+      "core": "scope :: the Phase 2 AI layer for both platforms",
       "parts": [
         "scope :: as advisory only, with a named officer approving every important decision #AI governance",
         "list :: duplicate detection, anomaly detection and evidence matching #Machine learning #Natural language processing",
-        "coda :: the hydrogen portal's Phase 2 is approved and in procurement #Procurement #RFQ"
+        "coda :: one is approved and in procurement #Procurement #RFQ"
       ],
       "tags": [
         "Artificial intelligence",
@@ -690,19 +740,20 @@
     {
       "id": "bdo-team",
       "role": "bdo",
-      "strength": 6,
+      "strength": 8,
       "src": "site",
       "patterns": "OC",
-      "text": "Ran two national government platforms for NeGD at the same time, worth about Rs 7 crore and about Rs 21 lakh, each with its own ministry, agencies and fixed date.",
-      "core": "run :: two national government platforms for NeGD at the same time",
+      "text": "Owned delivery of two concurrent national government platforms, each with its own client ministry, agencies and fixed date, managing scope, schedule, budget and risk with a team of eight.",
+      "core": "own :: delivery of two concurrent national government platforms, each with its own client ministry, agencies and fixed date",
       "parts": [
-        "outcome :: worth about Rs 7 crore and about Rs 21 lakh #Budget management",
-        "outcome :: each with its own ministry, agencies and fixed date #Multi-project management #Government stakeholder management"
+        "then! :: manage :: scope, schedule, budget and risk with a team of eight #Scope management #Scheduling #Budget management #Risk management #Team leadership"
       ],
       "tags": [
         "Portfolio management",
         "Multi-project management",
-        "Program management"
+        "Program management",
+        "Delivery management",
+        "Project management"
       ]
     },
     {
@@ -891,10 +942,10 @@
       "role": "ey",
       "strength": 10,
       "src": "site",
-      "text": "Took the Central Registrar of Cooperative Societies from a paper-based office to a live national platform for about 1,800 multi-state societies and 40 million members, with application processing more than 70% faster.",
-      "core": "take|move :: the Central Registrar of Cooperative Societies from a paper-based office to a live national platform",
+      "text": "Moved a national regulatory registry from a paper-based office to a live digital platform for about 1,800 member organisations and 40 million members, with application processing more than 70% faster.",
+      "core": "move|take :: a national regulatory registry from a paper-based office to a live digital platform",
       "parts": [
-        "scope! :: for about 1,800 multi-state societies and 40 million members #Large-scale programs #Cooperative sector",
+        "scope! :: for about 1,800 member organisations and 40 million members #Large-scale programs",
         "outcome :: with application processing more than 70% faster #Process improvement #Operational excellence"
       ],
       "tags": [
@@ -911,8 +962,8 @@
       "role": "ey",
       "strength": 7,
       "src": "site",
-      "text": "Ran the Business Process Re-engineering study before any system design and redesigned around accountability: role-based access for every officer and escalation notices when a file sits five, seven or fifteen days.",
-      "core": "run :: the Business Process Re-engineering study before any system design",
+      "text": "Ran the business process re-engineering study before any system design and redesigned around accountability: role-based access for every officer and escalation notices when a file sits five, seven or fifteen days.",
+      "core": "run :: the business process re-engineering study before any system design",
       "parts": [
         "and :: redesign :: around accountability #Process improvement",
         "list :: role-based access for every officer and escalation notices when a file sits five, seven or fifteen days #Role-based access control #Escalation management #Workflow design"
@@ -929,14 +980,14 @@
       "role": "ey",
       "strength": 9,
       "src": "site",
-      "text": "Found that the Multi-State Cooperative Societies Act, not the technology, was the blocker, and proposed amendments making electronic notices and digital signatures valid; they were tabled and passed in about six months.",
-      "core": "propose :: amendments to the Multi-State Cooperative Societies Act making electronic notices and digital signatures valid",
+      "text": "Found that the governing statute, not the technology, was the blocker, and proposed amendments making electronic notices and Aadhaar-based digital signatures legally valid; they were enacted in about six months.",
+      "core": "propose :: amendments to the governing statute making electronic notices and Aadhaar-based digital signatures legally valid",
       "parts": [
-        "purpose :: so the digital process had legal standing #Regulatory change #Compliance management",
-        "coda! :: they were tabled and passed in about six months #Government stakeholder management"
+        "purpose :: so the digital process had legal standing #Regulatory change #Compliance management #Aadhaar #Digital signatures",
+        "coda! :: they were enacted in about six months #Government stakeholder management"
       ],
       "facts": [
-        "Found that the Act, not the technology, was the blocker."
+        "Found that the statute, not the technology, was the blocker."
       ],
       "tags": [
         "Regulatory change",
@@ -955,13 +1006,13 @@
       "exclusive": [
         "ey-portal-rfp"
       ],
-      "text": "Authored the DPR and RFP, ran vendor onboarding and held ministry-side development oversight against RFP and DPR goals, taking the vendor back to agreed scope on deviation and escalating through the ministry when that was what it took.",
+      "text": "Authored the DPR and RFP, ran vendor onboarding and held client-side delivery oversight against them, taking the vendor back to agreed scope on deviation and escalating through the ministry when needed.",
       "core": "author|write :: the DPR and RFP",
       "parts": [
         "and :: run :: vendor onboarding #Vendor management",
-        "and :: hold :: ministry-side development oversight against RFP and DPR goals #Governance #Vendor management",
+        "and :: hold :: client-side delivery oversight against them #Governance #Vendor management",
         "then :: take :: the vendor back to agreed scope on deviation #Scope management #Vendor management #Contract management",
-        "then :: escalate :: through the ministry when that was what it took #Escalation management"
+        "then :: escalate :: through the ministry when needed #Escalation management"
       ],
       "tags": [
         "RFP management",
@@ -995,13 +1046,12 @@
       "role": "ey",
       "strength": 8,
       "src": "site",
-      "text": "Project-managed the benchmarking workstream behind NIC's 150+ parameter national website ranking framework (a project of about Rs 5 crore), working the parameters, ranking and scoring alongside NIC's research partners at IIT Delhi and IIM Indore; NeSDA uses it today.",
-      "core": "project-manage :: the benchmarking workstream behind NIC's 150+ parameter national website ranking framework",
+      "text": "Project-managed the benchmarking workstream behind a 150+ parameter national ranking framework for government websites, working the parameters, ranking and scoring with academic research partners; results were reported at the top of the civil service.",
+      "core": "project-manage :: the benchmarking workstream behind a 150+ parameter national ranking framework for government websites",
       "parts": [
-        "detail :: a project of about Rs 5 crore",
-        "then :: work :: the parameters, ranking and scoring alongside NIC's research partners at IIT Delhi and IIM Indore #Benchmarking #Stakeholder management",
-        "coda :: results went to the Cabinet Secretary and into the Samiksha portal #Executive stakeholder management #Executive reporting",
-        "coda :: NeSDA uses it today #Government digital standards"
+        "then :: work :: the parameters, ranking and scoring with academic research partners #Benchmarking #Stakeholder management",
+        "coda :: results were reported at the top of the civil service #Executive stakeholder management #Executive reporting",
+        "coda :: the framework now gates new government sites before they go live #Compliance management #Government digital standards"
       ],
       "tags": [
         "Project management",
@@ -1016,11 +1066,11 @@
       "role": "ey",
       "strength": 8,
       "src": "site",
-      "text": "Solved adoption by routing authority rather than persuading 80 departments one at a time: a secretary's letter to CERT-In, CERT-In directing the ministries and departments to onboard, each appointing a nodal officer answerable for closing the findings.",
-      "core": "solve :: adoption of the benchmarking audit",
+      "text": "Won adoption across 80 departments by routing authority rather than persuading each one: a senior mandate through the national cyber-security agency, with a nodal officer in every department answerable for closing findings.",
+      "core": "win :: adoption across 80 departments",
       "parts": [
-        "method! :: route :: authority rather than persuading 80 departments one at a time #Influencing without authority #Change management #Stakeholder management",
-        "list :: a secretary's letter to CERT-In, CERT-In directing the ministries and departments to onboard, each appointing a nodal officer answerable for closing the findings #CERT-In #Government stakeholder management #Accountability"
+        "method! :: route :: authority rather than persuading each one #Influencing without authority #Change management #Stakeholder management",
+        "list :: a senior mandate through the national cyber-security agency, with a nodal officer in every department answerable for closing findings #Government stakeholder management #Ownership"
       ],
       "tags": [
         "User adoption",
@@ -1054,11 +1104,12 @@
       "exclusive": [
         "ey-ivfrt-change"
       ],
-      "text": "Redesigned the Indian visa system (IVFRT 2.0) across airports, land ports and seaports, covering the process, the screens and testing, and consolidated fragmented visa, OCI and NRI services onto one platform.",
-      "core": "redesign :: the Indian visa system (IVFRT 2.0) across airports, land ports and seaports",
+      "text": "Redesigned a national immigration services platform across air, land and sea ports of entry (process, screens and testing), consolidating fragmented visa services onto one platform and managing the consultant team.",
+      "core": "redesign :: a national immigration services platform across air, land and sea ports of entry",
       "parts": [
-        "scope :: covering the process, the screens and testing #Business process re-engineering #User experience design #Software testing",
-        "and :: consolidate :: fragmented visa, OCI and NRI services onto one platform #Systems integration #Service design"
+        "detail :: process, screens and testing #Business process re-engineering #User experience design #Software testing",
+        "then :: consolidate :: fragmented visa services onto one platform #Systems integration #Service design",
+        "then :: manage :: the consultant team alongside business analysts, developers and designers #Team leadership #People management"
       ],
       "tags": [
         "User experience design",
@@ -1097,11 +1148,10 @@
       "role": "ey",
       "strength": 7,
       "src": "site",
-      "text": "Integrated 20+ sources (One District One Product, iGOT, e-Courts, MyScheme, Aadhaar services and income-tax verification) into a single citizen view for the National Portal of India, on a custom CMS built from scratch.",
-      "core": "integrate :: 20+ sources",
+      "text": "Integrated 20+ government services and data sources into a single citizen view for a national citizen-services portal, on a custom CMS built from scratch.",
+      "core": "integrate :: 20+ government services and data sources",
       "parts": [
-        "detail :: One District One Product, iGOT, e-Courts, MyScheme, Aadhaar services and income-tax verification",
-        "scope! :: into a single citizen view for the National Portal of India #GovTech",
+        "scope! :: into a single citizen view for a national citizen-services portal #GovTech",
         "outcome :: on a custom CMS built from scratch #Content management systems"
       ],
       "tags": [
@@ -1120,8 +1170,8 @@
       "exclusive": [
         "ey-dpr"
       ],
-      "text": "Wrote the DPR and RFP for a new version of the National Portal of India, a project of about Rs 23 crore, onboarded the vendor, then ran a second RFP for machine translation into 22 Indian languages with human review.",
-      "core": "write|author :: the DPR and RFP for a new version of the National Portal of India, a project of about Rs 23 crore",
+      "text": "Wrote the DPR and RFP for a multi-crore national citizen-services portal and onboarded the vendor, then ran a second RFP for machine translation into 22 Indian languages with human review.",
+      "core": "write|author :: the DPR and RFP for a multi-crore national citizen-services portal",
       "parts": [
         "and :: onboard :: the vendor #Vendor management",
         "then :: run :: a second RFP for machine translation into 22 Indian languages with human review #Localization #Natural language processing #RFP management #AI governance"
@@ -1173,11 +1223,11 @@
       "role": "ust",
       "strength": 7,
       "src": "site",
-      "text": "Designed and built Skillchain, a blockchain platform recording employee skills and qualifications (deployed one-click on Quorum with credentials issued as NFTs), and took it to a unit-wide pilot at EY.",
-      "core": "design and build :: Skillchain, a blockchain platform recording employee skills and qualifications",
+      "text": "Designed and built an enterprise blockchain platform recording employee skills and qualifications (one-click deployment on Quorum, credentials issued as NFTs) and took it to a unit-wide pilot at a global professional-services firm.",
+      "core": "design and build :: an enterprise blockchain platform recording employee skills and qualifications",
       "parts": [
-        "detail :: deployed one-click on Quorum with credentials issued as NFTs #Quorum #NFTs #Ethereum",
-        "and :: take :: it to a unit-wide pilot at EY #Phased rollout"
+        "detail :: one-click deployment on Quorum, credentials issued as NFTs #Quorum #NFTs #Ethereum",
+        "and :: take :: it to a unit-wide pilot at a global professional-services firm #Phased rollout"
       ],
       "tags": [
         "Blockchain",
@@ -1248,9 +1298,6 @@
       "parts": [
         "outcome! :: saving about £200,000 a year by the client's own calculation #Cost management"
       ],
-      "facts": [
-        "Visa chargebacks reconciled by hand on a legacy Unisys Mapper system for a UK-based BFSI client."
-      ],
       "tags": [
         "Process automation",
         "Payments",
@@ -1283,11 +1330,11 @@
       "role": "tcs",
       "strength": 6,
       "src": "site",
-      "text": "Built blockchain proofs of concept on Ethereum and Hyperledger Fabric, two of which reached production for external clients, and set up the first blockchain lab on TCS's own infrastructure.",
+      "text": "Built blockchain proofs of concept on Ethereum and Hyperledger Fabric, two of which reached production for external clients, and set up the company's first in-house blockchain lab.",
       "core": "build :: blockchain proofs of concept on Ethereum and Hyperledger Fabric",
       "parts": [
         "outcome! :: two of which reached production for external clients",
-        "and :: set up :: the first blockchain lab on TCS's own infrastructure #Blockchain #Infrastructure management"
+        "and :: set up :: the company's first in-house blockchain lab #Blockchain #Infrastructure management"
       ],
       "tags": [
         "Blockchain",
@@ -1303,8 +1350,8 @@
       "strength": 4,
       "src": "site",
       "patterns": "OC",
-      "text": "Negotiated the Mapper permissions exception the automation depended on with both vendor and client, rather than working around it.",
-      "core": "negotiate :: the Mapper permissions exception the automation depended on with both vendor and client",
+      "text": "Negotiated the system-permissions exception the automation depended on with both vendor and client, rather than working around it.",
+      "core": "negotiate :: the system-permissions exception the automation depended on with both vendor and client",
       "parts": [
         "scope :: rather than working around it"
       ],
@@ -1375,11 +1422,6 @@
     {
       "from": "the DPR and RFP",
       "to": "the detailed project report (DPR) and RFP",
-      "when": "private"
-    },
-    {
-      "from": "NIC's",
-      "to": "the National Informatics Centre's",
       "when": "private"
     }
   ],
