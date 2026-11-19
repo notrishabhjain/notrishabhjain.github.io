@@ -229,133 +229,132 @@ const UNIVERSAL_B = [
 ];
 
 const PROJECTS = [
-  { id:"cpc8", name:"8th CPC Demand Management System", client:"8th Central Pay Commission",
+  { id:"commission", name:"Commission Case-Management Platform", client:"A statutory commission (central government)",
     org:"BDO India", period:"2026", role:"Project Manager",
-    domain:"Government of India — pay commission", geo:"New Delhi",
-    record:["8 modules shipped in a ~4-week window with a 7-person team, running parallel module streams.",
-      "24-field demand data model and a 7-state workflow, Demand Creation through Commission placement.",
-      "15,000–20,000 memoranda and ~50,000 demands into production; role-based access across 50 officers.",
-      "Go-live coordinated across four external agencies with no shared reporting line.",
-      "Security audit certificate with zero re-audit cycles."],
+    domain:"Central government — statutory commission", geo:"New Delhi",
+    record:["Live in about a month against a date fixed in law, with a team of eight running parallel module streams.",
+      "A role-based workflow with a named officer at every step, from case creation to placement for decision.",
+      "Daily case intake up about twentyfold; the platform is sized for about ten times today's volume.",
+      "Go-live coordinated across four organisations with no shared reporting line.",
+      "External security audit passed before go-live."],
     qs:[
-      { id:"t1", q:"The four-week window came from a Pay Commission tenure that couldn't legally be extended. Who told you that date, and did anyone try to move it?", h:"Whether the constraint was truly immovable, or just presented that way." },
+      { id:"t1", q:"The fixed date came from a commission term set in law. Who told you that date, and did anyone try to move it?", h:"Whether the constraint was truly immovable, or just presented that way." },
       { id:"t2", q:"Parallel module streams instead of sequential phases — what specifically broke, or nearly broke, because of that choice?", h:"Parallelism buys time and costs integration. What did it cost here?" },
-      { id:"t3", q:"How did you arrive at 24 fields? What did someone want included that you kept out?", h:"A data model is a series of refusals." },
-      { id:"t4", q:"Four external agencies, no shared reporting line. Who actually had authority over them, and how did you get compliance without it?", h:"The single most transferable thing in the engagement — say how, concretely." },
+      { id:"t3", q:"How did you arrive at the case data model? What did someone want included that you kept out?", h:"A data model is a series of refusals." },
+      { id:"t4", q:"Four organisations, no shared reporting line. Who actually had authority over them, and how did you get compliance without it?", h:"The single most transferable thing in the engagement — say how, concretely." },
       { id:"t5", q:"Which dependency put the go-live date at most risk, and how did you handle it?", h:"And what you did with that knowledge afterwards." },
-      { id:"t6", q:"The 50 officers split 28 processing / 12 referred / 6 reviewing. Who decided that split, and did it survive contact with real usage?", h:"Role design is product design." },
+      { id:"t6", q:"Who decided how officers split across processing, referral and review roles, and did that split survive contact with real usage?", h:"Role design is product design." },
       { id:"t7", q:"“Zero licensed components” — a constraint imposed on you, or your choice? What did it rule out?", h:"Procurement, budget, or policy? And what you gave up." }
     ] },
-  { id:"ghci", name:"GHCI Digital Portal", client:"MNRE — National Green Hydrogen Mission",
+  { id:"certification", name:"Clean-Energy Certification Platform", client:"A central ministry — national clean-energy mission",
     org:"BDO India", period:"2026", role:"Project Manager · Delivery & UX Lead",
-    domain:"Government of India — energy certification", geo:"New Delhi",
-    record:["One of India's first green hydrogen certification registries.",
+    domain:"Central government — energy certification", geo:"New Delhi",
+    record:["A first-of-its-kind national certification registry, defined from a blank page.",
       "Certificate-versioning developer specification across four certificate types.",
-      "CERT-In-empanelled review: 48 of 51 findings closed pre-launch, 82/100 post-remediation SAST.",
-      "Went live; inaugurated by the minister at a public function.",
+      "Internal security review: over 90% of findings closed before the external audit.",
+      "Launched publicly on the date set.",
       "Phase 2 AI/ML scope now in procurement."],
     qs:[
       { id:"t1", q:"Certificate versioning across four types — what exactly breaks when an issued certificate is amended, and which approaches did you reject before settling?", h:"The rejected options are what make this a design decision rather than a task." },
-      { id:"t2", q:"Is there a settled legal definition of a green hydrogen certificate in India, or were you helping create the standard as you built the registry?", h:"Building to a standard and building the standard are very different claims." },
-      { id:"t3", q:"48 of 51 findings closed. What were the three, and who formally accepted that risk?", h:"Naming who signed the residual risk is the credible part." },
-      { id:"t4", q:"The minister inaugurated it on a fixed public date. What did you have to guarantee for that, and what was still incomplete behind the demo?", h:"Honest answer welcome — every launch has a behind-the-curtain." },
+      { id:"t2", q:"Is there a settled legal definition of the certificate, or were you helping create the standard as you built the registry?", h:"Building to a standard and building the standard are very different claims." },
+      { id:"t3", q:"Over 90% of findings closed before the audit. What were the rest, and who formally accepted that risk?", h:"Naming who signed the residual risk is the credible part." },
+      { id:"t4", q:"The launch was on a fixed public date. What did you have to guarantee for that, and what was still incomplete behind the demo?", h:"Honest answer welcome — every launch has a behind-the-curtain." },
       { id:"t5", q:"Did you write the Phase 2 AI/ML RFQ? What is that scope meant to do?", h:"Authoring procurement for AI scope is a distinctive credential." },
       { id:"t6", q:"Who are the actual users — producers, auditors, buyers, regulators? Did you meet or observe any of them?", h:"You're listed as UX lead; this is where that either lands or doesn't." }
     ] },
-  { id:"gev", name:"Wind Portfolio", client:"a global wind-energy OEM",
+  { id:"wind", name:"Wind Portfolio", client:"a global wind-energy company",
     org:"Infosys", period:"Nov 2024 – Jan 2026", role:"Project Manager · Product Owner · Scrum Master",
     domain:"Renewable energy — enterprise support & enhancement", geo:"Pune, India · US client",
-    record:["Loss-making business unit turned net-positive within 6 months — largest turnaround on the account.",
+    record:["Loss-making account turned to about 15% profit.",
       "99.9% SLA across ~50–55 support and enhancement applications.",
-      "20-person core delivery team plus a 15-person L1.5 layer triaging ~800 applications account-wide.",
+      "20-person core delivery team plus a 15-person L1.5 layer triaging applications account-wide.",
       "MTTR cut from 4 days to under 12 hours via repository migration and deployment automation.",
       "RACI matrices defined to remove ownership ambiguity; attrition and burnout reduced."],
     qs:[
-      { id:"t1", q:"The real numbers: what was the monthly loss when you took it over, and what was the position when it turned?", h:"Even a range or a percentage. This is your only P&L story and it currently has no figures." },
+      { id:"t1", q:"The real numbers: what was the monthly loss when you took it over, and what was the position when it turned?", h:"Even a range or a percentage. This is your only P&L story." },
       { id:"t2", q:"“Right-sizing” — how many people, over what period, and how was it actually handled? Did the client know before or after?", h:"Say it plainly. How someone handles this is what a hiring manager is really asking about." },
       { id:"t3", q:"Holding Product Owner and Scrum Master at the same time is normally treated as a conflict. How did you manage it, and did anyone object?", h:"A scrum-literate interviewer will ask this. Better to have the answer ready." },
       { id:"t4", q:"You held 99.9% across ~55 applications while the team shrank. What gave? What did you stop doing?", h:"Something always gives. Naming it is more credible than implying nothing did." },
       { id:"t5", q:"What was taking four days in the old MTTR, and what specifically removed it?", h:"The mechanism, not the outcome." },
-      { id:"t6", q:"The 15-person L1.5 layer covering ~800 applications — did you own it, share it, or simply depend on it?", h:"Worth being precise; “800 applications” reads as scope you owned." },
+      { id:"t6", q:"The 15-person L1.5 layer covering the wider account — did you own it, share it, or simply depend on it?", h:"Worth being precise about what you owned." },
       { id:"t7", q:"Hardware deployed globally under genuine 24×7 obligations. What was the worst incident on your watch, and how did it go?", h:"A real incident, told straight, is worth more than an SLA number." }
     ] },
-  { id:"crcs", name:"CRCS Portal", client:"Ministry of Cooperation",
+  { id:"registry", name:"National Registry Platform", client:"A central ministry — national registrar's office",
     org:"EY India", period:"2022 – 2024", role:"Senior Consultant",
-    domain:"Government of India — cooperatives registry", geo:"Delhi · national",
-    record:["A fully paper-based, offline office taken to a live national platform serving ~40 million members.",
-      "1,500–1,800 cooperative societies; BPR study run before any system design.",
-      "Legal and regulatory amendments proposed and subsequently enacted.",
-      "DPR and RFP authored; vendor onboarding and ministry-side oversight held.",
-      "Architecture later extended to build the Sahara Refund Portal."],
+    domain:"Central government — national regulatory registry", geo:"Delhi · national",
+    record:["A paper-based, offline office taken to a live national platform serving ~40 million members.",
+      "Process re-engineering study run before any system design.",
+      "Amendments to the governing statute proposed and subsequently enacted.",
+      "DPR and RFP authored; vendor onboarding and ministry-side oversight held."],
     qs:[
-      { id:"t1", q:"How does a consultant get a statute amended? Who did you have to convince, and what was the actual instrument — an Act amendment, a rule change, a notification?", h:"The most unusual thing on your entire resume, and it currently gets one line." },
+      { id:"t1", q:"How does a consultant get a statute amended? Who did you have to convince, and what was the actual instrument — an amendment to the Act, a rule change, a notification?", h:"The most unusual thing on your resume. Make it concrete." },
       { id:"t2", q:"How long from proposing the amendment to enactment — and what did you and the team do while waiting?", h:"The waiting is the interesting management problem." },
-      { id:"t3", q:"The BPR study came before any system design. What did it find that changed the design?", h:"A finding that changed a decision." },
+      { id:"t3", q:"The process study came before any system design. What did it find that changed the design?", h:"A finding that changed a decision." },
       { id:"t4", q:"You wrote the DPR and RFP, then held ministry-side oversight of the vendor delivering against them. What did you do when the vendor deviated?", h:"Sitting on the buyer's side of your own specification is a distinctive position." },
       { id:"t5", q:"40 million member records — where did that data come from, and what state was it in?", h:"Migration from paper at that scale is its own story." },
-      { id:"t6", q:"Sahara Refund Portal was built on the architecture. Were you involved, or did others build on your work?", h:"Worth being exact — the claim is currently ambiguous." }
+      { id:"t6", q:"Was the platform's architecture later reused for other systems? Were you involved, or did others build on your work?", h:"Worth being exact — the claim is currently ambiguous." }
     ] },
-  { id:"nesda", name:"NeSDA Benchmarking Framework", client:"NeGD / MeitY",
+  { id:"benchmark", name:"National Website Benchmarking Framework", client:"Central government digital-governance agency",
     org:"EY India", period:"2022 – 2024", role:"Senior Consultant",
-    domain:"Government of India — digital governance standards", geo:"Delhi · national, G20-calibrated",
-    record:["150+ parameter national website ranking framework co-built with IIT Delhi and IIM Indore.",
-      "Calibrated by benchmarking G20 government websites against Indian ones.",
-      "80+ government department and ministry websites standardised onto a common framework.",
-      "STQC certification, security audits and shared information architecture.",
-      "Now operated by NeSDA as the national ranking standard."],
+    domain:"Central government — digital governance standards", geo:"Delhi · national, internationally calibrated",
+    record:["150+ parameter national benchmarking framework for government websites, built with academic research partners.",
+      "Calibrated by benchmarking leading international government websites against Indian ones.",
+      "80+ ministry and department websites standardised onto a common framework.",
+      "Quality certification, security audits and a shared information architecture.",
+      "Now operated as the national benchmarking standard."],
     qs:[
-      { id:"t1", q:"Working alongside IIT Delhi and IIM Indore — what was your role against theirs? Who owned the framework?", h:"Co-built with two premier institutions needs the division of labour stated, or it reads as borrowed credibility." },
-      { id:"t2", q:"How do you get 80+ departments to adopt anything? What was the lever — a mandate, ranking pressure, funding, or persuasion?", h:"Adoption without authority again — a different mechanism from the CPC one." },
-      { id:"t3", q:"What did the G20 comparison actually show, and did it change the parameters?", h:"A finding, and what it changed." },
+      { id:"t1", q:"Working alongside the academic research partners — what was your role against theirs? Who owned the framework?", h:"Co-built with research institutions needs the division of labour stated, or it reads as borrowed credibility." },
+      { id:"t2", q:"How do you get 80+ departments to adopt anything? What was the lever — a mandate, ranking pressure, funding, or persuasion?", h:"Adoption without authority again — a different mechanism from the commission one." },
+      { id:"t3", q:"What did the international comparison actually show, and did it change the parameters?", h:"A finding, and what it changed." },
       { id:"t4", q:"What happens to a department that scores badly? Does the ranking carry any consequence?", h:"Whether you built a scoreboard or a lever." },
       { id:"t5", q:"150+ parameters is a lot. How were they weighted, and who contested the weighting?", h:"Weighting is where the politics lives." }
     ] },
-  { id:"ivfrt", name:"IVFRT 2.0", client:"MHA — Bureau of Immigration",
+  { id:"immigration", name:"National Immigration Services Platform", client:"A central ministry's immigration authority",
     org:"EY India", period:"2022 – 2024", role:"Senior Consultant · UI/UX and process re-engineering",
-    domain:"Government of India — immigration and border control",
-    geo:"National — ICP, India Post, land ports, seaports, airports",
-    record:["National visa and foreigner-tracking system revamp.",
-      "Covered FRRO processes, MRZ codes, land ports and airports.",
-      "Implemented across ICP, India Post, land ports and seaports.",
+    domain:"Central government — immigration services",
+    geo:"National — airports, land ports, seaports and other channels",
+    record:["National visa and foreign-national registration system revamp.",
+      "Covered registration-office processes, machine-readable travel documents, land ports and airports.",
+      "Implemented across several entry and service channels.",
       "UI/UX and process re-engineering led."],
     qs:[
       { id:"t0", q:"First — what can you say about this publicly at all? Any security classification, restriction, or subject to keep off a public site?", h:"Answer this one before the rest. I'll respect whatever line you draw." },
-      { id:"t1", q:"What was wrong with IVFRT 1.0 from the officer's point of view?", h:"The user problem, in their words if you have them." },
-      { id:"t2", q:"Did you observe FRRO officers or travellers actually working? What did you see that changed the design?", h:"You're credited with UI/UX — field observation is what makes that real." },
-      { id:"t3", q:"MRZ codes, land ports, seaports, ICP, India Post — which integration was hardest, and why?", h:"Different ports, different infrastructure, different institutions." },
+      { id:"t1", q:"What was wrong with the previous version from the officer's point of view?", h:"The user problem, in their words if you have them." },
+      { id:"t2", q:"Did you observe registration officers or travellers actually working? What did you see that changed the design?", h:"You're credited with UI/UX — field observation is what makes that real." },
+      { id:"t3", q:"Machine-readable documents, land ports, seaports, other channels — which integration was hardest, and why?", h:"Different ports, different infrastructure, different institutions." },
       { id:"t4", q:"What does “implemented across” mean here — piloted, partially rolled out, or fully live at all of them?", h:"Precision protects you in interview." }
     ] },
-  { id:"npi", name:"National Portal of India v2.2", client:"Government of India",
+  { id:"citizen-portal", name:"National Citizen-Services Portal", client:"Central government",
     org:"EY India", period:"2022 – 2024", role:"Senior Consultant",
-    domain:"Government of India — citizen portal", geo:"National",
+    domain:"Central government — citizen portal", geo:"National",
     record:["DPR and RFP authored; vendor onboarding run.", "Multi-source integration strategy defined."],
     qs:[
-      { id:"t1", q:"What is the National Portal's actual job, and what was v2.2 changing about it?", h:"This entry is the thinnest on your site — it needs a reason to exist." },
+      { id:"t1", q:"What is the portal's actual job, and what was the new version changing about it?", h:"This entry is the thinnest on your site — it needs a reason to exist." },
       { id:"t2", q:"Multi-source integration — how many sources, of what kind, and who owned them?", h:"Integrating across departments that don't report to each other is the recurring theme of your career." },
       { id:"t3", q:"Did it get built? What happened after you handed over the DPR and RFP?", h:"If it stalled, that's also worth knowing — it changes how we position it." },
-      { id:"t4", q:"Is there more to this engagement than the two lines currently on the site, or was it genuinely a smaller piece of work?", h:"Perfectly fine if it was. We may fold it into the NeSDA entry rather than let it stand alone." }
+      { id:"t4", q:"Is there more to this engagement than the two lines currently on the site, or was it genuinely a smaller piece of work?", h:"Perfectly fine if it was. We may fold it into the benchmarking entry rather than let it stand alone." }
     ] },
-  { id:"skill", name:"Skillchain", client:"EYGDS",
+  { id:"credentials", name:"Enterprise Blockchain Credentialing Platform", client:"A global professional-services firm",
     org:"UST Global", period:"Jun 2021 – Apr 2022", role:"Software Engineering Lead — Blockchain Architect",
     domain:"Enterprise blockchain — credentials and background verification", geo:"Noida, India",
-    record:["Blockchain platform recording employee skills so background verification travels between companies.",
+    record:["Blockchain platform recording employee skills so background verification can travel between companies.",
       "NFT-based certification issuance.",
-      "Designed and built single-handedly; driven to company-wide adoption.",
+      "Designed and built the platform.",
       "User research and feedback loops run alongside the build rather than stopping at a POC."],
     qs:[
-      { id:"t1", q:"You built it solo and got company-wide adoption. How? Who had to say yes, and what convinced them?", h:"Adoption is the achievement here, not the build." },
+      { id:"t1", q:"Who had to say yes for it to be used beyond a proof of concept, and what convinced them?", h:"Adoption is the achievement here, not the build." },
       { id:"t2", q:"NFT-based credentials in 2021–22 — your call or someone else's? Who challenged it, and what was their argument?", h:"A defensible answer is worth a lot; an indefensible one is worth knowing before an interviewer finds it." },
-      { id:"t3", q:"Verification that travels between companies needs other companies to trust it. Did that ever work, or was it internal to EY only?", h:"The claim is currently broader than the evidence might support." },
+      { id:"t3", q:"Verification that travels between companies needs other companies to trust it. Did that ever work, or was it internal to the client only?", h:"The claim may be broader than the evidence supports." },
       { id:"t4", q:"Is it still running?", h:"" },
       { id:"t5", q:"This sits on your site as engineering. Was there a product or delivery dimension you're not claiming?", h:"You ran research, adoption and build. That's closer to product ownership than architecture." }
     ] },
-  { id:"tcs", name:"Mainframe Automation & Blockchain POCs", client:"UK-based BFSI client",
+  { id:"mainframe", name:"Mainframe Automation & Blockchain POCs", client:"UK-based BFSI client",
     org:"Tata Consultancy Services", period:"Oct 2015 – May 2020", role:"IT Analyst",
     domain:"Banking & financial services", geo:"Gurugram, India · UK client",
     record:["~£200,000 in client savings from mainframe automation removing manual, recurring-cost processes.",
       "Reported defects cut 40% by optimising dispute resolution workflows.",
       "20+ man-hours saved weekly through automated reporting on Unisys Mainframe.",
-      "Ethereum and Hyperledger Fabric POCs, several reaching production or adoption in TCS blockchain labs."],
+      "Ethereum and Hyperledger Fabric POCs, several reaching production or adoption in the employer's blockchain labs."],
     qs:[
       { id:"t1", q:"The ~£200,000 — how was it calculated, and by whom? Your number or the client's?", h:"A number the client certified is worth far more than one you estimated." },
       { id:"t2", q:"What was wrong with the dispute resolution workflow that made defects drop 40%?", h:"The defect reduction implies a diagnosis. What was it?" },
@@ -371,25 +370,25 @@ const AI_THEMES = [
   { id:"ai-shipped", solo:true, name:"AI already inside your delivered systems", client:"Across engagements",
     org:"Gap analysis", period:"2015 – 2026", role:"Retrospective",
     domain:"Finding applied-AI credentials you already hold", geo:"—",
-    record:["National Portal: a custom CMS with search improvements and AI features layered on top.",
-      "National Portal: translation into 22 Indian languages, procured as a second RFP and vendor.",
-      "GHCI: Phase 2 AI/ML scope now in procurement.",
-      "8th CPC: ~50,000 demands requiring examination, referral and de-duplication.",
-      "CRCS: ~40 million member records migrated from paper."],
+    record:["Citizen portal: a custom CMS with search improvements and AI features layered on top.",
+      "Citizen portal: translation into many Indian languages, procured as a second RFP and vendor.",
+      "Certification platform: Phase 2 AI/ML scope now in procurement.",
+      "Commission platform: a large caseload requiring examination, referral and de-duplication.",
+      "Registry: ~40 million member records migrated from paper."],
     qs:[
-      { id:"t1", q:"The National Portal had search improvements and AI features on top of the custom CMS. What were they concretely — semantic search, recommendations, a chatbot, summarisation? Who decided to include them?", h:"This is one clause on your site today. If it was real AI scope you specified, it is the earliest applied-AI credential you hold." },
-      { id:"t2", q:"The 22-language translation went out as a separate RFP and vendor. Machine translation, human, or hybrid — and how did you judge whether the output was good enough to publish nationally?", h:"Procuring MT and defining 'good enough' across 22 languages is an applied-AI quality decision, whether or not anyone called it that at the time." },
-      { id:"t3", q:"Across ~50,000 demands, was anything automated in classifying, de-duplicating, routing or matching them — or was it deliberately kept rule-based and manual?", h:"Fuzzy matching or classification at that volume is ML work. A deliberate choice to stay rule-based is an equally good answer, if you say why." },
-      { id:"t4", q:"Did any engagement use OCR, document extraction, entity resolution or fuzzy name matching? CRCS moving 40 million member records off paper is the obvious candidate.", h:"Paper-to-digital at that scale rarely happens without extraction technology. If it did, say what and whose." },
+      { id:"t1", q:"The citizen portal had search improvements and AI features on top of the custom CMS. What were they concretely — semantic search, recommendations, a chatbot, summarisation? Who decided to include them?", h:"This is one clause on your site today. If it was real AI scope you specified, it is the earliest applied-AI credential you hold." },
+      { id:"t2", q:"The multilingual translation went out as a separate RFP and vendor. Machine translation, human, or hybrid — and how did you judge whether the output was good enough to publish nationally?", h:"Procuring MT and defining 'good enough' across many languages is an applied-AI quality decision, whether or not anyone called it that at the time." },
+      { id:"t3", q:"Across the commission's caseload, was anything automated in classifying, de-duplicating, routing or matching them — or was it deliberately kept rule-based and manual?", h:"Fuzzy matching or classification at that volume is ML work. A deliberate choice to stay rule-based is an equally good answer, if you say why." },
+      { id:"t4", q:"Did any engagement use OCR, document extraction, entity resolution or fuzzy name matching? The registry moving 40 million member records off paper is the obvious candidate.", h:"Paper-to-digital at that scale rarely happens without extraction technology. If it did, say what and whose." },
       { id:"t5", q:"Has a client or ministry ever asked you for AI scope that you advised against, or scoped out? What was your argument?", h:"Declining AI credibly is a stronger manager signal than enthusiasm for it." },
       { id:"t6", q:"Is there AI or ML anywhere in your work that we have never discussed, because it did not seem relevant to a project-manager profile?", h:"Catch-all. Worth one deliberate pass through your memory — it is the cheapest evidence available to us." }
     ] },
-  { id:"ai-ghci2", solo:true, name:"GHCI Phase 2 — your AI mandate", client:"MNRE — National Green Hydrogen Mission",
+  { id:"ai-phase2", solo:true, name:"Certification Phase 2 — your AI mandate", client:"A central ministry — national clean-energy mission",
     org:"BDO India", period:"2026 – ", role:"Project Manager",
     domain:"The only forward-looking AI scope you own", geo:"New Delhi",
     record:["Phase 2 AI/ML scope is in procurement.",
       "You authored the certificate-versioning specification for Phase 1.",
-      "You hold Project Manager and Delivery & UX Lead on the registry."],
+      "You hold Project Manager and Delivery & UX Lead on the platform."],
     qs:[
       { id:"t1", q:"What is the Phase 2 AI/ML scope actually meant to do? Name the decisions it will automate or assist.", h:"The single most valuable unknown in your profile for these roles. Everything else you have is retrospective; this is forward-looking and it is yours." },
       { id:"t2", q:"Did you write that scope? How much of the requirement, the evaluation criteria and the technical approach is yours versus someone else's?", h:"Authoring AI procurement for a national mission is a credential very few project managers can claim." },
@@ -398,25 +397,25 @@ const AI_THEMES = [
       { id:"t5", q:"Did you consider and reject an AI approach for either phase? What, and why?", h:"The rejected option is what makes it a decision rather than a purchase." },
       { id:"t6", q:"Timeline, budget range, procurement route — and will you run the delivery if it lands?", h:"Whether you will actually be accountable for an AI delivery changes how far we can push this positioning." }
     ] },
-  { id:"ai-eval", solo:true, name:"Evaluation, measurement and model risk", client:"NeSDA · GHCI · 8th CPC",
+  { id:"ai-eval", solo:true, name:"Evaluation, measurement and model risk", client:"Benchmarking · certification · commission",
     org:"Cross-cutting", period:"2022 – 2026", role:"Retrospective",
     domain:"Translating rubric and assurance work into evaluation language", geo:"—",
-    record:["NeSDA: 150+ parameters across 10–11 categories, AHP-weighted, held to objective or yes/no so a manual auditor scores identically to the framework.",
-      "GHCI: 48 of 51 CERT-In findings closed, 82/100 post-remediation SAST.",
-      "8th CPC: security audit certificate with zero re-audit cycles."],
+    record:["Benchmarking: 150+ parameters across 10–11 categories, AHP-weighted, held to objective or yes/no so a manual auditor scores identically to the framework.",
+      "Certification: over 90% of internal security findings closed before the external audit.",
+      "Commission platform: external security audit passed before go-live."],
     qs:[
       { id:"t1", q:"How did you validate the AHP weights? Did you ever test whether two auditors scoring the same site agreed — and what was the spread?", h:"Inter-rater agreement is exactly what an eval harness measures. If you did this, you have done evaluation design without calling it that, and it is your strongest latent asset for these roles." },
       { id:"t2", q:"What happened when a parameter turned out to be ambiguous in the field? How did you change it, and how fast?", h:"Iterating a rubric on observed failure is the evaluation loop, in the same shape the AI portfolios use." },
       { id:"t3", q:"Did the framework ever produce a score that was clearly wrong — a good site scoring badly, or a poor one scoring well? How was that dispute settled?", h:"False positives and negatives, and who adjudicates them, is the hardest part of any evaluation system. Interviewers for these roles ask about it directly." },
       { id:"t4", q:"Did departments try to game their benchmarking score? What did they do, and how did you close it?", h:"Gaming a benchmark is adversarial evaluation. If it happened, that story is worth more than the framework itself." },
-      { id:"t5", q:"Government assurance runs on CERT-In, VAPT and STQC. Does any of it currently cover an AI system, in your experience — and if not, what fills the gap?", h:"A grounded view on whether Indian public-sector assurance handles models is a genuinely scarce perspective, and you are one of few people positioned to hold it." },
-      { id:"t6", q:"Citizen data at CRCS and IVFRT scale sits under DPDP. Has data protection ever constrained what could be built — and would it constrain an AI feature?", h:"Data governance is half of applied AI in the public sector." }
+      { id:"t5", q:"Government assurance runs on empanelled security audits, VAPT and quality certification. Does any of it currently cover an AI system, in your experience — and if not, what fills the gap?", h:"A grounded view on whether Indian public-sector assurance handles models is a genuinely scarce perspective, and you are one of few people positioned to hold it." },
+      { id:"t6", q:"Citizen data at registry and immigration scale sits under DPDP. Has data protection ever constrained what could be built — and would it constrain an AI feature?", h:"Data governance is half of applied AI in the public sector." }
     ] },
   { id:"ai-practice", solo:true, name:"Your hands-on AI practice today", client:"—",
     org:"Current", period:"Now", role:"Honest calibration",
     domain:"What you can actually do, as against what you have managed", geo:"—",
     record:["Seven years hands-on as engineer and blockchain architect before moving into delivery leadership.",
-      "Built Skillchain on Quorum with credentials issued as NFTs.",
+      "Built an enterprise blockchain credentialing platform on Quorum, with credentials issued as NFTs.",
       "You have said you use Claude across your current projects."],
     qs:[
       { id:"t1", q:"What do you personally use AI for in a working week, concretely — and what has changed in how your team works because of it?", h:"Running a delivery organisation with AI in the loop is current, first-hand evidence. Name the tools, the tasks, and what you stopped doing." },
@@ -465,6 +464,42 @@ function load() {
     const raw = localStorage.getItem(KEY);
     if (raw) answers = JSON.parse(raw) || Object.create(null);
   } catch (e) { answers = Object.create(null); }
+}
+
+/* Engagements were renamed when the portfolio's client details were made generic. Answers saved
+   under an earlier engagement key are moved to its new key. The earlier keys are stored only as
+   SHA-256 fingerprints, so the old names never appear in this page. */
+const RENAMED = {
+  "529e7166985425517d0a5dbdb043ba25cb0d8ecac0efb8fd20cb5809b88a61b3": "commission",
+  "2eaf9a402079ce910c20a507ac4c22377c63c1a1ed9a056330abf20c49203c4c": "certification",
+  "3a356023c2c2440797bd633fabf1731010c61ff2235176363aba035b9bd6aea2": "wind",
+  "7fecb4c613875fb890748d66dadabfefab510dca28e8d00a57dfad0e06f203ce": "registry",
+  "62c03b96dcdf0944af43d542aacbc94e054000cd94825ab46845099caa247464": "benchmark",
+  "781453aa1e12de49048a7aa26100fa01fa00d1c9a73de961cf63e8fe4d8ba3ae": "immigration",
+  "3c1b5e5f869a0cec9725a2b7a702d763fa045af98af8bed0f8e963a97e38d2fc": "citizen-portal",
+  "9c53c074d7ac6a2728b638ac1f376c5fa9eb8f71603017c3ea638c2fd40548df": "credentials",
+  "06b5472c16feae4ceaadcf836ff6fc198328b7d8a1ebf2b4c93f68003b2e0500": "mainframe",
+  "6dcc9a977f022307d093615741b7a793d0ddd4f01d8eac6dbad44f538ada0832": "ai-phase2"
+};
+const KNOWN = () => new Set(PROJECTS.map(p => p.id));
+async function migrate() {
+  const known = KNOWN();
+  const old = Object.keys(answers).filter(k => !known.has(k));
+  if (!old.length || !(window.crypto && crypto.subtle)) return false;
+  let moved = false;
+  for (const k of old) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k));
+    const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+    const to = RENAMED[hex];
+    if (!to) continue;
+    const src = answers[k] || {}, dst = answers[to] = answers[to] || {};
+    for (const q of Object.keys(src)) if (!filled(dst[q])) dst[q] = src[q];
+    delete answers[k]; moved = true;
+  }
+  return moved;
+}
+function afterMigrate() {
+  migrate().then(moved => { if (moved) { save(); renderIndex(); renderPanel(); } }).catch(() => {});
 }
 
 function save() {
@@ -554,6 +589,13 @@ function asMarkdown() {
     out.push('## ' + p.name, '*' + p.org + ' · ' + p.client + ' · ' + p.period + ' · ' + p.role + '*', '');
     got.forEach(q => { out.push('**Q: ' + q.q + '**', '', mine[q.id].trim(), ''); });
   });
+  const known = KNOWN();
+  Object.keys(answers).filter(k => !known.has(k)).forEach(k => {
+    const got = Object.entries(answers[k] || {}).filter(([, v]) => filled(v));
+    if (!got.length) return;
+    out.push('## Earlier answers (' + k + ')', '');
+    got.forEach(([q, v]) => { out.push('**' + q + '**', '', v.trim(), ''); });
+  });
   if (out.length === 4) out.push('_(nothing answered yet)_');
   return out.join('\n');
 }
@@ -601,7 +643,7 @@ el('#btnImport').addEventListener('click', () => {
       try {
         const parsed = JSON.parse(el('#sheetBox').value);
         if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('shape');
-        answers = parsed; save(); renderIndex(); renderPanel();
+        answers = parsed; save(); renderIndex(); renderPanel(); afterMigrate();
         el('#sheet').hidden = true;
         status('Restored from backup.', 'ok');
       } catch (err) {
@@ -615,6 +657,7 @@ el('#btnImport').addEventListener('click', () => {
 load();
 renderIndex();
 renderPanel();
+afterMigrate();
 status(PROJECTS.reduce((n,p) => n + countFor(p), 0)
   ? 'Earlier answers loaded from this browser.' : 'Ready — answers save as you type.',
   PROJECTS.reduce((n,p) => n + countFor(p), 0) ? 'ok' : '');
