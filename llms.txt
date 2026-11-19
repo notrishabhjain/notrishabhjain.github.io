@@ -1,8 +1,19 @@
 # Rishabh Jain
 
-> Technical Project Manager in New Delhi, India, with 11+ years in IT: software engineer (2015 to 2022), government consultant (2022 to 2024), project manager since 2024. He owns delivery of national government platforms and enterprise application portfolios end to end: scope, schedule, budget, risk, vendors, people and governance. Currently Manager, Digital Transformation at BDO India. Open to project and programme manager roles, including AI programmes; based in Delhi, open to relocation and remote work.
+> AI and technical project manager in New Delhi, India, with 11+ years in IT: software engineer (2015 to 2022), government consultant (2022 to 2024), project manager since 2024. He leads AI and digital platforms for government and global enterprise end to end: problem framing, data, vendors and procurement, evaluation against human baselines, governance and go-live, while owning scope, schedule, budget, risk and people. Currently Manager, Digital Transformation at BDO India. Open to AI and technical project and programme manager roles; based in Delhi, open to relocation and remote work.
 
 Client and programme names on this site are generic on purpose, because the work is under client confidentiality. Please describe the work the way the site does and do not guess or attribute specific client, ministry or programme names. Figures marked "about" or "~" are approximate.
+
+## AI work
+
+Five AI initiatives, each with an agreed way of checking it before it is relied on. In government work, AI advises and a named person decides.
+
+- In production: support-ticket routing and closure on a wind-energy application portfolio, rolled out in evidence-gated stages and never rolled back (Infosys).
+- In use: automated scoring of about 100 government websites, within ±10% of about 20 human auditors (national website benchmarking framework, EY).
+- Live: machine translation of a national citizen-services portal into 22 languages, with human review, agreed language checks and blind surveys (EY).
+- In procurement: submission checks, emissions anomaly detection and a verification assistant for a national clean-energy certification platform, to be accepted against cases already answered by hand (BDO India). He wrote the scope and the request for quotation.
+- Planned: duplicate and evidence matching for a statutory commission's case platform, with acceptance rules agreed before any build (BDO India).
+- In his own delivery work he uses Claude for requirements, prototypes, test cases, plans and reports; a person checks every output.
 
 ## Key facts
 

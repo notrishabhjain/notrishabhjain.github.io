@@ -2,16 +2,28 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Rishabh Jain",
-    "label": "Technical Project Manager",
-    "tagline": "Engineer first, then government consultant, now project manager: 11+ years taking national platforms and enterprise portfolios from the first meeting to go-live.",
-    "headline": "Project Manager  |  Government and enterprise digital platforms  |  Delivery, governance and AI scoping",
+    "label": "AI & Technical Project Manager",
+    "tagline": "Engineer turned project manager: 11+ years from production code to national programmes, leading AI and digital platforms for government and global enterprise.",
+    "headline": "AI & Technical Project Manager  |  Government and enterprise platforms  |  AI delivery and governance",
     "email": "rishabh.jain@outlook.in",
     "url": "https://notrishabhjain.github.io/",
-    "summary": "Project Manager with 11+ years in IT: software engineering first, then government consulting, now project and programme management. Owns delivery end to end (scope, schedule, budget, risk, vendors and people) on national government platforms and enterprise application portfolios, from requirements to go-live and beyond. Holds fixed dates by re-planning early, runs governance across organisations that do not report to each other, and keeps AI advisory, evidenced and accountable. Open to project and programme manager roles, including AI programmes.",
-    "location": { "city": "New Delhi", "countryCode": "IN", "region": "Delhi" },
+    "summary": "AI and technical project manager with 11+ years in IT: software engineering first, then government consulting, now project and programme management. Leads AI and digital platforms for government and global enterprise end to end: problem framing, data, vendors and procurement, evaluation against human baselines, governance and go-live, while owning scope, schedule, budget, risk and people. AI work spans support-ticket routing in production, machine translation and automated website scoring in live use, and an advisory AI layer for a national certification platform in procurement. Open to AI and technical project and programme manager roles.",
+    "location": {
+      "city": "New Delhi",
+      "countryCode": "IN",
+      "region": "Delhi"
+    },
     "profiles": [
-      { "network": "LinkedIn", "username": "notrishabhjain", "url": "https://www.linkedin.com/in/notrishabhjain/" },
-      { "network": "GitHub", "username": "notrishabhjain", "url": "https://github.com/notrishabhjain" }
+      {
+        "network": "LinkedIn",
+        "username": "notrishabhjain",
+        "url": "https://www.linkedin.com/in/notrishabhjain/"
+      },
+      {
+        "network": "GitHub",
+        "username": "notrishabhjain",
+        "url": "https://github.com/notrishabhjain"
+      }
     ]
   },
   "work": [
@@ -97,20 +109,115 @@
     }
   ],
   "education": [
-    { "institution": "IMT CDL, Ghaziabad", "studyType": "PGDM (Post Graduate Diploma in Management)", "area": "Management", "endDate": "2023" },
-    { "institution": "UPTU, Lucknow", "studyType": "B.Tech", "area": "Computer Science", "endDate": "2015" }
+    {
+      "institution": "IMT CDL, Ghaziabad",
+      "studyType": "PGDM (Post Graduate Diploma in Management)",
+      "area": "Management",
+      "endDate": "2023"
+    },
+    {
+      "institution": "UPTU, Lucknow",
+      "studyType": "B.Tech",
+      "area": "Computer Science",
+      "endDate": "2015"
+    }
   ],
   "certificates": [
-    { "name": "Certified Scrum Master" },
-    { "name": "Project Management Certificate", "issuer": "Google" }
+    {
+      "name": "Certified Scrum Master"
+    },
+    {
+      "name": "Project Management Certificate",
+      "issuer": "Google"
+    }
   ],
   "skills": [
-    { "name": "Project and programme management", "keywords": ["Agile", "Scrum", "hybrid delivery", "planning and scheduling", "scope and change control", "risk and dependency management", "budgeting and P&L", "vendor management", "stakeholder management", "RACI"] },
-    { "name": "Governance and quality", "keywords": ["steering committees", "status reporting", "escalation", "UAT", "release management", "VAPT and SAST", "external security audits"] },
-    { "name": "Product and requirements", "keywords": ["BRD", "SRS", "RFP", "DPR", "process re-engineering", "workflow design", "AI scope definition"] },
-    { "name": "Technology", "keywords": ["React", "Node.js", "MongoDB", "PostgreSQL", "REST APIs", "AWS", "GitHub Actions", "Hyperledger Fabric", "Ethereum"] },
-    { "name": "Government standards", "keywords": ["Parichay SSO", "Aadhaar eSign", "GIGW", "WCAG 2.1 AA", "STQC"] },
-    { "name": "Tools", "keywords": ["Jira", "Confluence", "MS Project", "Figma", "GitHub", "Claude"] }
+    {
+      "name": "Applied AI",
+      "keywords": [
+        "AI delivery lifecycle",
+        "problem framing",
+        "evaluation against human baselines",
+        "golden datasets",
+        "human-in-the-loop guardrails",
+        "AI vendor procurement",
+        "staged rollout",
+        "Claude"
+      ]
+    },
+    {
+      "name": "Project and programme management",
+      "keywords": [
+        "Agile",
+        "Scrum",
+        "hybrid delivery",
+        "planning and scheduling",
+        "scope and change control",
+        "risk and dependency management",
+        "budgeting and P&L",
+        "vendor management",
+        "stakeholder management",
+        "RACI"
+      ]
+    },
+    {
+      "name": "Governance and quality",
+      "keywords": [
+        "steering committees",
+        "status reporting",
+        "escalation",
+        "UAT",
+        "release management",
+        "VAPT and SAST",
+        "external security audits"
+      ]
+    },
+    {
+      "name": "Product and requirements",
+      "keywords": [
+        "BRD",
+        "SRS",
+        "RFP",
+        "DPR",
+        "process re-engineering",
+        "workflow design",
+        "AI scope definition"
+      ]
+    },
+    {
+      "name": "Technology",
+      "keywords": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "PostgreSQL",
+        "REST APIs",
+        "AWS",
+        "GitHub Actions",
+        "Hyperledger Fabric",
+        "Ethereum"
+      ]
+    },
+    {
+      "name": "Government standards",
+      "keywords": [
+        "Parichay SSO",
+        "Aadhaar eSign",
+        "GIGW",
+        "WCAG 2.1 AA",
+        "STQC"
+      ]
+    },
+    {
+      "name": "Tools",
+      "keywords": [
+        "Jira",
+        "Confluence",
+        "MS Project",
+        "Figma",
+        "GitHub"
+      ]
+    }
   ],
   "meta": {
     "canonical": "https://notrishabhjain.github.io/resume.json",
