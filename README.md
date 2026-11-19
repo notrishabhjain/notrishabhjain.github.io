@@ -12,5 +12,9 @@ anything committed here is publicly fetchable.
 - `/method/`, `/ai/`, `/notes/`, `/about/`
 - `assets/share/`: share cards and one-page PDFs
 - `files/`: résumé downloads
+- `resume.json`: the résumé in JSON Resume format, and the single source for `/resume/` and the PDF.
+  Edit it, then run `node tools/build-resume.mjs` (it refuses confidential terms and phone numbers)
+- `llms.txt`: a plain summary of the site for AI assistants and agents; keep it in step with the pages
+- Every public page carries schema.org structured data (Person, ProfilePage, Article and so on)
 - `dossier/`: private, noindex working page
 - `tailor/`: rule-based résumé tailoring tool (no AI), noindex and unlinked; see `tailor/README.md`
