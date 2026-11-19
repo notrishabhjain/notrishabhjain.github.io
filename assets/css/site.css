@@ -669,7 +669,7 @@ details.more .more-body{padding:clamp(16px,3vw,28px);border-top:1px solid var(--
 .hx-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:center}
 .hx-eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--hx-accent);display:flex;align-items:center;gap:10px;line-height:1.5}
 .hx-eyebrow i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--hx-accent);box-shadow:0 0 0 5px rgba(63,208,184,.16)}
-.hx h1{font-family:var(--font-display);font-weight:450;font-size:clamp(2.4rem,4.7vw,4.1rem);line-height:1.04;letter-spacing:-.03em;margin:18px 0 0;color:#EDEBE6;text-wrap:balance}
+.hx h1{font-family:var(--font-display);font-weight:450;font-size:clamp(2.3rem,4.3vw,3.7rem);line-height:1.05;letter-spacing:-.03em;margin:18px 0 0;color:#EDEBE6;text-wrap:balance}
 .hx h1 em{font-style:italic;color:var(--hx-accent)}
 .hx-sub{margin-top:22px;font-size:clamp(1.03rem,1.4vw,1.18rem);line-height:1.62;color:var(--hx-soft);max-width:36em}
 .hx-sub b{color:#EDEBE6;font-weight:600}
