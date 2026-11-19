@@ -35,27 +35,31 @@
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape') { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); } });
   }
 
-  /* reveal: only elements below the fold are hidden, so nothing flashes on load */
+  /* Reveal and draw/grow animations. Everything is visible on load; the animations are armed
+     only once a person scrolls, and only for what is still below the viewport at that moment.
+     Crawlers, link previews and AI agents that capture the page without scrolling see it all. */
   var hasIO = 'IntersectionObserver' in window;
-  var vh = window.innerHeight || 800;
   var rvs = [].slice.call(d.querySelectorAll('.rv'));
+  var anim = [].slice.call(d.querySelectorAll('.draw,.grow,.growy'));
+  anim.forEach(function (el) { el.classList.add('in'); });
   if (hasIO && !reduce) {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.remove('pre'); io.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    rvs.forEach(function (el) {
-      if (el.getBoundingClientRect().top > vh * 0.95) { el.classList.add('pre'); io.observe(el); }
-    });
-  }
-
-  /* draw / grow animations for figures */
-  var anim = [].slice.call(d.querySelectorAll('.draw,.grow,.growy'));
-  if (hasIO && !reduce) {
     var io2 = new IntersectionObserver(function (es) {
       es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io2.unobserve(en.target); } });
     }, { threshold: 0.2 });
-    anim.forEach(function (el) { io2.observe(el); });
-  } else { anim.forEach(function (el) { el.classList.add('in'); }); }
+    var armed = false;
+    var arm = function () {
+      if (armed) return;
+      armed = true;
+      var vh = window.innerHeight || 800;
+      rvs.forEach(function (el) { if (el.getBoundingClientRect().top > vh * 0.95) { el.classList.add('pre'); io.observe(el); } });
+      anim.forEach(function (el) { if (el.getBoundingClientRect().top > vh) { el.classList.remove('in'); io2.observe(el); } });
+      ['scroll', 'wheel', 'touchmove', 'keydown'].forEach(function (t) { window.removeEventListener(t, arm); });
+    };
+    ['scroll', 'wheel', 'touchmove', 'keydown'].forEach(function (t) { window.addEventListener(t, arm, { passive: true }); });
+  }
 
   /* background glow and card sheen follow the pointer */
   if (!reduce && window.matchMedia && matchMedia('(hover:hover)').matches) {

@@ -1,0 +1,228 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Rishabh Jain",
+    "label": "AI & Technical Project Manager",
+    "tagline": "Engineer turned project manager: 11+ years from production code to national programmes, leading AI and digital platforms for government and global enterprise.",
+    "headline": "AI & Technical Project Manager  |  Government and enterprise platforms  |  AI delivery and governance",
+    "email": "rishabh.jain@outlook.in",
+    "url": "https://notrishabhjain.github.io/",
+    "summary": "AI and technical project manager with 11+ years in IT: software engineering first, then government consulting, now project and programme management. Leads AI and digital platforms for government and global enterprise end to end: problem framing, data, vendors and procurement, evaluation against human baselines, governance and go-live, while owning scope, schedule, budget, risk and people. AI work spans support-ticket routing in production, machine translation and automated website scoring in live use, and an advisory AI layer for a national certification platform in procurement. Open to AI and technical project and programme manager roles.",
+    "location": {
+      "city": "New Delhi",
+      "countryCode": "IN",
+      "region": "Delhi"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "notrishabhjain",
+        "url": "https://www.linkedin.com/in/notrishabhjain/"
+      },
+      {
+        "network": "GitHub",
+        "username": "notrishabhjain",
+        "url": "https://github.com/notrishabhjain"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "BDO India",
+      "position": "Manager, Digital Transformation",
+      "location": "New Delhi",
+      "client": "Central government digital-governance agency",
+      "startDate": "2026-01",
+      "highlights": [
+        "Own delivery of two concurrent national government platforms end to end: scope, schedule, budget, risk, vendors and teams of eight and ten.",
+        "Took a statutory commission's case-management platform from kick-off to go-live in about a month, against a date fixed in law, across four organisations with no reporting line, by cutting the plan from five sprints to two and running modules in parallel.",
+        "Replaced the commission's spreadsheet with an auditable, role-based workflow sized for ten times its launch volume; daily case intake rose about twentyfold.",
+        "Led a multi-crore national clean-energy certification platform from the first client meeting to public launch on its fixed date, defining a first-of-its-kind process with the ministry and baselining about 250 features across 11 modules before sprint one.",
+        "Ran governance on both: weekly steering, daily stand-ups, director-level milestone reviews, monthly reporting, formal change control and a defined escalation path.",
+        "Took both platforms through external security audits before launch; on the certification platform an internal review closed over 90% of findings first, so the audit needed one short round of fixes.",
+        "Scoped the Phase 2 AI layer for both as advisory only, with a named officer accountable for every decision; one is approved and in procurement."
+      ]
+    },
+    {
+      "name": "Infosys",
+      "position": "Project Manager",
+      "location": "Pune",
+      "client": "Global wind-energy company",
+      "startDate": "2024-11",
+      "endDate": "2026-01",
+      "highlights": [
+        "Owned the P&L, delivery and a 35-person team on a $2M+ a year portfolio of about 55 applications, holding the Project Manager, Product Owner and Scrum Master roles.",
+        "Took a loss-making unit to about 15% profit in six months by fixing how the work was organised before reducing headcount.",
+        "Held 99.9% service levels on 24x7 systems and cut the time to fix a production issue from 4 days to under 12 hours.",
+        "Turned out-of-scope work that had been delivered free into separately scoped, paid work worth about $200,000 a year.",
+        "Brought AI into ticket routing and closure in evidence-gated stages; it reached production and was never rolled back."
+      ]
+    },
+    {
+      "name": "EY India",
+      "position": "Senior Consultant, Government",
+      "location": "Delhi",
+      "client": "Central government ministries",
+      "startDate": "2022-04",
+      "endDate": "2024-11",
+      "highlights": [
+        "Moved a national regulatory registry from a paper-based office to a live platform for 40 million members; application processing became more than 70% faster.",
+        "Found that the governing statute, not the technology, was the blocker and proposed the amendments that made electronic notices and digital signatures valid; they were enacted in about six months.",
+        "Wrote the DPR and RFP for a multi-crore national citizen-services portal, onboarded the vendor and ran a second procurement for machine translation.",
+        "Held vendors to agreed scope from the client side through deviation management, change control and escalation.",
+        "Project-managed a 150+ parameter national benchmarking framework for government websites with academic research partners, and moved 80+ government websites onto one framework with security audits and standards certification.",
+        "Redesigned a national immigration services platform across air, land and sea ports of entry, and managed the consultant team delivering it."
+      ]
+    },
+    {
+      "name": "UST Global",
+      "position": "Software Engineering Lead (Blockchain Architect)",
+      "location": "Noida",
+      "client": "Global professional-services firm",
+      "startDate": "2021-06",
+      "endDate": "2022-04",
+      "highlights": [
+        "Led an enterprise blockchain credentialing platform from requirements with four user groups to a unit-wide pilot, where about 80% of people joined voluntarily; cut an NFT marketplace from scope to protect the core platform."
+      ]
+    },
+    {
+      "name": "ValueCoders",
+      "position": "SDE",
+      "location": "Noida",
+      "startDate": "2020-06",
+      "endDate": "2021-06",
+      "highlights": [
+        "Built backend and blockchain systems for a cryptocurrency exchange, a document-management platform and a civil records platform, including the architecture, APIs and performance fixes."
+      ]
+    },
+    {
+      "name": "Tata Consultancy Services",
+      "position": "IT Analyst",
+      "location": "Gurugram",
+      "client": "UK-based banking client",
+      "startDate": "2015-10",
+      "endDate": "2020-05",
+      "highlights": [
+        "Automated a manual card-dispute reconciliation on a bank mainframe, saving about GBP 200,000 a year by the client's own calculation, and cut reported defects by 40%.",
+        "Built blockchain proofs of concept on Ethereum and Hyperledger Fabric; two reached production."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "IMT CDL, Ghaziabad",
+      "studyType": "PGDM (Post Graduate Diploma in Management)",
+      "area": "Management",
+      "endDate": "2023"
+    },
+    {
+      "institution": "UPTU, Lucknow",
+      "studyType": "B.Tech",
+      "area": "Computer Science",
+      "endDate": "2015"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Certified Scrum Master"
+    },
+    {
+      "name": "Project Management Certificate",
+      "issuer": "Google"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Applied AI",
+      "keywords": [
+        "AI delivery lifecycle",
+        "problem framing",
+        "evaluation against human baselines",
+        "golden datasets",
+        "human-in-the-loop guardrails",
+        "AI vendor procurement",
+        "staged rollout",
+        "Claude"
+      ]
+    },
+    {
+      "name": "Project and programme management",
+      "keywords": [
+        "Agile",
+        "Scrum",
+        "hybrid delivery",
+        "planning and scheduling",
+        "scope and change control",
+        "risk and dependency management",
+        "budgeting and P&L",
+        "vendor management",
+        "stakeholder management",
+        "RACI"
+      ]
+    },
+    {
+      "name": "Governance and quality",
+      "keywords": [
+        "steering committees",
+        "status reporting",
+        "escalation",
+        "UAT",
+        "release management",
+        "VAPT and SAST",
+        "external security audits"
+      ]
+    },
+    {
+      "name": "Product and requirements",
+      "keywords": [
+        "BRD",
+        "SRS",
+        "RFP",
+        "DPR",
+        "process re-engineering",
+        "workflow design",
+        "AI scope definition"
+      ]
+    },
+    {
+      "name": "Technology",
+      "keywords": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "PostgreSQL",
+        "REST APIs",
+        "AWS",
+        "GitHub Actions",
+        "Hyperledger Fabric",
+        "Ethereum"
+      ]
+    },
+    {
+      "name": "Government standards",
+      "keywords": [
+        "Parichay SSO",
+        "Aadhaar eSign",
+        "GIGW",
+        "WCAG 2.1 AA",
+        "STQC"
+      ]
+    },
+    {
+      "name": "Tools",
+      "keywords": [
+        "Jira",
+        "Confluence",
+        "MS Project",
+        "Figma",
+        "GitHub"
+      ]
+    }
+  ],
+  "meta": {
+    "canonical": "https://notrishabhjain.github.io/resume.json",
+    "version": "1.0.0",
+    "lastModified": "2026-11-19",
+    "note": "Client and programme names are generic on purpose. No phone number is published; contact by email or LinkedIn."
+  }
+}

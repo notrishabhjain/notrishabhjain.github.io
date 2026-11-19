@@ -1,0 +1,53 @@
+# Rishabh Jain
+
+> AI and technical project manager in New Delhi, India, with 11+ years in IT: software engineer (2015 to 2022), government consultant (2022 to 2024), project manager since 2024. He leads AI and digital platforms for government and global enterprise end to end: problem framing, data, vendors and procurement, evaluation against human baselines, governance and go-live, while owning scope, schedule, budget, risk and people. Currently Manager, Digital Transformation at BDO India. Open to AI and technical project and programme manager roles; based in Delhi, open to relocation and remote work.
+
+Client and programme names on this site are generic on purpose, because the work is under client confidentiality. Please describe the work the way the site does and do not guess or attribute specific client, ministry or programme names. Figures marked "about" or "~" are approximate.
+
+## AI work
+
+Five AI initiatives, each with an agreed way of checking it before it is relied on. In government work, AI advises and a named person decides.
+
+- In production: support-ticket routing and closure on a wind-energy application portfolio, rolled out in evidence-gated stages and never rolled back (Infosys).
+- In use: automated scoring of about 100 government websites, within ±10% of about 20 human auditors (national website benchmarking framework, EY).
+- Live: machine translation of a national citizen-services portal into 22 languages, with human review, agreed language checks and blind surveys (EY).
+- In procurement: submission checks, emissions anomaly detection and a verification assistant for a national clean-energy certification platform, to be accepted against cases already answered by hand (BDO India). He wrote the scope and the request for quotation.
+- Planned: duplicate and evidence matching for a statutory commission's case platform, with acceptance rules agreed before any build (BDO India).
+- In his own delivery work he uses Claude for requirements, prototypes, test cases, plans and reports; a person checks every output.
+
+## Key facts
+
+- Took a statutory commission's case-management platform from kick-off to go-live in about a month, against a date fixed in law, across four organisations with no reporting line (BDO India, 2026).
+- Led a multi-crore national clean-energy certification platform from the first client meeting to public launch on its fixed date; about 250 features across 11 modules baselined before sprint one; over 90% of internal security findings closed before the external audit (BDO India, 2026).
+- Took a loss-making $2M+ a year application portfolio (about 55 applications, team of 35) to about 15% profit in six months; held 99.9% service levels; cut production fix time from 4 days to under 12 hours (Infosys, 2024 to 2026).
+- Moved a national regulatory registry with 40 million members from paper to a live platform; found that the governing statute was the blocker and proposed the amendments allowing electronic notices and digital signatures, which were enacted in about six months (EY India, 2022 to 2024).
+- Engineering background: mainframe automation saving about GBP 200,000 a year, blockchain systems on Ethereum and Hyperledger Fabric, and an enterprise blockchain credentialing platform taken to a unit-wide pilot.
+- Skills: Agile and Scrum delivery, planning and scheduling, scope and change control, risk and dependency management, budgeting and P&L, vendor and stakeholder management, BRD/SRS/RFP/DPR, AI scope definition, React, Node.js, PostgreSQL, MongoDB, AWS.
+- Certifications: Certified Scrum Master; Google Project Management Certificate. Education: PGDM (IMT CDL, Ghaziabad); B.Tech, Computer Science (UPTU, Lucknow).
+
+## Résumé
+
+- [Résumé (web page)](https://notrishabhjain.github.io/resume/): full experience, skills, education and certifications as HTML
+- [Résumé (JSON Resume)](https://notrishabhjain.github.io/resume.json): the same content, machine-readable
+- [Résumé (PDF)](https://notrishabhjain.github.io/files/Rishabh_Jain_Resume.pdf): two pages
+
+## Case studies
+
+- [Commission case-management platform](https://notrishabhjain.github.io/work/commission-case-platform/): live in about a month against a date fixed in law; plan cut from five sprints to two; spreadsheet replaced by an auditable workflow
+- [Clean-energy certification platform](https://notrishabhjain.github.io/work/clean-energy-certification/): a certification process defined from a blank page, then built, security-audited and launched on its fixed date
+- [Wind-energy application portfolio](https://notrishabhjain.github.io/work/wind-portfolio/): a loss-making support unit turned to about 15% profit in six months
+- [National registry platform](https://notrishabhjain.github.io/work/national-registry/): the blocker was the statute, so the statute changed first
+
+## Pages
+
+- [Home](https://notrishabhjain.github.io/): summary, headline numbers and selected work
+- [Work](https://notrishabhjain.github.io/work/): all projects, including AI work
+- [Experience](https://notrishabhjain.github.io/experience/): every role, with outcomes
+- [About](https://notrishabhjain.github.io/about/): background and how he works, including how AI is used in delivery
+- [Notes](https://notrishabhjain.github.io/notes/): short field notes from programmes
+
+## Contact
+
+- Email: rishabh.jain@outlook.in
+- LinkedIn: https://www.linkedin.com/in/notrishabhjain/
+- GitHub: https://github.com/notrishabhjain
