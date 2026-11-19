@@ -4,7 +4,7 @@
 // owner wrote, using a small set of sentence shapes, and then checked: any content word that is
 // not in that achievement's own source text (or an approved swap) rejects the candidate.
 
-import { tokenize, light, spell, STOP } from './text.js';
+import { tokenize, light, spell, STOP, findTerms } from './text.js';
 import { conjugate, joinList, aOrAn, capFirst, tidy } from './grammar.js';
 import { findSkills } from './taxonomy.js';
 
@@ -127,7 +127,8 @@ export function applySwaps(text, jdSkills, idx, used) {
       if (!tgt || tgt.toLowerCase() === src.toLowerCase()) { to = null; break; }
       if (tgt.length > 5 && tgt === tgt.toUpperCase()) continue; // shouted headings are not wording
       if (spellSeq(tgt) === spellSeq(src)) {
-        if (tgt.toLowerCase() !== src.toLowerCase()) { to = matchCase(src, tgt); break; }
+        const hyphenOnly = tgt.toLowerCase().replace(/[-\s]/g, '') === src.toLowerCase().replace(/[-\s]/g, '');
+        if (tgt.toLowerCase() !== src.toLowerCase() && !hyphenOnly) { to = matchCase(src, tgt); break; }
         continue;
       }
       if (nearJoin || !srcLiteral || cand.how === 'bag' || spellSeq(tgt) !== spellSeq(cand.form || '')) continue;
@@ -202,13 +203,16 @@ function assemble(a, spec, opts) {
       s += followers ? ` (${d})` : `: ${d}`;
     }
     for (const p of contexts) s += ' ' + p.text;
-    for (const p of scopes) s += ' ' + p.text;
+    // a phrase added to an already long clause gets a comma, so phrases never run together
+    const head = (x) => coreObj + s + x;
+    for (const p of scopes) s += (long(head('')) ? ', ' : ' ') + p.text;
     for (const p of relOutcomes) s += ', ' + p.text;
     return s;
   };
+  let sofar = '';
   const endings = (skipOutcomes) => {
     let s = '';
-    for (const p of purposes) s += ' ' + p.text;
+    for (const p of purposes) s += (long(sofar + s) ? ', ' : ' ') + p.text;
     if (!skipOutcomes) for (const p of outcomes) s += (noCommaOutcome(p.text) ? ' ' : ', ') + p.text;
     if (lists.length) s += ': ' + (lists.length > 1 ? lists.map(p => p.text).join('; ') : lists[0].text);
     for (const p of codas) s += '; ' + p.text;
@@ -222,12 +226,12 @@ function assemble(a, spec, opts) {
     s = `${P(pv(r))} ${r.obj} by ${G(spec.verb)} ${coreObj}` + tailAfterObject();
     if (methods.length) s += ' and ' + joinList(methods.map(p => `${G(pv(p))} ${p.obj}`));
     if (thens.length) s += ', ' + joinList(thens.map(p => `${G(pv(p))} ${p.obj}`));
-    s += endings(false);
+    sofar = s; s += endings(false);
     if (ands.length) s += ', and ' + joinList(ands.map(p => `${P(pv(p))} ${p.obj}`));
   } else if (spec.pattern === 'M') {
     if (!methods.length) return null;
     s = joinList(methods.map(p => `${P(pv(p))} ${p.obj}`)) + `, ${G(spec.verb)} ${coreObj}` + tailAfterObject();
-    s += endings(false);
+    sofar = s; s += endings(false);
   } else {
     // C: core-led
     const lead = `${P(spec.verb)} ${coreObj}`;
@@ -242,7 +246,7 @@ function assemble(a, spec, opts) {
     if (methods.length && spec.join !== 'by') parts.push(...methods.map(p => `${G(pv(p))} ${p.obj}`));
     parts.push(...thens.map(p => `${G(pv(p))} ${p.obj}`));
     if (parts.length) s += ', ' + joinList(parts);
-    s += endings(false);
+    sofar = s; s += endings(false);
   }
   return capFirst(tidy(s + '.'));
 }
@@ -354,6 +358,8 @@ export function realize(a, ctx) {
     if (gaps.length) { rejected.push({ text, gaps }); continue; }
     const lower = text.toLowerCase();
     if (spec.pattern !== 'O' && banned.some(w => lower.includes(w))) continue;
+    const secret = findTerms(text, rules.confidentialTerms);
+    if (secret.length) { rejected.push({ text, gaps: secret, confidential: true }); continue; }
     if (text.length > B.hardMax && spec.pattern !== 'O') continue;
 
     // score
@@ -371,10 +377,12 @@ export function realize(a, ctx) {
     const lenPen = L > B.idealMax ? (L - B.idealMax) / 90 : L < B.idealMin ? (B.idealMin - L) / 200 : 0;
     const fidelity = spec.pattern === 'O' ? (L <= B.idealMax + 25 ? 0.14 : 0.06) : spec.pattern === 'C' ? (spec.join === 'by' ? 0.07 : 0.05) : 0;
     const metric = /\d/.test(text) ? 0.06 : 0;
+    const carried = spec.pattern === 'O' ? pa.partsP.length : pa.partsP.filter(p => p.req || spec.include.has(p.i)).length;
+    const richness = Math.min(0.15, 0.05 * carried);
     const lv = leadVerb || '';
     const roleUsed = ctx.state.roleVerbs.get(a.role) || new Set();
     const rep = roleUsed.has(lv) ? 0.5 : (used.get(lv) || 0) >= 2 ? 0.3 : (used.get(lv) || 0) === 1 ? 0.1 : 0;
-    const score = kw + front + verbJD + fidelity + metric - lenPen - rep;
+    const score = kw + front + verbJD + fidelity + metric + richness - lenPen - rep;
     seen.set(text, { text, score, pattern: spec.pattern, leadVerb: lv, skills: [...hit.keys()], swaps: sw.swaps, length: L });
   }
   const candidates = [...seen.values()].sort((x, y) => y.score - x.score);

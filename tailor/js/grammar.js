@@ -110,7 +110,7 @@ export function conjugate(lemma, form, opts = {}) {
 export function joinList(items, conj = 'and') {
   const xs = items.filter(Boolean);
   if (xs.length <= 1) return xs[0] || '';
-  const semi = xs.some(x => x.includes(','));
+  const semi = xs.some(x => x.replace(/\([^)]*\)/g, '').includes(','));
   if (semi) return xs.slice(0, -1).join('; ') + '; ' + xs[xs.length - 1];
   // an item that itself contains "and" needs the serial comma to stay unambiguous
   const serial = xs.length > 2 && xs.some(x => / (and|or) /.test(x));
