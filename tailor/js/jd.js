@@ -357,7 +357,7 @@ export function analyzeJD(text, ctx) {
 
   // Sector
   const govHits = (text.match(/\b(government|ministry|ministries|public sector|public-sector|e-governance|egovernance|psus?|citizen|federal|state government|municipal|department of)\b/gi) || []).length;
-  const govSkill = skills.some(s => (['govtech', 'meity', 'negd', 'national-informatics-centre', 'digital-public-infrastructure', 'digital-india'].includes(s.id) || s.cat === 'govt' && s.id !== 'public-sector') && s.sections.some(x => x !== 'benefits'));
+  const govSkill = skills.some(s => (['govtech', 'digital-public-infrastructure', 'digital-india'].includes(s.id) || s.cat === 'govt' && s.id !== 'public-sector') && s.sections.some(x => x !== 'benefits'));
   const sector = govHits >= 2 || govSkill ? 'public' : 'private';
 
   // Title roles

@@ -139,7 +139,7 @@ export function lowerFirst(s) {
 }
 
 const NB = ' ';
-/** Join numbers to their units and currency with non-breaking spaces, so "Rs 21 lakh" never splits across lines. */
+/** Join numbers to their units and currency with non-breaking spaces, so an amount never splits from its unit across lines. */
 export function glue(s) {
   return String(s)
     .replace(/\b(Rs|INR|USD|GBP|EUR)\.? (?=[\d~])/g, `$1${NB}`)

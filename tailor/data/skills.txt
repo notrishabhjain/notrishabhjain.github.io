@@ -426,7 +426,7 @@ AWS = Amazon Web Services | aws cloud, amazon aws, aws services, aws infrastruct
 Microsoft Azure = Azure | azure cloud, azure services, ms azure ^ Cloud computing
 Google Cloud Platform = GCP, Google Cloud | google cloud services ^ Cloud computing
 Oracle Cloud = Oracle Cloud Infrastructure ^ Cloud computing
-NIC MeghRaj = MeghRaj, NIC MeghRaj 2.0 | meghraj 2.0, government cloud, govt cloud, gi cloud ^ Cloud computing ~ National Informatics Centre
+NIC MeghRaj = MeghRaj, NIC MeghRaj 2.0 | meghraj 2.0, government cloud, govt cloud, gi cloud ^ Cloud computing ~ GovTech
 Cloud migration | migrating to the cloud, migration to cloud, lift and shift, cloud adoption, cloud transformation ^ Cloud computing ~ Legacy modernization
 Cloud architecture = cloud solution architecture | cloud design, cloud-native architecture, cloud native, cloud-native ^ Cloud computing ~ Solution architecture
 Multi-cloud = hybrid cloud | multicloud, multi cloud ^ Cloud computing
@@ -596,7 +596,7 @@ RBI guidelines = RBI | reserve bank of india, rbi compliance, rbi regulations ^ 
 SEBI regulations = SEBI ^ Compliance management ~ Capital markets
 ESG = environmental social and governance | esg reporting, sustainability reporting, esg compliance ^ Sustainability
 Sustainability | climate, decarbonization, decarbonisation, net zero, net-zero, carbon accounting, carbon emissions, emissions reduction, green energy transition, energy transition ~ Renewable energy
-Certification schemes | certification process, certification workflows, certification portal, certification registry, certifications issued, issuing certificates, certificate issuance, certification programme ^ Compliance management ~ Green hydrogen
+Certification schemes | certification process, certification workflows, certification portal, certification registry, certifications issued, issuing certificates, certificate issuance, certification programme ^ Compliance management
 
 @govt
 *Government digital standards | government standards, government digital guidelines
@@ -604,10 +604,7 @@ Public sector = government sector | government, govt, public-sector, public serv
 GovTech = e-governance | egovernance, e-gov, digital government, government technology, egov, digital public services, digital governance, citizen services, citizen-facing services, government platforms, government portals, national platforms, national portals ^ Public sector ~ Digital transformation
 Digital public infrastructure = DPI | india stack, digital public goods, dpg ^ GovTech
 Digital India | digital india programme, digital india initiative ^ GovTech
-MeitY = Ministry of Electronics and Information Technology, Ministry of Electronics and IT ^ Public sector
-NeGD = National e-Governance Division ^ GovTech ~ MeitY
-National Informatics Centre = NIC | NIC!, nic infrastructure, nic cloud ^ GovTech ~ NIC MeghRaj
-NICSI = National Informatics Centre Services Inc | nicsi rate cards, nicsi empanelment ^ Procurement ~ National Informatics Centre
+NICSI | nicsi rate cards, nicsi empanelment ^ Procurement ~ GovTech
 Parichay SSO = Parichay | nic parichay, jan parichay ^ Single sign-on ~ GovTech
 Aadhaar | aadhaar authentication, aadhaar integration, uidai, aadhaar-based ^ Digital public infrastructure ~ Digital signatures
 DigiLocker ^ Digital public infrastructure
@@ -619,14 +616,12 @@ CPPP = Central Public Procurement Portal | e-procurement, eprocurement, e-tender
 General Financial Rules = GFR | GFR 2017 ^ Procurement ~ Public sector
 CVC guidelines = CVC | central vigilance commission ^ Procurement ~ Public sector
 PFMS = Public Financial Management System ^ Public sector
-Samiksha portal = Samiksha ^ GovTech
 Smart Cities Mission | smart cities, smart city ^ GovTech
 ONDC = Open Network for Digital Commerce ^ Digital public infrastructure
 Account Aggregator framework = Account Aggregator ^ Digital public infrastructure ~ Fintech
 Right to Information = RTI ^ Public sector
-Cooperative sector | cooperatives, cooperative societies, multi-state cooperative societies, credit cooperative, mscs act, cooperative registry ^ Public sector
-Immigration systems | immigration, visa systems, visa processing, e-visa, oci, foreigner registration, border management, ports of entry, immigration check posts ^ Public sector
-Pay commission = Central Pay Commission | 8th cpc, 8th central pay commission, pay commission memoranda ^ Public sector
+Cooperative sector | cooperatives, credit cooperatives ^ Public sector
+Immigration systems | immigration, visa systems, visa processing, foreigner registration, border management, ports of entry ^ Public sector
 FedRAMP ^ Compliance management ~ Public sector
 G-Cloud ^ Procurement ~ Public sector
 GDS service standard = service standard | government digital service, gds ^ Government digital standards
@@ -643,8 +638,8 @@ Capital markets | trading, securities trading, asset management, wealth manageme
 Healthcare | health care, hospitals, healthtech, health tech, digital health, ehr, electronic health records, clinical systems, patient care, healthcare it ^ Industries
 Life sciences = pharmaceuticals | pharma, pharmaceutical, biotech, medical devices, medtech, clinical trials, regulated life sciences ^ Industries ~ Healthcare
 Energy sector | energy industry, energy companies, power sector, utilities, oil and gas, power generation ^ Industries
+Hydrogen economy | hydrogen, hydrogen economy, electrolysers, electrolyzers, fuel cells ^ Renewable energy
 Renewable energy | renewables, renewable energy sector, wind energy, wind power, onshore wind, offshore wind, solar, solar energy, clean energy, green energy, wind turbines, wind hardware ^ Energy sector ~ Sustainability
-Green hydrogen | hydrogen, green hydrogen certification, hydrogen economy, national green hydrogen mission ^ Renewable energy ~ Certification schemes
 Telecommunications = telecom | telco, telcos, telecom operators, 5g, telecommunication ^ Industries
 Retail | retail industry, retailers, consumer goods, cpg, fmcg ^ Industries ~ E-commerce
 E-commerce = ecommerce | online retail, marketplaces, marketplace platforms, d2c ^ Retail

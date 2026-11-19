@@ -358,7 +358,7 @@ export function realize(a, ctx) {
     if (gaps.length) { rejected.push({ text, gaps }); continue; }
     const lower = text.toLowerCase();
     if (spec.pattern !== 'O' && banned.some(w => lower.includes(w))) continue;
-    const secret = findTerms(text, rules.confidentialTerms);
+    const secret = findTerms(text, rules.confidentialHashes);
     if (secret.length) { rejected.push({ text, gaps: secret, confidential: true }); continue; }
     if (text.length > B.hardMax && spec.pattern !== 'O') continue;
 
