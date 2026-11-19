@@ -127,7 +127,7 @@ written several ways:
   "scope! :: in a four-week window #Rapid delivery",
   "scope :: with a seven-person team #Team leadership",
   "method :: run :: parallel module streams instead of sequential phases #Parallel workstreams",
-  "purpose :: to meet a Pay Commission tenure that could not legally be extended"
+  "purpose :: against a deadline fixed in law"
 ]
 ```
 
@@ -225,7 +225,7 @@ Part types:
 | `result` | `verb :: object` | *, cutting …*; can lead the sentence |
 | `outcome` | literal | at the end: *, the largest turnaround on the account* |
 | `purpose` | literal | at the end: *to meet a fixed deadline* |
-| `coda` | literal | after a semicolon: *; results went to the Cabinet Secretary* |
+| `coda` | literal | after a semicolon: *; results were reported at the top of the civil service* |
 
 Verbs:
 

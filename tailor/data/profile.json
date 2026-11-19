@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "_readme": "Master profile for Tailor. Achievements are stored as parts, not finished sentences, so the app can recombine them for each job description. Syntax is in tailor/README.md. Source: the site's Experience page and case studies as of the November 2026 corrections (8th CPC volumes and team, GHCI audit wording, Infosys figures, AI work), plus dossier-confirmed EY, UST and TCS detail. Anything still marked verify:true is from an older resume and not yet reconfirmed.",
+  "version": 4,
+  "_readme": "Master profile for Tailor. Achievements are stored as parts, not finished sentences, so the app can recombine them for each job description. Syntax is in tailor/README.md. Projects, clients and confidential figures are described rather than named; see confidentialHashes in rules.json. Anything marked verify:true is from an older resume and not yet reconfirmed.",
   "person": {
     "name": "Rishabh Jain",
     "location": "New Delhi, India",
@@ -54,8 +54,8 @@
         "tags": [
           "Renewable energy",
           "Energy sector",
-          "Green hydrogen",
-          "Sustainability"
+          "Sustainability",
+          "Hydrogen economy"
         ]
       },
       {
@@ -447,7 +447,7 @@
   ],
   "achievements": [
     {
-      "id": "bdo-cpc-ship",
+      "id": "bdo-commission-ship",
       "role": "bdo",
       "strength": 9,
       "src": "site",
@@ -470,7 +470,7 @@
       ]
     },
     {
-      "id": "bdo-cpc-workflow",
+      "id": "bdo-commission-workflow",
       "role": "bdo",
       "strength": 8,
       "src": "site",
@@ -488,7 +488,7 @@
       ]
     },
     {
-      "id": "bdo-cpc-spec",
+      "id": "bdo-commission-spec",
       "role": "bdo",
       "strength": 7,
       "src": "site",
@@ -506,7 +506,7 @@
       ]
     },
     {
-      "id": "bdo-cpc-scale",
+      "id": "bdo-commission-scale",
       "role": "bdo",
       "strength": 8,
       "src": "site",
@@ -524,7 +524,7 @@
       ]
     },
     {
-      "id": "bdo-cpc-data",
+      "id": "bdo-commission-data",
       "role": "bdo",
       "strength": 6,
       "src": "site",
@@ -541,7 +541,7 @@
       ]
     },
     {
-      "id": "bdo-cpc-governance",
+      "id": "bdo-commission-governance",
       "role": "bdo",
       "strength": 7,
       "src": "site",
@@ -562,7 +562,7 @@
       ]
     },
     {
-      "id": "bdo-ghci-launch",
+      "id": "bdo-cert-launch",
       "role": "bdo",
       "strength": 9,
       "src": "site",
@@ -583,7 +583,7 @@
       ]
     },
     {
-      "id": "bdo-ghci-process",
+      "id": "bdo-cert-process",
       "role": "bdo",
       "strength": 8,
       "src": "site",
@@ -601,7 +601,7 @@
       ]
     },
     {
-      "id": "bdo-ghci-version",
+      "id": "bdo-cert-version",
       "role": "bdo",
       "strength": 7,
       "src": "site",
@@ -641,7 +641,7 @@
       ]
     },
     {
-      "id": "bdo-ghci-uat",
+      "id": "bdo-cert-uat",
       "role": "bdo",
       "strength": 6,
       "src": "site",
@@ -660,7 +660,7 @@
       ]
     },
     {
-      "id": "bdo-ghci-change",
+      "id": "bdo-cert-change",
       "role": "bdo",
       "strength": 5,
       "src": "site",
@@ -682,7 +682,7 @@
       "strength": 7,
       "src": "site",
       "exclusive": [
-        "bdo-cpc-governance"
+        "bdo-commission-governance"
       ],
       "patterns": "OC",
       "text": "Set up the delivery cadence and escalation path: daily stand-ups, weekly blocker reviews, a Director-level review at each milestone, monthly progress reports and a defined route to the client's programme director.",
@@ -938,14 +938,14 @@
       ]
     },
     {
-      "id": "ey-crcs",
+      "id": "ey-registry",
       "role": "ey",
       "strength": 10,
       "src": "site",
-      "text": "Moved a national regulatory registry from a paper-based office to a live digital platform for about 1,800 member organisations and 40 million members, with application processing more than 70% faster.",
+      "text": "Moved a national regulatory registry from a paper-based office to a live digital platform for 40 million members, with application processing more than 70% faster.",
       "core": "move|take :: a national regulatory registry from a paper-based office to a live digital platform",
       "parts": [
-        "scope! :: for about 1,800 member organisations and 40 million members #Large-scale programs",
+        "scope! :: for 40 million members #Large-scale programs",
         "outcome :: with application processing more than 70% faster #Process improvement #Operational excellence"
       ],
       "tags": [
@@ -958,7 +958,7 @@
       ]
     },
     {
-      "id": "ey-crcs-bpr",
+      "id": "ey-registry-bpr",
       "role": "ey",
       "strength": 7,
       "src": "site",
@@ -976,7 +976,7 @@
       ]
     },
     {
-      "id": "ey-crcs-law",
+      "id": "ey-registry-law",
       "role": "ey",
       "strength": 9,
       "src": "site",
@@ -1004,7 +1004,7 @@
       "strength": 8,
       "src": "site",
       "exclusive": [
-        "ey-portal-rfp"
+        "ey-citizen-portal-rfp"
       ],
       "text": "Authored the DPR and RFP, ran vendor onboarding and held client-side delivery oversight against them, taking the vendor back to agreed scope on deviation and escalating through the ministry when needed.",
       "core": "author|write :: the DPR and RFP",
@@ -1042,7 +1042,7 @@
       ]
     },
     {
-      "id": "ey-nesda",
+      "id": "ey-benchmark",
       "role": "ey",
       "strength": 8,
       "src": "site",
@@ -1062,7 +1062,7 @@
       ]
     },
     {
-      "id": "ey-nesda-adoption",
+      "id": "ey-benchmark-adoption",
       "role": "ey",
       "strength": 8,
       "src": "site",
@@ -1080,7 +1080,7 @@
       ]
     },
     {
-      "id": "ey-nesda-ahp",
+      "id": "ey-benchmark-ahp",
       "role": "ey",
       "strength": 6,
       "src": "site",
@@ -1097,12 +1097,12 @@
       ]
     },
     {
-      "id": "ey-ivfrt",
+      "id": "ey-immigration",
       "role": "ey",
       "strength": 7,
       "src": "site",
       "exclusive": [
-        "ey-ivfrt-change"
+        "ey-immigration-change"
       ],
       "text": "Redesigned a national immigration services platform across air, land and sea ports of entry (process, screens and testing), consolidating fragmented visa services onto one platform and managing the consultant team.",
       "core": "redesign :: a national immigration services platform across air, land and sea ports of entry",
@@ -1120,12 +1120,12 @@
       "patterns": "OC"
     },
     {
-      "id": "ey-ivfrt-change",
+      "id": "ey-immigration-change",
       "role": "ey",
       "strength": 7,
       "src": "site",
       "exclusive": [
-        "ey-ivfrt"
+        "ey-immigration"
       ],
       "text": "Won adoption of a common standard across seaports and land ports that had each run to their own long-standing local standard, by demonstration rather than mandate, and trained it into staff who had worked the old way for years.",
       "core": "win :: adoption of a common standard across seaports and land ports that had each run to their own long-standing local standard",
@@ -1144,7 +1144,7 @@
       ]
     },
     {
-      "id": "ey-portal",
+      "id": "ey-citizen-portal",
       "role": "ey",
       "strength": 7,
       "src": "site",
@@ -1163,7 +1163,7 @@
       ]
     },
     {
-      "id": "ey-portal-rfp",
+      "id": "ey-citizen-portal-rfp",
       "role": "ey",
       "strength": 6,
       "src": "site",
@@ -1219,7 +1219,7 @@
       ]
     },
     {
-      "id": "ust-skillchain",
+      "id": "ust-credentials",
       "role": "ust",
       "strength": 7,
       "src": "site",

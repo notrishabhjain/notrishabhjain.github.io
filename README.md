@@ -8,7 +8,7 @@ The pages were generated from a build script that is not part of this repository
 HTML directly or regenerate it. The deploy workflow publishes the whole repository as-is, so
 anything committed here is publicly fetchable.
 
-- `/work/` and `/work/<case>/`: case studies (8th CPC, GHCI, wind portfolio, CRCS)
+- `/work/` and `/work/<case>/`: case studies (commission case platform, clean-energy certification, wind portfolio, national registry). Client and programme names are kept generic on purpose; run `node tools/scan-confidential.mjs` before committing
 - `/method/`, `/ai/`, `/notes/`, `/about/`
 - `assets/share/`: share cards and one-page PDFs
 - `files/`: résumé downloads
