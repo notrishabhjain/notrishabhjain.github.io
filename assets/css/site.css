@@ -736,3 +736,18 @@ details.more .more-body{padding:clamp(16px,3vw,28px);border-top:1px solid var(--
 
 /* the nav floats over the first section: keep its margin from collapsing into the page flow */
 .nav-shell{display:flow-root;top:env(safe-area-inset-top,0px)}
+
+/* work cards as delivery records: role line and a scope strip */
+.card-k{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);line-height:1.5}
+.scope{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:2px 0 0;padding:11px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.scope div{min-width:0}
+.scope dt{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.scope dd{margin:3px 0 0;font-size:.82rem;font-weight:600;line-height:1.3;color:var(--text)}
+.card .brief summary{list-style-position:outside}
+.brief .bb p{color:var(--text);line-height:1.55}
+@media (max-width:420px){.scope{grid-template-columns:1fr 1fr}}
+/* about: playbook panels carry their evidence */
+.panel.pb{display:flex;flex-direction:column;gap:8px}
+.panel .ev{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:.86rem;line-height:1.5;color:var(--muted)}
+.panel .ev b{display:block;margin-bottom:3px;font-family:var(--font-mono);font-weight:500;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.g-start{align-items:start}

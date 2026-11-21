@@ -167,10 +167,10 @@ textarea::placeholder{color:var(--ink-3)}
   <header class="head">
     <div>
       <h1>Engagement Dossier</h1>
-      <p>Nine professional engagements, each with questions written for that engagement, followed by five
-        sets on applied AI — what you already hold, what is missing, and what you want. Answer in your own
-         words, in any order, across as many sittings as you like. Everything stays in this browser until
-         you choose to hand it over.</p>
+      <p>Start with the six sets marked <b>New</b>: what has changed on your programmes since the site was
+        written, and the proof that will make it read more senior. After those come the nine engagements and five
+        sets on applied AI. Answer in your own words, in any order, across as many sittings as you like. Everything
+        stays in this browser until you choose to hand it over.</p>
       <a class="home" href="../">&larr; Back to the portfolio</a>
     </div>
     <div class="count">
@@ -439,6 +439,88 @@ const AI_THEMES = [
     ] }
 ];
 PROJECTS.push(...AI_THEMES);
+
+/* November 2026: new sets, shown first. Public reports show progress on several programmes since
+   the site was written; these ask for the current facts and for the proof that makes a PM profile
+   persuasive. Wording stays generic because this page is public, even though it is not indexed. */
+const UPDATES = [
+  { id:"upd-commission", solo:true, name:"New · The commission platform since go-live", client:"Update",
+    org:"BDO India", period:"Since go-live", role:"Project Manager",
+    domain:"What public reports now say, and what only you know", geo:"—",
+    record:["Public reports since go-live describe online-only submissions, two deadline extensions and further rounds of consultation in several cities.",
+      "The commission's final report is expected some months from now, so the platform is still in heavy use.",
+      "The site currently says: live in about a month, daily intake up about twentyfold, sized for ten times its launch volume, AI layer planned."],
+    qs:[
+      { id:"t1", q:"Is the platform you delivered the channel for those online-only submissions, or does it sit behind another intake channel? Say exactly where it sits in the flow.", h:"\"The only accepted channel\" is a much stronger line than \"a case platform\", but only if it is true." },
+      { id:"t2", q:"What are the numbers today: cases on the platform, cases handled a day, active officers, and offices or departments using it?", h:"Approximate is fine. Today's figures replace the launch-week ones on the site." },
+      { id:"t3", q:"What changed after go-live: new modules, change requests, support for the consultation rounds, an extension or a next phase?", h:"Post-launch evolution is what separates a delivery from a launch." },
+      { id:"t4", q:"The AI layer for duplicates and evidence: has it been approved, procured or started? Who decides, and what is the acceptance test?", h:"Moving it from planned to approved changes the AI story on the home page." },
+      { id:"t5", q:"Any recognition: a letter of appreciation, a mention in a review meeting, or feedback from a senior officer you could quote by rank, not name?", h:"One attributed-by-role sentence is worth a paragraph of self-description." },
+      { id:"t6", q:"What went wrong after launch, and how did you handle it? An incident, a slowdown, a data problem, a difficult change request?", h:"Hiring managers trust a story that includes a problem." }
+    ] },
+  { id:"upd-certification", solo:true, name:"New · The certification platform since launch", client:"Update",
+    org:"BDO India", period:"Since launch", role:"Project Manager",
+    domain:"Launch facts, live numbers and Phase 2", geo:"—",
+    record:["Public reports give a mid-June 2026 launch date; the earlier notes said 1 July. The site does not print the date, but it should be right.",
+      "Industry trackers now list a large national pipeline of projects that will need this certification.",
+      "No public source confirms how many certificates have been issued so far.",
+      "Public material suggests the scheme has been presented at international forums."],
+    qs:[
+      { id:"t1", q:"Which launch date is right, and was it a public launch event, a soft launch, or both?", h:"Getting this exactly right protects you in an interview." },
+      { id:"t2", q:"Current numbers: applications received, certificates issued by type, and the producers, verification agencies and committee members using the platform.", h:"These replace \"the first certificates have been issued\" with real figures." },
+      { id:"t3", q:"Phase 2 (AI): has the request for quotation closed, has a vendor been chosen, has work started? What is the plan and your role in it?", h:"An awarded AI contract that you scoped and will run is the single strongest AI-manager proof you could add." },
+      { id:"t4", q:"Change requests since launch: how many, of what kind, and your fastest and slowest turnaround?", h:"Shows that change control kept working after the launch-day pressure went." },
+      { id:"t5", q:"Was the platform shown at an international or industry forum? Did you prepare or present any of it?", h:"International visibility is a strong credibility signal, if you had a hand in it." },
+      { id:"t6", q:"The onboarding walkthrough you ran for a second government agency: did it lead anywhere, such as reuse of the design or a second platform?", h:"Reuse is evidence that the design was sound." }
+    ] },
+  { id:"upd-registry", solo:true, name:"New · The registry and what grew from it", client:"Update",
+    org:"EY India", period:"Since 2024", role:"Senior Consultant",
+    domain:"Later systems built on the registry's architecture", geo:"—",
+    record:["Public statements in 2026 report large refunds paid through a national claims system linked to the registry, with many claims still being processed.",
+      "Earlier notes said the registry's architecture was later extended to build a refund system, and that your involvement was unclear."],
+    qs:[
+      { id:"t1", q:"Were you involved in the claims or refund system built on the registry's architecture? If so, what was yours: design, procurement, oversight, or none?", h:"Be exact. If it was other people building on your work, that is still worth saying correctly." },
+      { id:"t2", q:"If you were involved, may the site say that the architecture you specified now supports a national claims system, without naming it?", h:"Only with your go-ahead, and only in generic terms." },
+      { id:"t3", q:"The registry's numbers today, if you know them: members, organisations, applications a year, processing time.", h:"The site still uses the figures from when you left." },
+      { id:"t4", q:"Has any later amendment, rule or notification built on the amendments you proposed?", h:"Lasting regulatory impact is rare on a PM profile." }
+    ] },
+  { id:"upd-benchmark", solo:true, name:"New · The benchmarking framework now", client:"Update",
+    org:"EY India", period:"Since 2024", role:"Senior Consultant",
+    domain:"The national assessment cycle that followed", geo:"—",
+    record:["A new national assessment cycle opened in 2026 with its own portal, covering dozens of mandatory services for states and central ministries.",
+      "Public reports mention an automated tool that assesses government websites on accessibility, security and interactivity."],
+    qs:[
+      { id:"t1", q:"Is the automated website-assessment tool now used nationally the one that grew from your framework? If not, how are they related?", h:"If it is, \"my framework became the national tool\" is a headline result." },
+      { id:"t2", q:"Is your 150+ parameter framework still the basis of the current cycle, or has it been replaced or extended?", h:"Tells us whether to write about it in the present tense." },
+      { id:"t3", q:"Anything you can now say about its impact: sites improved, scores raised, departments that acted after a low score?", h:"Outcome over output." }
+    ] },
+  { id:"pm-proof", solo:true, name:"New · Proof that makes the site read senior", client:"Across engagements",
+    org:"Evidence", period:"—", role:"Your call",
+    domain:"Scope, span, artefacts and voices", geo:"—",
+    record:["The site now leads with outcomes. What it lacks is the scale and span behind them, and other people's voices.",
+      "Anything here can stay as a band or a rank; nothing needs a client name."],
+    qs:[
+      { id:"t1", q:"Budget or contract value for each programme, as a band you are comfortable showing (for example under ₹1 crore, ₹1–10 crore, over ₹10 crore, or a $ range).", h:"Budget responsibility is the first thing a PM hiring manager scans for." },
+      { id:"t2", q:"For each programme: team size at peak, vendors or partner firms you managed, and the most senior person you reported to, by rank.", h:"Span of control and seniority of stakeholders, in one line each." },
+      { id:"t3", q:"Which artefacts did you actually run: RAID log, RACI, steering pack, burn-up, decision log, change log, earned value? Could any be shown redacted?", h:"A redacted real artefact is the most convincing thing a PM portfolio can show." },
+      { id:"t4", q:"Methods by programme: Agile, Scrum, SAFe, PRINCE2, PMBOK, hybrid? Which did you use where, and why that one?", h:"Shows judgment, not just vocabulary." },
+      { id:"t5", q:"Certifications in progress or planned, for example PMP, PMI-ACP, PMI-CPMAI for AI projects, or a cloud or AI credential?", h:"An AI-project certification would reinforce the new positioning." },
+      { id:"t6", q:"Two or three people (a manager, a client officer, a team member) who would give a one-line quote, attributed by role only?", h:"Recommendations are the strongest missing element on the site." },
+      { id:"t7", q:"Talks, training or writing: any session you ran, internal training, an article or a conference talk?", h:"Thought leadership, even small, reads as seniority." },
+      { id:"t8", q:"Your three proudest PM moments that are not on the site yet, one line each.", h:"Fragments are fine." }
+    ] },
+  { id:"site-features", solo:true, name:"New · What the site should do next", client:"Your preferences",
+    org:"Site", period:"—", role:"Your call",
+    domain:"Interactive and presentation choices", geo:"—",
+    record:["Options for making the site more interactive without adding a photo or exposing anything confidential."],
+    qs:[
+      { id:"t1", q:"Would you like an interactive walk-through of one programme, step by step, with the decision and trade-off at each step? Which programme should it use?", h:"Turns a case study into something a reviewer clicks through in two minutes." },
+      { id:"t2", q:"Would a downloadable, redacted sample artefact help you in interviews: a status report, a RAID log or a steering pack? Which one?", h:"Built from your real format, with every client detail removed." },
+      { id:"t3", q:"Which roles are you applying for right now (titles and two or three example companies or sectors)?", h:"Lets the content be tuned to what those hiring managers screen for." },
+      { id:"t4", q:"Is anything on the site wrong, overstated or understated today?", h:"Point at the sentence; I will fix it." }
+    ] }
+];
+PROJECTS.unshift(...UPDATES);
 
 PROJECTS.forEach(p => { p.questions = p.solo ? [...p.qs] : [...UNIVERSAL_A, ...p.qs, ...UNIVERSAL_B]; });
 const TOTAL = PROJECTS.reduce((n,p) => n + p.questions.length, 0);
