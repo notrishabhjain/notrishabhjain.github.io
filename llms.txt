@@ -15,12 +15,23 @@ Five AI initiatives, each with an agreed way of checking it before it is relied 
 - Planned: duplicate and evidence matching for a statutory commission's case platform, with acceptance rules agreed before any build (BDO India).
 - In his own delivery work he uses Claude for requirements, prototypes, test cases, plans and reports; a person checks every output.
 
+## Live today
+
+Platforms in service now. He was involved at every stage of each, from the first requirement through procurement, build, security and go-live into live operations. Impact lines draw on public reporting and stay generic about clients.
+
+- Statutory commission case-management platform (BDO India, Project Manager): carries the commission's caseload from its national, online-only call for submissions through examination and review, while consultations continue across the country. Live in about a month on a date fixed in law; daily case intake up about twentyfold; he runs it in live operations.
+- National clean-energy certification platform (BDO India, Project Manager): launched publicly by the Union Minister at a national workshop; the route to certification, traceability and compliance under the national scheme. He runs change control and releases in live service; the AI phase is in procurement.
+- National regulatory registry (EY India): 40 million members on a live platform, applications processed more than 70% faster.
+- National refund-claims platform built on the registry's architecture (EY India): has returned thousands of crores to millions of depositors, with more claims being processed.
+- National benchmarking framework for government websites (EY India): operated as the national ranking standard, within a national digital-services assessment that opened a new cycle in 2026.
+- National citizen-services portal (EY India): one front door to 20+ government sources, with machine translation in 22 languages and human review.
+
 ## Key facts
 
 - Took a statutory commission's case-management platform from kick-off to go-live in about a month, against a date fixed in law, across four organisations with no reporting line (BDO India, 2026).
-- Led a multi-crore national clean-energy certification platform from the first client meeting to public launch on its fixed date; about 250 features across 11 modules baselined before sprint one; over 90% of internal security findings closed before the external audit (BDO India, 2026).
+- Led a multi-crore national clean-energy certification platform from the first client meeting to its public launch by the Union Minister; about 250 features across 11 modules baselined before sprint one; over 90% of internal security findings closed before the external audit (BDO India, 2026).
 - Took a loss-making $2M+ a year application portfolio (about 55 applications, team of 35) to about 15% profit in six months; held 99.9% service levels; cut production fix time from 4 days to under 12 hours (Infosys, 2024 to 2026).
-- Moved a national regulatory registry with 40 million members from paper to a live platform; found that the governing statute was the blocker and proposed the amendments allowing electronic notices and digital signatures, which were enacted in about six months (EY India, 2022 to 2024).
+- Moved a national regulatory registry with 40 million members from paper to a live platform; found that the governing statute was the blocker and proposed the amendments allowing electronic notices and digital signatures, which were enacted in about six months; involved at every stage, including the national refund-claims platform later built on the same architecture (EY India, 2022 to 2024).
 - Engineering background: mainframe automation saving about GBP 200,000 a year, blockchain systems on Ethereum and Hyperledger Fabric, and an enterprise blockchain credentialing platform taken to a unit-wide pilot.
 - Skills: Agile and Scrum delivery, planning and scheduling, scope and change control, risk and dependency management, budgeting and P&L, vendor and stakeholder management, BRD/SRS/RFP/DPR, AI scope definition, React, Node.js, PostgreSQL, MongoDB, AWS.
 - Certifications: Certified Scrum Master; Google Project Management Certificate. Education: PGDM (IMT CDL, Ghaziabad); B.Tech, Computer Science (UPTU, Lucknow).
