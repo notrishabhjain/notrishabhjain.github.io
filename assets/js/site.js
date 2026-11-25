@@ -116,6 +116,32 @@
   window.addEventListener('resize', onScroll);
   onScroll();
 
+  /* tabs (the stage-by-stage explorer): without JS every panel shows */
+  [].slice.call(d.querySelectorAll('[data-tabs]')).forEach(function (box) {
+    var tabs = [].slice.call(box.querySelectorAll('[role="tab"]'));
+    var panels = tabs.map(function (t) { return d.getElementById(t.getAttribute('aria-controls')); });
+    function show(i, focus) {
+      tabs.forEach(function (t, k) {
+        var on = k === i;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        if (panels[k]) panels[k].hidden = !on;
+      });
+      if (focus) tabs[i].focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = tabs.length, k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (e.key === 'Home') { e.preventDefault(); show(0, true); }
+        else if (e.key === 'End') { e.preventDefault(); show(n - 1, true); }
+        else if (k) { e.preventDefault(); show((i + k + n) % n, true); }
+      });
+    });
+    box.classList.add('tabs-on');
+    show(0);
+  });
+
   /* work filters */
   var fbs = [].slice.call(d.querySelectorAll('.filters button'));
   var cards = [].slice.call(d.querySelectorAll('[data-tags]'));

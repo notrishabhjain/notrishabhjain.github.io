@@ -34,11 +34,11 @@
       "client": "Central government digital-governance agency",
       "startDate": "2026-01",
       "highlights": [
-        "Own delivery of two concurrent national government platforms end to end: scope, schedule, budget, risk, vendors and teams of eight and ten.",
-        "Took a statutory commission's case-management platform from kick-off to go-live in about a month, against a date fixed in law, across four organisations with no reporting line, by cutting the plan from five sprints to two and running modules in parallel.",
-        "Replaced the commission's spreadsheet with an auditable, role-based workflow sized for ten times its launch volume; daily case intake rose about twentyfold.",
-        "Led a multi-crore national clean-energy certification platform from the first client meeting to public launch on its fixed date, defining a first-of-its-kind process with the ministry and baselining about 250 features across 11 modules before sprint one.",
-        "Ran governance on both: weekly steering, daily stand-ups, director-level milestone reviews, monthly reporting, formal change control and a defined escalation path.",
+        "Accountable end to end for two concurrent national government platforms, from the first requirement through procurement, build, security and go-live into live operations: scope, schedule, budget, risk, vendors and releases, with teams of eight and ten.",
+        "Took a statutory commission's case-management platform live in about a month, against a date fixed in law and across four organisations with no reporting line, by cutting the plan from five sprints to two and running the modules in parallel.",
+        "Replaced the commission's spreadsheet with an auditable, role-based workflow sized for ten times its launch volume; daily case intake rose about twentyfold, and the platform now carries the caseload from the commission's national, online-only call for submissions.",
+        "Led a multi-crore national clean-energy certification platform from the first client meeting to its public launch by the Union Minister, defining a first-of-its-kind process and baselining about 250 features across 11 modules before sprint one; it is now the national route to certification and compliance.",
+        "Run both platforms in live operations: officer onboarding, data loads, release sign-off and change control (the first workflow change took about three days), with weekly steering, director-level reviews and a defined escalation path.",
         "Took both platforms through external security audits before launch; on the certification platform an internal review closed over 90% of findings first, so the audit needed one short round of fixes.",
         "Scoped the Phase 2 AI layer for both as advisory only, with a named officer accountable for every decision; one is approved and in procurement."
       ]
@@ -66,11 +66,12 @@
       "startDate": "2022-04",
       "endDate": "2024-11",
       "highlights": [
-        "Moved a national regulatory registry from a paper-based office to a live platform for 40 million members; application processing became more than 70% faster.",
+        "Took a national regulatory registry from a paper-based office to a live platform for 40 million members, with applications processed more than 70% faster, involved at every stage from the process study to rollout and operations.",
         "Found that the governing statute, not the technology, was the blocker and proposed the amendments that made electronic notices and digital signatures valid; they were enacted in about six months.",
-        "Wrote the DPR and RFP for a multi-crore national citizen-services portal, onboarded the vendor and ran a second procurement for machine translation.",
+        "Worked at every stage of the national refund-claims platform built on the registry's architecture, from requirements to live operations; it has since returned thousands of crores to millions of depositors.",
+        "Wrote the DPR and RFP for a multi-crore national citizen-services portal, onboarded the vendor and ran a second procurement for machine translation into 22 Indian languages, now live with human review.",
         "Held vendors to agreed scope from the client side through deviation management, change control and escalation.",
-        "Project-managed a 150+ parameter national benchmarking framework for government websites with academic research partners, and moved 80+ government websites onto one framework with security audits and standards certification.",
+        "Project-managed a 150+ parameter national benchmarking framework for government websites with academic research partners; it is operated as the national ranking standard, with 80+ government websites moved onto one framework.",
         "Redesigned a national immigration services platform across air, land and sea ports of entry, and managed the consultant team delivering it."
       ]
     },
@@ -222,7 +223,7 @@
   "meta": {
     "canonical": "https://notrishabhjain.github.io/resume.json",
     "version": "1.0.0",
-    "lastModified": "2026-11-19",
+    "lastModified": "2026-11-23",
     "note": "Client and programme names are generic on purpose. No phone number is published; contact by email or LinkedIn."
   }
 }
