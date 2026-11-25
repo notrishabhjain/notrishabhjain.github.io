@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "_readme": "Master profile for Tailor. Achievements are stored as parts, not finished sentences, so the app can recombine them for each job description. Syntax is in tailor/README.md. Projects, clients and confidential figures are described rather than named; see confidentialHashes in rules.json. Anything marked verify:true is from an older resume and not yet reconfirmed.",
   "person": {
     "name": "Rishabh Jain",
@@ -14,6 +14,9 @@
   "currentTense": "past",
   "titles": [
     "Project Manager",
+    "AI Project Manager",
+    "Technical Project Manager",
+    "AI & Technical Project Manager",
     "Applied AI Project Manager",
     "Program Manager",
     "Portfolio Manager",
@@ -29,11 +32,11 @@
     "identity": [
       {
         "when": "public",
-        "text": "{title} with {years}+ years in IT, delivering government and enterprise digital programmes from requirements to go-live{domains}."
+        "text": "{title} with {years}+ years in IT, delivering government and enterprise digital programmes from the first requirement through go-live into live operations{domains}."
       },
       {
         "when": "private",
-        "text": "{title} with {years}+ years in IT, delivering enterprise and government digital programmes from requirements to go-live{domains}."
+        "text": "{title} with {years}+ years in IT, delivering enterprise and government digital programmes from the first requirement through go-live into live operations{domains}."
       }
     ],
     "domains": [
@@ -526,7 +529,7 @@
     {
       "id": "bdo-commission-data",
       "role": "bdo",
-      "strength": 6,
+      "strength": 5,
       "src": "site",
       "patterns": "OC",
       "text": "Ran the one-time migration of legacy spreadsheet data from more than a dozen offices with no common structure as a separate stream, so it could not block module delivery.",
@@ -566,10 +569,11 @@
       "role": "bdo",
       "strength": 9,
       "src": "site",
-      "text": "Led a multi-crore national clean-energy certification platform from the first client meeting to a ministerial launch, with a team of ten.",
-      "core": "lead|direct|take :: a multi-crore national clean-energy certification platform from the first client meeting to a ministerial launch",
+      "text": "Led a multi-crore national clean-energy certification platform from the first client meeting to its public launch by the Union Minister, with a team of ten; it is now the national route to certification and compliance.",
+      "core": "lead|direct|take :: a multi-crore national clean-energy certification platform from the first client meeting to its public launch by the Union Minister",
       "parts": [
-        "scope :: with a team of ten #Team leadership"
+        "scope :: with a team of ten #Team leadership",
+        "outcome :: making it the national route to certification and compliance #Digital public infrastructure #Public sector"
       ],
       "tags": [
         "Go-live management",
@@ -662,7 +666,7 @@
     {
       "id": "bdo-cert-change",
       "role": "bdo",
-      "strength": 5,
+      "strength": 6,
       "src": "site",
       "patterns": "OC",
       "text": "Ran change control against a signed requirements baseline; the first change request after launch touched the workflow itself and was ready in about three days.",
@@ -700,7 +704,7 @@
     {
       "id": "bdo-ai-scope",
       "role": "bdo",
-      "strength": 8,
+      "strength": 9,
       "src": "site",
       "text": "Scoped the Phase 2 AI layer for both platforms as advisory only, with a named officer approving every important decision and every AI claim pointing to its source document; one is approved and in procurement.",
       "core": "scope :: the Phase 2 AI layer for both platforms",
@@ -754,6 +758,42 @@
         "Program management",
         "Delivery management",
         "Project management"
+      ]
+    },
+    {
+      "id": "bdo-live-ops",
+      "role": "bdo",
+      "strength": 8,
+      "src": "site",
+      "text": "Run both national platforms in live operations: officer onboarding, data loads, release sign-off and change control, with the first workflow change delivered in about three days.",
+      "core": "run :: both national platforms in live operations",
+      "parts": [
+        "scope :: covering officer onboarding, data loads, release sign-off and change control #Release management #Change control #Service delivery",
+        "outcome :: with the first workflow change delivered in about three days #Change control"
+      ],
+      "tags": [
+        "Service delivery",
+        "Release management",
+        "End-to-end delivery",
+        "Go-live management",
+        "Project management"
+      ]
+    },
+    {
+      "id": "bdo-commission-live",
+      "role": "bdo",
+      "strength": 7,
+      "src": "site",
+      "text": "Made the platform the working system for the commission's caseload from its national, online-only call for submissions, through examination and review.",
+      "core": "make :: the platform the working system for the commission's caseload",
+      "parts": [
+        "scope :: from its national, online-only call for submissions through examination and review #Public sector #Large-scale programs"
+      ],
+      "tags": [
+        "GovTech",
+        "Public sector",
+        "Digital public infrastructure",
+        "End-to-end delivery"
       ]
     },
     {
@@ -833,7 +873,7 @@
     {
       "id": "inf-ai",
       "role": "infosys",
-      "strength": 8,
+      "strength": 9,
       "src": "site",
       "patterns": "OC",
       "text": "Brought AI into ticket routing and closure in stages: it first watched the support tickets, then handled a six-hour window, then full days, each step gated on evidence from the one before; it reached production and was never rolled back.",
@@ -1219,6 +1259,24 @@
       ]
     },
     {
+      "id": "ey-claims",
+      "role": "ey",
+      "strength": 9,
+      "src": "site",
+      "text": "Worked at every stage of a national refund-claims platform built on the registry's architecture, from requirements to live operations; it has returned thousands of crores to millions of depositors.",
+      "core": "deliver|take :: a national refund-claims platform built on the registry's architecture from requirements to live operations",
+      "parts": [
+        "outcome :: which has returned thousands of crores to millions of depositors #Large-scale programs #Public sector"
+      ],
+      "tags": [
+        "Digital public infrastructure",
+        "Large-scale programs",
+        "End-to-end delivery",
+        "GovTech",
+        "Public sector"
+      ]
+    },
+    {
       "id": "ust-credentials",
       "role": "ust",
       "strength": 7,
@@ -1347,7 +1405,7 @@
     {
       "id": "tcs-negotiate",
       "role": "tcs",
-      "strength": 4,
+      "strength": 3,
       "src": "site",
       "patterns": "OC",
       "text": "Negotiated the system-permissions exception the automation depended on with both vendor and client, rather than working around it.",
