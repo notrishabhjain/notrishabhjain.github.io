@@ -817,3 +817,54 @@ a.ai-board-f:hover{color:var(--hx-accent)}
 @media (max-width:900px){.sec-split{grid-template-columns:1fr}}
 .card .pm-line{margin:0;font-size:.86rem;line-height:1.5;color:var(--text)}
 .card .pm-line b{display:block;margin-bottom:3px;font-family:var(--font-mono);font-weight:500;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ===== home v2: one card style, few labels ===== */
+.now{align-self:center;padding:22px 22px 10px;border:1px solid var(--hx-line);border-radius:18px;background:linear-gradient(180deg,var(--hx-wash),var(--hx-wash2));box-shadow:0 24px 60px var(--hx-shadow)}
+.now-k{margin:0 0 8px;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--hx-accent)}
+.now ul{list-style:none;margin:0;padding:0}
+.now li+li{border-top:1px solid var(--hx-line)}
+.now a{display:block;padding:14px 0;color:inherit;text-decoration:none}
+.now b{display:block;font-weight:600;font-size:1rem;line-height:1.35;color:var(--hx-text)}
+.now span{display:block;margin-top:4px;font-size:.88rem;line-height:1.5;color:var(--hx-muted)}
+.now a:hover b{color:var(--hx-accent)}
+
+.fw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.fw{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:var(--surface);overflow:hidden;color:inherit;text-decoration:none;transition:transform .25s var(--ease),border-color .25s}
+.fw:hover{transform:translateY(-3px);border-color:var(--accent)}
+.fw-cover{background:var(--accent-soft);padding:18px 0;display:grid;place-items:center}
+.fw-cover svg{width:min(240px,70%);height:auto}
+.fw-body{display:flex;flex-direction:column;gap:10px;padding:22px 24px 22px;flex:1}
+.fw-who{margin:0;font-size:.82rem;color:var(--muted)}
+.fw h3{margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(1.3rem,2vw,1.55rem);line-height:1.2}
+.fw-line{margin:0;color:var(--muted);line-height:1.55}
+.fw-fig{margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.fw-fig b{display:block;font-family:var(--font-display);font-weight:450;font-size:clamp(2rem,3.4vw,2.6rem);line-height:1.05;letter-spacing:-.02em;color:var(--accent)}
+.fw-fig span{display:block;margin-top:6px;font-size:.92rem;line-height:1.45;color:var(--text)}
+.fw-more{font-weight:600;font-size:.92rem;color:var(--accent)}
+
+.principles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:pr}
+.principles li{counter-increment:pr;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.principles li::before{content:"0" counter(pr);display:block;margin-bottom:12px;font-family:var(--font-display);font-size:1.6rem;color:var(--accent)}
+.principles b{display:block;font-size:1.05rem;line-height:1.3;margin-bottom:8px}
+.principles p{margin:0;color:var(--muted);font-size:.94rem;line-height:1.55}
+
+.ai-list{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:18px;background:var(--surface);overflow:hidden}
+.ai-list li+li{border-top:1px solid var(--line)}
+.ai-list a{display:grid;grid-template-columns:9.5rem minmax(0,1fr) minmax(0,1.3fr);gap:6px 24px;align-items:baseline;padding:18px 22px;color:inherit;text-decoration:none;transition:background .2s}
+.ai-list a:hover{background:var(--accent-soft)}
+.ai-list .st{font-size:.8rem;font-weight:600;color:var(--accent)}
+.ai-list .st.proc{color:var(--warm)}
+.ai-what b{display:block;font-weight:600}
+.ai-what small{display:block;margin-top:2px;font-size:.86rem;color:var(--muted)}
+.ai-did{color:var(--text);font-size:.95rem;line-height:1.5}
+
+.xp-list{list-style:none;margin:0;padding:0}
+.xp-list li{display:grid;grid-template-columns:7rem minmax(0,1.1fr) minmax(0,1.4fr);gap:6px 24px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.xp-list li:first-child{border-top:1px solid var(--line)}
+.xp-y{font-size:.86rem;color:var(--muted)}
+.xp-r b{font-weight:600}
+.xp-t{color:var(--muted);font-size:.95rem;line-height:1.5}
+@media (max-width:1000px){.principles{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.fw-grid,.principles{grid-template-columns:1fr}.ai-list a,.xp-list li{grid-template-columns:1fr}}
+.dn .cost{margin-top:8px;font-size:.92rem;color:var(--muted)}
+.dn .cost .k{display:inline-block;margin-right:8px;font-family:var(--font-mono);font-weight:500;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--warm)}
